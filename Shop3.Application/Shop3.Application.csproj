@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shop3.Data.EF\Shop3.Data.EF.csproj" />
+    <ProjectReference Include="..\Shop3.Data\Shop3.Data.csproj" />
+    <ProjectReference Include="..\Shp3.Utilities\Shp3.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
