@@ -10,7 +10,7 @@ namespace Shop3.Data.Entities
     {
         // mặc định id hiện tại ở dạng nvarchar(max) phải cấu hình lại cho giống TagId bên ProductTag (ko được sửa trong DomainEntity)
         // => sử dụng : confident api giúp ta config thuộc tính của entity (TagConfiguration )
-        // xem  TagConfiguration và ModelBuilderExtensions
+        // xem  TagConfiguration và ModelBuilderExtensions trong Shop3.Data.EF
 
         [MaxLength(50)]
         [Required]

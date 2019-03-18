@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Shop3.Infrastructure.Interfaces
 {
-    class test
+    public interface IUnitOfWork : IDisposable
     {
+        //dùng savechange của dbcontext
+        void Commit();
     }
 }
