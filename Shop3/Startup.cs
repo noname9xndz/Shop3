@@ -35,9 +35,10 @@ namespace Shop3
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // lấy connectipn từ Configuration
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // add identity
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
