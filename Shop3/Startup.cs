@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Shop3.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shop3.Data.EF;
+using Shop3.Data.Entities;
 
 namespace Shop3
 {
@@ -30,24 +32,34 @@ namespace Shop3
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // lấy connectipn từ Configuration
-            services.AddDbContext<ApplicationDbContext>(options =>
-                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // lấy connection từ Configuration
+            services.AddDbContext<AppDbContext>(options =>
+                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                  o => o.MigrationsAssembly("Shop3.Data.EF"))); // add thêm options ko dùng project hiện tại mà dùng  Shop3.Data.EF
+            
             // add identity
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddIdentity<AppUser,AppRole>() // sử dụng AppUser và AppRole tự tao ko dùng mặc định của Identity
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            // Add application services
+            
+            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
+            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
+
+
+            services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,DbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -73,6 +85,8 @@ namespace Shop3
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            dbInitializer.Seed().Wait(); // gọi phương thức Seed
         }
     }
 }
