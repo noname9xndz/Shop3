@@ -17,6 +17,24 @@ namespace Shop3.Data.Entities
         {// contructor giúp tránh trường hợp null
             Products = new List<Product>();
         }
+        // contructor viết thêm để mapping giữa ViewModel và Model băng contructor
+        public ProductCategory(string name, string description, int? parentId, int? homeOrder,
+            string image, bool? homeFlag, int sortOrder, Status status, string seoPageTitle, string seoAlias,
+            string seoKeywords, string seoDescription)
+        {
+            Name = name;
+            Description = description;
+            ParentId = parentId;
+            HomeOrder = homeOrder;
+            Image = image;
+            HomeFlag = homeFlag;
+            SortOrder = sortOrder;
+            Status = status;
+            SeoPageTitle = seoPageTitle;
+            SeoAlias = seoAlias;
+            SeoKeywords = seoKeywords;
+            SeoDescription = seoDescription;
+        }
 
         public string Name { get; set; }
 

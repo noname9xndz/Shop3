@@ -13,6 +13,40 @@ namespace Shop3.Data.Entities
     [Table("Products")] // tên bản khi render ra
     public class Product : DomainEntity<int>, IHasSeoMetaData, ISwitchable, IDateTracking 
     {
+        // khởi tạo contructor tránh trường hợp null
+        public Product()
+        {
+            ProductTags = new List<ProductTag>();
+        }
+        // contructor viết thêm để mapping giữa ViewModel và Model băng contructor
+        public Product(string name, int categoryId, string thumbnailImage,
+            decimal price, decimal originalPrice, decimal? promotionPrice,
+            string description, string content, bool? homeFlag, bool? hotFlag,
+            string tags, string unit, Status status, string seoPageTitle,
+            string seoAlias, string seoMetaKeyword,
+            string seoMetaDescription)
+        {
+            Name = name;
+            CategoryId = categoryId;
+            Image = thumbnailImage;
+            Price = price;
+            OriginalPrice = originalPrice;
+            PromotionPrice = promotionPrice;
+            Description = description;
+            Content = content;
+            HomeFlag = homeFlag;
+            HotFlag = hotFlag;
+            Tags = tags;
+            Unit = unit;
+            Status = status;
+            SeoPageTitle = seoPageTitle;
+            SeoAlias = seoAlias;
+            SeoKeywords = seoMetaKeyword;
+            SeoDescription = seoMetaDescription;
+            ProductTags = new List<ProductTag>();
+
+        }
+        
         [StringLength(255)] // nếu ko cấu hình mặc định là nvarchar(Max)
         [Required] // bắt buộc phải nhập
         public string Name { get; set; }

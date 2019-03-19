@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Shop3.Data.EF\Shop3.Data.EF.csproj" />
     <ProjectReference Include="..\Shop3.Data\Shop3.Data.csproj" />
     <ProjectReference Include="..\Shp3.Utilities\Shp3.Utilities.csproj" />

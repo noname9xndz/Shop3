@@ -15,6 +15,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shop3.Data.EF;
 using Shop3.Data.Entities;
+using AutoMapper;
+using Shop3.Application.Interfaces;
+using Shop3.Application.Implementation;
 
 namespace Shop3
 {
@@ -51,15 +54,21 @@ namespace Shop3
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
 
+            services.AddSingleton(Mapper.Configuration); // nhớ add nuget automapper
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
 
+
+            //Register Serrvices
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+           
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,DbInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -86,7 +95,7 @@ namespace Shop3
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            dbInitializer.Seed().Wait(); // gọi phương thức Seed
+            
         }
     }
 }
