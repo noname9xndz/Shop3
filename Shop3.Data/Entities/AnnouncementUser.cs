@@ -18,15 +18,16 @@ namespace Shop3.Data.Entities
             HasRead = hasRead;
         }
 
-        [StringLength(128)]
+        //[StringLength(128)]
         [Required]
         public string AnnouncementId { get; set; }
+        [ForeignKey("AnnouncementId")]
+        public virtual Announcement Announcement { get; set; }
 
         public Guid UserId { get; set; }
 
         public bool? HasRead { get; set; }
 
-        [ForeignKey("AnnouncementId")]
-        public virtual Announcement Announcement { get; set; }
+        
     }
 }

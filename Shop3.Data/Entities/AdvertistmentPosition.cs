@@ -10,15 +10,14 @@ namespace Shop3.Data.Entities
     [Table("AdvertistmentPositions")] // vị trí quảng cáo
     public class AdvertistmentPosition : DomainEntity<string>
     {
-        [StringLength(20)]
+        
+       // [StringLength(20)]
         public string PageId { get; set; }
-
-        [StringLength(250)]
-        public string Name { get; set; }
-
         [ForeignKey("PageId")]
         public virtual AdvertistmentPage AdvertistmentPage { get; set; }
 
+        [StringLength(250)]
+        public string Name { get; set; }
         public virtual ICollection<Advertistment> Advertistments { get; set; }
     }
 }

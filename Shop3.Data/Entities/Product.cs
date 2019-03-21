@@ -92,7 +92,7 @@ namespace Shop3.Data.Entities
 
         public string SeoPageTitle { set; get; }
 
-        [Column(TypeName ="varchar")] // chỉ ra kiểu dữ liệu thuộc tính mặc định là nvarchar(Max)
+        //[Column(TypeName ="varchar(255)")] // chỉ ra kiểu dữ liệu thuộc tính mặc định là nvarchar(Max)
         [StringLength(255)]
         public string SeoAlias { set; get; }
 

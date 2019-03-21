@@ -14,7 +14,6 @@ namespace Shop3.Data.Entities
         public virtual Product Product { set; get; }
 
         [StringLength(50)]
-        [Column(TypeName ="varchar")]
         public string TagId { set; get; }
         [ForeignKey("TagId")]
         public virtual Tag Tag { set; get; }

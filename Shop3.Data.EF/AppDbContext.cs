@@ -2,12 +2,15 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using Shop3.Data.EF.Configurations;
 using Shop3.Data.EF.Extentions;
 using Shop3.Data.Entities;
 using Shop3.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -108,6 +111,29 @@ namespace Shop3.Data.EF
                 }
             }
             return base.SaveChanges();
+        }
+
+       
+    }
+
+    // https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db?tabs=visual-studio#create-the-database
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+    {
+        public AppDbContext CreateDbContext(string[] args)
+        {
+            IConfiguration configuration = new ConfigurationBuilder()
+               
+                .SetBasePath(Directory.GetCurrentDirectory()) // nuget : Microsoft.Extensions.configuration.FileExtensions
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)  // nuget : Microsoft.Extensions.configuration.Json
+                .AddEnvironmentVariables()   // requires Microsoft.Extensions.Configuration.EnvironmentVariable
+                .Build(); 
+                
+
+            var builder = new DbContextOptionsBuilder<AppDbContext>();
+            var connectionString = configuration.GetConnectionString("DefaultConnection"); 
+            builder.UseSqlServer(connectionString);
+
+            return new AppDbContext(builder.Options);
         }
     }
 
