@@ -19,6 +19,8 @@ using AutoMapper;
 using Shop3.Application.Interfaces;
 using Shop3.Application.Implementation;
 using Shop3.Application.AutoMapper;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace Shop3
 {
@@ -108,12 +110,17 @@ namespace Shop3
 
             #endregion
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                // config lại object trả về khi respone trả về cho ajax
+                .AddJsonOptions( 
+                      options => options.SerializerSettings.ContractResolver = new  DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddFile("Logs/noname-{Date}.txt");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

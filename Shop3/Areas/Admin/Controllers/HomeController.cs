@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Shop3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("admin")]
-    public class AdminController : Controller
+    //[Route("admin")]
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

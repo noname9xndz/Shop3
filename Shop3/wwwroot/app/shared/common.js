@@ -163,3 +163,10 @@ var common = {
     }
 
 }
+// bắt AntiForgeryToken() của Asp.net  Core trên form login khi ajax request được gửi lên
+$(document).ajaxSend(function (e, xhr, options) {
+    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
+        var token = $('form').find("input[name='__RequestVerificationToken']").val();
+        xhr.setRequestHeader("RequestVerificationToken", token); // đẩy vào header của request
+    }
+});
