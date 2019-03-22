@@ -22,6 +22,9 @@ using Shop3.Application.AutoMapper;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using Shop3.Helpers;
+using Shop3.Data.IRepositories;
+using Shop3.Data.EF.Repositories;
+using Shop3.Infrastructure.Interfaces;
 
 namespace Shop3
 {
@@ -107,8 +110,16 @@ namespace Shop3
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal 
 
 
+            //services.AddTransient<IFunctionRepository, FunctionRepository>(); register Repository nếu dùng
+
             //Register Serrvices
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
+            
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IFunctionService, FunctionService>();
+
+
 
             #endregion
 
