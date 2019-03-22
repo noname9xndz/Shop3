@@ -1,7 +1,7 @@
 {
   "name": "bootbox.js",
-  "version": "4.4.0",
-  "main": "./bootbox.js",
+  "main": "./src/bootbox.js",
+  "license": "MIT",
   "ignore": [
     "CHANGELOG.md",
     "CONTRIBUTING",
@@ -12,6 +12,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": ">= 3.0.0"
+    "bootstrap": ">= 3.3.7"
   }
 }

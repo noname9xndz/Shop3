@@ -1,7 +1,7 @@
 {
   "name": "bootbox.js",
-  "version": "4.4.0",
-  "main": "./bootbox.js",
+  "main": "./src/bootbox.js",
+  "license": "MIT",
   "ignore": [
     "CHANGELOG.md",
     "CONTRIBUTING",
@@ -12,16 +12,17 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": ">= 3.0.0"
+    "bootstrap": ">= 3.3.7"
   },
   "homepage": "https://github.com/makeusabrew/bootbox",
-  "_release": "4.4.0",
+  "version": "5.0.0",
+  "_release": "5.0.0",
   "_resolution": {
     "type": "version",
-    "tag": "v4.4.0",
-    "commit": "cb756203e250ed0ff2539359ff0ad1c3ffb8e8d3"
+    "tag": "v5.0.0",
+    "commit": "9fceb4654eec8b6615a7e2ad9def548cc92cd3d2"
   },
   "_source": "https://github.com/makeusabrew/bootbox.git",
-  "_target": "~4.4.0",
+  "_target": "~5.0.0",
   "_originalSource": "bootbox"
 }
