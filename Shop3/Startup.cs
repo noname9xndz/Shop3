@@ -21,6 +21,7 @@ using Shop3.Application.Implementation;
 using Shop3.Application.AutoMapper;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Shop3.Helpers;
 
 namespace Shop3
 {
@@ -103,6 +104,7 @@ namespace Shop3
 
 
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal 
 
 
             //Register Serrvices

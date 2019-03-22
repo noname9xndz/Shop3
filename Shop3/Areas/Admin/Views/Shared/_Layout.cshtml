@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+
+@using Shop3.Extensions;
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,7 +44,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            <h2>@User.GetSpecificClaim("FullName")</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -188,7 +193,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="/admin-side/images/img.jpg" alt="">John Doe
+                                    <img src="@User.GetSpecificClaim("Avatar")" alt="">@User.GetSpecificClaim("FullName")
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -211,9 +216,9 @@
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                     <li>
                                         <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
                                             <span>
-                                                <span>John Smith</span>
+                                                <span>@User.GetSpecificClaim("FullName")</span>
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
@@ -223,9 +228,9 @@
                                     </li>
                                     <li>
                                         <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
                                             <span>
-                                                <span>John Smith</span>
+                                                <span>@User.GetSpecificClaim("FullName")</span>
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
@@ -235,9 +240,9 @@
                                     </li>
                                     <li>
                                         <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
                                             <span>
-                                                <span>John Smith</span>
+                                                <span>@User.GetSpecificClaim("FullName")</span>
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
@@ -247,9 +252,9 @@
                                     </li>
                                     <li>
                                         <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
                                             <span>
-                                                <span>John Smith</span>
+                                                <span>@User.GetSpecificClaim("FullName")</span>
                                                 <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">

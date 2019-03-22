@@ -47,6 +47,7 @@ namespace Shop3.Areas.Admin.Controllers
 
                 if (result.Succeeded)
                 {
+                    
                     _logger.LogInformation("User logged in.");
                     return new OkObjectResult(new GenericResult(true)); // trả về 200 + 1 object
                 }
