@@ -38,14 +38,14 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    <form>
+                    <form id="frmLogin">
                         @Html.AntiForgeryToken()
                         <h1>Đăng Nhập</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Tên đăng nhập" id="txtUserName" name="UserName" required="" />
+                            <input type="text"  class="form-control" placeholder="Tên đăng nhập" id="txtUserName" name="UserName" required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Password" id="txtPassword" name="Password" required="" />
+                            <input type="password"  class="form-control" placeholder="Password" id="txtPassword" name="Password" required="" />
                         </div>
                         <div>
                             <a class="btn btn-default submit" href="#" id="btnLogin">Đăng Nhập</a>
@@ -53,17 +53,17 @@
                         </div>
                         <div class="clearfix"></div>
                         @*<div class="separator">
-                            <p class="change_link">
-                                New to site?
-                                <a href="#signup" class="to_register"> Đăng ký </a>
-                            </p>
-                            <div class="clearfix"></div>
-                            <br />
-                            <div>
-                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                            </div>
-                        </div>*@
+                                <p class="change_link">
+                                    New to site?
+                                    <a href="#signup" class="to_register"> Đăng ký </a>
+                                </p>
+                                <div class="clearfix"></div>
+                                <br />
+                                <div>
+                                    <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                    <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                                </div>
+                            </div>*@
                     </form>
                 </section>
             </div>
@@ -107,6 +107,14 @@
 
     <script src="~/lib/notifyjs/dist/notify.js"></script>
     <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation/dist/localization/messages_vi.js"></script>
+
+
 
     <script src="~/app/controllers/login/index.js"></script>
     <script src="~/app/shared/common.js"></script>

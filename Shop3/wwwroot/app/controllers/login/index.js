@@ -9,11 +9,37 @@ var loginController = function () {
     // register các event
     var registerEvents = function () {
 
+        // sk validation cho form login
+        $('#frmLogin').validate({
+
+            errorClass: 'red',
+            ignore: [], //
+            lang: 'vi',
+            rules: {
+                userName: {
+                    required: true,
+                    minlength: 4,
+                    maxlength:30
+                },
+                password: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 30
+                }
+            }
+
+        });
+
+        // sk click nút đăng nhập
         $('#btnLogin').on('click', function (e) {
-            e.preventDefault();
-            var user = $('#txtUserName').val();
-            var password = $('#txtPassword').val();
-            login(user, password);
+            if ($('#frmLogin').valid()) {
+
+                e.preventDefault();
+                var user = $('#txtUserName').val();
+                var password = $('#txtPassword').val();
+                login(user, password);
+            }
+          
         });
 
     }
