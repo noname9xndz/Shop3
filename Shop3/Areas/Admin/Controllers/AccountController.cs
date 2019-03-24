@@ -8,8 +8,8 @@ using Shop3.Data.Entities;
 
 namespace Shop3.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class AccountController : Controller
+   // [Area("Admin")]
+    public class AccountController : BaseController
     {
 
         private readonly SignInManager<AppUser> _signInManager;

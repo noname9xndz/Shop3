@@ -7,9 +7,9 @@ using Shop3.Extensions;
 
 namespace Shop3.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    //[Area("Admin")]
     //[Route("admin")]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {

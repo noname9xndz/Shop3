@@ -23,6 +23,7 @@
     <!-- notify -->
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
 
+    @RenderSection("Styles", required: false)
 
 
     <!-- Custom Theme Style -->
@@ -161,6 +162,7 @@
 
 
                     @RenderBody()
+
                 </div>
             </div>
             <!-- /page content -->
@@ -182,6 +184,9 @@
     <script src="~/lib/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="~/lib/nprogress/nprogress.js"></script>
+
+    <script src="~/lib/mustache/mustache.js"></script>
+
     <!-- Chart.js -->
     <script src="~/lib/Chart.js/dist/Chart.js"></script>
     <!-- jQuery Sparklines -->
@@ -211,15 +216,13 @@
 
     <script src="~/lib/bootbox/src/bootbox.js"></script>
 
-
-
-
-
     <script src="~/app/shared/common.js"></script>
 
     <!-- nhúng js -->
     <!-- Custom Theme Scripts -->
 
     <script src="~/admin-side/js/custom.js"></script>
+
+    @RenderSection("Scripts",required:false)  @*trang con có áp dụng thì áp dùng không thì thôi*@
 </body>
 </html>

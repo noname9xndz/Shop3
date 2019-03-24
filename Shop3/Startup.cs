@@ -118,6 +118,7 @@ namespace Shop3
             
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<IProductService,ProductService>();
 
 
 
