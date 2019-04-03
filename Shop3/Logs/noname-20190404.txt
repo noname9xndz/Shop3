@@ -1,0 +1,680 @@
+2019-04-04T00:07:33.0132718+07:00 0HLLOARDVVCSN:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/   (ca22a1cb)
+2019-04-04T00:07:33.2868707+07:00 0HLLOARDVVCSN:00000001 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:07:33.7269793+07:00 0HLLOARDVVCSN:00000001 [INF] Executed DbCommand ("151"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-04-04T00:07:34.1209628+07:00 0HLLOARDVVCSN:00000001 [INF] Executed DbCommand ("91"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-04-04T00:07:34.2572995+07:00 0HLLOARDVVCSN:00000001 [INF] Executed DbCommand ("66"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-04T00:07:34.3341498+07:00 0HLLOARDVVCSN:00000001 [INF] Executed DbCommand ("34"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-04-04T00:07:34.3970975+07:00 0HLLOARDVVCSN:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-04-04T00:07:34.4331245+07:00 0HLLOARDVVCSN:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-04T00:07:34.5441615+07:00 0HLLOARDVVCSN:00000001 [INF] Executing endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-04-04T00:07:34.5668770+07:00 0HLLOARDVVCSN:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "Shop3.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-04-04T00:07:34.6187218+07:00 0HLLOARDVVCSN:00000001 [INF] Executing action method "Shop3.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:07:34.6290737+07:00 0HLLOARDVVCSN:00000001 [INF] Executed action method "Shop3.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.6596ms. (50a9e262)
+2019-04-04T00:07:34.7404057+07:00 0HLLOARDVVCSN:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-04T00:07:35.2913696+07:00 0HLLOARDVVCSN:00000001 [INF] Executed ViewResult - view "Index" executed in 624.1087ms. (f66409e9)
+2019-04-04T00:07:35.3820628+07:00 0HLLOARDVVCSN:00000001 [INF] Executed action "Shop3.Controllers.HomeController.Index (Shop3)" in 724.8368ms (afa2e885)
+2019-04-04T00:07:36.1581566+07:00 0HLLOARDVVCSN:00000001 [INF] Executed endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-04-04T00:07:36.1757410+07:00 0HLLOARDVVCSM:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2019-04-04T00:07:36.2277286+07:00 0HLLOARDVVCSO:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/css/site.css   (ca22a1cb)
+2019-04-04T00:07:36.2312207+07:00 0HLLOARDVVCSN:00000001 [INF] Request finished in 3232.5043ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-04T00:07:36.2338000+07:00 0HLLOARDVVCSP:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery/dist/jquery.js   (ca22a1cb)
+2019-04-04T00:07:36.2381627+07:00 0HLLOARDVVCSQ:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.js   (ca22a1cb)
+2019-04-04T00:07:36.2530648+07:00 0HLLOARDVVCSR:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0   (ca22a1cb)
+2019-04-04T00:07:36.2626000+07:00 0HLLOARDVVCSR:00000001 [INF] Sending file. Request path: '"/js/site.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\js\site.js"' (27b0a520)
+2019-04-04T00:07:36.2783842+07:00 0HLLOARDVVCSR:00000001 [INF] Request finished in 12.53ms 200 application/javascript (791a596a)
+2019-04-04T00:07:36.3096666+07:00 0HLLOARDVVCSO:00000001 [INF] Sending file. Request path: '"/css/site.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\css\site.css"' (27b0a520)
+2019-04-04T00:07:36.3278725+07:00 0HLLOARDVVCSO:00000001 [INF] Request finished in 152.6053ms 200 text/css (791a596a)
+2019-04-04T00:07:36.3433859+07:00 0HLLOARDVVCSQ:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.bundle.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js"' (27b0a520)
+2019-04-04T00:07:36.3581728+07:00 0HLLOARDVVCSP:00000001 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2019-04-04T00:07:36.4507475+07:00 0HLLOARDVVCSQ:00000001 [INF] Request finished in 108.4129ms 200 application/javascript (791a596a)
+2019-04-04T00:07:36.4619207+07:00 0HLLOARDVVCSM:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2019-04-04T00:07:36.4727035+07:00 0HLLOARDVVCSP:00000001 [INF] Request finished in 192.3209ms 200 application/javascript (791a596a)
+2019-04-04T00:07:36.4779253+07:00 0HLLOARDVVCSM:00000001 [INF] Request finished in 316.0656ms 200 text/css (791a596a)
+2019-04-04T00:07:36.5683588+07:00 0HLLOARDVVCSM:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico   (ca22a1cb)
+2019-04-04T00:07:36.6432403+07:00 0HLLOARDVVCSM:00000002 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\favicon.ico"' (27b0a520)
+2019-04-04T00:07:36.6540518+07:00 0HLLOARDVVCSM:00000002 [INF] Request finished in 76.8511ms 200 image/x-icon (791a596a)
+2019-04-04T00:08:09.5591477+07:00 0HLLOARDVVCSM:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin   (ca22a1cb)
+2019-04-04T00:08:09.5730328+07:00 0HLLOARDVVCSM:00000003 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (500cc934)
+2019-04-04T00:08:09.5776548+07:00 0HLLOARDVVCSM:00000003 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" (a44c0341)
+2019-04-04T00:08:09.5868605+07:00 0HLLOARDVVCSM:00000003 [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:08:09.5958558+07:00 0HLLOARDVVCSM:00000003 [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.2637ms. (50a9e262)
+2019-04-04T00:08:09.6112778+07:00 0HLLOARDVVCSM:00000003 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-04T00:08:09.6475172+07:00 0HLLOARDVVCSM:00000003 [INF] Executed ViewResult - view "Index" executed in 47.8698ms. (f66409e9)
+2019-04-04T00:08:09.6525236+07:00 0HLLOARDVVCSM:00000003 [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" in 71.6023ms (afa2e885)
+2019-04-04T00:08:09.7640513+07:00 0HLLOARDVVCSM:00000003 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (99874f2b)
+2019-04-04T00:08:09.8124254+07:00 0HLLOARDVVCSP:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2019-04-04T00:08:09.9717170+07:00 0HLLOARDVVCSM:00000003 [INF] Request finished in 218.2339ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-04T00:08:10.1435807+07:00 0HLLOARDVVCSQ:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.css   (ca22a1cb)
+2019-04-04T00:08:10.1782161+07:00 0HLLOARDVVCSR:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2019-04-04T00:08:10.2097131+07:00 0HLLOARDVVCSO:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/animate.css/animate.css   (ca22a1cb)
+2019-04-04T00:08:10.2140166+07:00 0HLLOARDVVCSN:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/css/custom.css   (ca22a1cb)
+2019-04-04T00:08:10.2514304+07:00 0HLLOARDVVCSP:00000002 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2019-04-04T00:08:10.2532913+07:00 0HLLOARDVVCSQ:00000002 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2019-04-04T00:08:10.2556991+07:00 0HLLOARDVVCSP:00000002 [INF] Request finished in 528.4961ms 200 text/css (791a596a)
+2019-04-04T00:08:10.2585877+07:00 0HLLOARDVVCSQ:00000002 [INF] Request finished in 477.9198ms 200 text/css (791a596a)
+2019-04-04T00:08:10.2610242+07:00 0HLLOARDVVCSP:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2019-04-04T00:08:10.2634004+07:00 0HLLOARDVVCSQ:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/additional-methods.js   (ca22a1cb)
+2019-04-04T00:08:10.2664798+07:00 0HLLOARDVVCSM:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2019-04-04T00:08:10.2693536+07:00 0HLLOARDVVCSR:00000002 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2019-04-04T00:08:10.2999665+07:00 0HLLOARDVVCSR:00000002 [INF] Request finished in 254.2967ms 200 text/css (791a596a)
+2019-04-04T00:08:10.3039624+07:00 0HLLOARDVVCSP:00000003 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2019-04-04T00:08:10.3115287+07:00 0HLLOARDVVCSR:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2019-04-04T00:08:10.3151861+07:00 0HLLOARDVVCSM:00000004 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2019-04-04T00:08:10.3174873+07:00 0HLLOARDVVCSN:00000002 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2019-04-04T00:08:10.3200592+07:00 0HLLOARDVVCSM:00000004 [INF] Request finished in 144.2976ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.3254823+07:00 0HLLOARDVVCSN:00000002 [INF] Request finished in 203.2272ms 200 text/css (791a596a)
+2019-04-04T00:08:10.3287796+07:00 0HLLOARDVVCSM:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/login/index.js   (ca22a1cb)
+2019-04-04T00:08:10.3333043+07:00 0HLLOARDVVCSN:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/common.js   (ca22a1cb)
+2019-04-04T00:08:10.3345658+07:00 0HLLOARDVVCSP:00000003 [INF] Request finished in 48.2518ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.3454487+07:00 0HLLOARDVVCSQ:00000003 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/additional-methods.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation\dist\additional-methods.js"' (27b0a520)
+2019-04-04T00:08:10.3492464+07:00 0HLLOARDVVCSM:00000005 [INF] Sending file. Request path: '"/app/controllers/login/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\login\index.js"' (27b0a520)
+2019-04-04T00:08:10.3523135+07:00 0HLLOARDVVCSO:00000002 [INF] Sending file. Request path: '"/lib/animate.css/animate.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\animate.css\animate.css"' (27b0a520)
+2019-04-04T00:08:10.3554040+07:00 0HLLOARDVVCSM:00000005 [INF] Request finished in 29.0912ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.3584665+07:00 0HLLOARDVVCSO:00000002 [INF] Request finished in 337.8605ms 200 text/css (791a596a)
+2019-04-04T00:08:10.3610606+07:00 0HLLOARDVVCSP:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js   (ca22a1cb)
+2019-04-04T00:08:10.3647406+07:00 0HLLOARDVVCSQ:00000003 [INF] Request finished in 86.8692ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.3678803+07:00 0HLLOARDVVCSN:00000003 [INF] Sending file. Request path: '"/app/shared/common.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\shared\common.js"' (27b0a520)
+2019-04-04T00:08:10.3732739+07:00 0HLLOARDVVCSQ:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/localization/messages_vi.js   (ca22a1cb)
+2019-04-04T00:08:10.3807373+07:00 0HLLOARDVVCSN:00000003 [INF] Request finished in 42.3929ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.3892058+07:00 0HLLOARDVVCSP:00000004 [INF] Sending file. Request path: '"/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation-unobtrusive\src\jquery.validate.unobtrusive.js"' (27b0a520)
+2019-04-04T00:08:10.3984292+07:00 0HLLOARDVVCSP:00000004 [INF] Request finished in 55.0321ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.4102339+07:00 0HLLOARDVVCSQ:00000004 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/localization/messages_vi.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation\dist\localization\messages_vi.js"' (27b0a520)
+2019-04-04T00:08:10.4160304+07:00 0HLLOARDVVCSR:00000003 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2019-04-04T00:08:10.4169383+07:00 0HLLOARDVVCSQ:00000004 [INF] Request finished in 45.4977ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.4206425+07:00 0HLLOARDVVCSR:00000003 [INF] Request finished in 116.9311ms 200 application/javascript (791a596a)
+2019-04-04T00:08:10.4776077+07:00 0HLLOARDVVCSR:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-04-04T00:08:10.5190846+07:00 0HLLOARDVVCSR:00000004 [INF] Sending file. Request path: '"/lib/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2019-04-04T00:08:10.5254506+07:00 0HLLOARDVVCSR:00000004 [INF] Request finished in 43.5166ms 200 font/woff2 (791a596a)
+2019-04-04T00:08:47.4150843+07:00 0HLLOARDVVCSR:00000005 [INF] Request starting HTTP/1.1 POST https://localhost:5001/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2019-04-04T00:08:47.4256611+07:00 0HLLOARDVVCSR:00000005 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)"' (500cc934)
+2019-04-04T00:08:47.4538613+07:00 0HLLOARDVVCSR:00000005 [INF] Route matched with "{area = \"Admin\", action = \"Authen\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" (a44c0341)
+2019-04-04T00:08:47.5034124+07:00 0HLLOARDVVCSR:00000005 [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" with arguments (["Shop3.Models.AccountViewModels.LoginViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:08:47.5113193+07:00 0HLLOARDVVCSR:00000005 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:08:47.5256577+07:00 0HLLOARDVVCSR:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-04-04T00:08:47.7781436+07:00 0HLLOARDVVCSR:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-04-04T00:08:47.7848361+07:00 0HLLOARDVVCSR:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-04T00:08:47.7919486+07:00 0HLLOARDVVCSR:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-04-04T00:08:47.7979392+07:00 0HLLOARDVVCSR:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-04-04T00:08:47.8022974+07:00 0HLLOARDVVCSR:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-04T00:08:47.8112167+07:00 0HLLOARDVVCSR:00000005 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2019-04-04T00:08:47.8181070+07:00 0HLLOARDVVCSR:00000005 [INF] User logged in. (fdce0db4)
+2019-04-04T00:08:47.8238986+07:00 0HLLOARDVVCSR:00000005 [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 317.4798ms. (50a9e262)
+2019-04-04T00:08:47.8354998+07:00 0HLLOARDVVCSR:00000005 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.GenericResult"'. (8a1b66c8)
+2019-04-04T00:08:48.0577604+07:00 0HLLOARDVVCSR:00000005 [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" in 601.5783ms (afa2e885)
+2019-04-04T00:08:48.0613966+07:00 0HLLOARDVVCSR:00000005 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)"' (99874f2b)
+2019-04-04T00:08:48.0662429+07:00 0HLLOARDVVCSR:00000005 [INF] Request finished in 651.0584ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-04T00:08:48.1451269+07:00 0HLLOARDVVCSR:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/Index   (ca22a1cb)
+2019-04-04T00:08:48.1492081+07:00 0HLLOARDVVCSR:00000006 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-04-04T00:08:48.1527732+07:00 0HLLOARDVVCSR:00000006 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-04-04T00:08:48.1648065+07:00 0HLLOARDVVCSR:00000006 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:08:48.1678247+07:00 0HLLOARDVVCSR:00000006 [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:08:48.1721111+07:00 0HLLOARDVVCSR:00000006 [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1.2664ms. (50a9e262)
+2019-04-04T00:08:48.1846059+07:00 0HLLOARDVVCSR:00000006 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-04T00:08:48.2348741+07:00 0HLLOARDVVCSR:00000006 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:08:48.2725311+07:00 0HLLOARDVVCSR:00000006 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-04T00:08:48.3990318+07:00 0HLLOARDVVCSR:00000006 [INF] Executed ViewResult - view "Index" executed in 200.997ms. (f66409e9)
+2019-04-04T00:08:48.4133366+07:00 0HLLOARDVVCSQ:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2019-04-04T00:08:48.4169588+07:00 0HLLOARDVVCSR:00000006 [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" in 251.3317ms (afa2e885)
+2019-04-04T00:08:48.5292229+07:00 0HLLOARDVVCSP:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/images/img.jpg   (ca22a1cb)
+2019-04-04T00:08:48.5581980+07:00 0HLLOARDVVCSQ:00000005 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2019-04-04T00:08:48.5650287+07:00 0HLLOARDVVCSO:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2019-04-04T00:08:48.5650480+07:00 0HLLOARDVVCSQ:00000005 [INF] Request finished in 162.6155ms 200 text/css (791a596a)
+2019-04-04T00:08:48.5717269+07:00 0HLLOARDVVCSM:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2019-04-04T00:08:48.5772995+07:00 0HLLOARDVVCSP:00000005 [INF] Sending file. Request path: '"/admin-side/images/img.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\images\img.jpg"' (27b0a520)
+2019-04-04T00:08:48.5876986+07:00 0HLLOARDVVCSQ:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.js   (ca22a1cb)
+2019-04-04T00:08:48.5928826+07:00 0HLLOARDVVCSP:00000005 [INF] Request finished in 181.6576ms 200 image/jpeg (791a596a)
+2019-04-04T00:08:48.6024145+07:00 0HLLOARDVVCSR:00000006 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-04-04T00:08:48.6088601+07:00 0HLLOARDVVCSP:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/mustache/mustache.js   (ca22a1cb)
+2019-04-04T00:08:48.6249048+07:00 0HLLOARDVVCSR:00000006 [INF] Request finished in 459.8148ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-04T00:08:48.6558630+07:00 0HLLOARDVVCSQ:00000006 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.js"' (27b0a520)
+2019-04-04T00:08:48.6649704+07:00 0HLLOARDVVCSO:00000003 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2019-04-04T00:08:48.6707915+07:00 0HLLOARDVVCSQ:00000006 [INF] Request finished in 78.4491ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.6753601+07:00 0HLLOARDVVCSO:00000003 [INF] Request finished in 119.0517ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.6828288+07:00 0HLLOARDVVCSP:00000006 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2019-04-04T00:08:48.6968752+07:00 0HLLOARDVVCSM:00000006 [INF] Sending file. Request path: '"/lib/fastclick/lib/fastclick.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\fastclick\lib\fastclick.js"' (27b0a520)
+2019-04-04T00:08:48.7014187+07:00 0HLLOARDVVCSP:00000006 [INF] Request finished in 83.6417ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.7035385+07:00 0HLLOARDVVCSM:00000006 [INF] Request finished in 131.3225ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.7057801+07:00 0HLLOARDVVCSN:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/Chart.js/dist/Chart.js   (ca22a1cb)
+2019-04-04T00:08:48.7120640+07:00 0HLLOARDVVCSR:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/twbs-pagination/jquery.twbsPagination.js   (ca22a1cb)
+2019-04-04T00:08:48.7139828+07:00 0HLLOARDVVCSQ:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-sparkline/dist/jquery.sparkline.js   (ca22a1cb)
+2019-04-04T00:08:48.7169949+07:00 0HLLOARDVVCSO:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/moment/moment.js   (ca22a1cb)
+2019-04-04T00:08:48.7500944+07:00 0HLLOARDVVCSP:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2019-04-04T00:08:48.7574601+07:00 0HLLOARDVVCSM:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootbox/src/bootbox.js   (ca22a1cb)
+2019-04-04T00:08:48.7597908+07:00 0HLLOARDVVCSP:00000007 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.js"' (27b0a520)
+2019-04-04T00:08:48.7725756+07:00 0HLLOARDVVCSP:00000007 [INF] Request finished in 44.7474ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.7771938+07:00 0HLLOARDVVCSP:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/js/custom.js   (ca22a1cb)
+2019-04-04T00:08:48.7846917+07:00 0HLLOARDVVCSN:00000004 [INF] Sending file. Request path: '"/lib/Chart.js/dist/Chart.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\Chart.js\dist\Chart.js"' (27b0a520)
+2019-04-04T00:08:48.7879655+07:00 0HLLOARDVVCSP:00000008 [INF] Sending file. Request path: '"/admin-side/js/custom.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\js\custom.js"' (27b0a520)
+2019-04-04T00:08:48.7926756+07:00 0HLLOARDVVCSN:00000004 [INF] Request finished in 101.6002ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.7969600+07:00 0HLLOARDVVCSP:00000008 [INF] Request finished in 15.3054ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.8008331+07:00 0HLLOARDVVCSM:00000007 [INF] Sending file. Request path: '"/lib/bootbox/src/bootbox.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootbox\src\bootbox.js"' (27b0a520)
+2019-04-04T00:08:48.8041123+07:00 0HLLOARDVVCSO:00000004 [INF] Sending file. Request path: '"/lib/moment/moment.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\moment\moment.js"' (27b0a520)
+2019-04-04T00:08:48.8076766+07:00 0HLLOARDVVCSM:00000007 [INF] Request finished in 50.8335ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.8108512+07:00 0HLLOARDVVCSO:00000004 [INF] Request finished in 89.8764ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.8166062+07:00 0HLLOARDVVCSQ:00000007 [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.js"' (27b0a520)
+2019-04-04T00:08:48.8395565+07:00 0HLLOARDVVCSQ:00000007 [INF] Request finished in 110.7879ms 200 application/javascript (791a596a)
+2019-04-04T00:08:48.8427868+07:00 0HLLOARDVVCSQ:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2019-04-04T00:08:48.9455887+07:00 0HLLOARDVVCSQ:00000008 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2019-04-04T00:08:48.9479604+07:00 0HLLOARDVVCSQ:00000008 [INF] Request finished in 105.8209ms 200 font/woff2 (791a596a)
+2019-04-04T00:08:48.9592937+07:00 0HLLOARDVVCSR:00000007 [INF] Sending file. Request path: '"/lib/twbs-pagination/jquery.twbsPagination.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\twbs-pagination\jquery.twbsPagination.js"' (27b0a520)
+2019-04-04T00:08:48.9637273+07:00 0HLLOARDVVCSR:00000007 [INF] Request finished in 253.4643ms 200 application/javascript (791a596a)
+2019-04-04T00:08:51.5223507+07:00 0HLLOARDVVCSR:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/productcategory/index   (ca22a1cb)
+2019-04-04T00:08:51.5331080+07:00 0HLLOARDVVCSR:00000008 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)"' (500cc934)
+2019-04-04T00:08:51.5359240+07:00 0HLLOARDVVCSR:00000008 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" (a44c0341)
+2019-04-04T00:08:51.5403383+07:00 0HLLOARDVVCSR:00000008 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:08:51.5434989+07:00 0HLLOARDVVCSR:00000008 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:08:51.5457927+07:00 0HLLOARDVVCSR:00000008 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.3647ms. (50a9e262)
+2019-04-04T00:08:51.5506636+07:00 0HLLOARDVVCSR:00000008 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-04T00:08:51.5630800+07:00 0HLLOARDVVCSR:00000008 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:08:51.5698743+07:00 0HLLOARDVVCSR:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-04T00:08:51.5868729+07:00 0HLLOARDVVCSR:00000008 [INF] Executed ViewResult - view "Index" executed in 31.0571ms. (f66409e9)
+2019-04-04T00:08:51.5892133+07:00 0HLLOARDVVCSR:00000008 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" in 50.7626ms (afa2e885)
+2019-04-04T00:08:51.6356428+07:00 0HLLOARDVVCSR:00000008 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)"' (99874f2b)
+2019-04-04T00:08:51.6784374+07:00 0HLLOARDVVCSR:00000008 [INF] Request finished in 130.8293ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-04T00:08:51.6835422+07:00 0HLLOARDVVCSO:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2019-04-04T00:08:51.6927389+07:00 0HLLOARDVVCSR:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/jquery.easyui.min.js   (ca22a1cb)
+2019-04-04T00:08:51.7004800+07:00 0HLLOARDVVCSM:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product-category/index.js?v=jtWmUrSgmNyKRILc5Ht3NOt0tog0ZLVNrM_ej7p-oYk   (ca22a1cb)
+2019-04-04T00:08:51.7020071+07:00 0HLLOARDVVCSQ:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2019-04-04T00:08:51.7985571+07:00 0HLLOARDVVCSM:00000008 [INF] Sending file. Request path: '"/app/controllers/product-category/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\product-category\index.js"' (27b0a520)
+2019-04-04T00:08:51.8214608+07:00 0HLLOARDVVCSM:00000008 [INF] Request finished in 124.4199ms 200 application/javascript (791a596a)
+2019-04-04T00:08:51.8246141+07:00 0HLLOARDVVCSO:00000005 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2019-04-04T00:08:51.8420745+07:00 0HLLOARDVVCSO:00000005 [INF] Request finished in 158.6828ms 200 text/css (791a596a)
+2019-04-04T00:08:51.8468996+07:00 0HLLOARDVVCSQ:00000009 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2019-04-04T00:08:51.8506936+07:00 0HLLOARDVVCSQ:00000009 [INF] Request finished in 197.8221ms 200 text/css (791a596a)
+2019-04-04T00:08:51.8615687+07:00 0HLLOARDVVCSR:00000009 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/jquery.easyui.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\jquery.easyui.min.js"' (27b0a520)
+2019-04-04T00:08:51.8672959+07:00 0HLLOARDVVCSR:00000009 [INF] Request finished in 183.7294ms 200 application/javascript (791a596a)
+2019-04-04T00:08:52.0292296+07:00 0HLLOARDVVCSR:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/ProductCategory/GetAll   (ca22a1cb)
+2019-04-04T00:08:52.0348936+07:00 0HLLOARDVVCSR:0000000A [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (500cc934)
+2019-04-04T00:08:52.0410233+07:00 0HLLOARDVVCSR:0000000A [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" (a44c0341)
+2019-04-04T00:08:52.0441552+07:00 0HLLOARDVVCSR:0000000A [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:08:52.0492087+07:00 0HLLOARDVVCSR:0000000A [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:08:52.0691545+07:00 0HLLOARDVVCSR:0000000A [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:08:52.2547403+07:00 0HLLOARDVVCSR:0000000A [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-04T00:08:52.2912547+07:00 0HLLOARDVVCSR:0000000A [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-04T00:08:52.3058242+07:00 0HLLOARDVVCSR:0000000A [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 254.2532ms. (50a9e262)
+2019-04-04T00:08:52.3082874+07:00 0HLLOARDVVCSR:0000000A [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.Products.ProductCategoryViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-04T00:08:52.3376169+07:00 0HLLOARDVVCSR:0000000A [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" in 291.5655ms (afa2e885)
+2019-04-04T00:08:52.3400986+07:00 0HLLOARDVVCSR:0000000A [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (99874f2b)
+2019-04-04T00:08:52.3428871+07:00 0HLLOARDVVCSR:0000000A [INF] Request finished in 316.3155ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-04T00:08:52.3687332+07:00 0HLLOARDVVCSR:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/images/tree_icons.png   (ca22a1cb)
+2019-04-04T00:08:52.3924144+07:00 0HLLOARDVVCSR:0000000B [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/images/tree_icons.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\images\tree_icons.png"' (27b0a520)
+2019-04-04T00:08:52.3943705+07:00 0HLLOARDVVCSR:0000000B [INF] Request finished in 26.0807ms 200 image/png (791a596a)
+2019-04-04T00:10:43.6961588+07:00 0HLLOARDVVCSR:0000000C [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/ProductCategory/ReOrder application/x-www-form-urlencoded; charset=UTF-8 21 (ca22a1cb)
+2019-04-04T00:10:43.6992017+07:00 0HLLOARDVVCSR:0000000C [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (500cc934)
+2019-04-04T00:10:43.7036945+07:00 0HLLOARDVVCSR:0000000C [INF] Route matched with "{area = \"Admin\", action = \"ReOrder\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" (a44c0341)
+2019-04-04T00:10:43.7066433+07:00 0HLLOARDVVCSR:0000000C [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:10:43.7116017+07:00 0HLLOARDVVCSR:0000000C [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" with arguments (["4", "2"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:10:43.7154097+07:00 0HLLOARDVVCSR:0000000C [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:10:43.7346974+07:00 0HLLOARDVVCSR:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:10:43.7632308+07:00 0HLLOARDVVCSR:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:10:43.9712035+07:00 0HLLOARDVVCSR:0000000C [INF] Executed DbCommand ("54"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:10:43.9778447+07:00 0HLLOARDVVCSR:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:10:43.9939308+07:00 0HLLOARDVVCSR:0000000C [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkResult" in 280.1961ms. (50a9e262)
+2019-04-04T00:10:43.9994447+07:00 0HLLOARDVVCSR:0000000C [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2019-04-04T00:10:44.0016522+07:00 0HLLOARDVVCSR:0000000C [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" in 295.8773ms (afa2e885)
+2019-04-04T00:10:44.0038044+07:00 0HLLOARDVVCSR:0000000C [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (99874f2b)
+2019-04-04T00:10:44.0099390+07:00 0HLLOARDVVCSR:0000000C [INF] Request finished in 312.2158ms 200  (791a596a)
+2019-04-04T00:10:46.0830146+07:00 0HLLOARDVVCSR:0000000D [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/ProductCategory/ReOrder application/x-www-form-urlencoded; charset=UTF-8 21 (ca22a1cb)
+2019-04-04T00:10:46.0855143+07:00 0HLLOARDVVCSR:0000000D [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (500cc934)
+2019-04-04T00:10:46.0888775+07:00 0HLLOARDVVCSR:0000000D [INF] Route matched with "{area = \"Admin\", action = \"ReOrder\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" (a44c0341)
+2019-04-04T00:10:46.0927454+07:00 0HLLOARDVVCSR:0000000D [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:10:46.0964935+07:00 0HLLOARDVVCSR:0000000D [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" with arguments (["2", "4"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:10:46.0992455+07:00 0HLLOARDVVCSR:0000000D [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:10:46.1031540+07:00 0HLLOARDVVCSR:0000000D [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:10:46.1083105+07:00 0HLLOARDVVCSR:0000000D [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:10:46.1320299+07:00 0HLLOARDVVCSR:0000000D [INF] Executed DbCommand ("0"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:10:46.1359261+07:00 0HLLOARDVVCSR:0000000D [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:10:46.1414616+07:00 0HLLOARDVVCSR:0000000D [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkResult" in 42.4286ms. (50a9e262)
+2019-04-04T00:10:46.1448446+07:00 0HLLOARDVVCSR:0000000D [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2019-04-04T00:10:46.1467626+07:00 0HLLOARDVVCSR:0000000D [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" in 55.8341ms (afa2e885)
+2019-04-04T00:10:46.1498301+07:00 0HLLOARDVVCSR:0000000D [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (99874f2b)
+2019-04-04T00:10:46.1524692+07:00 0HLLOARDVVCSR:0000000D [INF] Request finished in 69.8505ms 200  (791a596a)
+2019-04-04T00:10:52.7797772+07:00 0HLLOARDVVCSR:0000000E [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/ProductCategory/ReOrder application/x-www-form-urlencoded; charset=UTF-8 21 (ca22a1cb)
+2019-04-04T00:10:52.7825530+07:00 0HLLOARDVVCSR:0000000E [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (500cc934)
+2019-04-04T00:10:52.7852180+07:00 0HLLOARDVVCSR:0000000E [INF] Route matched with "{area = \"Admin\", action = \"ReOrder\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" (a44c0341)
+2019-04-04T00:10:52.7872004+07:00 0HLLOARDVVCSR:0000000E [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:10:52.7911929+07:00 0HLLOARDVVCSR:0000000E [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" with arguments (["3", "2"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:10:52.7940242+07:00 0HLLOARDVVCSR:0000000E [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:10:52.7969973+07:00 0HLLOARDVVCSR:0000000E [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:10:52.8000344+07:00 0HLLOARDVVCSR:0000000E [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:10:52.8035417+07:00 0HLLOARDVVCSR:0000000E [INF] Executed DbCommand ("0"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:10:52.8076365+07:00 0HLLOARDVVCSR:0000000E [INF] Executed DbCommand ("0"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:10:52.8113944+07:00 0HLLOARDVVCSR:0000000E [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkResult" in 17.8092ms. (50a9e262)
+2019-04-04T00:10:52.8137337+07:00 0HLLOARDVVCSR:0000000E [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2019-04-04T00:10:52.8162144+07:00 0HLLOARDVVCSR:0000000E [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" in 28.5242ms (afa2e885)
+2019-04-04T00:10:52.8199072+07:00 0HLLOARDVVCSR:0000000E [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (99874f2b)
+2019-04-04T00:10:52.8280532+07:00 0HLLOARDVVCSR:0000000E [INF] Request finished in 42.7872ms 200  (791a596a)
+2019-04-04T00:10:57.0457822+07:00 0HLLOARDVVCSR:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.css.map   (ca22a1cb)
+2019-04-04T00:10:57.1136209+07:00 0HLLOARDVVCSR:0000000F [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css.map"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map"' (27b0a520)
+2019-04-04T00:10:57.1161386+07:00 0HLLOARDVVCSR:0000000F [INF] Request finished in 70.1332ms 200 text/plain (791a596a)
+2019-04-04T00:10:59.0575606+07:00 0HLLOARDVVCSR:00000010 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/productcategory/index   (ca22a1cb)
+2019-04-04T00:10:59.0599159+07:00 0HLLOARDVVCSR:00000010 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)"' (500cc934)
+2019-04-04T00:10:59.0616702+07:00 0HLLOARDVVCSR:00000010 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" (a44c0341)
+2019-04-04T00:10:59.0636497+07:00 0HLLOARDVVCSR:00000010 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:10:59.0652604+07:00 0HLLOARDVVCSR:00000010 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:10:59.0671975+07:00 0HLLOARDVVCSR:00000010 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0529ms. (50a9e262)
+2019-04-04T00:10:59.0693088+07:00 0HLLOARDVVCSR:00000010 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-04T00:10:59.0722441+07:00 0HLLOARDVVCSR:00000010 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:10:59.0759762+07:00 0HLLOARDVVCSR:00000010 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-04T00:10:59.0836139+07:00 0HLLOARDVVCSR:00000010 [INF] Executed ViewResult - view "Index" executed in 10.6867ms. (f66409e9)
+2019-04-04T00:10:59.0937698+07:00 0HLLOARDVVCSR:00000010 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" in 22.5021ms (afa2e885)
+2019-04-04T00:10:59.0980791+07:00 0HLLOARDVVCSR:00000010 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)"' (99874f2b)
+2019-04-04T00:10:59.1245608+07:00 0HLLOARDVVCSR:00000010 [INF] Request finished in 42.2095ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-04T00:10:59.1968536+07:00 0HLLOARDVVCSR:00000011 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2019-04-04T00:10:59.2437503+07:00 0HLLOARDVVCSN:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2019-04-04T00:10:59.2450931+07:00 0HLLOARDVVCSP:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2019-04-04T00:10:59.3022857+07:00 0HLLOARDVVCSM:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2019-04-04T00:10:59.3101650+07:00 0HLLOARDVVCSP:00000009 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2019-04-04T00:10:59.3248383+07:00 0HLLOARDVVCSM:00000009 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2019-04-04T00:10:59.3270996+07:00 0HLLOARDVVCSP:00000009 [INF] Request finished in 147.5895ms 200 text/css (791a596a)
+2019-04-04T00:10:59.3303316+07:00 0HLLOARDVVCSM:00000009 [INF] Request finished in 161.738ms 200 text/css (791a596a)
+2019-04-04T00:10:59.3327763+07:00 0HLLOARDVVCSP:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2019-04-04T00:10:59.3348304+07:00 0HLLOARDVVCSM:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/css/custom.css   (ca22a1cb)
+2019-04-04T00:10:59.3384059+07:00 0HLLOARDVVCSQ:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2019-04-04T00:10:59.3454314+07:00 0HLLOARDVVCSR:00000011 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2019-04-04T00:10:59.3540772+07:00 0HLLOARDVVCSQ:0000000A [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2019-04-04T00:10:59.3606955+07:00 0HLLOARDVVCSR:00000011 [INF] Request finished in 185.3491ms 200 text/css (791a596a)
+2019-04-04T00:10:59.3665621+07:00 0HLLOARDVVCSQ:0000000A [INF] Request finished in 191.9324ms 200 text/css (791a596a)
+2019-04-04T00:10:59.3707369+07:00 0HLLOARDVVCSP:0000000A [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2019-04-04T00:10:59.3746839+07:00 0HLLOARDVVCSM:0000000A [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2019-04-04T00:10:59.3809621+07:00 0HLLOARDVVCSQ:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/images/img.jpg   (ca22a1cb)
+2019-04-04T00:10:59.3845214+07:00 0HLLOARDVVCSM:0000000A [INF] Request finished in 44.3531ms 200 text/css (791a596a)
+2019-04-04T00:10:59.3945945+07:00 0HLLOARDVVCSP:0000000A [INF] Request finished in 43.6184ms 200 text/css (791a596a)
+2019-04-04T00:10:59.3973514+07:00 0HLLOARDVVCSO:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.css   (ca22a1cb)
+2019-04-04T00:10:59.4109210+07:00 0HLLOARDVVCSQ:0000000B [INF] Sending file. Request path: '"/admin-side/images/img.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\images\img.jpg"' (27b0a520)
+2019-04-04T00:10:59.4182876+07:00 0HLLOARDVVCSP:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery/dist/jquery.js   (ca22a1cb)
+2019-04-04T00:10:59.4298051+07:00 0HLLOARDVVCSQ:0000000B [INF] Request finished in 44.3978ms 200 image/jpeg (791a596a)
+2019-04-04T00:10:59.4355832+07:00 0HLLOARDVVCSR:00000012 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.js   (ca22a1cb)
+2019-04-04T00:10:59.4404648+07:00 0HLLOARDVVCSQ:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2019-04-04T00:10:59.4437128+07:00 0HLLOARDVVCSO:00000006 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2019-04-04T00:10:59.4463913+07:00 0HLLOARDVVCSM:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2019-04-04T00:10:59.4490441+07:00 0HLLOARDVVCSO:00000006 [INF] Request finished in 143.7836ms 200 text/css (791a596a)
+2019-04-04T00:10:59.4567384+07:00 0HLLOARDVVCSO:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/mustache/mustache.js   (ca22a1cb)
+2019-04-04T00:10:59.4594001+07:00 0HLLOARDVVCSR:00000012 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.js"' (27b0a520)
+2019-04-04T00:10:59.4618046+07:00 0HLLOARDVVCSP:0000000B [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2019-04-04T00:10:59.4639622+07:00 0HLLOARDVVCSR:00000012 [INF] Request finished in 39.3205ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.4663967+07:00 0HLLOARDVVCSP:0000000B [INF] Request finished in 67.1871ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.4742448+07:00 0HLLOARDVVCSO:00000007 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2019-04-04T00:10:59.4785920+07:00 0HLLOARDVVCSQ:0000000C [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2019-04-04T00:10:59.4805944+07:00 0HLLOARDVVCSO:00000007 [INF] Request finished in 25.1244ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.4823958+07:00 0HLLOARDVVCSQ:0000000C [INF] Request finished in 48.6928ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.4843416+07:00 0HLLOARDVVCSR:00000013 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/Chart.js/dist/Chart.js   (ca22a1cb)
+2019-04-04T00:10:59.4856689+07:00 0HLLOARDVVCSP:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/twbs-pagination/jquery.twbsPagination.js   (ca22a1cb)
+2019-04-04T00:10:59.4963966+07:00 0HLLOARDVVCSO:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-sparkline/dist/jquery.sparkline.js   (ca22a1cb)
+2019-04-04T00:10:59.4986649+07:00 0HLLOARDVVCSP:0000000C [INF] Sending file. Request path: '"/lib/twbs-pagination/jquery.twbsPagination.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\twbs-pagination\jquery.twbsPagination.js"' (27b0a520)
+2019-04-04T00:10:59.5009361+07:00 0HLLOARDVVCSQ:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/moment/moment.js   (ca22a1cb)
+2019-04-04T00:10:59.5026267+07:00 0HLLOARDVVCSP:0000000C [INF] Request finished in 15.5679ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.5044573+07:00 0HLLOARDVVCSN:00000005 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2019-04-04T00:10:59.5131097+07:00 0HLLOARDVVCSN:00000005 [INF] Request finished in 341.8371ms 200 text/css (791a596a)
+2019-04-04T00:10:59.5147703+07:00 0HLLOARDVVCSP:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2019-04-04T00:10:59.5163495+07:00 0HLLOARDVVCSO:00000008 [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.js"' (27b0a520)
+2019-04-04T00:10:59.5206279+07:00 0HLLOARDVVCSO:00000008 [INF] Request finished in 32.3552ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.5255683+07:00 0HLLOARDVVCSP:0000000D [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.js"' (27b0a520)
+2019-04-04T00:10:59.5291736+07:00 0HLLOARDVVCSN:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2019-04-04T00:10:59.5308824+07:00 0HLLOARDVVCSP:0000000D [INF] Request finished in 14.0549ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.5369841+07:00 0HLLOARDVVCSN:00000006 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2019-04-04T00:10:59.5401857+07:00 0HLLOARDVVCSO:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2019-04-04T00:10:59.5421434+07:00 0HLLOARDVVCSN:00000006 [INF] Request finished in 20.2141ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.5472868+07:00 0HLLOARDVVCSP:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootbox/src/bootbox.js   (ca22a1cb)
+2019-04-04T00:10:59.5495231+07:00 0HLLOARDVVCSO:00000009 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2019-04-04T00:10:59.5536327+07:00 0HLLOARDVVCSO:00000009 [INF] Request finished in 17.179ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.5632499+07:00 0HLLOARDVVCSP:0000000E [INF] Sending file. Request path: '"/lib/bootbox/src/bootbox.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootbox\src\bootbox.js"' (27b0a520)
+2019-04-04T00:10:59.5685237+07:00 0HLLOARDVVCSR:00000013 [INF] Sending file. Request path: '"/lib/Chart.js/dist/Chart.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\Chart.js\dist\Chart.js"' (27b0a520)
+2019-04-04T00:10:59.5710705+07:00 0HLLOARDVVCSP:0000000E [INF] Request finished in 21.0071ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.6154353+07:00 0HLLOARDVVCSR:00000013 [INF] Request finished in 100.559ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.6271780+07:00 0HLLOARDVVCSN:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/common.js   (ca22a1cb)
+2019-04-04T00:10:59.6310574+07:00 0HLLOARDVVCSO:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/js/custom.js   (ca22a1cb)
+2019-04-04T00:10:59.6336855+07:00 0HLLOARDVVCSQ:0000000D [INF] Sending file. Request path: '"/lib/moment/moment.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\moment\moment.js"' (27b0a520)
+2019-04-04T00:10:59.6413962+07:00 0HLLOARDVVCSP:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/jquery.easyui.min.js   (ca22a1cb)
+2019-04-04T00:10:59.6481605+07:00 0HLLOARDVVCSN:00000007 [INF] Sending file. Request path: '"/app/shared/common.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\shared\common.js"' (27b0a520)
+2019-04-04T00:10:59.6620416+07:00 0HLLOARDVVCSN:00000007 [INF] Request finished in 98.3912ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.6652834+07:00 0HLLOARDVVCSR:00000014 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product-category/index.js?v=jtWmUrSgmNyKRILc5Ht3NOt0tog0ZLVNrM_ej7p-oYk   (ca22a1cb)
+2019-04-04T00:10:59.6695496+07:00 0HLLOARDVVCSO:0000000A [INF] Sending file. Request path: '"/admin-side/js/custom.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\js\custom.js"' (27b0a520)
+2019-04-04T00:10:59.6778459+07:00 0HLLOARDVVCSR:00000014 [INF] Sending file. Request path: '"/app/controllers/product-category/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\product-category\index.js"' (27b0a520)
+2019-04-04T00:10:59.6807041+07:00 0HLLOARDVVCSO:0000000A [INF] Request finished in 54.0155ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.6854688+07:00 0HLLOARDVVCSR:00000014 [INF] Request finished in 27.5499ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.6923254+07:00 0HLLOARDVVCSM:0000000B [INF] Sending file. Request path: '"/lib/fastclick/lib/fastclick.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\fastclick\lib\fastclick.js"' (27b0a520)
+2019-04-04T00:10:59.6957835+07:00 0HLLOARDVVCSM:0000000B [INF] Request finished in 279.7219ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.7025236+07:00 0HLLOARDVVCSQ:0000000D [INF] Request finished in 204.1691ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.7025638+07:00 0HLLOARDVVCSP:0000000F [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/jquery.easyui.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\jquery.easyui.min.js"' (27b0a520)
+2019-04-04T00:10:59.7126048+07:00 0HLLOARDVVCSP:0000000F [INF] Request finished in 68.4831ms 200 application/javascript (791a596a)
+2019-04-04T00:10:59.8123011+07:00 0HLLOARDVVCSP:00000010 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.css.map   (ca22a1cb)
+2019-04-04T00:10:59.8435125+07:00 0HLLOARDVVCSR:00000015 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2019-04-04T00:10:59.8464799+07:00 0HLLOARDVVCSM:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-04-04T00:10:59.8503297+07:00 0HLLOARDVVCSP:00000010 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css.map"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map"' (27b0a520)
+2019-04-04T00:10:59.8644692+07:00 0HLLOARDVVCSP:00000010 [INF] Request finished in 40.2953ms 200 text/plain (791a596a)
+2019-04-04T00:10:59.8703978+07:00 0HLLOARDVVCSR:00000015 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2019-04-04T00:10:59.8745081+07:00 0HLLOARDVVCSM:0000000C [INF] Sending file. Request path: '"/lib/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2019-04-04T00:10:59.8778131+07:00 0HLLOARDVVCSR:00000015 [INF] Request finished in 36.139ms 200 font/woff2 (791a596a)
+2019-04-04T00:10:59.8796220+07:00 0HLLOARDVVCSM:0000000C [INF] Request finished in 40.2374ms 200 font/woff2 (791a596a)
+2019-04-04T00:11:00.1143360+07:00 0HLLOARDVVCSM:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/ProductCategory/GetAll   (ca22a1cb)
+2019-04-04T00:11:00.1201324+07:00 0HLLOARDVVCSM:0000000D [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (500cc934)
+2019-04-04T00:11:00.1229932+07:00 0HLLOARDVVCSM:0000000D [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" (a44c0341)
+2019-04-04T00:11:00.1265784+07:00 0HLLOARDVVCSM:0000000D [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:11:00.1286301+07:00 0HLLOARDVVCSM:0000000D [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:11:00.1315093+07:00 0HLLOARDVVCSM:0000000D [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:11:00.1497961+07:00 0HLLOARDVVCSM:0000000D [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-04T00:11:00.1605985+07:00 0HLLOARDVVCSM:0000000D [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-04T00:11:00.1675831+07:00 0HLLOARDVVCSM:0000000D [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 32.7946ms. (50a9e262)
+2019-04-04T00:11:00.1697874+07:00 0HLLOARDVVCSM:0000000D [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.Products.ProductCategoryViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-04T00:11:00.1743314+07:00 0HLLOARDVVCSM:0000000D [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" in 46.9833ms (afa2e885)
+2019-04-04T00:11:00.1771478+07:00 0HLLOARDVVCSM:0000000D [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (99874f2b)
+2019-04-04T00:11:00.1802436+07:00 0HLLOARDVVCSM:0000000D [INF] Request finished in 65.6762ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-04T00:11:00.2166361+07:00 0HLLOARDVVCSM:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/images/tree_icons.png   (ca22a1cb)
+2019-04-04T00:11:00.2208195+07:00 0HLLOARDVVCSM:0000000E [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/images/tree_icons.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\images\tree_icons.png"' (27b0a520)
+2019-04-04T00:11:00.2325696+07:00 0HLLOARDVVCSM:0000000E [INF] Request finished in 6.1144ms 200 image/png (791a596a)
+2019-04-04T00:11:00.2674049+07:00 0HLLOARDVVCSM:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico   (ca22a1cb)
+2019-04-04T00:11:00.2724523+07:00 0HLLOARDVVCSM:0000000F [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\favicon.ico"' (27b0a520)
+2019-04-04T00:11:00.2962623+07:00 0HLLOARDVVCSM:0000000F [INF] Request finished in 7.2118ms 200 image/x-icon (791a596a)
+2019-04-04T00:12:23.3834154+07:00 0HLLOARDVVCSM:00000010 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/ProductCategory/UpdateParentId application/x-www-form-urlencoded; charset=UTF-8 71 (ca22a1cb)
+2019-04-04T00:12:23.3862609+07:00 0HLLOARDVVCSM:00000010 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)"' (500cc934)
+2019-04-04T00:12:23.3937178+07:00 0HLLOARDVVCSM:00000010 [INF] Route matched with "{area = \"Admin\", action = \"UpdateParentId\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)" (a44c0341)
+2019-04-04T00:12:23.3965009+07:00 0HLLOARDVVCSM:00000010 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:12:23.4409940+07:00 0HLLOARDVVCSM:00000010 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)" with arguments (["4", "3", "System.Collections.Generic.Dictionary`2[System.Int32,System.Int32]"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:12:31.7258466+07:00 0HLLOARDVVCSM:00000010 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:12:31.8144138+07:00 0HLLOARDVVCSM:00000010 [INF] Executed DbCommand ("85"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:12:31.8316893+07:00 0HLLOARDVVCSM:00000010 [WRN] The LINQ expression '"where __items_0.ContainsKey([x].Id)"' could not be translated and will be evaluated locally. (011792c6)
+2019-04-04T00:12:31.8392754+07:00 0HLLOARDVVCSM:00000010 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]" (0723d8ff)
+2019-04-04T00:12:32.3703676+07:00 0HLLOARDVVCSM:00000010 [INF] Executed DbCommand ("259"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:12:33.2309972+07:00 0HLLOARDVVCSM:00000010 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkResult" in 9787.119ms. (50a9e262)
+2019-04-04T00:12:33.2327625+07:00 0HLLOARDVVCSM:00000010 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2019-04-04T00:12:33.2347268+07:00 0HLLOARDVVCSM:00000010 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)" in 9839.107ms (afa2e885)
+2019-04-04T00:12:33.2368552+07:00 0HLLOARDVVCSM:00000010 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)"' (99874f2b)
+2019-04-04T00:12:35.0683885+07:00 0HLLOARDVVCSM:00000010 [INF] Request finished in 11679.1031ms 200  (791a596a)
+2019-04-04T00:12:43.4611417+07:00 0HLLOARDVVCSM:00000011 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/ProductCategory/ReOrder application/x-www-form-urlencoded; charset=UTF-8 21 (ca22a1cb)
+2019-04-04T00:12:43.4647618+07:00 0HLLOARDVVCSM:00000011 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (500cc934)
+2019-04-04T00:12:43.4670539+07:00 0HLLOARDVVCSM:00000011 [INF] Route matched with "{area = \"Admin\", action = \"ReOrder\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" (a44c0341)
+2019-04-04T00:12:43.4696696+07:00 0HLLOARDVVCSM:00000011 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:12:43.4738079+07:00 0HLLOARDVVCSM:00000011 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" with arguments (["4", "3"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:12:45.2001906+07:00 0HLLOARDVVCSM:00000011 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:12:45.2079797+07:00 0HLLOARDVVCSM:00000011 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:12:45.2151288+07:00 0HLLOARDVVCSM:00000011 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:12:45.2195686+07:00 0HLLOARDVVCSM:00000011 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:12:45.2248076+07:00 0HLLOARDVVCSM:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:12:45.2333446+07:00 0HLLOARDVVCSM:00000011 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkResult" in 1754.8076ms. (50a9e262)
+2019-04-04T00:12:45.2367170+07:00 0HLLOARDVVCSM:00000011 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2019-04-04T00:12:45.2399284+07:00 0HLLOARDVVCSM:00000011 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)" in 1769.6757ms (afa2e885)
+2019-04-04T00:12:45.2443186+07:00 0HLLOARDVVCSM:00000011 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.ReOrder (Shop3)"' (99874f2b)
+2019-04-04T00:12:45.2515879+07:00 0HLLOARDVVCSM:00000011 [INF] Request finished in 1785.1793ms 200  (791a596a)
+2019-04-04T00:15:46.3619959+07:00 0HLLOARDVVCSM:00000012 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/ProductCategory/UpdateParentId application/x-www-form-urlencoded; charset=UTF-8 71 (ca22a1cb)
+2019-04-04T00:15:46.3652990+07:00 0HLLOARDVVCSM:00000012 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)"' (500cc934)
+2019-04-04T00:15:46.3675386+07:00 0HLLOARDVVCSM:00000012 [INF] Route matched with "{area = \"Admin\", action = \"UpdateParentId\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)" (a44c0341)
+2019-04-04T00:15:46.3703061+07:00 0HLLOARDVVCSM:00000012 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:15:46.3752755+07:00 0HLLOARDVVCSM:00000012 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)" with arguments (["3", "4", "System.Collections.Generic.Dictionary`2[System.Int32,System.Int32]"]) - Validation state: Valid (4e3479ed)
+2019-04-04T00:15:48.3446245+07:00 0HLLOARDVVCSM:00000012 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:15:48.3564686+07:00 0HLLOARDVVCSM:00000012 [INF] Executed DbCommand ("8"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-04T00:15:48.3623545+07:00 0HLLOARDVVCSM:00000012 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]" (0723d8ff)
+2019-04-04T00:15:48.3933555+07:00 0HLLOARDVVCSM:00000012 [INF] Executed DbCommand ("24"ms) [Parameters=["@p14='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [ProductCategories] SET [DateCreated] = @p0, [DateModified] = @p1, [Description] = @p2, [HomeFlag] = @p3, [HomeOrder] = @p4, [Image] = @p5, [Name] = @p6, [ParentId] = @p7, [SeoAlias] = @p8, [SeoDescription] = @p9, [SeoKeywords] = @p10, [SeoPageTitle] = @p11, [SortOrder] = @p12, [Status] = @p13
+WHERE [Id] = @p14;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-04T00:15:48.4004115+07:00 0HLLOARDVVCSM:00000012 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkResult" in 2021.6381ms. (50a9e262)
+2019-04-04T00:15:48.4058638+07:00 0HLLOARDVVCSM:00000012 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2019-04-04T00:15:48.4106245+07:00 0HLLOARDVVCSM:00000012 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)" in 2038.3601ms (afa2e885)
+2019-04-04T00:15:48.4216825+07:00 0HLLOARDVVCSM:00000012 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.UpdateParentId (Shop3)"' (99874f2b)
+2019-04-04T00:15:48.4515602+07:00 0HLLOARDVVCSM:00000012 [INF] Request finished in 2061.9662ms 200  (791a596a)
+2019-04-04T00:15:55.7610986+07:00 0HLLOARDVVCSM:00000013 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/productcategory/index   (ca22a1cb)
+2019-04-04T00:15:55.7644508+07:00 0HLLOARDVVCSM:00000013 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)"' (500cc934)
+2019-04-04T00:15:55.7671212+07:00 0HLLOARDVVCSM:00000013 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" (a44c0341)
+2019-04-04T00:15:55.7693698+07:00 0HLLOARDVVCSM:00000013 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:15:55.7714781+07:00 0HLLOARDVVCSM:00000013 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:15:55.7746056+07:00 0HLLOARDVVCSM:00000013 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0217ms. (50a9e262)
+2019-04-04T00:15:55.7786317+07:00 0HLLOARDVVCSM:00000013 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-04T00:15:55.7850617+07:00 0HLLOARDVVCSM:00000013 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:15:55.8389480+07:00 0HLLOARDVVCSM:00000013 [INF] Executed DbCommand ("51"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-04T00:15:55.8480840+07:00 0HLLOARDVVCSM:00000013 [INF] Executed ViewResult - view "Index" executed in 66.6066ms. (f66409e9)
+2019-04-04T00:15:55.8506083+07:00 0HLLOARDVVCSM:00000013 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)" in 81.1026ms (afa2e885)
+2019-04-04T00:15:55.8525734+07:00 0HLLOARDVVCSM:00000013 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.Index (Shop3)"' (99874f2b)
+2019-04-04T00:15:55.8604573+07:00 0HLLOARDVVCSM:00000013 [INF] Request finished in 95.8583ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-04T00:15:56.0541482+07:00 0HLLOARDVVCSR:00000016 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2019-04-04T00:15:56.1049177+07:00 0HLLOARDVVCSP:00000011 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.css   (ca22a1cb)
+2019-04-04T00:15:56.1387729+07:00 0HLLOARDVVCSM:00000014 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2019-04-04T00:15:56.1439585+07:00 0HLLOARDVVCSO:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2019-04-04T00:15:56.1498605+07:00 0HLLOARDVVCSP:00000011 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2019-04-04T00:15:56.1540172+07:00 0HLLOARDVVCSR:00000016 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2019-04-04T00:15:56.1590411+07:00 0HLLOARDVVCSP:00000011 [INF] Request finished in 212.0932ms 200 text/css (791a596a)
+2019-04-04T00:15:56.1661214+07:00 0HLLOARDVVCSR:00000016 [INF] Request finished in 218.6487ms 200 text/css (791a596a)
+2019-04-04T00:15:56.1802797+07:00 0HLLOARDVVCSQ:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2019-04-04T00:15:56.1867658+07:00 0HLLOARDVVCSN:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2019-04-04T00:15:56.1899387+07:00 0HLLOARDVVCSO:0000000B [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2019-04-04T00:15:56.1977902+07:00 0HLLOARDVVCSO:0000000B [INF] Request finished in 184.0227ms 200 text/css (791a596a)
+2019-04-04T00:15:56.2092729+07:00 0HLLOARDVVCSN:00000008 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2019-04-04T00:15:56.2222173+07:00 0HLLOARDVVCSR:00000017 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/css/custom.css   (ca22a1cb)
+2019-04-04T00:15:56.2263502+07:00 0HLLOARDVVCSM:00000014 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2019-04-04T00:15:56.2283309+07:00 0HLLOARDVVCSN:00000008 [INF] Request finished in 50.3342ms 200 text/css (791a596a)
+2019-04-04T00:15:56.2320831+07:00 0HLLOARDVVCSM:00000014 [INF] Request finished in 288.6913ms 200 text/css (791a596a)
+2019-04-04T00:15:56.2375022+07:00 0HLLOARDVVCSP:00000012 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2019-04-04T00:15:56.2424240+07:00 0HLLOARDVVCSQ:0000000E [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2019-04-04T00:15:56.2454558+07:00 0HLLOARDVVCSO:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery/dist/jquery.js   (ca22a1cb)
+2019-04-04T00:15:56.2489274+07:00 0HLLOARDVVCSQ:0000000E [INF] Request finished in 83.3484ms 200 text/css (791a596a)
+2019-04-04T00:15:56.2511510+07:00 0HLLOARDVVCSR:00000017 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2019-04-04T00:15:56.2529861+07:00 0HLLOARDVVCSP:00000012 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2019-04-04T00:15:56.2549643+07:00 0HLLOARDVVCSR:00000017 [INF] Request finished in 57.981ms 200 text/css (791a596a)
+2019-04-04T00:15:56.2615636+07:00 0HLLOARDVVCSM:00000015 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2019-04-04T00:15:56.2652051+07:00 0HLLOARDVVCSN:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2019-04-04T00:15:56.2670619+07:00 0HLLOARDVVCSP:00000012 [INF] Request finished in 24.5927ms 200 text/css (791a596a)
+2019-04-04T00:15:56.2740321+07:00 0HLLOARDVVCSM:00000015 [INF] Sending file. Request path: '"/lib/fastclick/lib/fastclick.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\fastclick\lib\fastclick.js"' (27b0a520)
+2019-04-04T00:15:56.2769118+07:00 0HLLOARDVVCSQ:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.js   (ca22a1cb)
+2019-04-04T00:15:56.2816752+07:00 0HLLOARDVVCSM:00000015 [INF] Request finished in 21.0846ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.3028203+07:00 0HLLOARDVVCSP:00000013 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/mustache/mustache.js   (ca22a1cb)
+2019-04-04T00:15:56.3093052+07:00 0HLLOARDVVCSR:00000018 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/Chart.js/dist/Chart.js   (ca22a1cb)
+2019-04-04T00:15:56.3312457+07:00 0HLLOARDVVCSQ:0000000F [INF] Sending file. Request path: '"/lib/nprogress/nprogress.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.js"' (27b0a520)
+2019-04-04T00:15:56.3705527+07:00 0HLLOARDVVCSQ:0000000F [INF] Request finished in 69.5047ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.3750015+07:00 0HLLOARDVVCSN:00000009 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2019-04-04T00:15:56.3834569+07:00 0HLLOARDVVCSM:00000016 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/twbs-pagination/jquery.twbsPagination.js   (ca22a1cb)
+2019-04-04T00:15:56.3861100+07:00 0HLLOARDVVCSN:00000009 [INF] Request finished in 119.7126ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.3917637+07:00 0HLLOARDVVCSP:00000013 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2019-04-04T00:15:56.4010970+07:00 0HLLOARDVVCSP:00000013 [INF] Request finished in 109.9974ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.4057333+07:00 0HLLOARDVVCSQ:00000010 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-sparkline/dist/jquery.sparkline.js   (ca22a1cb)
+2019-04-04T00:15:56.4107500+07:00 0HLLOARDVVCSM:00000016 [INF] Sending file. Request path: '"/lib/twbs-pagination/jquery.twbsPagination.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\twbs-pagination\jquery.twbsPagination.js"' (27b0a520)
+2019-04-04T00:15:56.4146052+07:00 0HLLOARDVVCSP:00000014 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/moment/moment.js   (ca22a1cb)
+2019-04-04T00:15:56.4173982+07:00 0HLLOARDVVCSM:00000016 [INF] Request finished in 63.5769ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.4209703+07:00 0HLLOARDVVCSN:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2019-04-04T00:15:56.4241358+07:00 0HLLOARDVVCSO:0000000C [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2019-04-04T00:15:56.4344414+07:00 0HLLOARDVVCSO:0000000C [INF] Request finished in 226.323ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.4365387+07:00 0HLLOARDVVCSM:00000017 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2019-04-04T00:15:56.4398527+07:00 0HLLOARDVVCSQ:00000010 [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.js"' (27b0a520)
+2019-04-04T00:15:56.4462429+07:00 0HLLOARDVVCSP:00000014 [INF] Sending file. Request path: '"/lib/moment/moment.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\moment\moment.js"' (27b0a520)
+2019-04-04T00:15:56.4499446+07:00 0HLLOARDVVCSQ:00000010 [INF] Request finished in 46.6834ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.4527470+07:00 0HLLOARDVVCSP:00000014 [INF] Request finished in 45.1457ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.4583380+07:00 0HLLOARDVVCSM:00000017 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2019-04-04T00:15:56.4729230+07:00 0HLLOARDVVCSP:00000015 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootbox/src/bootbox.js   (ca22a1cb)
+2019-04-04T00:15:56.4915983+07:00 0HLLOARDVVCSR:00000018 [INF] Sending file. Request path: '"/lib/Chart.js/dist/Chart.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\Chart.js\dist\Chart.js"' (27b0a520)
+2019-04-04T00:15:56.5045817+07:00 0HLLOARDVVCSP:00000015 [INF] Sending file. Request path: '"/lib/bootbox/src/bootbox.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootbox\src\bootbox.js"' (27b0a520)
+2019-04-04T00:15:56.5077493+07:00 0HLLOARDVVCSR:00000018 [INF] Request finished in 207.4368ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.5161447+07:00 0HLLOARDVVCSP:00000015 [INF] Request finished in 49.6278ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.5185627+07:00 0HLLOARDVVCSR:00000019 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/jquery.easyui.min.js   (ca22a1cb)
+2019-04-04T00:15:56.5226108+07:00 0HLLOARDVVCSP:00000016 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/images/img.jpg   (ca22a1cb)
+2019-04-04T00:15:56.5282489+07:00 0HLLOARDVVCSQ:00000011 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/common.js   (ca22a1cb)
+2019-04-04T00:15:56.5344491+07:00 0HLLOARDVVCSM:00000017 [INF] Request finished in 31.8645ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.5646271+07:00 0HLLOARDVVCSN:0000000A [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.js"' (27b0a520)
+2019-04-04T00:15:56.5898935+07:00 0HLLOARDVVCSP:00000016 [INF] Sending file. Request path: '"/admin-side/images/img.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\images\img.jpg"' (27b0a520)
+2019-04-04T00:15:56.5933639+07:00 0HLLOARDVVCSQ:00000011 [INF] Sending file. Request path: '"/app/shared/common.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\shared\common.js"' (27b0a520)
+2019-04-04T00:15:56.5965216+07:00 0HLLOARDVVCSP:00000016 [INF] Request finished in 73.8899ms 200 image/jpeg (791a596a)
+2019-04-04T00:15:56.5992088+07:00 0HLLOARDVVCSQ:00000011 [INF] Request finished in 120.5545ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.6014903+07:00 0HLLOARDVVCSP:00000017 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2019-04-04T00:15:56.6042599+07:00 0HLLOARDVVCSQ:00000012 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-04-04T00:15:56.6129758+07:00 0HLLOARDVVCSM:00000018 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product-category/index.js?v=jtWmUrSgmNyKRILc5Ht3NOt0tog0ZLVNrM_ej7p-oYk   (ca22a1cb)
+2019-04-04T00:15:56.6185093+07:00 0HLLOARDVVCSN:0000000A [INF] Request finished in 158.9483ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.6252608+07:00 0HLLOARDVVCSO:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2019-04-04T00:15:56.6274356+07:00 0HLLOARDVVCSN:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/js/custom.js   (ca22a1cb)
+2019-04-04T00:15:56.6339587+07:00 0HLLOARDVVCSP:00000017 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2019-04-04T00:15:56.6379370+07:00 0HLLOARDVVCSQ:00000012 [INF] Sending file. Request path: '"/lib/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2019-04-04T00:15:56.6411373+07:00 0HLLOARDVVCSR:00000019 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/jquery.easyui.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\jquery.easyui.min.js"' (27b0a520)
+2019-04-04T00:15:56.6439317+07:00 0HLLOARDVVCSO:0000000D [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2019-04-04T00:15:56.6469245+07:00 0HLLOARDVVCSR:00000019 [INF] Request finished in 133.4139ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.6495168+07:00 0HLLOARDVVCSO:0000000D [INF] Request finished in 171.2215ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.6506574+07:00 0HLLOARDVVCSN:0000000B [INF] Sending file. Request path: '"/admin-side/js/custom.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\js\custom.js"' (27b0a520)
+2019-04-04T00:15:56.6541634+07:00 0HLLOARDVVCSP:00000017 [INF] Request finished in 37.4001ms 200 font/woff2 (791a596a)
+2019-04-04T00:15:56.6592263+07:00 0HLLOARDVVCSN:0000000B [INF] Request finished in 32.9078ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.6624732+07:00 0HLLOARDVVCSP:00000018 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.css.map   (ca22a1cb)
+2019-04-04T00:15:56.6671829+07:00 0HLLOARDVVCSQ:00000012 [INF] Request finished in 38.7076ms 200 font/woff2 (791a596a)
+2019-04-04T00:15:56.6720718+07:00 0HLLOARDVVCSM:00000018 [INF] Sending file. Request path: '"/app/controllers/product-category/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\product-category\index.js"' (27b0a520)
+2019-04-04T00:15:56.6782831+07:00 0HLLOARDVVCSM:00000018 [INF] Request finished in 136.9352ms 200 application/javascript (791a596a)
+2019-04-04T00:15:56.6913326+07:00 0HLLOARDVVCSP:00000018 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css.map"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map"' (27b0a520)
+2019-04-04T00:15:56.6992246+07:00 0HLLOARDVVCSP:00000018 [INF] Request finished in 37.202ms 200 text/plain (791a596a)
+2019-04-04T00:15:57.0509470+07:00 0HLLOARDVVCSP:00000019 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/ProductCategory/GetAll   (ca22a1cb)
+2019-04-04T00:15:57.0662219+07:00 0HLLOARDVVCSN:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico   (ca22a1cb)
+2019-04-04T00:15:57.0698314+07:00 0HLLOARDVVCSP:00000019 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (500cc934)
+2019-04-04T00:15:57.0771282+07:00 0HLLOARDVVCSP:00000019 [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" (a44c0341)
+2019-04-04T00:15:57.0870445+07:00 0HLLOARDVVCSP:00000019 [INF] Authorization was successful. (0d575a54)
+2019-04-04T00:15:57.0926244+07:00 0HLLOARDVVCSN:0000000C [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\favicon.ico"' (27b0a520)
+2019-04-04T00:15:57.0958408+07:00 0HLLOARDVVCSP:00000019 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-04T00:15:57.0987163+07:00 0HLLOARDVVCSN:0000000C [INF] Request finished in 42.8618ms 200 image/x-icon (791a596a)
+2019-04-04T00:15:57.1118014+07:00 0HLLOARDVVCSP:00000019 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-04T00:15:57.1344012+07:00 0HLLOARDVVCSP:00000019 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-04T00:15:57.1517936+07:00 0HLLOARDVVCSP:00000019 [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-04T00:15:57.1580979+07:00 0HLLOARDVVCSP:00000019 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 56.1837ms. (50a9e262)
+2019-04-04T00:15:57.1616479+07:00 0HLLOARDVVCSP:00000019 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.Products.ProductCategoryViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-04T00:15:57.1683487+07:00 0HLLOARDVVCSP:00000019 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" in 85.2019ms (afa2e885)
+2019-04-04T00:15:57.1766100+07:00 0HLLOARDVVCSP:00000019 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (99874f2b)
+2019-04-04T00:15:57.1824171+07:00 0HLLOARDVVCSP:00000019 [INF] Request finished in 148.9918ms 200 application/json; charset=utf-8 (791a596a)

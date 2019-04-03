@@ -85,10 +85,12 @@ namespace Shop3.Application.Implementation
             return categories;
         }
 
+        // xử lý khi các node được đổi chỗ => sắp xếp thứ tự  của các category : id nguồn ,id đích
         public void ReOrder(int sourceId, int targetId)
         {
             var source = _productCategoryRepository.FindById(sourceId);
             var target = _productCategoryRepository.FindById(targetId);
+            // đổi chỗ 2 phần tử 
             int tempOrder = source.SortOrder;
             source.SortOrder = target.SortOrder;
             target.SortOrder = tempOrder;
@@ -108,17 +110,18 @@ namespace Shop3.Application.Implementation
             _productCategoryRepository.Update(productCategory);
         }
 
+        // xử lý khi phần tử được thả vào node khác : id nguồn , id đích , list các item sẽ update
         public void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)
         {
             var sourceCategory = _productCategoryRepository.FindById(sourceId);
             sourceCategory.ParentId = targetId;
             _productCategoryRepository.Update(sourceCategory);
 
-            //Get all sibling
+            //Lấy ra các phần tử ngang hàng(anh em) với những thằng được thả
             var sibling = _productCategoryRepository.FindAll(x => items.ContainsKey(x.Id));
             foreach (var child in sibling)
             {
-                child.SortOrder = items[child.Id];
+                child.SortOrder = items[child.Id]; // lấy từ Dictionary với key là id truyền vào
                 _productCategoryRepository.Update(child);
             }
         }

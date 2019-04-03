@@ -28,6 +28,51 @@ namespace Shop3.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpPost]
+        // xử lý khi phần tử được thả vào node khác : id nguồn , id đích , list các item sẽ update
+        public IActionResult UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+            else
+            {
+                if (sourceId == targetId)
+                {
+                    return new BadRequestResult();
+                }
+                else
+                {
+                    _productCategoryService.UpdateParentId(sourceId, targetId, items);
+                    _productCategoryService.Save();
+                    return new OkResult();
+                }
+            }
+        }
+
+        [HttpPost]
+        // xử lý khi các node được đổi chỗ => sắp xếp thứ tự  của các category : id nguồn ,id đích
+        public IActionResult ReOrder(int sourceId, int targetId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+            else
+            {
+                if (sourceId == targetId)
+                {
+                    return new BadRequestResult();
+                }
+                else
+                {
+                    _productCategoryService.ReOrder(sourceId, targetId);
+                    _productCategoryService.Save();
+                    return new OkResult();
+                }
+            }
+        }
 
 
         #endregion
