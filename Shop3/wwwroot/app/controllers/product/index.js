@@ -2,6 +2,7 @@
 
 var productController = function () {
     this.initialize = function () {
+        loadCategories();
         loadData();
         registerEvents();
     }
@@ -13,6 +14,16 @@ var productController = function () {
             loadData(true);
         });
 
+        $('#btnSearch').on('click', function () {
+            loadData();
+        });
+
+        $('#txtKeyword').on('keypress', function (e) {
+            if (e.which === 13) { // 13 : phím enter
+                loadData();
+            }
+        });
+       
       
 
     }
@@ -25,7 +36,7 @@ var productController = function () {
         $.ajax({
             type: 'GET',
             data: {
-                categoryId: $('#ddlCategorySearch').val(),
+                categoryId:  $('#ddlCategorySearch').val(),
                 keyword: $('#txtKeyword').val(),
                 page: common.configs.pageIndex,
                 pageSize: common.configs.pageSize
@@ -84,6 +95,26 @@ var productController = function () {
             onPageClick: function (event, p) {
                 common.configs.pageIndex = p;
                 setTimeout(callBack(), 200);
+            }
+        });
+    }
+
+    // load danh sách các category
+    function loadCategories() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/product/GetAllCategories',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value=''>--Select category--</option>";
+                $.each(response, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>"
+                });
+                $('#ddlCategorySearch').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                common.notify('Cannot loading product category data', 'error');
             }
         });
     }
