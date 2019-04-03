@@ -3,11 +3,11 @@
 var common = {
 
     configs : {
-        pageSize: 10,
-        pageIndex : 1
+         pageSize: 10,
+         pageIndex : 1
     },
     notify: function (message, type) {
-        // dùng thư viện notifyjs trên git
+        // dùng thư viện notifyjs trên git :https://notifyjs.jpillora.com/
         $.notify(message, {
 
             // whether to hide the notification on click
@@ -44,7 +44,7 @@ var common = {
 
     },
     confirm: function (message, okCallback) {
-        // thư viên bootbox
+        // thư viên bootbox : http://bootboxjs.com/
         bootbox.confirm({
             message: message,
             buttons: {
