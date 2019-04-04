@@ -35,7 +35,14 @@
 
                 <ul id="treeProductCategory"></ul>
 
+                <div id="contextMenu" class="easyui-menu" style="width:120px;">
+                    <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
+                    <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
+
+@await Html.PartialAsync("_AddEditModal.cshtml")

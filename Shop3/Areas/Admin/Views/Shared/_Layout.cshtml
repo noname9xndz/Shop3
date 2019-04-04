@@ -52,7 +52,7 @@
                     <br />
                     <!-- sidebar menu -->
 
-                     @await Component.InvokeAsync("SideBar")
+                    @await Component.InvokeAsync("SideBar")
 
                     <!-- /sidebar menu -->
                     <!-- /menu footer buttons -->
@@ -83,7 +83,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
 
-                               @await Html.PartialAsync("_LoginPartial")
+                                @await Html.PartialAsync("_LoginPartial")
 
 
                             </li>
@@ -194,6 +194,12 @@
 
     <!-- jQuery Sparklines -->
     <script src="~/lib/jquery-sparkline/dist/jquery.sparkline.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation/dist/localization/messages_vi.js"></script>
+
     <!-- Flot -->
     @*<script src="../vendors/Flot/jquery.flot.js"></script>
         <script src="../vendors/Flot/jquery.flot.pie.js"></script>
@@ -226,6 +232,6 @@
 
     <script src="~/admin-side/js/custom.js"></script>
 
-    @RenderSection("Scripts",required:false)  @*trang con có áp dụng thì áp dùng không thì thôi*@
+    @RenderSection("Scripts", required: false)  @*trang con có áp dụng thì áp dùng không thì thôi*@
 </body>
 </html>
