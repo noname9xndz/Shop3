@@ -94,9 +94,19 @@ namespace Shop3.Areas.Admin.Controllers
             }
             else
             {
-                _productCategoryService.Delete(id);
-                _productCategoryService.Save();
-                return new OkObjectResult(id);
+                if (_productCategoryService.CheckParent(id)==true)
+                {
+                   // return new BadRequestResult();
+                    return Json(new { status = "error", message = "no delete" });
+                }
+                else
+                {
+                   
+                    _productCategoryService.Delete(id);
+                    _productCategoryService.Save();
+                    return new OkObjectResult(id);
+                }
+                  
             }
         }
 

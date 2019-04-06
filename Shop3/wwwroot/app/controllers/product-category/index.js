@@ -88,9 +88,18 @@ var productCategoryController = function () {
                         common.startLoading();
                     },
                     success: function (response) {
-                        common.notify('Deleted success', 'success');
-                        common.stopLoading();
-                        loadData();
+                        if (response.status = "error") {
+                            common.notify('No deleteCategory', 'error');
+                            common.stopLoading();
+                        }
+                        else {
+                            common.notify('Deleted success', 'success');
+                            common.stopLoading();
+                            loadData(); 
+                        }
+                        //common.notify('Deleted success', 'success');
+                        //common.stopLoading();
+                        //loadData();
                     },
                     error: function (status) {
                         common.notify('Has an error in deleting progress', 'error');
@@ -213,7 +222,7 @@ var productCategoryController = function () {
                         var targetNode = $(this).tree('getNode', target); // lấy id của target
 
                         // thả phần tử vào node khác
-                        if (point === 'append') {
+                        if (point === 'append' ) {
                             var children = []; // mảng để chứa tất cả các phần tử con của node đó
                             $.each(targetNode.children, function (i, item) {
                                 children.push({

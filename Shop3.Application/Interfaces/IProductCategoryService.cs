@@ -30,6 +30,7 @@ namespace Shop3.Application.Interfaces
 
         List<ProductCategoryViewModel> GetHomeCategories(int top);
 
+        bool CheckParent(int id);
 
 
 

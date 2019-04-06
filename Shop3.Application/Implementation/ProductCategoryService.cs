@@ -34,9 +34,28 @@ namespace Shop3.Application.Implementation
             return productCategoryVm;
         }
 
+        public bool CheckParent(int id)
+        {
+            //_productCategoryRepository.FindById(id)
+            //var query = _productCategoryRepository.FindAll(x => x.Id == id).Where(x => x.ParentId.HasValue);
+            if (_productCategoryRepository.FindAll(x => x.Id == id).Where(x => x.ParentId.HasValue).Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+              
+
+        }
+
         public void Delete(int id)
         {
-            _productCategoryRepository.Remove(id);
+           
+             _productCategoryRepository.Remove(id);
+            
+            
         }
 
         public List<ProductCategoryViewModel> GetAll()
