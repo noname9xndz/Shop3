@@ -47,7 +47,7 @@ var productCategoryController = function () {
 
                     $('#txtDescM').val(data.Description);
 
-                    $('#txtImageM').val(data.ThumbnailImage);
+                    $('#txtImageM').val(data.Image);
 
                     $('#txtSeoKeywordM').val(data.SeoKeywords);
                     $('#txtSeoDescriptionM').val(data.SeoDescription);
@@ -97,9 +97,6 @@ var productCategoryController = function () {
                             common.stopLoading();
                             loadData(); 
                         }
-                        //common.notify('Deleted success', 'success');
-                        //common.stopLoading();
-                        //loadData();
                     },
                     error: function (status) {
                         common.notify('Has an error in deleting progress', 'error');
@@ -168,6 +165,33 @@ var productCategoryController = function () {
             }
             return false;
 
+        });
+
+        $('#btnSelectImg').on('click', function () {
+            $('#fileInputImageM').click();
+        });
+        $("#fileInputImageM").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImage",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $('#txtImageM').val(path);
+                    common.notify('Upload image succesful!', 'success');
+
+                },
+                error: function () {
+                    common.notify('There was error uploading files!', 'error');
+                }
+            });
         });
 
 

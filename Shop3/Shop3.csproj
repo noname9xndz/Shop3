@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\uploaded\**" />
+    <Content Remove="wwwroot\uploaded\**" />
+    <EmbeddedResource Remove="wwwroot\uploaded\**" />
+    <None Remove="wwwroot\uploaded\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />

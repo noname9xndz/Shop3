@@ -20,11 +20,62 @@ namespace Shop3.Application.Implementation
     public class ProductService : IProductService
     {
         private IRepository<Product, int> _productRepository;
-     
+        private IRepository<Tag, string> _tagRepository;
+        private IRepository<ProductTag, int> _productTagRepository;
 
-        public ProductService(IRepository<Product, int> productRepository)
+        private IUnitOfWork _unitOfWork;
+
+        public ProductService(IRepository<Product, int> productRepository,
+            IRepository<Tag, string> tagRepository,
+             IUnitOfWork unitOfWork,
+        IRepository<ProductTag, int> productTagRepository)
         {
             _productRepository = productRepository;
+            _tagRepository = tagRepository;
+            _productTagRepository = productTagRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        public ProductViewModel Add(ProductViewModel productVm)
+        {
+            List<ProductTag> productTags = new List<ProductTag>();
+            if (!string.IsNullOrEmpty(productVm.Tags))
+            {
+                string[] tags = productVm.Tags.Split(',');
+                foreach (string t in tags)
+                {
+                    var tagId = TextHelper.ToUnsignString(t);
+                    if (!_tagRepository.FindAll(x => x.Id == tagId).Any())
+                    {
+                        Tag tag = new Tag
+                        {
+                            Id = tagId,
+                            Name = t,
+                            Type = CommonConstants.ProductTag
+                        };
+                        _tagRepository.Add(tag);
+                    }
+
+                    ProductTag productTag = new ProductTag
+                    {
+                        TagId = tagId
+                    };
+                    productTags.Add(productTag);
+                }
+                var product = Mapper.Map<ProductViewModel, Product>(productVm);
+                foreach (var productTag in productTags)
+                {
+                    product.ProductTags.Add(productTag);
+                }
+                _productRepository.Add(product);
+
+            }
+            return productVm;
+        }
+
+        public void Delete(int id)
+        {
+            _productRepository.Remove(id);
         }
 
         public void Dispose()
@@ -39,7 +90,7 @@ namespace Shop3.Application.Implementation
 
         public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active);
+            var query = _productRepository.FindAll(x => x.Status == Status.Active || x.Status == Status.InActive);
 
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
@@ -63,5 +114,49 @@ namespace Shop3.Application.Implementation
             return paginationSet;
         }
 
+        public ProductViewModel GetById(int id)
+        {
+            return Mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Commit();
+        }
+
+        public void Update(ProductViewModel productVm)
+        {
+            List<ProductTag> productTags = new List<ProductTag>();
+
+            if (!string.IsNullOrEmpty(productVm.Tags))
+            {
+                string[] tags = productVm.Tags.Split(',');
+                foreach (string t in tags)
+                {
+                    var tagId = TextHelper.ToUnsignString(t);
+                    if (!_tagRepository.FindAll(x => x.Id == tagId).Any())
+                    {
+                        Tag tag = new Tag();
+                        tag.Id = tagId;
+                        tag.Name = t;
+                        tag.Type = CommonConstants.ProductTag;
+                        _tagRepository.Add(tag);
+                    }
+                    _productTagRepository.RemoveMultiple(_productTagRepository.FindAll(x => x.Id == productVm.Id).ToList());
+                    ProductTag productTag = new ProductTag
+                    {
+                        TagId = tagId
+                    };
+                    productTags.Add(productTag);
+                }
+            }
+
+            var product = Mapper.Map<ProductViewModel, Product>(productVm);
+            foreach (var productTag in productTags)
+            {
+                product.ProductTags.Add(productTag);
+            }
+            _productRepository.Update(product);
+        }
     }
 }

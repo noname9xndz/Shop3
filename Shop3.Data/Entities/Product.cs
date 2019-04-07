@@ -46,7 +46,35 @@ namespace Shop3.Data.Entities
             ProductTags = new List<ProductTag>();
 
         }
-        
+        // có id để sửa , ko có id để thêm
+        public Product(int id, string name, int categoryId, string thumbnailImage,
+             decimal price, decimal originalPrice, decimal? promotionPrice,
+             string description, string content, bool? homeFlag, bool? hotFlag,
+             string tags, string unit, Status status, string seoPageTitle,
+             string seoAlias, string seoMetaKeyword,
+             string seoMetaDescription)
+        {
+            Id = id;
+            Name = name;
+            CategoryId = categoryId;
+            Image = thumbnailImage;
+            Price = price;
+            OriginalPrice = originalPrice;
+            PromotionPrice = promotionPrice;
+            Description = description;
+            Content = content;
+            HomeFlag = homeFlag;
+            HotFlag = hotFlag;
+            Tags = tags;
+            Unit = unit;
+            Status = status;
+            SeoPageTitle = seoPageTitle;
+            SeoAlias = seoAlias;
+            SeoKeywords = seoMetaKeyword;
+            SeoDescription = seoMetaDescription;
+            ProductTags = new List<ProductTag>();
+
+        }
         [StringLength(255)] // nếu ko cấu hình mặc định là nvarchar(Max)
         [Required] // bắt buộc phải nhập
         public string Name { get; set; }
