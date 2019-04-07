@@ -136,10 +136,12 @@ namespace Shop3.Application.Implementation
                     var tagId = TextHelper.ToUnsignString(t);
                     if (!_tagRepository.FindAll(x => x.Id == tagId).Any())
                     {
-                        Tag tag = new Tag();
-                        tag.Id = tagId;
-                        tag.Name = t;
-                        tag.Type = CommonConstants.ProductTag;
+                        Tag tag = new Tag
+                        {
+                            Id = tagId,
+                            Name = t,
+                            Type = CommonConstants.ProductTag
+                        };
                         _tagRepository.Add(tag);
                     }
                     _productTagRepository.RemoveMultiple(_productTagRepository.FindAll(x => x.Id == productVm.Id).ToList());

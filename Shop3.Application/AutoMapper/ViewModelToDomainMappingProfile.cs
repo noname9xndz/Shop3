@@ -26,7 +26,7 @@ namespace Shop3.Application.AutoMapper
                 c.PromotionPrice, c.Description, c.Content, c.HomeFlag, c.HotFlag, c.Tags, c.Unit, c.Status,
                 c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
 
-            CreateMap<AppUserViewModel, AppUser>()
+            CreateMap<AppUserViewModel, AppUser>() // c.Id.GetValueOrDefault(Guid.Empty) cho phép id null
              .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty), c.FullName, c.UserName,
                c.Email, c.PhoneNumber, c.Avatar, c.Status));
 
