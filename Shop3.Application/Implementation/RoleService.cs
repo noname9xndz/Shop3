@@ -47,7 +47,7 @@ namespace Shop3.Application.Implementation
         }
 
         public Task<bool> CheckPermission(string functionId, string action, string[] roles)
-        {
+        {// check trên role này có quyền trên funtion này với hành động này không
             var functions = _functionRepository.FindAll();
             var permissions = _permissionRepository.FindAll();
             var query = from f in functions

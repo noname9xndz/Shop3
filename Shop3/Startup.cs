@@ -25,6 +25,8 @@ using Shop3.Helpers;
 using Shop3.Data.IRepositories;
 using Shop3.Data.EF.Repositories;
 using Shop3.Infrastructure.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Shop3.Authorization;
 
 namespace Shop3
 {
@@ -121,6 +123,8 @@ namespace Shop3
             services.AddTransient<IProductService,ProductService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+
+            services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
 
 

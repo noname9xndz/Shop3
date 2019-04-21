@@ -1,4 +1,8 @@
 ﻿
+
+@using Microsoft.AspNetCore.Authorization
+@using Shop3.Authorization
+@inject IAuthorizationService AuthorizationService
 @{
     ViewData["Title"] = "Index";
 }
@@ -22,7 +26,14 @@
 
     <div class="title_right">
         <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
-            <button class="btn btn-success" id="btnCreate" type="button">Create</button>
+           
+            @{
+                var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+            }
+            @if (result.Succeeded)
+            {
+                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+            }
         </div>
     </div>
 
@@ -36,8 +47,15 @@
                 <ul id="treeProductCategory"></ul>
 
                 <div id="contextMenu" class="easyui-menu" style="width:120px;">
-                    <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
-                    <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+                    {
+                        <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
+                    }
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+                    {
+                        <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+
+                    }
                 </div>
 
             </div>

@@ -1,4 +1,8 @@
-﻿@{
+﻿
+@using Microsoft.AspNetCore.Authorization
+@using Shop3.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
     ViewData["Title"] = "Index";
 }
 @section Styles{
@@ -32,7 +36,13 @@
             </select>
         </div>
         <div class="col-md-6 col-sm-12  form-group pull-right">
-            <button id="btnCreate" class="btn btn-success">Create</button>
+            @{
+                var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+            }
+            @if (result.Succeeded)
+            {
+                <button id="btnCreate" class="btn btn-success">Create</button>
+            }
         </div>
     </div>
 </div>
@@ -91,8 +101,15 @@
         <td>{{CreatedDate}}</td>
         <td>{{{Status}}}</td>
         <th scope="row">
-            <a class="btn  btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
-            <a class="btn  btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+            {
+                <a class="btn  btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
+            }
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+            {
+                <a class="btn  btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
+
+            }
             <a href="#" data-id="{{Id}}" class="btn btn-xs btn-images"><i class="fa fa-image"></i></a>
             <a href="#" data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fa fa-hourglass-start"></i></a>
             <a href="#" data-id="{{Id}}" class="btn btn-xs btn-whole-price"><i class="fa fa-money"></i></a>
