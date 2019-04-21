@@ -91,6 +91,10 @@ var productController = function () {
             return false;
         });
 
+        $('#btn-export').on('click', function () {
+            exportExcel();
+        });
+
     }
 
     // lấy và đẩy dữ liệu product ra view dùng mustache : https://github.com/janl/mustache.js
@@ -428,4 +432,21 @@ var productController = function () {
         });
     }
 
+    function exportExcel() {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Product/ExportExcel",
+            beforeSend: function () {
+                common.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                common.stopLoading();
+            },
+            error: function () {
+                common.notify('Has an error in progress', 'error');
+                common.stopLoading();
+            }
+        });
+    }
 }

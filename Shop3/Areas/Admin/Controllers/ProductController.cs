@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shp3.Utilities.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -134,6 +137,49 @@ namespace Shop3.Areas.Admin.Controllers
             return new NoContentResult();
         }
 
+        [HttpPost]
+        public IActionResult ExportExcel()
+        {
+            string sWebRootFolder = _hostingEnvironment.WebRootPath;
+            string directory = Path.Combine(sWebRootFolder, "export-files");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            string sFileName = $"Product_{DateTime.Now:yyyyMMddhhmmss}.xlsx";
+            string fileUrl = $"{Request.Scheme}://{Request.Host}/export-files/{sFileName}";
+            FileInfo file = new FileInfo(Path.Combine(directory, sFileName));
+            if (file.Exists)
+            {
+                file.Delete();
+                file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
+            }
+            var products = _productService.GetAll(); //  có thể get bằng search
+
+            //c1 :lấy trực tiếp bằng cách lấy dữ liệu trên form
+            using (ExcelPackage package = new ExcelPackage(file))
+            {
+                // add a new worksheet to the empty workbook
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Products");
+                worksheet.Cells["A1"].LoadFromCollection(products, true, TableStyles.Light1);
+                worksheet.Cells.AutoFitColumns();
+                package.Save(); //Save the workbook.
+            }
+
+            // c2 : vẽ trực tiếp trên các cell
+            //using (ExcelPackage pck = new ExcelPackage(new FileInfo(filePath), new FileInfo("đường dẫn file template")))
+            //{
+            //    //Create the worksheet
+            //    ExcelWorksheet ws = pck.Workbook.Worksheets.Add(nameof(T));
+            //    //vẽ các cell
+            //    ws.Cells["A1"].Value = "tên";
+            //    ws.Cells["A2"].Value = "tên";
+            //    ws.Cells.AutoFitColumns();
+            //    pck.Save();
+            //}
+
+            return new OkObjectResult(fileUrl);
+        }
 
         #endregion
     }
