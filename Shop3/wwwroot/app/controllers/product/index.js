@@ -132,6 +132,7 @@ var productController = function () {
                         CreatedDate: common.dateTimeFormatJson(item.DateCreated),
                         Status: common.getStatus(item.Status)
                     });
+                });
 
                     $('#lblTotalRecords').text(response.RowCount); // tổng số bản ghi
 
