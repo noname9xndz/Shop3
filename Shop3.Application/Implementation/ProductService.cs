@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using OfficeOpenXml;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Application.ViewModels.Products;
@@ -119,6 +120,7 @@ namespace Shop3.Application.Implementation
             return Mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
         }
 
+        
         public void Save()
         {
             _unitOfWork.Commit();
@@ -159,6 +161,49 @@ namespace Shop3.Application.Implementation
                 product.ProductTags.Add(productTag);
             }
             _productRepository.Update(product);
+        }
+
+        // add nuget : epplus.core
+        public void ImportExcel(string filePath, int categoryId)
+        {
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                ExcelWorksheet workSheet = package.Workbook.Worksheets[1];// mảng trong excel bắt đầu từ 1
+                Product product;
+                // dòng 1 trong execl là header => chạy từ dòng 2
+                for (int i = workSheet.Dimension.Start.Row + 1; i <= workSheet.Dimension.End.Row; i++)
+                {
+                    // tạo mới 1 product và đọc từng row => mapping
+                    product = new Product();
+                    product.CategoryId = categoryId;
+
+                    product.Name = workSheet.Cells[i, 1].Value.ToString();//dòng i cột 1
+
+                    product.Description = workSheet.Cells[i, 2].Value.ToString();
+                    //TryParse tránh trường hợp throw exception thay vào đó là đưa về giá trị mặc đinh là 0
+                    decimal.TryParse(workSheet.Cells[i, 3].Value.ToString(), out var originalPrice); // c# 7 có thể out luôn không cần khai báo
+                    product.OriginalPrice = originalPrice;
+
+                    decimal.TryParse(workSheet.Cells[i, 4].Value.ToString(), out var price);
+                    product.Price = price;
+                    decimal.TryParse(workSheet.Cells[i, 5].Value.ToString(), out var promotionPrice);
+
+                    product.PromotionPrice = promotionPrice;
+                    product.Content = workSheet.Cells[i, 6].Value.ToString();
+                    product.SeoKeywords = workSheet.Cells[i, 7].Value.ToString();
+
+                    product.SeoDescription = workSheet.Cells[i, 8].Value.ToString();
+                    bool.TryParse(workSheet.Cells[i, 9].Value.ToString(), out var hotFlag);
+
+                    product.HotFlag = hotFlag;
+                    bool.TryParse(workSheet.Cells[i, 10].Value.ToString(), out var homeFlag);
+                    product.HomeFlag = homeFlag;
+
+                    product.Status = Status.Active;
+
+                    _productRepository.Add(product);
+                }
+            }
         }
     }
 }
