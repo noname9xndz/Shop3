@@ -13,6 +13,7 @@
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/quantity-management.js"></script>
     <script src="~/app/controllers/product/image-management.js"></script>
+    <script src="~/app/controllers/product/whole-price-management.js"></script>
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var product = new productController();
@@ -125,3 +126,4 @@
 @await Html.PartialAsync("_ImportExcelModal.cshtml")
 @await Html.PartialAsync("_QuantityManagement.cshtml")
 @await Html.PartialAsync("_ImageManagement.cshtml")
+@await Html.PartialAsync("_WholePriceManagement.cshtml")

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Shop3.Data.Entities
 {
-    [Table("WholePrices")] // giá bán sỉ (1 sp giá 1000 nhưng 10sp giá 7000)
+    [Table("WholePrices")] // giá bán sỉ (1 sp giá 1000 nhưng 10sp giá 7000) 
     public class WholePrice : DomainEntity<int>
     {
 

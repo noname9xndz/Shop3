@@ -213,6 +213,20 @@ namespace Shop3.Areas.Admin.Controllers
             return new OkObjectResult(images);
         }
 
+        [HttpPost]
+        public IActionResult SaveWholePrice(int productId, List<WholePriceViewModel> wholePrices)
+        {
+            _productService.AddWholePrice(productId, wholePrices);
+            _productService.Save();
+            return new OkObjectResult(wholePrices);
+        }
+
+        [HttpGet]
+        public IActionResult GetWholePrices(int productId)
+        {
+            var wholePrices = _productService.GetWholePrices(productId);
+            return new OkObjectResult(wholePrices);
+        }
         #endregion
     }
 }
