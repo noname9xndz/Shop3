@@ -15,12 +15,13 @@ using System.Net.Http.Headers;
 
 namespace Shop3.Areas.Admin.Controllers
 {
+    //https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment?view=aspnetcore-2.2
     //[Area("Admin")]
     public class ProductController : BaseController
     {
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHostingEnvironment _hostingEnvironment; // lấy ra môi trường mà appweb đang chạy
         public ProductController(IProductService productService, IProductCategoryService productCategoryService,
                  IHostingEnvironment hostingEnvironment)
         {

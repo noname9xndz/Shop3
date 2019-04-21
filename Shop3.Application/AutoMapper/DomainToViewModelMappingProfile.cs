@@ -26,6 +26,17 @@ namespace Shop3.Application.AutoMapper
             CreateMap<BillDetail, BillDetailViewModel>();
             CreateMap<Color, ColorViewModel>();
             CreateMap<Size, SizeViewModel>();
+
+            //nếu triển khai repository không theo generic
+            /* ví dụ select bill nhưng lại include BillDetail vào csdl và 
+             * ngược lại : tránh trường hợp chạy vòng vô tận giữa 2 thằng này 
+             * bản chất là giới hạn việc mapping giữa 2 thằng này tránh trường hợp chạy vòng throw ra lỗi
+            CreateMap<Bill, BillViewModel>().MaxDepth(2);
+            CreateMap<BillDetail, BillDetailViewModel>().MaxDepth(2);
+            CreateMap<Color, ColorViewModel>().MaxDepth(2);
+            CreateMap<Size, SizeViewModel>().MaxDepth(2);
+             */
+
             CreateMap<ProductQuantity, ProductQuantityViewModel>().MaxDepth(2);
             CreateMap<ProductImage, ProductImageViewModel>().MaxDepth(2);
             CreateMap<WholePrice, WholePriceViewModel>().MaxDepth(2);

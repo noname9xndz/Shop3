@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\uploaded\**" />
-    <Content Remove="wwwroot\uploaded\**" />
-    <EmbeddedResource Remove="wwwroot\uploaded\**" />
-    <None Remove="wwwroot\uploaded\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
@@ -33,6 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\export-files\Bill_2.xlsx" />
+    <None Include="wwwroot\export-files\Product_20190421033728.xlsx" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
@@ -206,6 +201,7 @@
     <None Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\uwidget\LICENSE" />
     <None Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\uwidget\uwidget.js" />
     <None Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\uwidget\uwidget.less" />
+    <None Include="wwwroot\uploaded\excels\ProductImportTemplate.xlsx" />
   </ItemGroup>
 
 
