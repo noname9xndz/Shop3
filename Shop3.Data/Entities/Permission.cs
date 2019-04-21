@@ -10,10 +10,12 @@ namespace Shop3.Data.Entities
     [Table("Permissions")] // bảng phân quyền(chỉ ra role này với funtion này có quyền gì)
     public class Permission : DomainEntity<int>
     {
+
         public Permission()
         {
 
         }
+
         public Permission(Guid roleId, string functionId, bool canCreate, bool canRead, bool canUpdate, bool canDelete)
         {
             RoleId = roleId;
@@ -23,6 +25,7 @@ namespace Shop3.Data.Entities
             CanUpdate = canUpdate;
             CanDelete = canDelete;
         }
+
 
         [Required]
         public Guid RoleId { get; set; }

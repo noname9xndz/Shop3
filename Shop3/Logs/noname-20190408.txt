@@ -14139,3 +14139,751 @@ FROM [Functions] AS [dtoFunction]" (0723d8ff)
 2019-04-08T02:38:37.1669394+07:00 0HLLRHTRKH2LF:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/login/index.js   (ca22a1cb)
 2019-04-08T02:38:37.1856245+07:00 0HLLRHTRKH2LF:0000000B [INF] The file "/app/controllers/login/index.js" was not modified (f1f8d725)
 2019-04-08T02:38:37.2621852+07:00 0HLLRHTRKH2LF:0000000B [INF] Request finished in 25.8744ms 304 application/javascript (791a596a)
+2019-04-08T02:46:28.5087507+07:00 0HLLRI6SMJ7FN:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/   (ca22a1cb)
+2019-04-08T02:46:28.6076412+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executing endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-04-08T02:46:28.6529687+07:00 0HLLRI6SMJ7FN:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "Shop3.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-04-08T02:46:28.6735628+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executing action method "Shop3.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:46:28.6899771+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executed action method "Shop3.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.7696ms. (50a9e262)
+2019-04-08T02:46:28.7303229+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-08T02:46:29.5444864+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executed ViewResult - view "Index" executed in 238.2778ms. (f66409e9)
+2019-04-08T02:46:29.5691563+07:00 0HLLRI6SMJ7FQ:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.js   (ca22a1cb)
+2019-04-08T02:46:29.5758238+07:00 0HLLRI6SMJ7FP:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0   (ca22a1cb)
+2019-04-08T02:46:29.5816568+07:00 0HLLRI6SMJ7FO:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/css/site.css   (ca22a1cb)
+2019-04-08T02:46:29.5931629+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executed action "Shop3.Controllers.HomeController.Index (Shop3)" in 909.6029ms (afa2e885)
+2019-04-08T02:46:29.6526959+07:00 0HLLRI6SMJ7FO:00000001 [INF] Sending file. Request path: '"/css/site.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\css\site.css"' (27b0a520)
+2019-04-08T02:46:29.6604313+07:00 0HLLRI6SMJ7FP:00000001 [INF] Sending file. Request path: '"/js/site.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\js\site.js"' (27b0a520)
+2019-04-08T02:46:29.6994450+07:00 0HLLRI6SMJ7FO:00000001 [INF] Request finished in 113.3516ms 200 text/css (791a596a)
+2019-04-08T02:46:29.7074204+07:00 0HLLRI6SMJ7FP:00000001 [INF] Request finished in 110.408ms 200 application/javascript (791a596a)
+2019-04-08T02:46:29.7846251+07:00 0HLLRI6SMJ7FN:00000001 [INF] Executed endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-04-08T02:46:29.9088720+07:00 0HLLRI6SMJ7FN:00000001 [INF] Request finished in 1365.0871ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-08T02:46:29.9133594+07:00 0HLLRI6SMJ7FQ:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.bundle.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js"' (27b0a520)
+2019-04-08T02:46:29.9382118+07:00 0HLLRI6SMJ7FQ:00000001 [INF] Request finished in 363.3115ms 200 application/javascript (791a596a)
+2019-04-08T02:46:47.3471136+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin   (ca22a1cb)
+2019-04-08T02:46:47.3551661+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (500cc934)
+2019-04-08T02:46:47.3622282+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" (a44c0341)
+2019-04-08T02:46:47.3680953+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:46:47.3743275+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.2449ms. (50a9e262)
+2019-04-08T02:46:47.4120813+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-08T02:46:47.4509037+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executed ViewResult - view "Index" executed in 71.0706ms. (f66409e9)
+2019-04-08T02:46:47.4549940+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" in 88.7596ms (afa2e885)
+2019-04-08T02:46:47.4627860+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (99874f2b)
+2019-04-08T02:46:47.4709411+07:00 0HLLRI6SMJ7FQ:00000002 [INF] Request finished in 127.4525ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-08T02:46:47.5009837+07:00 0HLLRI6SMJ7FQ:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/login/index.js   (ca22a1cb)
+2019-04-08T02:46:47.5092150+07:00 0HLLRI6SMJ7FQ:00000003 [INF] Sending file. Request path: '"/app/controllers/login/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\login\index.js"' (27b0a520)
+2019-04-08T02:46:47.5137795+07:00 0HLLRI6SMJ7FQ:00000003 [INF] Request finished in 12.9103ms 200 application/javascript (791a596a)
+2019-04-08T02:46:47.8658493+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin   (ca22a1cb)
+2019-04-08T02:46:47.8711084+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (500cc934)
+2019-04-08T02:46:47.8759281+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" (a44c0341)
+2019-04-08T02:46:47.8808790+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:46:47.8849808+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0414ms. (50a9e262)
+2019-04-08T02:46:47.8906870+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-08T02:46:47.8992245+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executed ViewResult - view "Index" executed in 6.953ms. (f66409e9)
+2019-04-08T02:46:47.9366620+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" in 23.3201ms (afa2e885)
+2019-04-08T02:46:47.9893683+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (99874f2b)
+2019-04-08T02:46:47.9998294+07:00 0HLLRI6SMJ7FQ:00000004 [INF] Request finished in 128.929ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-08T02:46:49.5186719+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Request starting HTTP/1.1 POST https://localhost:5001/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2019-04-08T02:46:49.5297701+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)"' (500cc934)
+2019-04-08T02:46:49.5526013+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Route matched with "{area = \"Admin\", action = \"Authen\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" (a44c0341)
+2019-04-08T02:46:49.6036145+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" with arguments (["Shop3.Models.AccountViewModels.LoginViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:46:49.6242336+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:46:49.7659098+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("16"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-04-08T02:46:50.0501350+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-04-08T02:46:50.1244020+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-08T02:46:50.1436807+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-04-08T02:46:50.1762124+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-04-08T02:46:50.1925238+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-04-08T02:46:50.2012943+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-04-08T02:46:50.2083818+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-04-08T02:46:50.2147617+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-04-08T02:46:50.2242985+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-08T02:46:50.2395641+07:00 0HLLRI6SMJ7FQ:00000005 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2019-04-08T02:46:50.2489540+07:00 0HLLRI6SMJ7FQ:00000005 [INF] User logged in. (fdce0db4)
+2019-04-08T02:46:50.2564494+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 648.0607ms. (50a9e262)
+2019-04-08T02:46:50.2701007+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.GenericResult"'. (8a1b66c8)
+2019-04-08T02:46:50.3305978+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" in 774.3945ms (afa2e885)
+2019-04-08T02:46:50.3348965+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)"' (99874f2b)
+2019-04-08T02:46:50.3437265+07:00 0HLLRI6SMJ7FQ:00000005 [INF] Request finished in 824.5044ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:46:50.4155503+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/Index   (ca22a1cb)
+2019-04-08T02:46:50.4274737+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-04-08T02:46:50.4328291+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-04-08T02:46:50.4473013+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:46:50.4524636+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:46:50.4592660+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2.7745ms. (50a9e262)
+2019-04-08T02:46:50.4716373+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-08T02:46:50.5201238+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:46:50.5580655+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-08T02:46:50.6584510+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executed ViewResult - view "Index" executed in 157.2194ms. (f66409e9)
+2019-04-08T02:46:50.8237509+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" in 249.2558ms (afa2e885)
+2019-04-08T02:46:50.8311934+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-04-08T02:46:50.8636774+07:00 0HLLRI6SMJ7FQ:00000006 [INF] Request finished in 420.3465ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-08T02:46:56.3595020+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/index   (ca22a1cb)
+2019-04-08T02:46:56.3647956+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.Index (Shop3)"' (500cc934)
+2019-04-08T02:46:56.3714835+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.Index (Shop3)" (a44c0341)
+2019-04-08T02:46:56.3783188+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:46:56.3849001+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:46:56.3907011+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.3548ms. (50a9e262)
+2019-04-08T02:46:56.3977128+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-08T02:46:56.4197973+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:46:56.4271511+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-08T02:46:56.4404488+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executed ViewResult - view "Index" executed in 42.0902ms. (f66409e9)
+2019-04-08T02:46:56.4465990+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.Index (Shop3)" in 68.6235ms (afa2e885)
+2019-04-08T02:46:56.6398713+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.Index (Shop3)"' (99874f2b)
+2019-04-08T02:46:56.6570627+07:00 0HLLRI6SMJ7FN:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/user/index.js?v=jx2Zr2LEUjciY0lztGF2KJmrrGFMeOXR-WroxHuO4-k   (ca22a1cb)
+2019-04-08T02:46:56.6590647+07:00 0HLLRI6SMJ7FQ:00000007 [INF] Request finished in 286.2314ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-08T02:46:56.6905490+07:00 0HLLRI6SMJ7FN:00000002 [INF] Sending file. Request path: '"/app/controllers/user/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\user\index.js"' (27b0a520)
+2019-04-08T02:46:56.7031192+07:00 0HLLRI6SMJ7FN:00000002 [INF] Request finished in 189.8278ms 200 application/javascript (791a596a)
+2019-04-08T02:46:56.8941655+07:00 0HLLRI6SMJ7FN:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:46:56.9020224+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:46:56.9110582+07:00 0HLLRI6SMJ7FN:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:46:56.9165528+07:00 0HLLRI6SMJ7FN:00000003 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:46:56.9256929+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:46:56.9330845+07:00 0HLLRI6SMJ7FN:00000003 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:46:56.9427612+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]" (0723d8ff)
+2019-04-08T02:46:57.0073954+07:00 0HLLRI6SMJ7FN:00000003 [WRN] Query: '"(from AppUser x in DbSet<AppUser> select new AppUserViewModel{ { 
+    UserName = [x].UserName, , 
+..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2019-04-08T02:46:57.0477481+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AspNetUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:46:57.0579483+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 126.5885ms. (50a9e262)
+2019-04-08T02:46:57.0653703+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.System.AppUserViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:46:57.0992271+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" in 178.8617ms (afa2e885)
+2019-04-08T02:46:57.1329406+07:00 0HLLRI6SMJ7FN:00000003 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:46:57.1390739+07:00 0HLLRI6SMJ7FN:00000003 [INF] Request finished in 243.4762ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:46:57.1659142+07:00 0HLLRI6SMJ7FN:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/null   (ca22a1cb)
+2019-04-08T02:46:57.1671584+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:46:57.1716664+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:46:57.1884101+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:46:57.1966949+07:00 0HLLRI6SMJ7FN:00000004 [INF] Request finished in 19.8637ms 404  (791a596a)
+2019-04-08T02:46:57.1969398+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:46:57.2044019+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:46:57.2093869+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:46:57.2182214+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]" (0723d8ff)
+2019-04-08T02:46:57.2254484+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AspNetUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:46:57.2485864+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 21.1503ms. (50a9e262)
+2019-04-08T02:46:57.2541975+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.System.AppUserViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:46:57.2600712+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" in 66.765ms (afa2e885)
+2019-04-08T02:46:57.2667998+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:46:57.2749401+07:00 0HLLRI6SMJ7FQ:00000008 [INF] Request finished in 109.4045ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:46:57.2817942+07:00 0HLLRI6SMJ7FQ:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/null   (ca22a1cb)
+2019-04-08T02:46:57.2914590+07:00 0HLLRI6SMJ7FQ:00000009 [INF] Request finished in 5.1089ms 404  (791a596a)
+2019-04-08T02:47:02.0580952+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/User/GetById?id=78f73ac8-440b-431a-0c9d-08d6bb8d2cc1   (ca22a1cb)
+2019-04-08T02:47:02.0624115+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetById (Shop3)"' (500cc934)
+2019-04-08T02:47:02.0701949+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Route matched with "{area = \"Admin\", action = \"GetById\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.GetById (Shop3)" (a44c0341)
+2019-04-08T02:47:02.0753809+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:02.0793810+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.GetById (Shop3)" with arguments (["78f73ac8-440b-431a-0c9d-08d6bb8d2cc1"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:02.0871753+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:02.1139913+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executed DbCommand ("4"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-04-08T02:47:02.1336558+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-08T02:47:02.1567815+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.GetById (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 71.8723ms. (50a9e262)
+2019-04-08T02:47:02.1617168+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executing ObjectResult, writing value of type '"Shop3.Application.ViewModels.System.AppUserViewModel"'. (8a1b66c8)
+2019-04-08T02:47:02.1682239+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.GetById (Shop3)" in 91.7488ms (afa2e885)
+2019-04-08T02:47:02.1729303+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetById (Shop3)"' (99874f2b)
+2019-04-08T02:47:02.1794461+07:00 0HLLRI6SMJ7FQ:0000000A [INF] Request finished in 120.2234ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:02.1867945+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-04-08T02:47:02.1913968+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)"' (500cc934)
+2019-04-08T02:47:02.1991272+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)" (a44c0341)
+2019-04-08T02:47:02.2041160+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:02.2096585+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executing action method "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:47:02.2165992+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:02.2323465+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoAppRole].[Description], [dtoAppRole].[Id], [dtoAppRole].[Name]
+FROM [AspNetRoles] AS [dtoAppRole]" (0723d8ff)
+2019-04-08T02:47:02.2383014+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executed action method "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 24.1833ms. (50a9e262)
+2019-04-08T02:47:02.2427358+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.System.AppRoleViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:02.2509865+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executed action "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)" in 46.2715ms (afa2e885)
+2019-04-08T02:47:02.2550357+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)"' (99874f2b)
+2019-04-08T02:47:02.2604043+07:00 0HLLRI6SMJ7FQ:0000000B [INF] Request finished in 73.7685ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:05.6608699+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/User/SaveEntity application/x-www-form-urlencoded; charset=UTF-8 154 (ca22a1cb)
+2019-04-08T02:47:05.6660178+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.SaveEntity (Shop3)"' (500cc934)
+2019-04-08T02:47:05.6824386+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Route matched with "{area = \"Admin\", action = \"SaveEntity\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.SaveEntity (Shop3)" (a44c0341)
+2019-04-08T02:47:05.6858991+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:05.6956022+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.SaveEntity (Shop3)" with arguments (["Shop3.Application.ViewModels.System.AppUserViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:13.7411631+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:13.7510219+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("2"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-04-08T02:47:13.7632476+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-08T02:47:13.7815036+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-04-08T02:47:13.8317291+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2019-04-08T02:47:14.0103956+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("8"ms) [Parameters=["@p21='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p22='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2), @p7='?' (Size = 256), @p8='?' (DbType = Boolean), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTimeOffset), @p12='?' (Size = 256), @p13='?' (Size = 256), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 4000), @p18='?' (DbType = Int32), @p19='?' (DbType = Boolean), @p20='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Avatar] = @p1, [Balance] = @p2, [BirthDay] = @p3, [ConcurrencyStamp] = @p4, [DateCreated] = @p5, [DateModified] = @p6, [Email] = @p7, [EmailConfirmed] = @p8, [FullName] = @p9, [LockoutEnabled] = @p10, [LockoutEnd] = @p11, [NormalizedEmail] = @p12, [NormalizedUserName] = @p13, [PasswordHash] = @p14, [PhoneNumber] = @p15, [PhoneNumberConfirmed] = @p16, [SecurityStamp] = @p17, [Status] = @p18, [TwoFactorEnabled] = @p19, [UserName] = @p20
+WHERE [Id] = @p21 AND [ConcurrencyStamp] = @p22;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-08T02:47:14.0504989+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-04-08T02:47:14.0571373+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2019-04-08T02:47:14.0641227+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@p21='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p22='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2), @p7='?' (Size = 256), @p8='?' (DbType = Boolean), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTimeOffset), @p12='?' (Size = 256), @p13='?' (Size = 256), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 4000), @p18='?' (DbType = Int32), @p19='?' (DbType = Boolean), @p20='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Avatar] = @p1, [Balance] = @p2, [BirthDay] = @p3, [ConcurrencyStamp] = @p4, [DateCreated] = @p5, [DateModified] = @p6, [Email] = @p7, [EmailConfirmed] = @p8, [FullName] = @p9, [LockoutEnabled] = @p10, [LockoutEnd] = @p11, [NormalizedEmail] = @p12, [NormalizedUserName] = @p13, [PasswordHash] = @p14, [PhoneNumber] = @p15, [PhoneNumberConfirmed] = @p16, [SecurityStamp] = @p17, [Status] = @p18, [TwoFactorEnabled] = @p19, [UserName] = @p20
+WHERE [Id] = @p21 AND [ConcurrencyStamp] = @p22;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-08T02:47:14.0739893+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-04-08T02:47:14.0796636+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2019-04-08T02:47:14.0848545+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=["@p21='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p22='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2), @p7='?' (Size = 256), @p8='?' (DbType = Boolean), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTimeOffset), @p12='?' (Size = 256), @p13='?' (Size = 256), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 4000), @p18='?' (DbType = Int32), @p19='?' (DbType = Boolean), @p20='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Avatar] = @p1, [Balance] = @p2, [BirthDay] = @p3, [ConcurrencyStamp] = @p4, [DateCreated] = @p5, [DateModified] = @p6, [Email] = @p7, [EmailConfirmed] = @p8, [FullName] = @p9, [LockoutEnabled] = @p10, [LockoutEnd] = @p11, [NormalizedEmail] = @p12, [NormalizedUserName] = @p13, [PasswordHash] = @p14, [PhoneNumber] = @p15, [PhoneNumberConfirmed] = @p16, [SecurityStamp] = @p17, [Status] = @p18, [TwoFactorEnabled] = @p19, [UserName] = @p20
+WHERE [Id] = @p21 AND [ConcurrencyStamp] = @p22;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-08T02:47:14.0898556+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.SaveEntity (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 8390.4073ms. (50a9e262)
+2019-04-08T02:47:14.0936061+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executing ObjectResult, writing value of type '"Shop3.Application.ViewModels.System.AppUserViewModel"'. (8a1b66c8)
+2019-04-08T02:47:14.0985509+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.SaveEntity (Shop3)" in 8411.3369ms (afa2e885)
+2019-04-08T02:47:14.1025099+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.SaveEntity (Shop3)"' (99874f2b)
+2019-04-08T02:47:14.1084558+07:00 0HLLRI6SMJ7FQ:0000000C [INF] Request finished in 8448.0244ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:14.1205194+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-04-08T02:47:14.1289435+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)"' (500cc934)
+2019-04-08T02:47:14.1330764+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)" (a44c0341)
+2019-04-08T02:47:14.1381805+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:14.1426761+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executing action method "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:47:14.1476696+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:14.1538264+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoAppRole].[Description], [dtoAppRole].[Id], [dtoAppRole].[Name]
+FROM [AspNetRoles] AS [dtoAppRole]" (0723d8ff)
+2019-04-08T02:47:14.1608278+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executed action method "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 11.8395ms. (50a9e262)
+2019-04-08T02:47:14.1651954+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.System.AppRoleViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:14.1739802+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executed action "Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)" in 32.6781ms (afa2e885)
+2019-04-08T02:47:14.1783363+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.RoleController.GetAll (Shop3)"' (99874f2b)
+2019-04-08T02:47:14.1832183+07:00 0HLLRI6SMJ7FQ:0000000D [INF] Request finished in 62.8122ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:14.1973259+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:14.2020996+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:14.2073771+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:14.2106472+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:14.2163646+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:14.2208228+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:14.2270337+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]" (0723d8ff)
+2019-04-08T02:47:14.2337114+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AspNetUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:14.2377852+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 17.3534ms. (50a9e262)
+2019-04-08T02:47:14.2424150+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.System.AppUserViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:14.2495891+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" in 35.2733ms (afa2e885)
+2019-04-08T02:47:14.2530053+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:14.2580945+07:00 0HLLRI6SMJ7FQ:0000000E [INF] Request finished in 66.2066ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:14.2693877+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:14.2703202+07:00 0HLLRI6SMJ7FN:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/null   (ca22a1cb)
+2019-04-08T02:47:14.2805991+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:14.2862193+07:00 0HLLRI6SMJ7FN:00000005 [INF] Request finished in 9.3907ms 404  (791a596a)
+2019-04-08T02:47:14.2887177+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"User\"}". Executing action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:14.2930877+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:14.2979107+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executing action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:14.3020321+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:14.3066594+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]" (0723d8ff)
+2019-04-08T02:47:14.3114438+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AspNetUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:14.3162398+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executed action method "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 13.8207ms. (50a9e262)
+2019-04-08T02:47:14.3205039+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.System.AppUserViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:14.3258935+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executed action "Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)" in 32.0729ms (afa2e885)
+2019-04-08T02:47:14.3301580+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.UserController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:14.3361392+07:00 0HLLRI6SMJ7FQ:0000000F [INF] Request finished in 67.3164ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:14.3420731+07:00 0HLLRI6SMJ7FQ:00000010 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/null   (ca22a1cb)
+2019-04-08T02:47:14.3481339+07:00 0HLLRI6SMJ7FQ:00000010 [INF] Request finished in 4.091ms 404  (791a596a)
+2019-04-08T02:47:21.3126418+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/index   (ca22a1cb)
+2019-04-08T02:47:21.3181589+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.Index (Shop3)"' (500cc934)
+2019-04-08T02:47:21.3256358+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.Index (Shop3)" (a44c0341)
+2019-04-08T02:47:21.3306295+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:21.3363118+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:47:21.3418060+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.2859ms. (50a9e262)
+2019-04-08T02:47:21.3493642+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-08T02:47:21.3744263+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:21.3805063+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dtoFunction].[IconCss], [dtoFunction].[Id], [dtoFunction].[Name], [dtoFunction].[ParentId], [dtoFunction].[SortOrder], [dtoFunction].[Status], [dtoFunction].[URL]
+FROM [Functions] AS [dtoFunction]" (0723d8ff)
+2019-04-08T02:47:21.3958577+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executed ViewResult - view "Index" executed in 42.8668ms. (f66409e9)
+2019-04-08T02:47:21.4197600+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.Index (Shop3)" in 70.4241ms (afa2e885)
+2019-04-08T02:47:21.4574190+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.Index (Shop3)"' (99874f2b)
+2019-04-08T02:47:21.5205164+07:00 0HLLRI6SMJ7FO:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2019-04-08T02:47:21.6062546+07:00 0HLLRI6SMJ7FN:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2019-04-08T02:47:21.6221462+07:00 0HLLRI6SMJ7FP:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/jquery.easyui.min.js   (ca22a1cb)
+2019-04-08T02:47:21.6349040+07:00 0HLLRI6SMJ7FO:00000002 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2019-04-08T02:47:21.6427829+07:00 0HLLRI6SMJ7FQ:00000011 [INF] Request finished in 150.2935ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-08T02:47:21.6663168+07:00 0HLLRI6SMJ7FO:00000002 [INF] Request finished in 167.0615ms 200 text/css (791a596a)
+2019-04-08T02:47:21.6732501+07:00 0HLLRI6SMJ7FN:00000006 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2019-04-08T02:47:21.6913970+07:00 0HLLRI6SMJ7FN:00000006 [INF] Request finished in 205.4918ms 200 text/css (791a596a)
+2019-04-08T02:47:21.7059689+07:00 0HLLRI6SMJ7FQ:00000012 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product/index.js   (ca22a1cb)
+2019-04-08T02:47:21.7533542+07:00 0HLLRI6SMJ7FQ:00000012 [INF] Sending file. Request path: '"/app/controllers/product/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\product\index.js"' (27b0a520)
+2019-04-08T02:47:21.7681494+07:00 0HLLRI6SMJ7FP:00000002 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/jquery.easyui.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\jquery.easyui.min.js"' (27b0a520)
+2019-04-08T02:47:21.7845472+07:00 0HLLRI6SMJ7FQ:00000012 [INF] Request finished in 67.9018ms 200 application/javascript (791a596a)
+2019-04-08T02:47:21.7882375+07:00 0HLLRI6SMJ7FP:00000002 [INF] Request finished in 300.0755ms 200 application/javascript (791a596a)
+2019-04-08T02:47:22.0163886+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllCategories   (ca22a1cb)
+2019-04-08T02:47:22.0177609+07:00 0HLLRI6SMJ7FP:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=--Select+category--&keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:22.0354036+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:22.0417223+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllCategories (Shop3)"' (500cc934)
+2019-04-08T02:47:22.0494084+07:00 0HLLRI6SMJ7FP:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:22.0553958+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Route matched with "{area = \"Admin\", action = \"GetAllCategories\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllCategories (Shop3)" (a44c0341)
+2019-04-08T02:47:22.0716222+07:00 0HLLRI6SMJ7FP:00000003 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:22.0840238+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:22.0860275+07:00 0HLLRI6SMJ7FN:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/config.js?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:22.0971327+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllCategories (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:47:22.1144853+07:00 0HLLRI6SMJ7FN:00000007 [INF] Sending file. Request path: '"/lib/ckeditor/config.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\config.js"' (27b0a520)
+2019-04-08T02:47:22.1188029+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" with arguments (["", "", "1", "10"]) - Validation state: Invalid (4e3479ed)
+2019-04-08T02:47:22.1417012+07:00 0HLLRI6SMJ7FN:00000007 [INF] Request finished in 47.9593ms 200 application/javascript (791a596a)
+2019-04-08T02:47:22.1440512+07:00 0HLLRI6SMJ7FO:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/lang/en.js?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:22.1588027+07:00 0HLLRI6SMJ7FP:00000003 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:22.1964052+07:00 0HLLRI6SMJ7FO:00000003 [INF] Sending file. Request path: '"/lib/ckeditor/lang/en.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\lang\en.js"' (27b0a520)
+2019-04-08T02:47:22.2939214+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)" (0723d8ff)
+2019-04-08T02:47:22.3028629+07:00 0HLLRI6SMJ7FO:00000003 [INF] Request finished in 77.631ms 200 application/javascript (791a596a)
+2019-04-08T02:47:22.3203620+07:00 0HLLRI6SMJ7FN:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/skins/moono-lisa/editor.css?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:22.3768526+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:22.3984886+07:00 0HLLRI6SMJ7FO:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/styles.js?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:22.4553201+07:00 0HLLRI6SMJ7FN:00000008 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono-lisa/editor.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\skins\moono-lisa\editor.css"' (27b0a520)
+2019-04-08T02:47:22.4966768+07:00 0HLLRI6SMJ7FO:00000004 [INF] Sending file. Request path: '"/lib/ckeditor/styles.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\styles.js"' (27b0a520)
+2019-04-08T02:47:22.5423830+07:00 0HLLRI6SMJ7FN:00000008 [INF] Request finished in 298.5928ms 200 text/css (791a596a)
+2019-04-08T02:47:22.5638820+07:00 0HLLRI6SMJ7FO:00000004 [INF] Request finished in 172.4793ms 200 application/javascript (791a596a)
+2019-04-08T02:47:22.5724204+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-08T02:47:22.5811161+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:22.5986759+07:00 0HLLRI6SMJ7FO:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/colorbutton/plugin.js?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:22.6263116+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) OR ([x0].[Status] = 0)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-08T02:47:22.6284802+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-08T02:47:22.6356978+07:00 0HLLRI6SMJ7FO:00000005 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/colorbutton/plugin.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\colorbutton\plugin.js"' (27b0a520)
+2019-04-08T02:47:22.6468337+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllCategories (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 543.0294ms. (50a9e262)
+2019-04-08T02:47:22.6498073+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 522.595ms. (50a9e262)
+2019-04-08T02:47:22.6617055+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.Products.ProductCategoryViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:22.6828600+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.Products.ProductViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:22.7018581+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllCategories (Shop3)" in 624.2425ms (afa2e885)
+2019-04-08T02:47:22.7074995+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" in 636.6141ms (afa2e885)
+2019-04-08T02:47:22.7174507+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllCategories (Shop3)"' (99874f2b)
+2019-04-08T02:47:22.7269530+07:00 0HLLRI6SMJ7FP:00000003 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:22.7934716+07:00 0HLLRI6SMJ7FQ:00000013 [INF] Request finished in 718.7002ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:22.7981197+07:00 0HLLRI6SMJ7FP:00000003 [INF] Request finished in 725.8846ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:22.8111318+07:00 0HLLRI6SMJ7FO:00000005 [INF] Request finished in 56.7757ms 200 application/javascript (791a596a)
+2019-04-08T02:47:22.8203035+07:00 0HLLRI6SMJ7FP:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:22.8295268+07:00 0HLLRI6SMJ7FO:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/panelbutton/plugin.js?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:22.8306572+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:22.8485890+07:00 0HLLRI6SMJ7FP:00000004 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:22.8706078+07:00 0HLLRI6SMJ7FQ:00000014 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-04-08T02:47:22.8810386+07:00 0HLLRI6SMJ7FP:00000004 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:22.8912979+07:00 0HLLRI6SMJ7FN:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/scayt/dialogs/dialog.css   (ca22a1cb)
+2019-04-08T02:47:22.9052420+07:00 0HLLRI6SMJ7FQ:00000014 [INF] Request finished in 42.7449ms 404  (791a596a)
+2019-04-08T02:47:22.9152195+07:00 0HLLRI6SMJ7FS:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css   (ca22a1cb)
+2019-04-08T02:47:22.9272962+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" with arguments (["", "", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:22.9412913+07:00 0HLLRI6SMJ7FQ:00000015 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/colorbutton/lang/en.js?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:23.0496538+07:00 0HLLRI6SMJ7FP:00000004 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:23.0690593+07:00 0HLLRI6SMJ7FN:00000009 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/scayt/dialogs/dialog.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\scayt\dialogs\dialog.css"' (27b0a520)
+2019-04-08T02:47:23.0723512+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)" (0723d8ff)
+2019-04-08T02:47:23.0783397+07:00 0HLLRI6SMJ7FQ:00000015 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/colorbutton/lang/en.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\colorbutton\lang\en.js"' (27b0a520)
+2019-04-08T02:47:23.0808640+07:00 0HLLRI6SMJ7FN:00000009 [INF] Request finished in 199.4573ms 200 text/css (791a596a)
+2019-04-08T02:47:23.0910368+07:00 0HLLRI6SMJ7FQ:00000015 [INF] Request finished in 166.3587ms 200 application/javascript (791a596a)
+2019-04-08T02:47:23.0943462+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:23.0988713+07:00 0HLLRI6SMJ7FS:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\wsc\skins\moono-lisa\wsc.css"' (27b0a520)
+2019-04-08T02:47:23.1123307+07:00 0HLLRI6SMJ7FQ:00000016 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/contents.css?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:23.1150166+07:00 0HLLRI6SMJ7FS:00000001 [INF] Request finished in 198.8465ms 200 text/css (791a596a)
+2019-04-08T02:47:23.1210063+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) OR ([x0].[Status] = 0)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-08T02:47:23.1296205+07:00 0HLLRI6SMJ7FO:00000006 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/panelbutton/plugin.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\panelbutton\plugin.js"' (27b0a520)
+2019-04-08T02:47:23.1350711+07:00 0HLLRI6SMJ7FR:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/tableselection/styles/tableselection.css   (ca22a1cb)
+2019-04-08T02:47:23.1375200+07:00 0HLLRI6SMJ7FQ:00000016 [INF] Sending file. Request path: '"/lib/ckeditor/contents.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\contents.css"' (27b0a520)
+2019-04-08T02:47:23.1491342+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 206.1617ms. (50a9e262)
+2019-04-08T02:47:23.1515158+07:00 0HLLRI6SMJ7FQ:00000016 [INF] Request finished in 40.9205ms 200 text/css (791a596a)
+2019-04-08T02:47:23.1632032+07:00 0HLLRI6SMJ7FR:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/tableselection/styles/tableselection.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\tableselection\styles\tableselection.css"' (27b0a520)
+2019-04-08T02:47:23.1660249+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.Products.ProductViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:23.1834710+07:00 0HLLRI6SMJ7FR:00000001 [INF] Request finished in 293.5069ms 200 text/css (791a596a)
+2019-04-08T02:47:23.1866760+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" in 318.1793ms (afa2e885)
+2019-04-08T02:47:23.2085266+07:00 0HLLRI6SMJ7FO:00000006 [INF] Request finished in 312.0385ms 200 application/javascript (791a596a)
+2019-04-08T02:47:23.2250866+07:00 0HLLRI6SMJ7FP:00000004 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:23.2498550+07:00 0HLLRI6SMJ7FP:00000004 [INF] Request finished in 422.319ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:23.2537651+07:00 0HLLRI6SMJ7FO:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css   (ca22a1cb)
+2019-04-08T02:47:23.2754726+07:00 0HLLRI6SMJ7FP:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-04-08T02:47:23.2900309+07:00 0HLLRI6SMJ7FO:00000007 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css"' (27b0a520)
+2019-04-08T02:47:23.2955332+07:00 0HLLRI6SMJ7FP:00000005 [INF] Request finished in 19.8559ms 404  (791a596a)
+2019-04-08T02:47:23.3234976+07:00 0HLLRI6SMJ7FO:00000007 [INF] Request finished in 52.2998ms 200 text/css (791a596a)
+2019-04-08T02:47:25.4910416+07:00 0HLLRI6SMJ7FP:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=&keyword=&page=3&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:25.4960031+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:25.5001037+07:00 0HLLRI6SMJ7FP:00000006 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:25.5039908+07:00 0HLLRI6SMJ7FP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:25.5094632+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" with arguments (["", "", "3", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:25.5139871+07:00 0HLLRI6SMJ7FP:00000006 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:25.5208122+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)" (0723d8ff)
+2019-04-08T02:47:25.5315584+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:25.5441271+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) OR ([x0].[Status] = 0)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-08T02:47:25.5491276+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 34.893ms. (50a9e262)
+2019-04-08T02:47:25.5552594+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.Products.ProductViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:25.5611272+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" in 55.6101ms (afa2e885)
+2019-04-08T02:47:25.5661024+07:00 0HLLRI6SMJ7FP:00000006 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:25.5721574+07:00 0HLLRI6SMJ7FP:00000006 [INF] Request finished in 81.631ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:25.5962394+07:00 0HLLRI6SMJ7FP:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/uploaded/images/20190407/13263844_259882754365216_6890831951492549185_n.jpg   (ca22a1cb)
+2019-04-08T02:47:25.6047633+07:00 0HLLRI6SMJ7FP:00000007 [INF] Request finished in 6.6613ms 404  (791a596a)
+2019-04-08T02:47:25.6178956+07:00 0HLLRI6SMJ7FP:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/uploaded/images/20190408/day-dan-guitar.jpg   (ca22a1cb)
+2019-04-08T02:47:25.6689273+07:00 0HLLRI6SMJ7FP:00000008 [INF] Sending file. Request path: '"/uploaded/images/20190408/day-dan-guitar.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\uploaded\images\20190408\day-dan-guitar.jpg"' (27b0a520)
+2019-04-08T02:47:25.6736366+07:00 0HLLRI6SMJ7FP:00000008 [INF] Request finished in 58.9619ms 200 image/jpeg (791a596a)
+2019-04-08T02:47:27.3237367+07:00 0HLLRI6SMJ7FP:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Product/GetById?id=23   (ca22a1cb)
+2019-04-08T02:47:27.3290889+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetById (Shop3)"' (500cc934)
+2019-04-08T02:47:27.3367266+07:00 0HLLRI6SMJ7FP:00000009 [INF] Route matched with "{area = \"Admin\", action = \"GetById\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetById (Shop3)" (a44c0341)
+2019-04-08T02:47:27.3429039+07:00 0HLLRI6SMJ7FP:00000009 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:27.3487422+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetById (Shop3)" with arguments (["23"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:27.3572858+07:00 0HLLRI6SMJ7FP:00000009 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:27.3805892+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-04-08T02:47:27.4572188+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetById (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 103.7208ms. (50a9e262)
+2019-04-08T02:47:27.4613390+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executing ObjectResult, writing value of type '"Shop3.Application.ViewModels.Products.ProductViewModel"'. (8a1b66c8)
+2019-04-08T02:47:27.4672114+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetById (Shop3)" in 124.7575ms (afa2e885)
+2019-04-08T02:47:27.4712828+07:00 0HLLRI6SMJ7FP:00000009 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetById (Shop3)"' (99874f2b)
+2019-04-08T02:47:27.4781943+07:00 0HLLRI6SMJ7FP:00000009 [INF] Request finished in 153.2658ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:27.4944701+07:00 0HLLRI6SMJ7FP:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/ProductCategory/GetAll   (ca22a1cb)
+2019-04-08T02:47:27.4982555+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (500cc934)
+2019-04-08T02:47:27.5026703+07:00 0HLLRI6SMJ7FP:0000000A [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" (a44c0341)
+2019-04-08T02:47:27.5070624+07:00 0HLLRI6SMJ7FP:0000000A [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:27.5108220+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:47:27.5147671+07:00 0HLLRI6SMJ7FP:0000000A [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:27.5199864+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-08T02:47:27.5287728+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-08T02:47:27.5353730+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 18.2949ms. (50a9e262)
+2019-04-08T02:47:27.5404093+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.Products.ProductCategoryViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:27.5492700+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" in 38.4766ms (afa2e885)
+2019-04-08T02:47:27.5555600+07:00 0HLLRI6SMJ7FP:0000000A [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (99874f2b)
+2019-04-08T02:47:27.5622033+07:00 0HLLRI6SMJ7FP:0000000A [INF] Request finished in 66.4163ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:27.5947911+07:00 0HLLRI6SMJ7FP:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/images/combo_arrow.png   (ca22a1cb)
+2019-04-08T02:47:27.6230902+07:00 0HLLRI6SMJ7FP:0000000B [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/images/combo_arrow.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\images\combo_arrow.png"' (27b0a520)
+2019-04-08T02:47:27.6272551+07:00 0HLLRI6SMJ7FP:0000000B [INF] Request finished in 36.4926ms 200 image/png (791a596a)
+2019-04-08T02:47:27.7851902+07:00 0HLLRI6SMJ7FP:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/skins/moono-lisa/icons.png?t=J1QC   (ca22a1cb)
+2019-04-08T02:47:27.8890201+07:00 0HLLRI6SMJ7FP:0000000C [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono-lisa/icons.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\skins\moono-lisa\icons.png"' (27b0a520)
+2019-04-08T02:47:27.8936868+07:00 0HLLRI6SMJ7FP:0000000C [INF] Request finished in 116.9869ms 200 image/png (791a596a)
+2019-04-08T02:47:31.2331715+07:00 0HLLRI6SMJ7FP:0000000D [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/Product/SaveEntity application/x-www-form-urlencoded; charset=UTF-8 380 (ca22a1cb)
+2019-04-08T02:47:31.2407641+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.SaveEntity (Shop3)"' (500cc934)
+2019-04-08T02:47:31.2589910+07:00 0HLLRI6SMJ7FP:0000000D [INF] Route matched with "{area = \"Admin\", action = \"SaveEntity\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.SaveEntity (Shop3)" (a44c0341)
+2019-04-08T02:47:31.2635058+07:00 0HLLRI6SMJ7FP:0000000D [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:31.2744929+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.SaveEntity (Shop3)" with arguments (["Shop3.Application.ViewModels.Products.ProductViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:33.4327401+07:00 0HLLRI6SMJ7FP:0000000D [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:33.5234551+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed DbCommand ("79"ms) [Parameters=["@__tagId_0='?' (Size = 50) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tags] AS [x]
+        WHERE [x].[Id] = @__tagId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-04-08T02:47:33.5364183+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=["@__productVm_Id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[ProductId], [x].[TagId]
+FROM [ProductTags] AS [x]
+WHERE [x].[Id] = @__productVm_Id_0" (0723d8ff)
+2019-04-08T02:47:33.7047340+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed DbCommand ("5"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 50) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [ProductTags] ([ProductId], [TagId])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [ProductTags]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2019-04-08T02:47:33.7457075+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed DbCommand ("5"ms) [Parameters=["@p20='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 255), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 255), @p8='?' (Size = 255), @p9='?' (DbType = Decimal), @p10='?' (DbType = Decimal), @p11='?' (DbType = Decimal), @p12='?' (Size = 255), @p13='?' (Size = 255), @p14='?' (Size = 255), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (Size = 255), @p18='?' (Size = 255), @p19='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Products] SET [CategoryId] = @p0, [Content] = @p1, [DateCreated] = @p2, [DateModified] = @p3, [Description] = @p4, [HomeFlag] = @p5, [HotFlag] = @p6, [Image] = @p7, [Name] = @p8, [OriginalPrice] = @p9, [Price] = @p10, [PromotionPrice] = @p11, [SeoAlias] = @p12, [SeoDescription] = @p13, [SeoKeywords] = @p14, [SeoPageTitle] = @p15, [Status] = @p16, [Tags] = @p17, [Unit] = @p18, [ViewCount] = @p19
+WHERE [Id] = @p20;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-08T02:47:33.7550556+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.SaveEntity (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 2475.7261ms. (50a9e262)
+2019-04-08T02:47:33.7597083+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executing ObjectResult, writing value of type '"Shop3.Application.ViewModels.Products.ProductViewModel"'. (8a1b66c8)
+2019-04-08T02:47:33.7654671+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.SaveEntity (Shop3)" in 2500.9503ms (afa2e885)
+2019-04-08T02:47:33.7698351+07:00 0HLLRI6SMJ7FP:0000000D [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.SaveEntity (Shop3)"' (99874f2b)
+2019-04-08T02:47:33.7757969+07:00 0HLLRI6SMJ7FP:0000000D [INF] Request finished in 2545.2407ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:33.7844886+07:00 0HLLRI6SMJ7FP:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/ProductCategory/GetAll   (ca22a1cb)
+2019-04-08T02:47:33.7900951+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (500cc934)
+2019-04-08T02:47:33.7941973+07:00 0HLLRI6SMJ7FP:0000000E [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"ProductCategory\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" (a44c0341)
+2019-04-08T02:47:33.7976434+07:00 0HLLRI6SMJ7FP:0000000E [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:33.8013358+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" - Validation state: Valid (dad538d7)
+2019-04-08T02:47:33.8059626+07:00 0HLLRI6SMJ7FP:0000000E [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:33.8129833+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-08T02:47:33.8236799+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-08T02:47:33.8285907+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 22.7552ms. (50a9e262)
+2019-04-08T02:47:33.8329320+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.ViewModels.Products.ProductCategoryViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:33.8402313+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)" in 39.5224ms (afa2e885)
+2019-04-08T02:47:33.8445640+07:00 0HLLRI6SMJ7FP:0000000E [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductCategoryController.GetAll (Shop3)"' (99874f2b)
+2019-04-08T02:47:33.8551162+07:00 0HLLRI6SMJ7FP:0000000E [INF] Request finished in 64.1028ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:33.9083243+07:00 0HLLRI6SMJ7FP:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=&keyword=&page=3&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:33.9157027+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:33.9231846+07:00 0HLLRI6SMJ7FP:0000000F [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:33.9290234+07:00 0HLLRI6SMJ7FP:0000000F [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:33.9351707+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" with arguments (["", "", "3", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:33.9413376+07:00 0HLLRI6SMJ7FP:0000000F [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:33.9498483+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)" (0723d8ff)
+2019-04-08T02:47:33.9627436+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:33.9794175+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) OR ([x0].[Status] = 0)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-08T02:47:33.9842939+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 44.7379ms. (50a9e262)
+2019-04-08T02:47:33.9890504+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.Products.ProductViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:33.9953072+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" in 66.125ms (afa2e885)
+2019-04-08T02:47:33.9995279+07:00 0HLLRI6SMJ7FP:0000000F [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:34.0059620+07:00 0HLLRI6SMJ7FP:0000000F [INF] Request finished in 120.2538ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:34.0156062+07:00 0HLLRI6SMJ7FP:00000010 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:34.0210725+07:00 0HLLRI6SMJ7FO:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/uploaded/images/20190407/13263844_259882754365216_6890831951492549185_n.jpg   (ca22a1cb)
+2019-04-08T02:47:34.0266364+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:34.0350508+07:00 0HLLRI6SMJ7FO:00000008 [INF] Request finished in 8.5862ms 404  (791a596a)
+2019-04-08T02:47:34.0410868+07:00 0HLLRI6SMJ7FP:00000010 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:34.0469801+07:00 0HLLRI6SMJ7FP:00000010 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:34.0525136+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" with arguments (["", "", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:34.0654429+07:00 0HLLRI6SMJ7FP:00000010 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:34.0731873+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)" (0723d8ff)
+2019-04-08T02:47:34.0847397+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:34.0993682+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) OR ([x0].[Status] = 0)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-08T02:47:34.1072714+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 47.7258ms. (50a9e262)
+2019-04-08T02:47:34.1145501+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.Products.ProductViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:34.1263269+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" in 74.1463ms (afa2e885)
+2019-04-08T02:47:34.1286514+07:00 0HLLRI6SMJ7FO:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-08T02:47:34.1362432+07:00 0HLLRI6SMJ7FP:00000010 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:34.1386720+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (500cc934)
+2019-04-08T02:47:34.1450177+07:00 0HLLRI6SMJ7FP:00000010 [INF] Request finished in 126.7099ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:34.1461673+07:00 0HLLRI6SMJ7FO:00000009 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" (a44c0341)
+2019-04-08T02:47:34.1528906+07:00 0HLLRI6SMJ7FO:00000009 [INF] Authorization was successful. (0d575a54)
+2019-04-08T02:47:34.1727486+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executing action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" with arguments (["", "", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-08T02:47:34.1751974+07:00 0HLLRI6SMJ7FP:00000011 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-04-08T02:47:34.1845369+07:00 0HLLRI6SMJ7FO:00000009 [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-04-08T02:47:34.1866821+07:00 0HLLRI6SMJ7FP:00000011 [INF] Request finished in 10.6658ms 404  (791a596a)
+2019-04-08T02:47:34.2034173+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)" (0723d8ff)
+2019-04-08T02:47:34.2196462+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) OR ([x].[Status] = 0)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-08T02:47:34.2395493+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) OR ([x0].[Status] = 0)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-08T02:47:34.2455181+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executed action method "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 67.3865ms. (50a9e262)
+2019-04-08T02:47:34.2498903+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executing ObjectResult, writing value of type '"Shp3.Utilities.Dtos.PagedResult`1[[Shop3.Application.ViewModels.Products.ProductViewModel, Shop3.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-08T02:47:34.2615538+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executed action "Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)" in 104.9151ms (afa2e885)
+2019-04-08T02:47:34.2671210+07:00 0HLLRI6SMJ7FO:00000009 [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.ProductController.GetAllPaging (Shop3)"' (99874f2b)
+2019-04-08T02:47:34.2744363+07:00 0HLLRI6SMJ7FO:00000009 [INF] Request finished in 148.0896ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-08T02:47:34.2909404+07:00 0HLLRI6SMJ7FO:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-04-08T02:47:34.2984662+07:00 0HLLRI6SMJ7FO:0000000A [INF] Request finished in 7.1905ms 404  (791a596a)

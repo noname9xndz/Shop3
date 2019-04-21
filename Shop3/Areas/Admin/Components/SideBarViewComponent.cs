@@ -29,12 +29,11 @@ namespace Shop3.Areas.Admin.Components
             List<FunctionViewModel> functions;
             if (roles.Split(";").Contains(CommonConstants.AppRole.AdminRole))
             {
-                functions = await _functionService.GetAll();
+                functions = await _functionService.GetAll(string.Empty);
             }
             else
             {
-                //TODO: Get by permission
-                functions = new List<FunctionViewModel>();
+                functions = await _functionService.GetAll(string.Empty);
             }
             return View(functions);
         }

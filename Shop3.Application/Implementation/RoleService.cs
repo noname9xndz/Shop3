@@ -104,12 +104,13 @@ namespace Shop3.Application.Implementation
 
         public List<PermissionViewModel> GetListFunctionWithRole(Guid roleId)
         {
+            // left join function and permission
             var functions = _functionRepository.FindAll();
             var permissions = _permissionRepository.FindAll();
-
-            var query = from f in functions
-                        join p in permissions on f.Id equals p.FunctionId into fp
-                        from p in fp.DefaultIfEmpty()
+            // nếu function rỗng => prmission null  ngược lại có thì sẽ join => lấy ra quyền
+            var query = from  f in functions
+                        join  p in permissions on f.Id equals p.FunctionId into fp
+                        from  p in fp.DefaultIfEmpty()
                         where p != null && p.RoleId == roleId
                         select new PermissionViewModel()
                         {
@@ -120,7 +121,9 @@ namespace Shop3.Application.Implementation
                             CanRead = p != null ? p.CanRead : false,
                             CanUpdate = p != null ? p.CanUpdate : false
                         };
+
             return query.ToList();
+
         }
 
         public void SavePermission(List<PermissionViewModel> permissionVms, Guid roleId)

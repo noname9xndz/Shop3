@@ -75,6 +75,7 @@ namespace Shop3.Areas.Admin.Controllers
         }
 
 
+
         [HttpPost]
         public IActionResult ListAllFunction(Guid roleId)
         {
@@ -82,11 +83,15 @@ namespace Shop3.Areas.Admin.Controllers
             return new OkObjectResult(functions);
         }
 
+
         [HttpPost]
         public IActionResult SavePermission(List<PermissionViewModel> listPermmission, Guid roleId)
         {
             _roleService.SavePermission(listPermmission, roleId);
             return new OkResult();
         }
+
+        
+
     }
 }
