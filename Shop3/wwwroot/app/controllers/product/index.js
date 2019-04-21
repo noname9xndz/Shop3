@@ -2,6 +2,7 @@
 
 var productController = function () {
     var quantityManagement = new QuantityManagement();
+    var imageManagement = new ImageManagement();
 
     this.initialize = function () {
         loadCategories();
@@ -9,6 +10,7 @@ var productController = function () {
         registerEvents();
         registerControls();
         quantityManagement.initialize();
+        imageManagement.initialize();
     }
     function registerEvents() {
         // load phân trang

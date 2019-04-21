@@ -24,6 +24,7 @@ namespace Shop3.Application.Implementation
         private IRepository<Tag, string> _tagRepository;
         private IRepository<ProductTag, int> _productTagRepository;
         private IRepository<ProductQuantity, int> _productQuantityRepository;
+        IRepository<ProductImage, int> _productImageRepository;
 
         private IUnitOfWork _unitOfWork;
 
@@ -31,13 +32,15 @@ namespace Shop3.Application.Implementation
             IRepository<Tag, string> tagRepository,
              IUnitOfWork unitOfWork,
         IRepository<ProductTag, int> productTagRepository,
-        IRepository<ProductQuantity, int> productQuantityRepository)
+        IRepository<ProductQuantity, int> productQuantityRepository,
+        IRepository<ProductImage, int> productImageRepository)
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
             _unitOfWork = unitOfWork;
-            _productQuantityRepository= productQuantityRepository; ;
+            _productQuantityRepository= productQuantityRepository;
+            _productImageRepository = productImageRepository;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -229,6 +232,27 @@ namespace Shop3.Application.Implementation
                 });
             }
         }
+
+        public List<ProductImageViewModel> GetImages(int productId)
+        {
+            return _productImageRepository.FindAll(x => x.ProductId == productId)
+                .ProjectTo<ProductImageViewModel>().ToList();
+        }
+
+        public void AddImages(int productId, string[] images)
+        {
+            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var image in images)
+            {
+                _productImageRepository.Add(new ProductImage()
+                {
+                    Path = image,
+                    ProductId = productId,
+                    Caption = string.Empty
+                });
+            }
+        }
+
 
     }
 }
