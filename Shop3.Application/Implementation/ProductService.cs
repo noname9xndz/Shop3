@@ -23,18 +23,21 @@ namespace Shop3.Application.Implementation
         private IRepository<Product, int> _productRepository;
         private IRepository<Tag, string> _tagRepository;
         private IRepository<ProductTag, int> _productTagRepository;
+        private IRepository<ProductQuantity, int> _productQuantityRepository;
 
         private IUnitOfWork _unitOfWork;
 
         public ProductService(IRepository<Product, int> productRepository,
             IRepository<Tag, string> tagRepository,
              IUnitOfWork unitOfWork,
-        IRepository<ProductTag, int> productTagRepository)
+        IRepository<ProductTag, int> productTagRepository,
+        IRepository<ProductQuantity, int> productQuantityRepository)
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
             _unitOfWork = unitOfWork;
+            _productQuantityRepository= productQuantityRepository; ;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -205,5 +208,27 @@ namespace Shop3.Application.Implementation
                 }
             }
         }
+
+        public List<ProductQuantityViewModel> GetQuantities(int productId)
+        {
+            return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>().ToList();
+        }
+
+        public void AddQuantity(int productId, List<ProductQuantityViewModel> quantities)
+        {
+            // xóa số lượng sp có sẵn
+            _productQuantityRepository.RemoveMultiple(_productQuantityRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var quantity in quantities)
+            {
+                _productQuantityRepository.Add(new ProductQuantity()
+                {
+                    ProductId = productId,
+                    ColorId = quantity.ColorId,
+                    SizeId = quantity.SizeId,
+                    Quantity = quantity.Quantity
+                });
+            }
+        }
+
     }
 }
