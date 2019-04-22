@@ -8,12 +8,7 @@ namespace Shop3.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Full name required", AllowEmptyStrings = false)]
-        [Display(Name = "Full name")]
-        public string FullName { set; get; }
-
-        [Display(Name = "DOB")]
-        public DateTime? BirthDay { set; get; }
+        
 
         [Required]
         [EmailAddress]
@@ -31,13 +26,6 @@ namespace Shop3.Models.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Address")]
-        public string Address { get; set; }
-
-        [Display(Name = "Phone number")]
-        public string PhoneNumber { set; get; }
-
-        [Display(Name = "Avatar")]
-        public string Avatar { get; set; }
+       
     }
 }

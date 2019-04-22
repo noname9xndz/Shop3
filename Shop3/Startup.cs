@@ -1,32 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Shop3.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shop3.Data.EF;
-using Shop3.Data.Entities;
-using AutoMapper;
-using Shop3.Application.Interfaces;
-using Shop3.Application.Implementation;
-using Shop3.Application.AutoMapper;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
-using Shop3.Helpers;
-using Shop3.Data.IRepositories;
-using Shop3.Data.EF.Repositories;
-using Shop3.Infrastructure.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+using Shop3.Application.AutoMapper;
+using Shop3.Application.Implementation;
+using Shop3.Application.Interfaces;
 using Shop3.Authorization;
+using Shop3.Data.EF;
+using Shop3.Data.Entities;
+using Shop3.Helpers;
+using Shop3.Infrastructure.Interfaces;
+using Shop3.Services;
+using System;
 
 namespace Shop3
 {
@@ -48,15 +41,13 @@ namespace Shop3
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-
             #region lấy connection từ Configuration để migration
 
             services.AddDbContext<AppDbContext>(options =>
                   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                   o => o.MigrationsAssembly("Shop3.Data.EF"))); // add thêm options ko dùng project hiện tại mà dùng  Shop3.Data.EF
 
-            #endregion
+            #endregion lấy connection từ Configuration để migration
 
             #region add identity + config identity
 
@@ -85,16 +76,18 @@ namespace Shop3
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
-            #endregion
+
+            #endregion add identity + config identity
 
             #region cofig cho  auto mapper
+
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
 
-            #endregion
+            #endregion cofig cho  auto mapper
 
             #region Add application services
 
@@ -106,45 +99,43 @@ namespace Shop3
             services.AddSingleton(Mapper.Configuration); // nuget : automapper
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
-
+            services.AddTransient<IEmailSender,EmailSender>();
 
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
-            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal 
-
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
 
             //services.AddTransient<IFunctionRepository, FunctionRepository>(); register Repository nếu dùng
 
             //Register Serrvices
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
-            
+
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IFunctionService, FunctionService>();
-            services.AddTransient<IProductService,ProductService>();
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IBillService, BillService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
-
-
-            #endregion
+            #endregion Add application services
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 // config lại object trả về khi respone trả về cho ajax
-                .AddJsonOptions( 
-                      options => options.SerializerSettings.ContractResolver = new  DefaultContractResolver());
+                .AddJsonOptions(
+                      options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddFile("Logs/noname-{Date}.txt");
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
             }
             else
@@ -170,8 +161,6 @@ namespace Shop3
                 routes.MapRoute(name: "areaRoute",
                     template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
             });
-
-            
         }
     }
 }
