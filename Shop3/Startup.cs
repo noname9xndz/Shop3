@@ -116,6 +116,8 @@ namespace Shop3
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IBillService, BillService>();
+            services.AddTransient<ICommonService,CommonService>();
+            services.AddTransient<IBlogService, BlogService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

@@ -35,6 +35,9 @@ namespace Shop3.Application.Interfaces
 
         List<WholePriceViewModel> GetWholePrices(int productId);
 
+        List<ProductViewModel> GetLastest(int top);
+
+        List<ProductViewModel> GetHotProduct(int top);
 
         void Save();
     }
