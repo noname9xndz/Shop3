@@ -39,6 +39,13 @@ namespace Shop3.Application.Interfaces
 
         List<ProductViewModel> GetHotProduct(int top);
 
+        
+        List<ProductViewModel> GetRelatedProducts(int id, int top);
+
+        List<ProductViewModel> GetUpsellProducts(int top);
+
+        List<TagViewModel> GetProductTags(int productId);
+
         void Save();
     }
 }
