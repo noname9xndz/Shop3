@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shp3.Utilities.Dtos
+namespace Shop3.Utilities.Dtos
 {
     public abstract class PagedResultBase // phân trang
     {

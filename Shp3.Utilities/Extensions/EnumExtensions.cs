@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Text;
 
-namespace Shp3.Utilities.Extensions
+namespace Shop3.Utilities.Extensions
 {
     public static class EnumExtensions
     {

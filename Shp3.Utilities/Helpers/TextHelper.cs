@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Shp3.Utilities.Helpers
+namespace Shop3.Utilities.Helpers
 {
     public static  class TextHelper
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shp3.Utilities.Constants
+namespace Shop3.Utilities.Constants
 {
     // chứa những biến , keyword dùng chung
     public class CommonConstants

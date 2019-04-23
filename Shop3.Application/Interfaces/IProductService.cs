@@ -1,6 +1,6 @@
 ﻿using Shop3.Application.ViewModels.Common;
 using Shop3.Application.ViewModels.Products;
-using Shp3.Utilities.Dtos;
+using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;

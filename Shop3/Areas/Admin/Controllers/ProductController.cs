@@ -6,7 +6,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
-using Shp3.Utilities.Helpers;
+using Shop3.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;

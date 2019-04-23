@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shop3.Data.Entities;
 using Shop3.Models.AccountViewModels;
-using Shp3.Utilities.Dtos;
+using Shop3.Utilities.Dtos;
 
 namespace Shop3.Areas.Admin.Controllers
 {

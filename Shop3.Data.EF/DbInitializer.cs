@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
-using Shp3.Utilities.Constants;
+using Shop3.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;

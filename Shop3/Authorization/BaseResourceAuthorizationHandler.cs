@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Shop3.Application.Interfaces;
-using Shp3.Utilities.Constants;
+using Shop3.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;

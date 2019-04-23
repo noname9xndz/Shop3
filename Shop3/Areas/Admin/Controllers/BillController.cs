@@ -11,8 +11,8 @@ using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Enums;
-using Shp3.Utilities.Extensions;
-using Shp3.Utilities.Helpers;
+using Shop3.Utilities.Extensions;
+using Shop3.Utilities.Helpers;
 
 namespace Shop3.Areas.Admin.Controllers
 {

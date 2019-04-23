@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop3", "Shop3\Shop3.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop3.Infrastructure", "Shop3.Infrastructure\Shop3.Infrastructure.csproj", "{FD89CC3B-E912-41ED-8F76-E5AA89D5921E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shp3.Utilities", "Shp3.Utilities\Shp3.Utilities.csproj", "{7FFD7DEF-C284-4946-AF9F-5A711DC52C69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop3.Utilities", "Shp3.Utilities\Shop3.Utilities.csproj", "{7FFD7DEF-C284-4946-AF9F-5A711DC52C69}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop3.Data", "Shop3.Data\Shop3.Data.csproj", "{B30105D7-5D1F-4977-87B5-713E8D53863A}"
 EndProject

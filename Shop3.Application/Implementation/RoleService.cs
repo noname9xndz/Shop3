@@ -7,7 +7,7 @@ using Shop3.Application.ViewModels.System;
 using Shop3.Data.Entities;
 using Shop3.Data.IRepositories;
 using Shop3.Infrastructure.Interfaces;
-using Shp3.Utilities.Dtos;
+using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

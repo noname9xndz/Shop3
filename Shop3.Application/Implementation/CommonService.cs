@@ -4,7 +4,7 @@ using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Data.Entities;
 using Shop3.Infrastructure.Interfaces;
-using Shp3.Utilities.Constants;
+using Shop3.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;

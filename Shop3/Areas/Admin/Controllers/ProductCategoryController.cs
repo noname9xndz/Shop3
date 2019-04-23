@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
-using Shp3.Utilities.Helpers;
+using Shop3.Utilities.Helpers;
 
 namespace Shop3.Areas.Admin.Controllers
 {

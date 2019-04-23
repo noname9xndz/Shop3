@@ -5,7 +5,7 @@ using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
-using Shp3.Utilities.Dtos;
+using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
