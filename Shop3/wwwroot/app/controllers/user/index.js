@@ -121,7 +121,7 @@ var UserController = function () {
                     },
                     success: function (response) {
                         if (response.status == "error") {
-                            common.notify('Tên đã bị trùng', 'error');
+                            common.notify('Đã xảy ra lỗi vui lòng nhập lại', 'error');
                         }
                         else {
                             common.notify('Save user succesful', 'success');
@@ -168,6 +168,8 @@ var UserController = function () {
 
 
     function disableFieldEdit(disabled) {
+        $('#txtPassword').val('');
+        $('#txtConfirmPassword').val('');
         $('#txtUserName').prop('disabled', disabled);
         $('#txtPassword').prop('disabled', disabled);
         $('#txtConfirmPassword').prop('disabled', disabled);

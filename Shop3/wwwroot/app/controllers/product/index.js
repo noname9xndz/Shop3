@@ -144,7 +144,7 @@ var productController = function () {
                         loadData();
                     }, isPageChanged);
 
-                });
+                
             },
             error: function (status) {  
                 console.log(status);

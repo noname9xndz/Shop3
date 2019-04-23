@@ -203,17 +203,17 @@ namespace Shop3.Data.EF
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>()
                 {
-                    new ProductCategory() { Name="Men shirt",SeoAlias="men-shirt",ParentId = null,Status=Status.Active,SortOrder=1,
+                    new ProductCategory() { Name="Men shirt",SeoAlias="men-shirt",HomeFlag=true,ParentId = null,Status=Status.Active,SortOrder=1,
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Product 1",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-1",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 2",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-2",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
+                            new Product(){Name = "Product 1",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-1",Price = 1000,Status = Status.Active,HomeFlag=true,HotFlag=true,OriginalPrice = 1000},
+                            new Product(){Name = "Product 2",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-2",Price = 1000,Status = Status.Active,HomeFlag=true,HotFlag=true,OriginalPrice = 1000},
                             new Product(){Name = "Product 3",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-3",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
                             new Product(){Name = "Product 4",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-4",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
                             new Product(){Name = "Product 5",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-5",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
                         }
                     },
-                    new ProductCategory() { Name="Women shirt",SeoAlias="women-shirt",ParentId = null,Status=Status.Active ,SortOrder=2,
+                    new ProductCategory() { Name="Women shirt",SeoAlias="women-shirt",HomeFlag=true,ParentId = null,Status=Status.Active ,SortOrder=2,
                         Products = new List<Product>()
                         {
                             new Product(){Name = "Product 6",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-6",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
@@ -242,6 +242,28 @@ namespace Shop3.Data.EF
                         }}
                 };
                 _context.ProductCategories.AddRange(listProductCategory);
+            }
+
+            if (!_context.Blogs.Any())
+            {
+                _context.Blogs.Add(new Blog()
+                {
+                    Name = "blog 1",
+                    Image = "/uploaded/images/20190408/day-dan-guitar.jpg",
+                    Description = "testblog",
+                    Content = "test content blog",
+                    HomeFlag = true,
+                    HotFlag = true,
+                    DateCreated = DateTime.Now,
+                    DateModified=DateTime.Now,
+                    Status=Status.Active,
+                    SeoPageTitle= "test seo",
+                    SeoAlias= "test-seo",
+                    SeoKeywords= "test seo",
+                    SeoDescription= "test seo",
+                   
+
+                });
             }
 
             if (!_context.SystemConfigs.Any(x => x.Id == "HomeTitle"))

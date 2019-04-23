@@ -19,6 +19,7 @@ namespace Shop3.Application.Implementation
         //  mapping trực tiếp từ viewmodel vào model hoặc model qua view model => controller chỉ việc gọi dùng
         // 1 service sinh ra phải register trong startup
         private IRepository<ProductCategory, int> _productCategoryRepository;
+        private IRepository<Product, int> _productRepository;
         private IUnitOfWork _unitOfWork;
 
         public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork)
@@ -93,14 +94,14 @@ namespace Shop3.Application.Implementation
                 .Take(top).ProjectTo<ProductCategoryViewModel>();
 
             var categories = query.ToList();
-            foreach (var category in categories)
-            {
-                //category.Products = _productRepository
-                //    .FindAll(x => x.HotFlag == true && x.CategoryId == category.Id)
-                //    .OrderByDescending(x => x.DateCreated)
-                //    .Take(5)
-                //    .ProjectTo<ProductViewModel>().ToList();
-            }
+            //foreach (var category in categories)
+            //{
+            //    category.Products = _productRepository
+            //        .FindAll(x => x.HotFlag == true && x.CategoryId == category.Id)
+            //        .OrderByDescending(x => x.DateCreated)
+            //        .Take(5)
+            //        .ProjectTo<ProductViewModel>().ToList();
+            //}
             return categories;
         }
 
