@@ -37,15 +37,26 @@
                         <label asp-for="Password"></label>
                         <input id="password_login" asp-for="Password" type="password" class="form-control">
 
-                        <p class="forgot-pass"><a asp-action="ForgotPassword">Lost your password?</a></p>
+                        <div class="col-xs-12">
+                            <label>  </label>
+                            <recaptcha />
+                            <span class="text-danger" id="recaptchaErrorMessage"></span>
+                        </div>
+
+
+
 
                         <button type="submit" class="button">
                             <i class="icon-lock icons"></i>&nbsp; <span>Login</span>
                         </button>
 
-                        <label class="inline" asp-for="RememberMe">
-                            <input asp-for="RememberMe" />
-                        </label>
+                        <label class="inline" asp-for="RememberMe"></label>
+                        <input asp-for="RememberMe" />
+
+                        <div class="col-xs-12">
+                            <p class="forgot-pass"><a asp-action="ForgotPassword">Lost your password?</a></p>
+                        </div>
+
 
                     </form>
 
@@ -100,4 +111,6 @@
 <!-- Main Container End -->
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
 }

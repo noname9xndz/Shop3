@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Models.AccountViewModels;
@@ -52,6 +53,7 @@ namespace Shop3.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [ValidateRecaptcha]    // captcha
         [Route("login.html", Name = "Login")]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
@@ -215,6 +217,7 @@ namespace Shop3.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [ValidateRecaptcha]    // captcha
         [Route("register.html")]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
@@ -377,6 +380,7 @@ namespace Shop3.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [ValidateRecaptcha]    // captcha
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)

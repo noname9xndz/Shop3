@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Shop3.Application.AutoMapper;
 using Shop3.Application.Implementation;
 using Shop3.Application.Interfaces;
@@ -79,7 +80,15 @@ namespace Shop3
 
             #endregion add identity + config identity
 
-            #region cofig cho  auto mapper
+            #region config cho  auto mapper ,captcha
+
+            // https://github.com/PaulMiami/reCAPTCHA/wiki/Getting-started , config key appsetting
+            // https://www.google.com/recaptcha/admin register key
+            services.AddRecaptcha(new RecaptchaOptions()
+            {
+                SiteKey = Configuration["Recaptcha:SiteKey"],
+                SecretKey = Configuration["Recaptcha:SecretKey"]
+            });
 
             Mapper.Initialize(cfg =>
             {

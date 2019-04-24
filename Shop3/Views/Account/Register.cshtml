@@ -65,11 +65,11 @@
 
                                 @* xhttps://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-2.2*@
                                 @*<div class="col-xs-12">
-                                    <label>Avatar:</label>
-                                    <div class="input-text">
-                                        <input type="file" asp-for="Avatar" name="dob" class="form-control">
-                                    </div>
-                                </div>*@
+            <label>Avatar:</label>
+            <div class="input-text">
+                <input type="file" asp-for="Avatar" name="dob" class="form-control">
+            </div>
+        </div>*@
 
                                 <div class="col-sm-6">
                                     <label>Phone Number:</label>
@@ -85,9 +85,21 @@
                                     </div>
                                 </div>
 
+                                <div class="col-xs-12">
+                                    <label>  </label>
+                                    <recaptcha />
+                                    <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                </div>
 
+                                @*<div class="col-sm-6">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <recaptcha />
+                                        <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                    </div>
+                                </div>*@
 
                                 <div class="col-xs-12">
+                                    <label>  </label>
                                     <div class="submit-text">
                                         <button type="submit" class="button"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
                                     </div>
@@ -107,4 +119,6 @@
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
 }
