@@ -8,14 +8,10 @@ namespace Shop3.Models.AccountViewModels
 {
     public class LoginViewModel
     {
-        //[Required(ErrorMessage = "Required")]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
-
         [Required(ErrorMessage = "Required")]
-        [Display(Name = "UserName")]
-        public string UserName { get; set; }
-
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        
         [Required(ErrorMessage = "Required")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

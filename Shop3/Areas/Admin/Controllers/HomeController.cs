@@ -13,7 +13,7 @@ namespace Shop3.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            var email = User.GetSpecificClaim("Email");
+            var email = User.GetSpecificClaim("Email"); // lấy ra thông tin email để hiển thị lên view
             return View();
         }
     }

@@ -1,16 +1,15 @@
 ﻿
 
 @using Shop3.Extensions;
-
 @using Microsoft.AspNetCore.Authorization
 @using Shop3.Authorization
 @inject IAuthorizationService AuthorizationService
 @{
     var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+    var result2 = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
+    var result3 = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
 }
-@if (result.Succeeded ||
-(await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded ||
-(await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+@if (result.Succeeded || result2.Succeeded || result3.Succeeded)
 {
     <!DOCTYPE html>
     <html lang="en">
