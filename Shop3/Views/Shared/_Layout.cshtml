@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Basic page needs -->
@@ -25,70 +26,70 @@
 @*<body class="cms-index-index cms-home-page">*@
 <body class="@ViewData["BodyClass"]">
 
-        <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <!-- mobile menu -->
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- mobile menu -->
 
-        @await Component.InvokeAsync("MobileMenu")
+    @await Component.InvokeAsync("MobileMenu")
 
-        <!-- end mobile menu -->
-        <div id="page">
+    <!-- end mobile menu -->
+    <div id="page">
 
-            <!-- Header -->
-            @*@Html.Partial("_Header.cshtml")*@
-            <partial name="_Header.cshtml" />
-            <!-- end header -->
-            <nav>
-                <div class="container">
-                    <div class="row">
-                        <div class="mm-toggle-wrap">
-                            <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
-                            <span class="mm-label">All Categories</span>
-                        </div>
-
-                        <div class="col-md-3 col-sm-3 mega-container hidden-xs">
-                            @await Component.InvokeAsync("CategoryMenu")
-                        </div>
-
-                        <div class="col-md-9 col-sm-9 jtv-megamenu">
-                            @await Component.InvokeAsync("MainMenu")
-                        </div>
-
+        <!-- Header -->
+        @*@Html.Partial("_Header.cshtml")*@
+        <partial name="_Header.cshtml" />
+        <!-- end header -->
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="mm-toggle-wrap">
+                        <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
+                        <span class="mm-label">All Categories</span>
                     </div>
+
+                    <div class="col-md-3 col-sm-3 mega-container hidden-xs">
+                        @await Component.InvokeAsync("CategoryMenu")
+                    </div>
+
+                    <div class="col-md-9 col-sm-9 jtv-megamenu">
+                        @await Component.InvokeAsync("MainMenu")
+                    </div>
+
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-            @RenderBody()
+        @RenderBody()
 
-            <!-- Footer -->
+        <!-- Footer -->
 
-            <partial name="_Footer.cshtml" />
-            @*@Html.Partial("_Footer.cshtml")*@
-            <!-- End Footer -->
-        </div>
-
-
-        <!-- JS -->
-        <!-- jquery js -->
-        <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
-        <!-- bootstrap js -->
-        <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>
-        <!-- owl.carousel.min js -->
-        <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
-        <!-- jquery.mobile-menu js -->
-        <script type="text/javascript" src="~/client-side/js/mobile-menu.js"></script>
-        <!--jquery-ui.min js -->
-        <script type="text/javascript" src="~/client-side/js/jquery-ui.js"></script>
-        <!-- main js -->
-        <script type="text/javascript" src="~/client-side/js/main.js"></script>
-        <!-- countdown js -->
-        <script type="text/javascript" src="~/client-side/js/countdown.js"></script>
-        <!-- Slider Js -->
-        <script type="text/javascript" src="~/client-side/js/revolution-slider.js"></script>
-
-        @RenderSection("Scripts", required: false)
+        <partial name="_Footer.cshtml" />
+        @*@Html.Partial("_Footer.cshtml")*@
+        <!-- End Footer -->
+    </div>
 
 
-    </body>
+    <!-- JS -->
+    <!-- jquery js -->
+    <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>
+    <!-- owl.carousel.min js -->
+    <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
+    <!-- jquery.mobile-menu js -->
+    <script type="text/javascript" src="~/client-side/js/mobile-menu.js"></script>
+    <!--jquery-ui.min js -->
+    <script type="text/javascript" src="~/client-side/js/jquery-ui.js"></script>
+    <!-- main js -->
+    <script type="text/javascript" src="~/client-side/js/main.js"></script>
+    <!-- countdown js -->
+    <script type="text/javascript" src="~/client-side/js/countdown.js"></script>
+    <!-- Slider Js -->
+    <script type="text/javascript" src="~/client-side/js/revolution-slider.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+
+</body>
 </html>
