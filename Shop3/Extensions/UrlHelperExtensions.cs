@@ -8,6 +8,7 @@ namespace Microsoft.AspNetCore.Mvc
 {
     public static class UrlHelperExtensions
     {
+        // tạo ra url để confirm email
         public static string EmailConfirmationLink(this IUrlHelper urlHelper, Guid userId, string code, string scheme)
         {
             return urlHelper.Action(

@@ -8,7 +8,14 @@ namespace Shop3.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        
+
+
+        [Required(ErrorMessage = "Full name required", AllowEmptyStrings = false)]
+        [Display(Name = "Full name")]
+        public string FullName { set; get; }
+
+        [Display(Name = "DOB")]
+        public DateTime? BirthDay { set; get; }
 
         [Required]
         [EmailAddress]
@@ -16,6 +23,7 @@ namespace Shop3.Models.AccountViewModels
         public string Email { get; set; }
 
         [Required]
+        // giới hạn ký tự đầu vào
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -23,9 +31,18 @@ namespace Shop3.Models.AccountViewModels
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")] // compare : bằng password
         public string ConfirmPassword { get; set; }
 
-       
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { set; get; }
+
+        [Display(Name = "Avatar")]
+        public string Avatar { get; set; }
+
+
     }
 }

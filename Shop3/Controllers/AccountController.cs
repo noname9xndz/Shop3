@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shop3.Data.Entities;
+using Shop3.Data.Enums;
 using Shop3.Models.AccountViewModels;
 using Shop3.Services;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Shop3.Controllers
 {
@@ -164,7 +163,7 @@ namespace Shop3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LoginWithRecoveryCode(LoginWithRecoveryCodeViewModel model, string returnUrl = null)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) //ModelState.IsValid : valid theo viewmodel
             {
                 return View(model);
             }
@@ -219,19 +218,37 @@ namespace Shop3.Controllers
         [Route("register.html")]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-             ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
+            ViewData["ReturnUrl"] = returnUrl;
+            if (!ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Email, Email = model.Email };
+                return View(model);
+            }
+            else
+            {
+                // EN : MM/dd/yyy VI : dd/MM/yyyy
+                //create 1 user
+                var user = new AppUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FullName = model.FullName,
+                    PhoneNumber = model.PhoneNumber,
+                    BirthDay = model.BirthDay,
+                    //BirthDay= DateTime.Parse(model.BirthDay),
+                    Status = Status.Active,
+                    Avatar = string.Empty
+
+                    //Upload :https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-2.2
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);// buid code send mail
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
 
-                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl); // gửi mail xác nhận
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
@@ -334,19 +351,19 @@ namespace Shop3.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        public async Task<IActionResult> ConfirmEmail(string userId, string code) // user id và code mã hóa để xác nhận mail
         {
             if (userId == null || code == null)
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId); // tìm thấy userid và xác nhận được code
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{userId}'.");
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            return View(result.Succeeded ? "ConfirmEmail" : "Error"); // view thành công
         }
 
         [HttpGet]
