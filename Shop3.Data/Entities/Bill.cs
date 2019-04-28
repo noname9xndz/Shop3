@@ -25,18 +25,20 @@ namespace Shop3.Data.Entities
             CustomerAddress = customerAddress;
             CustomerMobile = customerMobile;
             CustomerMessage = customerMessage;
+            //CustomerEmail = customerEmail;
             BillStatus = billStatus;
             PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
         }
-        public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
+        public Bill(int id, string customerName, string customerAddress,string customerMobile, string customerMessage,
            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
         {
             Id = id;
             CustomerName = customerName;
             CustomerAddress = customerAddress;
             CustomerMobile = customerMobile;
+            //CustomerEmail = customerEmail;
             CustomerMessage = customerMessage;
             BillStatus = billStatus;
             PaymentMethod = paymentMethod;
@@ -55,6 +57,9 @@ namespace Shop3.Data.Entities
         [Required]
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
+
+        //[MaxLength(50)]
+        //public string CustomerEmail { set; get; }
 
         [Required]
         [MaxLength(256)]

@@ -22,6 +22,9 @@ namespace Shop3.Application.ViewModels.Products
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
+        //[MaxLength(50)]
+        //public string CustomerEmail { set; get; }
+
         [Required]
         [MaxLength(256)]
         public string CustomerMessage { set; get; }

@@ -120,7 +120,8 @@ namespace Shop3
             services.AddSingleton(Mapper.Configuration); // nuget : automapper
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
-            services.AddTransient<IEmailSender,EmailSender>(); // send mail form user
+            services.AddTransient<IEmailSender,EmailSender>(); // send mail to user
+            services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
 
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
