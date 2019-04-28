@@ -49,7 +49,8 @@ var loginController = function () {
         $.ajax({
             type: 'POST',
             data: {
-                UserName: user,
+                //UserName: user,
+                Email: user,
                 Password : pass
             },
             dataType: 'json',

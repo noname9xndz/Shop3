@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Shop3.Models.ProductViewModels
 {
-    public class SearchResultViewModel : CatalogViewModel
+    public class SearchResultViewModel : CatalogViewModel 
     {
         public string Keyword { get; set; }
-       // public List<ProductCategoryViewModel> Categories { set; get; }
+        public List<ProductCategoryViewModel> Categories { set; get; }
     }
 }

@@ -36,11 +36,11 @@ namespace Shop3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            //services.Configure<CookiePolicyOptions>(options =>
+            //{
+            //    options.CheckConsentNeeded = context => true;
+            //    options.MinimumSameSitePolicy = SameSiteMode.None;
+            //});
 
             #region lấy connection từ Configuration để migration
 
@@ -80,7 +80,7 @@ namespace Shop3
 
             #endregion add identity + config identity
 
-            #region config cho  auto mapper ,captcha
+            #region config cho  auto mapper ,captcha 
 
             // https://github.com/PaulMiami/reCAPTCHA/wiki/Getting-started , config key appsetting
             // https://www.google.com/recaptcha/admin register key
@@ -90,15 +90,27 @@ namespace Shop3
                 SecretKey = Configuration["Recaptcha:SecretKey"]
             });
 
+           
+           
+
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
 
+
             #endregion cofig cho  auto mapper
 
             #region Add application services
+
+            // nuget Microsoft.AspNetCore.Session
+            services.AddSession(options =>
+            {
+                //options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromHours(2);
+                options.Cookie.HttpOnly = true; //1 cookies có được truy cập bởi client script ko
+            });
 
             services.AddAutoMapper();  // nuget : AutoMapper.Extensions.Microsoft.DependencyInjection
 
@@ -161,7 +173,7 @@ namespace Shop3
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
+            app.UseSession(); //nuget Microsoft.AspNetCore.Session
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

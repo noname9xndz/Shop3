@@ -46,6 +46,8 @@ namespace Shop3.Application.Interfaces
 
         List<TagViewModel> GetProductTags(int productId);
 
+        bool CheckAvailability(int productId, int size, int color);
+
         void Save();
     }
 }

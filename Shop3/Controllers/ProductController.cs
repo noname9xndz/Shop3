@@ -31,7 +31,8 @@ namespace Shop3.Controllers
         [Route("products.html")] // điều hướng cho controller
         public IActionResult Index()
         {
-            return View();
+            var categories = _productCategoryService.GetAll();
+            return View(categories);
         }
 
         [Route("{alias}-c.{id}.html")]
@@ -61,17 +62,22 @@ namespace Shop3.Controllers
             model.UpsellProducts = _productService.GetUpsellProducts(6);
             model.ProductImages = _productService.GetImages(id);
             model.Tags = _productService.GetProductTags(id);
+
+            // get data đổ vào combox
             model.Colors = _billService.GetColors().Select(x => new SelectListItem()
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
+                
             }).ToList();
+
             model.Sizes = _billService.GetSizes().Select(x => new SelectListItem()
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
             }).ToList();
 
+            // todo check sp còn hết
             return View(model);
         }
         //[Route("{alias}.html", Name = "ProductDetail")]

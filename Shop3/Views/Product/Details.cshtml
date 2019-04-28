@@ -7,6 +7,15 @@
     var product = Model.Product;
 }
 
+@section Scripts{
+   
+    <script src="~/client-app/controllers/product/details.js"></script>
+    <script>
+        var productObj = new ProductDetailController();
+        productObj.initialize();
+    </script>
+}
+
 <!-- Breadcrumbs -->
 
 <div class="breadcrumbs">
@@ -93,15 +102,19 @@
                         <div class="product-color-size-area">
                             <div class="color-area">
                                 <h2 class="saider-bar-title">Color</h2>
+
                                 <div class="color">
                                     <select asp-items="Model.Colors" id="ddlColorId"></select>
                                 </div>
+
                             </div>
                             <div class="size-area">
                                 <h2 class="saider-bar-title">Size</h2>
+
                                 <div class="size">
                                     <select asp-items="Model.Sizes" id="ddlSizeId"></select>
                                 </div>
+
                             </div>
                         </div>
                         <div class="product-variation">
@@ -109,12 +122,12 @@
                                 <div class="cart-plus-minus">
                                     <label for="qty">Qty:</label>
                                     <div class="numbers-row">
-                                        <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
-                                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
-                                        <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
+                                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+                                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txtQuantity" name="txtQuantity">
+                                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                                     </div>
                                 </div>
-                                <button class="button pro-add-to-cart" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
+                                <button id="btnAddToCart" data-id="@Model.Product.Id" class="button pro-add-to-cart" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
                             </form>
                         </div>
                         <div class="product-cart-option">
@@ -433,7 +446,7 @@
 
 <!-- Main Container End -->
 <!-- Related Product Slider -->
-@if(Model.RelatedProducts.Count > 0)
+@if (Model.RelatedProducts.Count > 0)
 {
     <div class="container">
         <div class="row">

@@ -12,7 +12,7 @@ namespace Shop3.Models.ProductViewModels
     {
         public ProductViewModel Product { get; set; }
 
-        public bool Available { set; get; }
+        
 
         public List<ProductViewModel> RelatedProducts { get; set; }
 
@@ -26,8 +26,12 @@ namespace Shop3.Models.ProductViewModels
 
         public List<TagViewModel> Tags { set; get; }
 
+
         public List<SelectListItem> Colors { set; get; }
 
+
         public List<SelectListItem> Sizes { set; get; }
+
+        public bool Available { set; get; } // còn hàng hoặc hết hàng
     }
 }

@@ -7,11 +7,13 @@
 }
 }
 @section Scripts{
-    <script src="~/client-side/controllers/home/index.js"></script>
+ 
+    @*<script src="~/client-app/shared/common.js"></script>
+
     <script>
         var homeObj = new HomeController();
         homeObj.initialize();
-    </script>
+    </script>*@
 }
 <!-- Slideshow  -->
 <div class="main-slider" id="home">
@@ -105,7 +107,7 @@
                                                             <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
                                                         </div>
                                                         <div class="pro-action">
-                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Purchase</span> </button>
+                                                            <button type="button"  data-id="@item.Id" class="add-to-cart" ><span> Purchase</span> </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -191,7 +193,7 @@
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
                                                             </div>
                                                             <div class="pro-action">
-                                                                <button type="button" class="add-to-cart"><span> Mua ngay</span> </button>
+                                                                <button type="button"  data-id="@item.Id" class="add-to-cart"><span> Mua ngay</span> </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -379,6 +381,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-12 col-md-4 jtv-best-sale">
                 <div class="jtv-best-sale-list">
                     <div class="wpb_wrapper">
@@ -581,6 +584,7 @@
 
 
 @await Component.InvokeAsync("Brand")
+
 <!-- BANNER-AREA-START -->
 <section class="banner-area">
     <div class="container">
