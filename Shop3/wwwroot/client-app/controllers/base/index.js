@@ -20,7 +20,7 @@ var BaseController = function () {
                 success: function (response) {
                    // common.notify(resources["AddCartOK"], 'success');
                     common.notify('Product was added to cart', 'success');
-                   // loadHeaderCart();
+                    loadHeaderCart();
                 }
             });
         });
@@ -37,14 +37,14 @@ var BaseController = function () {
                 success: function (response) {
                     common.notify('Product was removed', 'success');
                    // common.notify(resources["RemoveCartOK"], 'success');
-                    //loadHeaderCart();
+                    loadHeaderCart();
                 }
             });
         });
     }
 
     function loadHeaderCart() {
-        $("#headerCart").load("/AjaxContent/HeaderCart");
+        $("#headerCart").load("/AjaxContent/HeaderCart");// load lại view component để cập nhật danh sách sp add vào giỏ hàng
     }
 
 }

@@ -21,7 +21,7 @@
                 },
                 success: function () {
                     common.notify('Product was added successful', 'success');
-                    //loadHeaderCart();
+                    loadHeaderCart(); // load lại view component để cập nhật danh sách sp add vào giỏ hàng
                 }
             });
         });

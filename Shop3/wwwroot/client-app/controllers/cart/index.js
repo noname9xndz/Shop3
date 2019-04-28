@@ -28,7 +28,7 @@ var CartController = function () {
                 },
                 success: function () {
                     common.notify('Removing product is successful.', 'success');
-                   // loadHeaderCart();
+                    loadHeaderCart(); // load lại view component để cập nhật danh sách sp add vào giỏ hàng
                     loadData();
                 }
             });
@@ -52,7 +52,7 @@ var CartController = function () {
                     },
                     success: function () {
                         common.notify('Update quantity is successful', 'success');
-                        //loadHeaderCart();
+                        loadHeaderCart(); // load lại view component để cập nhật danh sách sp add vào giỏ hàng
                         loadData();
                     }
                 });
@@ -81,7 +81,7 @@ var CartController = function () {
                     },
                     success: function () {
                         common.notify('Update quantity is successful', 'success');
-                       // loadHeaderCart();
+                        loadHeaderCart();
                         loadData();
                     }
                 });
@@ -109,7 +109,7 @@ var CartController = function () {
                     },
                     success: function () {
                         common.notify('Update quantity is successful', 'success');
-                      //  loadHeaderCart();
+                        loadHeaderCart();
                         loadData();
                     }
                 });
@@ -125,7 +125,7 @@ var CartController = function () {
                 type: 'post',
                 success: function () {
                     common.notify('Clear cart is successful', 'success');
-                   // loadHeaderCart();
+                    loadHeaderCart();
                     loadData();
                 }
             });
@@ -186,9 +186,9 @@ var CartController = function () {
         return sizes;
     }
 
-    //function loadHeaderCart() {
-    //    $("#headerCart").load("/AjaxContent/HeaderCart");
-    //}
+    function loadHeaderCart() {
+        $("#headerCart").load("/AjaxContent/HeaderCart");// load lại view component để cập nhật danh sách sp add vào giỏ hàng
+    }
 
     function loadData() {
         $.ajax({
