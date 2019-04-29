@@ -238,6 +238,7 @@ namespace Shop3.Controllers
                     PhoneNumber = model.PhoneNumber,
                     BirthDay = model.BirthDay,
                     //BirthDay= DateTime.Parse(model.BirthDay),
+                    //public string Adress { get; set; } todo
                     Status = Status.Active,
                     Avatar = string.Empty
 
@@ -275,12 +276,15 @@ namespace Shop3.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        // login bằng các mxh như gg fb tw ,... https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/?view=aspnetcore-2.2&tabs=visual-studio
+        // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/other-logins?view=aspnetcore-2.2
         public IActionResult ExternalLogin(string provider, string returnUrl = null)
         {
             // Request a redirect to the external login provider.
-            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl }); // buid url để chuyển hướng đăng nhập
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
             return Challenge(properties, provider);
         }
@@ -294,18 +298,18 @@ namespace Shop3.Controllers
                 ErrorMessage = $"Error from external provider: {remoteError}";
                 return RedirectToAction(nameof(Login));
             }
-            var info = await _signInManager.GetExternalLoginInfoAsync();
+            var info = await _signInManager.GetExternalLoginInfoAsync(); // get thông tin từ các mxh
             if (info == null)
             {
                 return RedirectToAction(nameof(Login));
             }
 
             // Sign in the user with this external login provider if the user already has a login.
-            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true); // login
             if (result.Succeeded)
             {
                 _logger.LogInformation("User logged in with {Name} provider.", info.LoginProvider);
-                return RedirectToLocal(returnUrl);
+                return RedirectToLocal(returnUrl); // login 1 lần rồi => chuyển về trang chủ
             }
             if (result.IsLockedOut)
             {
@@ -317,7 +321,7 @@ namespace Shop3.Controllers
                 ViewData["ReturnUrl"] = returnUrl;
                 ViewData["LoginProvider"] = info.LoginProvider;
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-                return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+                return View("ExternalLogin", new ExternalLoginViewModel());
             }
         }
 
@@ -326,6 +330,8 @@ namespace Shop3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl = null)
         {
+            // xác nhận lại tài khoản mxh vừa login
+
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
@@ -334,7 +340,17 @@ namespace Shop3.Controllers
                 {
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
-                var user = new AppUser { UserName = model.Email, Email = model.Email };
+                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+                var user = new AppUser
+                {
+                    UserName = email,
+                    Email = email,
+                    FullName = model.FullName,
+                    BirthDay = DateTime.Parse(model.DOB),
+                    PhoneNumber = model.PhoneNumber
+
+                };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

@@ -17,7 +17,7 @@ namespace Shop3.Application.ViewModels.System
         public string Email { set; get; }
         public string Password { set; get; }
         public string UserName { set; get; }
-        public string Address { get; set; }
+        //public string Address { get; set; } todo
         public string PhoneNumber { set; get; }
         public string Avatar { get; set; }
         public Status Status { get; set; }

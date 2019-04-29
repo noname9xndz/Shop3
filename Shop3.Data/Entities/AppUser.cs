@@ -25,6 +25,7 @@ namespace Shop3.Data.Entities
             PhoneNumber = phoneNumber;
             Avatar = avatar;
             Status = status;
+            //public string Adress { get; set; } todo
         }
         public string FullName { get; set; }
 
@@ -33,6 +34,8 @@ namespace Shop3.Data.Entities
         public decimal Balance { get; set; }
 
         public string Avatar { get; set; }
+
+        //public string Adress { get; set; } todo
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
