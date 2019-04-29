@@ -222,6 +222,8 @@
     <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.1" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.5.0" />
+    <PackageReference Include="WebMarkupMin.NUglify" Version="2.5.5" />
   </ItemGroup>
 
 

@@ -29,8 +29,9 @@ namespace Shop3.Controllers
         }
 
         // responsecache : https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
-        //  response caching bản chất là viết lại các response header để trình duyệt hiểu được để trình duyệt hiểu được cache trong bao lâu
-        //[ResponseCache(CacheProfileName = "Default")] // get thông số trong startup
+        // response caching bản chất là viết lại các response header để trình duyệt hiểu được để trình duyệt hiểu được cache trong bao lâu
+        // [ResponseCache(CacheProfileName = "Default")] // get thông số trong startup
+        // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
         public IActionResult Index()
         {
             

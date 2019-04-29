@@ -51,7 +51,7 @@ namespace Shop3
 
             #endregion lấy connection từ Configuration để migration
 
-            #region add identity + config identity,caching app
+            #region add identity + config identity,caching app,minifile
 
             //services.AddIdentity<AppUser,AppRole>() // sử dụng AppUser và AppRole tự tao ko dùng mặc định của Identity
             //  .AddDefaultUI(UIFramework.Bootstrap4)
@@ -66,7 +66,8 @@ namespace Shop3
             // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
             services.AddMemoryCache(); // phù hợp với các ứng dụng vừa và nhỏ sử dụng 1 server
 
-           
+            services.AddMinResponse(); // sử dụng middleware WebMarkupMin để nén file
+
 
             // Configure cơ chế  mặc định register user của Identity
             services.Configure<IdentityOptions>(options =>
@@ -200,6 +201,8 @@ namespace Shop3
 
             app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
             app.UseStaticFiles(); // hạn chế các file nằm trong root đều không chạy qua middleware tiếp theo
+            app.UseMinResponse(); // sử dụng middleware WebMarkupMin để nén file
+
             app.UseCookiePolicy();
 
             app.UseAuthentication();
