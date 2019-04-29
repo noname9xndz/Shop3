@@ -7,13 +7,11 @@
 }
 
 @section Scripts{
- 
-    @*<script src="~/client-app/shared/common.js"></script>
-
-    <script>
-        var homeObj = new HomeController();
-        homeObj.initialize();
-    </script>*@
+    <script src="~/client-app/shared/slider.js"></script>
+    <script type='text/javascript'>
+        var sliderObj = new Slider();
+        sliderObj.initialize();
+    </script>
 }
 <!-- Slideshow  -->
 <div class="main-slider" id="home">
@@ -107,7 +105,7 @@
                                                             <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
                                                         </div>
                                                         <div class="pro-action">
-                                                            <button type="button"  data-id="@item.Id" class="add-to-cart" ><span> Purchase</span> </button>
+                                                            <button type="button" data-id="@item.Id" class="add-to-cart"><span> Purchase</span> </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -193,7 +191,7 @@
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
                                                             </div>
                                                             <div class="pro-action">
-                                                                <button type="button"  data-id="@item.Id" class="add-to-cart"><span> Mua ngay</span> </button>
+                                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Mua ngay</span> </button>
                                                             </div>
                                                         </div>
                                                     </div>

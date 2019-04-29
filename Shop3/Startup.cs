@@ -66,7 +66,7 @@ namespace Shop3
             // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
             services.AddMemoryCache(); // phù hợp với các ứng dụng vừa và nhỏ sử dụng 1 server
 
-            //services.AddMinResponse(); // sử dụng middleware WebMarkupMin để nén file
+            services.AddMinResponse(); // sử dụng middleware WebMarkupMin để nén file
 
 
             // Configure cơ chế  mặc định register user của Identity
@@ -98,17 +98,13 @@ namespace Shop3
                 SiteKey = Configuration["Recaptcha:SiteKey"],
                 SecretKey = Configuration["Recaptcha:SecretKey"]
             });
-
-           
-           
-
+            
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
-
-
+            
             #endregion cofig cho  auto mapper
 
             #region Add application services
@@ -121,7 +117,7 @@ namespace Shop3
                 options.Cookie.HttpOnly = true; //1 cookies có được truy cập bởi client script ko
             });
 
-           // services.AddImageResizer(); // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
+            services.AddImageResizer(); // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
             services.AddAutoMapper();  // nuget : AutoMapper.Extensions.Microsoft.DependencyInjection
             
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
@@ -199,9 +195,9 @@ namespace Shop3
             // các middlerware sẽ chạy từ trên xuống dưới
             app.UseHttpsRedirection();
 
-          //  app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
+            app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
             app.UseStaticFiles(); // hạn chế các file nằm trong root đều không chạy qua middleware tiếp theo
-            //app.UseMinResponse(); // sử dụng middleware WebMarkupMin để nén file
+            app.UseMinResponse(); // sử dụng middleware WebMarkupMin để nén file
 
             app.UseCookiePolicy();
 
