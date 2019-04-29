@@ -70,14 +70,14 @@ namespace Shop3.Data.EF
                 _context.Contacts.Add(new Contact()
                 {
                     Id = CommonConstants.DefaultContactId,
-                    Address = " 133 Nguyen Phong Sac Cau Giay",
+                    Address = "41A Đường Phú Diễn, Cầu Diễn, Từ Liêm, Hà Nội, Việt Nam",
                     Email = "nonameshop@gmail.com",
                     Name = "Noname Shop",
                     Phone = "22222222222",
                     Status = Status.Active,
                     Website = "http://nonameshop.com",
-                    Lat = 21.0435009,
-                    Lng = 105.7894758
+                    Lat = 21.046224,
+                    Lng = 105.761793
                 });
             }
 
