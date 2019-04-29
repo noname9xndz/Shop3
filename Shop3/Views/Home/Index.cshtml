@@ -28,7 +28,7 @@
                                 @foreach (var slide in Model.HomeSlides)
                                 {
                                     <li data-transition='fade' data-slotamount='7' data-masterspeed='1000' data-thumb=''>
-                                        <img src='@slide.Image' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="@slide.Name" />
+                                        <img src='@slide.Image?w=865&h=448' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="@slide.Name" />
                                     </li>
                                 }
                             </ul>
@@ -85,8 +85,8 @@
                                                 <div class="pr-img-area">
                                                     <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">
                                                         <figure>
-                                                            <img class="first-img" src="@item.Image?w=190" alt="@item.Name">
-                                                            <img class="hover-img" src="@item.Image?w=190" alt="@item.Name">
+                                                            <img class="first-img" src="@item.Image?w=153" alt="@item.Name">
+                                                            <img class="hover-img" src="@item.Image?w=153" alt="@item.Name">
                                                         </figure>
                                                     </a>
                                                 </div>
@@ -171,8 +171,8 @@
                                                     <div class="pr-img-area">
                                                         <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">
                                                             <figure>
-                                                                <img class="first-img" src="@item.Image" alt="@item.Name">
-                                                                <img class="hover-img" src="@item.Image" alt="@item.Name">
+                                                                <img class="first-img" src="@item.Image?w=215" alt="@item.Name">
+                                                                <img class="hover-img" src="@item.Image?w=215" alt="@item.Name">
                                                             </figure>
                                                         </a>
                                                     </div>
@@ -557,7 +557,7 @@
                     {
                         <div class="item">
                             <div class="blog-box">
-                                <a href="blog_single_post.html"> <img class="primary-img" src="@item.Image" alt="@item.Name"></a>
+                                <a href="blog_single_post.html"> <img class="primary-img" src="@item.Image?h=122" alt="@item.Name"></a>
                                 <div class="blog-btm-desc">
                                     <div class="blog-top-desc">
                                         <div class="blog-date"> @item.DateCreated </div>

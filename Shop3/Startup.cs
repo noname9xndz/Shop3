@@ -17,6 +17,7 @@ using Shop3.Application.Interfaces;
 using Shop3.Authorization;
 using Shop3.Data.EF;
 using Shop3.Data.Entities;
+using Shop3.Extensions;
 using Shop3.Helpers;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Services;
@@ -112,8 +113,9 @@ namespace Shop3
                 options.Cookie.HttpOnly = true; //1 cookies có được truy cập bởi client script ko
             });
 
+            services.AddImageResizer(); // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
             services.AddAutoMapper();  // nuget : AutoMapper.Extensions.Microsoft.DependencyInjection
-
+            
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
 
@@ -170,9 +172,11 @@ namespace Shop3
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            // các middlerware sẽ chạy từ trên xuống dưới
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
+            app.UseStaticFiles(); // hạn chế các file nằm trong root đều không chạy qua middleware tiếp theo
             app.UseCookiePolicy();
 
             app.UseAuthentication();
