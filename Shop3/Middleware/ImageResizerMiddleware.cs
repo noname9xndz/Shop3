@@ -16,8 +16,10 @@ namespace Shop3.Middleware
     // add nugget  : SkiaSharp
     // doc : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
     // pr : https://bitbucket.org/paddo-org/image-resizing/src/31ea28b72b21d2806851ec74c5a15e683a0bbd0e/src/ImageResizer/?at=master 
+    // https://docs.microsoft.com/vi-vn/aspnet/core/fundamentals/middleware/write?view=aspnetcore-2.2
     // crop ảnh để tối ưu tốc độ load trang
     // https://localhost:44385/uploaded/images/20190408/day-dan-guitar.jpg?w=865&h=448
+
     public class ImageResizerMiddleware
     {
         struct ResizeParams
@@ -231,7 +233,7 @@ namespace Shop3.Middleware
                             bitmap.SetPixel(original.Height - 1 - y, original.Width - 1 - x, original.GetPixel(x, y));
 
                     break;
-
+                    
                 case SKCodecOrigin.LeftTop:
 
                     for (var x = 0; x < original.Width; x++)

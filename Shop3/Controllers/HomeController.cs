@@ -28,6 +28,9 @@ namespace Shop3.Controllers
             _productCategoryService = productCategoryService;
         }
 
+        // responsecache : https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
+        //  response caching bản chất là viết lại các response header để trình duyệt hiểu được để trình duyệt hiểu được cache trong bao lâu
+        //[ResponseCache(CacheProfileName = "Default")] // get thông số trong startup
         public IActionResult Index()
         {
             

@@ -51,7 +51,7 @@ namespace Shop3
 
             #endregion lấy connection từ Configuration để migration
 
-            #region add identity + config identity
+            #region add identity + config identity,caching app
 
             //services.AddIdentity<AppUser,AppRole>() // sử dụng AppUser và AppRole tự tao ko dùng mặc định của Identity
             //  .AddDefaultUI(UIFramework.Bootstrap4)
@@ -60,6 +60,13 @@ namespace Shop3
             services.AddIdentity<AppUser, AppRole>()
                .AddEntityFrameworkStores<AppDbContext>()
                .AddDefaultTokenProviders();
+
+            // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory?view=aspnetcore-2.2
+            // thảm khảo thêm  : https://viblo.asia/p/lam-viec-voi-distributed-cache-trong-aspnet-core-m68Z0O69KkG
+            // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
+            services.AddMemoryCache(); // phù hợp với các ứng dụng vừa và nhỏ sử dụng 1 server
+
+           
 
             // Configure cơ chế  mặc định register user của Identity
             services.Configure<IdentityOptions>(options =>
@@ -149,10 +156,26 @@ namespace Shop3
 
             #endregion Add application services
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                // config lại object trả về khi respone trả về cho ajax
-                .AddJsonOptions(
-                      options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            services.AddMvc(options =>
+            { // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
+              //  response caching bản chất là viết lại các response header để trình duyệt hiểu được cache trong bao lâu
+              // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
+                options.CacheProfiles.Add("Default",
+                    new CacheProfile()
+                    {
+                        Duration = 60
+                    });
+                options.CacheProfiles.Add("Never",
+                    new CacheProfile()
+                    {
+                        Location = ResponseCacheLocation.None,
+                        NoStore = true
+                    });
+            })
+             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+             // config lại object trả về khi respone trả về cho ajax
+             .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
