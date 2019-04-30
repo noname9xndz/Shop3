@@ -1,5 +1,4 @@
-﻿/// <binding BeforeBuild='clean' Clean='clean' />
-
+﻿
 
 //https://docs.microsoft.com/en-us/aspnet/core/client-side/using-gulp?view=aspnetcore-2.2
 // bản chất là gộp + nén file js hoặc css của client và admin vào 1 file

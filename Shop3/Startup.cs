@@ -100,7 +100,8 @@ namespace Shop3
                 SiteKey = Configuration["Recaptcha:SiteKey"],
                 SecretKey = Configuration["Recaptcha:SecretKey"]
             });
-            
+
+            //nuget : automapper ,AutoMapper.Extensions.Microsoft.DependencyInjection
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
