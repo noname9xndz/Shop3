@@ -51,7 +51,7 @@ namespace Shop3
                   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                   o => o.MigrationsAssembly("Shop3.Data.EF"))); // add thêm options ko dùng project hiện tại mà dùng  Shop3.Data.EF
 
-            #endregion lấy connection từ Configuration để migration
+            #endregion 
 
             #region add identity + config identity,caching app,minifile
 
@@ -89,7 +89,7 @@ namespace Shop3
                 options.User.RequireUniqueEmail = true;
             });
 
-            #endregion add identity + config identity
+            #endregion 
 
             #region config cho  auto mapper ,captcha 
 
@@ -108,7 +108,7 @@ namespace Shop3
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
             
-            #endregion cofig cho  auto mapper
+            #endregion
 
             #region Add application services
 
@@ -168,7 +168,7 @@ namespace Shop3
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
-            #endregion Add application services
+            #endregion 
 
             services.AddMvc(options =>
             { // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
