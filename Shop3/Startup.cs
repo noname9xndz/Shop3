@@ -160,6 +160,7 @@ namespace Shop3
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
+            services.AddTransient<IPageService, PageService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
