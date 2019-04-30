@@ -58,7 +58,7 @@ namespace Shop3.Application.Implementation
         {
             //var bill = _orderRepository.FindById(billVm.Id);
             //billVm.DateCreated = bill.DateCreated;
-            billVm.DateModified = DateTime.Now;
+           // billVm.DateModified = DateTime.Now;
             //Mapping to order domain
             var order = Mapper.Map<BillViewModel, Bill>(billVm);
 

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
@@ -26,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bundleconfig.json" />
     <None Include="wwwroot\export-files\Bill_2.xlsx" />
     <None Include="wwwroot\export-files\Product_20190421033728.xlsx" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
@@ -43,6 +48,54 @@
     <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
     <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
     <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\flot\.gitignore" />
+    <None Include="wwwroot\lib\flot\.travis.yml" />
+    <None Include="wwwroot\lib\flot\API.md" />
+    <None Include="wwwroot\lib\flot\CONTRIBUTING.md" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\date.js" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\africa" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\antarctica" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\asia" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\australasia" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\backward" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\etcetera" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\europe" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\factory" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\iso3166.tab" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\leapseconds" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\northamerica" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\pacificnew" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\solar87" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\solar88" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\solar89" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\southamerica" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\systemv" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\yearistype.sh" />
+    <None Include="wwwroot\lib\flot\examples\axes-time-zones\tz\zone.tab" />
+    <None Include="wwwroot\lib\flot\excanvas.js" />
+    <None Include="wwwroot\lib\flot\excanvas.min.js" />
+    <None Include="wwwroot\lib\flot\FAQ.md" />
+    <None Include="wwwroot\lib\flot\jquery.colorhelpers.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.canvas.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.categories.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.crosshair.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.errorbars.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.fillbetween.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.image.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.navigate.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.pie.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.resize.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.selection.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.stack.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.symbol.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.threshold.js" />
+    <None Include="wwwroot\lib\flot\jquery.flot.time.js" />
+    <None Include="wwwroot\lib\flot\jquery.js" />
+    <None Include="wwwroot\lib\flot\Makefile" />
+    <None Include="wwwroot\lib\flot\NEWS.md" />
+    <None Include="wwwroot\lib\flot\PLUGINS.md" />
+    <None Include="wwwroot\lib\flot\README.md" />
     <None Include="wwwroot\lib\gentelella\js\custom.js" />
     <None Include="wwwroot\lib\gentelella\js\custom.min.js" />
     <None Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
@@ -228,6 +281,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Shop3.Application.Dapper\Shop3.Application.Dapper.csproj" />
     <ProjectReference Include="..\Shop3.Application\Shop3.Application.csproj" />
     <ProjectReference Include="..\Shop3.Data.EF\Shop3.Data.EF.csproj" />
     <ProjectReference Include="..\Shop3.Data\Shop3.Data.csproj" />

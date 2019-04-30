@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Shop3.Application.AutoMapper;
+using Shop3.Application.Dapper.Implementation;
+using Shop3.Application.Dapper.SqlCommands;
 using Shop3.Application.Implementation;
 using Shop3.Application.Interfaces;
 using Shop3.Authorization;
@@ -66,7 +68,7 @@ namespace Shop3
             // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
             services.AddMemoryCache(); // phù hợp với các ứng dụng vừa và nhỏ sử dụng 1 server
 
-            services.AddMinResponse(); // sử dụng middleware WebMarkupMin để nén file
+            //services.AddMinResponse(); // sử dụng middleware WebMarkupMin để nén file
 
 
             // Configure cơ chế  mặc định register user của Identity
@@ -161,6 +163,7 @@ namespace Shop3
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IPageService, PageService>();
+            services.AddTransient<IReportService, ReportService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
@@ -210,7 +213,7 @@ namespace Shop3
 
             app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
             app.UseStaticFiles(); // hạn chế các file nằm trong root đều không chạy qua middleware tiếp theo
-            app.UseMinResponse(); // sử dụng middleware WebMarkupMin để nén file
+            //app.UseMinResponse(); // sử dụng middleware WebMarkupMin để nén file
 
             app.UseCookiePolicy();
 
