@@ -1,0 +1,758 @@
+2019-05-01T02:19:54.1628225+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/   (ca22a1cb)
+2019-05-01T02:19:54.3153740+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2019-05-01T02:19:54.3738521+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-05-01T02:19:54.4415908+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "Shop3.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-05-01T02:19:54.4613926+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executing action method "Shop3.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-05-01T02:19:54.4951433+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-05-01T02:19:54.6345949+07:00 8000000c-0000-f600-b63f-84710c7967bb [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-05-01T02:19:54.9920875+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("143"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HomeOrder], [c].[Id], [c].[Image], [c].[Name], [c].[ParentId], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[SortOrder], [c].[Status]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-05-01T02:19:55.1570457+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("134"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[CategoryId], [c.Products].[Content], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Description], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[Id] AS [Id0], [c.Products].[Image], [c.Products].[Name], [c.Products].[OriginalPrice], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[SeoAlias], [c.Products].[SeoDescription], [c.Products].[SeoKeywords], [c.Products].[SeoPageTitle], [c.Products].[Status], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[ViewCount]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2019-05-01T02:19:55.3338615+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("59"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-05-01T02:19:55.3729183+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("24"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-05-01T02:19:55.4204154+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-05-01T02:19:55.4296692+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-05-01T02:19:55.4931863+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("28"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[ViewCount]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-05-01T02:19:55.5691651+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("67"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-05-01T02:19:55.5942905+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[GroupAlias], [x].[Id], [x].[Image], [x].[Name], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-05-01T02:19:55.6186270+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed action method "Shop3.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1135.6571ms. (50a9e262)
+2019-05-01T02:19:55.6619242+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-05-01T02:19:55.8334202+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-05-01T02:19:55.8475885+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-05-01T02:19:55.9129095+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-05-01T02:19:55.9192365+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-05-01T02:19:55.9354814+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-05-01T02:19:55.9668472+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-05-01T02:19:56.1861648+07:00 8000007a-0002-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/flag-default.jpg   (ca22a1cb)
+2019-05-01T02:19:56.1903778+07:00 8000004d-0001-e200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/style.css   (ca22a1cb)
+2019-05-01T02:19:56.2145238+07:00 8000007a-0001-e700-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2019-05-01T02:19:56.3331754+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed ViewResult - view "Index" executed in 589.8271ms. (f66409e9)
+2019-05-01T02:19:56.3405375+07:00 8000001b-0002-f800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/flag-english.jpg   (ca22a1cb)
+2019-05-01T02:19:56.3716777+07:00 80000044-0001-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/flag-german.jpg   (ca22a1cb)
+2019-05-01T02:19:56.3789577+07:00 8000007a-0002-ed00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/flag-default.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\flag-default.jpg"' (27b0a520)
+2019-05-01T02:19:56.3983723+07:00 8000007a-0001-e700-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2019-05-01T02:19:56.4052585+07:00 8000007a-0002-ed00-b63f-84710c7967bb [INF] Request finished in 210.0174ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:56.4126767+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed action "Shop3.Controllers.HomeController.Index (Shop3)" in 1941.0001ms (afa2e885)
+2019-05-01T02:19:56.4217582+07:00 8000007a-0001-e700-b63f-84710c7967bb [INF] Request finished in 228.4462ms 200 text/css (791a596a)
+2019-05-01T02:19:56.4245483+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-05-01T02:19:56.4320363+07:00 80000014-0000-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/logo.png   (ca22a1cb)
+2019-05-01T02:19:56.4593426+07:00 8000001b-0002-f800-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/flag-english.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\flag-english.jpg"' (27b0a520)
+2019-05-01T02:19:56.5199449+07:00 8000001b-0002-f800-b63f-84710c7967bb [INF] Request finished in 136.9745ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:56.5466035+07:00 8000000c-0000-f600-b63f-84710c7967bb [INF] Request finished in 2423.2591ms 200 text/html; charset=utf-8 (791a596a)
+2019-05-01T02:19:56.5699036+07:00 80000036-0000-d100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/slider/slide-1.jpg?w=865&h=448   (ca22a1cb)
+2019-05-01T02:19:56.5752180+07:00 8000001b-0000-f800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/flag-brazil.jpg   (ca22a1cb)
+2019-05-01T02:19:56.5904004+07:00 8000003a-0000-db00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/banner-left.jpg   (ca22a1cb)
+2019-05-01T02:19:56.6303689+07:00 80000036-0000-d100-b63f-84710c7967bb [INF] Resizing /client-side/images/slider/slide-1.jpg with params w: 865, h: 448, autorotate: False, quality: 100, format: jpg, mode: max (8a50e38b)
+2019-05-01T02:19:56.6327919+07:00 80000004-0000-fa00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-05-01T02:19:56.6503460+07:00 80000010-0000-ee00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/slider/slide-3.jpg?w=865&h=448   (ca22a1cb)
+2019-05-01T02:19:56.6938631+07:00 80000010-0000-ee00-b63f-84710c7967bb [INF] Resizing /client-side/images/slider/slide-3.jpg with params w: 865, h: 448, autorotate: False, quality: 100, format: jpg, mode: max (64964c2f)
+2019-05-01T02:19:56.6978290+07:00 80000034-0000-e900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/sub1.jpg   (ca22a1cb)
+2019-05-01T02:19:56.7137758+07:00 8000001e-0000-cd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/?w=153   (ca22a1cb)
+2019-05-01T02:19:56.7242406+07:00 8000000f-0000-f400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/products/product-1.jpg?w=153   (ca22a1cb)
+2019-05-01T02:19:56.7251846+07:00 8000001e-0000-cd00-b63f-84710c7967bb [INF] Resizing / with params w: 153, h: 0, autorotate: False, quality: 100, format: /, mode: max (68a41d8e)
+2019-05-01T02:19:56.7836207+07:00 8000000a-0000-dd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/slider/slide-2.jpg?w=865&h=448   (ca22a1cb)
+2019-05-01T02:19:56.7866115+07:00 8000000f-0000-f400-b63f-84710c7967bb [INF] Resizing /client-side/images/products/product-1.jpg with params w: 153, h: 0, autorotate: False, quality: 100, format: jpg, mode: max (53b70e21)
+2019-05-01T02:19:56.8648725+07:00 8000000a-0000-dd00-b63f-84710c7967bb [INF] Resizing /client-side/images/slider/slide-2.jpg with params w: 865, h: 448, autorotate: False, quality: 100, format: jpg, mode: max (007225c4)
+2019-05-01T02:19:57.0133458+07:00 8000000f-0000-f400-b63f-84710c7967bb [INF] Request finished in 281.7886ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.0211234+07:00 8000000c-0000-d000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/products/product-1.jpg?w=215   (ca22a1cb)
+2019-05-01T02:19:57.0321073+07:00 8000000c-0000-d000-b63f-84710c7967bb [INF] Resizing /client-side/images/products/product-1.jpg with params w: 215, h: 0, autorotate: False, quality: 100, format: jpg, mode: max (419bf0f1)
+2019-05-01T02:19:57.0339837+07:00 800000aa-0000-dc00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/flag-chile.jpg   (ca22a1cb)
+2019-05-01T02:19:57.0372042+07:00 80000044-0001-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/flag-german.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\flag-german.jpg"' (27b0a520)
+2019-05-01T02:19:57.0399116+07:00 80000022-0000-f500-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/flag-spain.jpg   (ca22a1cb)
+2019-05-01T02:19:57.0449917+07:00 80000044-0001-eb00-b63f-84710c7967bb [INF] Request finished in 703.44ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.0497175+07:00 80000014-0000-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/logo.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\logo.png"' (27b0a520)
+2019-05-01T02:19:57.0794484+07:00 80000014-0000-e100-b63f-84710c7967bb [INF] Request finished in 638.4438ms 200 image/png (791a596a)
+2019-05-01T02:19:57.0821614+07:00 8000004d-0001-e200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/style.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\style.css"' (27b0a520)
+2019-05-01T02:19:57.1868943+07:00 8000004d-0001-e200-b63f-84710c7967bb [INF] Request finished in 909.2811ms 200 text/css (791a596a)
+2019-05-01T02:19:57.1976808+07:00 8000000c-0000-d000-b63f-84710c7967bb [INF] Request finished in 85.8786ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.2109489+07:00 8000001b-0000-f800-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/flag-brazil.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\flag-brazil.jpg"' (27b0a520)
+2019-05-01T02:19:57.2128976+07:00 80000004-0000-fa00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/products/product-1.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\products\product-1.jpg"' (27b0a520)
+2019-05-01T02:19:57.2207803+07:00 8000003a-0000-db00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/banner-left.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\banner-left.jpg"' (27b0a520)
+2019-05-01T02:19:57.2245214+07:00 80000004-0000-fa00-b63f-84710c7967bb [INF] Request finished in 732.2987ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.2293181+07:00 8000001b-0000-f800-b63f-84710c7967bb [INF] Request finished in 668.6871ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.2301973+07:00 8000003a-0000-db00-b63f-84710c7967bb [INF] Request finished in 654.5833ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.3329080+07:00 80000034-0000-e900-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/sub1.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\sub1.jpg"' (27b0a520)
+2019-05-01T02:19:57.3350811+07:00 80000022-0000-f500-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/flag-spain.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\flag-spain.jpg"' (27b0a520)
+2019-05-01T02:19:57.3443053+07:00 80000034-0000-e900-b63f-84710c7967bb [INF] Request finished in 682.3142ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.3460350+07:00 80000022-0000-f500-b63f-84710c7967bb [INF] Request finished in 322.6453ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.3548424+07:00 800000aa-0000-dc00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/flag-chile.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\flag-chile.jpg"' (27b0a520)
+2019-05-01T02:19:57.3883460+07:00 8000006f-0001-dc00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/uploaded/images/20190408/day-dan-guitar.jpg?h=122   (ca22a1cb)
+2019-05-01T02:19:57.3894443+07:00 8000007c-0001-e700-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/sub1a.jpg   (ca22a1cb)
+2019-05-01T02:19:57.3931985+07:00 800000aa-0000-dc00-b63f-84710c7967bb [INF] Request finished in 336.491ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.4192116+07:00 8000006f-0001-dc00-b63f-84710c7967bb [INF] Resizing /uploaded/images/20190408/day-dan-guitar.jpg with params w: 0, h: 122, autorotate: False, quality: 100, format: jpg, mode: max (29e2edf4)
+2019-05-01T02:19:57.4427683+07:00 80000022-0001-f400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand1.png   (ca22a1cb)
+2019-05-01T02:19:57.4436630+07:00 8000001c-0001-de00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand2.png   (ca22a1cb)
+2019-05-01T02:19:57.4820446+07:00 8000000a-0001-e000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand3.png   (ca22a1cb)
+2019-05-01T02:19:57.4834595+07:00 8000002d-0001-e800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand4.png   (ca22a1cb)
+2019-05-01T02:19:57.5025952+07:00 8000000a-0001-dd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/bootstrap.min.js   (ca22a1cb)
+2019-05-01T02:19:57.5042850+07:00 80000045-0001-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/owl.carousel.min.js   (ca22a1cb)
+2019-05-01T02:19:57.5601280+07:00 8000000d-0001-ee00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/jquery-ui.js   (ca22a1cb)
+2019-05-01T02:19:57.5609948+07:00 8000006f-0001-dc00-b63f-84710c7967bb [INF] Request finished in 181.0361ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:57.5912595+07:00 80000008-0001-e400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/main.js   (ca22a1cb)
+2019-05-01T02:19:57.5921280+07:00 80000008-0001-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/countdown.js   (ca22a1cb)
+2019-05-01T02:19:57.6094524+07:00 80000032-0001-f000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/mobile-menu.js   (ca22a1cb)
+2019-05-01T02:19:57.6103967+07:00 8000007c-0002-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/revolution-slider.js   (ca22a1cb)
+2019-05-01T02:19:57.6139242+07:00 8000003b-0003-e700-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2019-05-01T02:19:57.6218007+07:00 8000004d-0003-ea00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2019-05-01T02:19:57.6239327+07:00 80000006-0003-f100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-app/shared/common.js   (ca22a1cb)
+2019-05-01T02:19:57.6282052+07:00 80000042-0003-ec00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/mustache/mustache.js   (ca22a1cb)
+2019-05-01T02:19:57.6341909+07:00 80000005-0001-f300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/js/jquery.min.js   (ca22a1cb)
+2019-05-01T02:19:57.6357485+07:00 80000006-0003-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand6.png   (ca22a1cb)
+2019-05-01T02:19:57.6469728+07:00 80000006-0003-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand7.png   (ca22a1cb)
+2019-05-01T02:19:57.6489494+07:00 80000045-0003-fd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand8.png   (ca22a1cb)
+2019-05-01T02:19:57.6567578+07:00 80000006-0003-ee00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand9.png   (ca22a1cb)
+2019-05-01T02:19:57.6579279+07:00 80000006-0003-f400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand10.png   (ca22a1cb)
+2019-05-01T02:19:57.6620554+07:00 80000006-0003-f500-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand11.png   (ca22a1cb)
+2019-05-01T02:19:57.6675406+07:00 80000035-0003-f800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/banner-sunglasses.jpg   (ca22a1cb)
+2019-05-01T02:19:57.6712486+07:00 80000006-0003-e300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/banner-kids.jpg   (ca22a1cb)
+2019-05-01T02:19:57.6739833+07:00 80000008-0003-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/banner-women.jpg   (ca22a1cb)
+2019-05-01T02:19:57.6827817+07:00 8000000a-0003-ef00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/banner-arrival.jpg   (ca22a1cb)
+2019-05-01T02:19:57.6920104+07:00 8000001e-0000-cd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.UnauthorizedAccessException: Access to the path 'E:\project\shop3\Shop3\wwwroot' is denied.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.OpenRead(String path)
+   at Shop3.Middleware.ImageResizerMiddleware.GetImageData(String imagePath, ResizeParams resizeParams, DateTime lastWriteTimeUtc) in E:\project\shop3\Shop3\Middleware\ImageResizerMiddleware.cs:line 136
+   at Shop3.Middleware.ImageResizerMiddleware.Invoke(HttpContext context) in E:\project\shop3\Shop3\Middleware\ImageResizerMiddleware.cs:line 105
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-05-01T02:19:57.6935743+07:00 80000010-0003-f900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/visa.png   (ca22a1cb)
+2019-05-01T02:19:57.7218230+07:00 80000006-0003-e500-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-app/controllers/base/index.js   (ca22a1cb)
+2019-05-01T02:19:57.7242226+07:00 80000008-0003-e200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-app/shared/slider.js?v=oV_egKs1DDDn4tvfHnXz8pVvXltwcsrIomLNWvdrvPw   (ca22a1cb)
+2019-05-01T02:19:57.7265065+07:00 80000014-0003-e400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/footer-logo.png   (ca22a1cb)
+2019-05-01T02:19:57.7730201+07:00 80000008-0003-e200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-app/shared/slider.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-app\shared\slider.js"' (27b0a520)
+2019-05-01T02:19:57.7769840+07:00 80000006-0003-e500-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-app/controllers/base/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-app\controllers\base\index.js"' (27b0a520)
+2019-05-01T02:19:57.8002562+07:00 80000028-0003-e900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/paypal.png   (ca22a1cb)
+2019-05-01T02:19:57.8083597+07:00 80000006-0003-e500-b63f-84710c7967bb [INF] Request finished in 85.1746ms 200 application/javascript (791a596a)
+2019-05-01T02:19:57.8166530+07:00 80000006-0003-e800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/master-card.png   (ca22a1cb)
+2019-05-01T02:19:57.8221866+07:00 80000008-0003-e200-b63f-84710c7967bb [INF] Request finished in 108.7189ms 200 application/javascript (791a596a)
+2019-05-01T02:19:57.8457669+07:00 80000067-0003-e600-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/brand5.png   (ca22a1cb)
+2019-05-01T02:19:57.8789562+07:00 80000006-0003-e000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/discover.png   (ca22a1cb)
+2019-05-01T02:19:57.8863962+07:00 8000004f-0001-e200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/pe-icon-7-stroke.min.css   (ca22a1cb)
+2019-05-01T02:19:57.8898572+07:00 80000046-0001-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/simple-line-icons.css   (ca22a1cb)
+2019-05-01T02:19:57.8943491+07:00 80000011-0000-f400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/animate.css   (ca22a1cb)
+2019-05-01T02:19:57.9010408+07:00 8000000e-0000-f600-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/font-awesome.min.css   (ca22a1cb)
+2019-05-01T02:19:57.9024033+07:00 80000004-0003-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/owl.transitions.css   (ca22a1cb)
+2019-05-01T02:19:57.9107454+07:00 80000004-0003-f000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/owl.carousel.css   (ca22a1cb)
+2019-05-01T02:19:57.9140899+07:00 80000004-0003-f300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/flexslider.css   (ca22a1cb)
+2019-05-01T02:19:57.9149892+07:00 80000087-0002-db00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/revolution-slider.css   (ca22a1cb)
+2019-05-01T02:19:57.9245884+07:00 80000016-0000-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/bootstrap.min.css   (ca22a1cb)
+2019-05-01T02:19:57.9304414+07:00 80000078-0002-d900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/blog.css   (ca22a1cb)
+2019-05-01T02:19:57.9329641+07:00 8000000e-0000-e000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/quick_view_popup.css   (ca22a1cb)
+2019-05-01T02:19:57.9487964+07:00 80000080-0001-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/shortcodes/pricing-table.css   (ca22a1cb)
+2019-05-01T02:19:57.9746519+07:00 80000018-0003-fa00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/shortcodes/featured-box.css   (ca22a1cb)
+2019-05-01T02:19:57.9811816+07:00 80000008-0001-df00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/shortcodes/shortcodes.css   (ca22a1cb)
+2019-05-01T02:19:57.9891127+07:00 8000001d-0002-f800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/jquery-ui.css   (ca22a1cb)
+2019-05-01T02:19:58.0143591+07:00 8000000c-0000-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/shortcodes/tooltip.css   (ca22a1cb)
+2019-05-01T02:19:58.0203595+07:00 80000008-0000-d900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/shortcodes/post.css   (ca22a1cb)
+2019-05-01T02:19:58.0291916+07:00 80000007-0002-f600-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/responsive.css   (ca22a1cb)
+2019-05-01T02:19:58.0689597+07:00 80000010-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/style.css   (ca22a1cb)
+2019-05-01T02:19:58.0811490+07:00 80000045-0002-da00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/css/shortcode.css   (ca22a1cb)
+2019-05-01T02:19:58.0830726+07:00 8000007c-0001-e700-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/sub1a.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\sub1a.jpg"' (27b0a520)
+2019-05-01T02:19:58.0926505+07:00 8000001c-0001-de00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand2.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand2.png"' (27b0a520)
+2019-05-01T02:19:58.0973397+07:00 8000007c-0001-e700-b63f-84710c7967bb [INF] Request finished in 732.1838ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.1186402+07:00 8000001c-0001-de00-b63f-84710c7967bb [INF] Request finished in 674.1698ms 200 image/png (791a596a)
+2019-05-01T02:19:58.1214296+07:00 8000002d-0001-e800-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand4.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand4.png"' (27b0a520)
+2019-05-01T02:19:58.1280114+07:00 8000000a-0001-e000-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand3.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand3.png"' (27b0a520)
+2019-05-01T02:19:58.1288856+07:00 8000002d-0001-e800-b63f-84710c7967bb [INF] Request finished in 644.1144ms 200 image/png (791a596a)
+2019-05-01T02:19:58.1433873+07:00 8000000a-0001-e000-b63f-84710c7967bb [INF] Request finished in 650.7425ms 200 image/png (791a596a)
+2019-05-01T02:19:58.1645681+07:00 8000000a-0001-dd00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/bootstrap.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\bootstrap.min.js"' (27b0a520)
+2019-05-01T02:19:58.1679848+07:00 80000045-0001-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/owl.carousel.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\owl.carousel.min.js"' (27b0a520)
+2019-05-01T02:19:58.1766633+07:00 8000000a-0001-dd00-b63f-84710c7967bb [INF] Request finished in 679.4092ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.1779905+07:00 80000008-0001-e400-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/main.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\main.js"' (27b0a520)
+2019-05-01T02:19:58.1893452+07:00 80000008-0001-e400-b63f-84710c7967bb [INF] Request finished in 595.5629ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.1912652+07:00 80000045-0001-f200-b63f-84710c7967bb [INF] Request finished in 682.8201ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.2026649+07:00 80000008-0001-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/countdown.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\countdown.js"' (27b0a520)
+2019-05-01T02:19:58.2160894+07:00 80000042-0003-ec00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2019-05-01T02:19:58.2240828+07:00 80000008-0001-e100-b63f-84710c7967bb [INF] Request finished in 618.5008ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.2362667+07:00 80000042-0003-ec00-b63f-84710c7967bb [INF] Request finished in 596.1381ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.2705358+07:00 80000045-0003-fd00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand8.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand8.png"' (27b0a520)
+2019-05-01T02:19:58.2734897+07:00 80000006-0003-ed00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand7.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand7.png"' (27b0a520)
+2019-05-01T02:19:58.2825186+07:00 80000045-0003-fd00-b63f-84710c7967bb [INF] Request finished in 632.6009ms 200 image/png (791a596a)
+2019-05-01T02:19:58.2834921+07:00 80000006-0003-ed00-b63f-84710c7967bb [INF] Request finished in 639.33ms 200 image/png (791a596a)
+2019-05-01T02:19:58.2869240+07:00 8000001e-0000-cd00-b63f-84710c7967bb [INF] Request finished in 1586.2649ms 500 text/html; charset=utf-8 (791a596a)
+2019-05-01T02:19:58.3072210+07:00 80000032-0001-f000-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/mobile-menu.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\mobile-menu.js"' (27b0a520)
+2019-05-01T02:19:58.3102315+07:00 80000006-0003-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand6.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand6.png"' (27b0a520)
+2019-05-01T02:19:58.3176481+07:00 80000006-0003-f400-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand10.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand10.png"' (27b0a520)
+2019-05-01T02:19:58.3209042+07:00 80000032-0001-f000-b63f-84710c7967bb [INF] Request finished in 709.0096ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.3248116+07:00 80000006-0003-eb00-b63f-84710c7967bb [INF] Request finished in 680.6888ms 200 image/png (791a596a)
+2019-05-01T02:19:58.3328941+07:00 80000006-0003-f400-b63f-84710c7967bb [INF] Request finished in 668.5128ms 200 image/png (791a596a)
+2019-05-01T02:19:58.3435796+07:00 8000003b-0003-e700-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2019-05-01T02:19:58.3454365+07:00 80000006-0003-ee00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand9.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand9.png"' (27b0a520)
+2019-05-01T02:19:58.3521322+07:00 8000003b-0003-e700-b63f-84710c7967bb [INF] Request finished in 742.5896ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.3551952+07:00 80000006-0003-ee00-b63f-84710c7967bb [INF] Request finished in 695.5532ms 200 image/png (791a596a)
+2019-05-01T02:19:58.3745938+07:00 8000004d-0003-ea00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2019-05-01T02:19:58.3852986+07:00 80000035-0003-f800-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/banner-sunglasses.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\banner-sunglasses.jpg"' (27b0a520)
+2019-05-01T02:19:58.3826513+07:00 80000006-0003-e300-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/banner-kids.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\banner-kids.jpg"' (27b0a520)
+2019-05-01T02:19:58.3974927+07:00 8000004d-0003-ea00-b63f-84710c7967bb [INF] Request finished in 763.5931ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.4072043+07:00 80000035-0003-f800-b63f-84710c7967bb [INF] Request finished in 725.3777ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.4097717+07:00 80000006-0003-e300-b63f-84710c7967bb [INF] Request finished in 721.8991ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.4381832+07:00 80000006-0003-f100-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-app/shared/common.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-app\shared\common.js"' (27b0a520)
+2019-05-01T02:19:58.4436585+07:00 80000008-0003-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/banner-women.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\banner-women.jpg"' (27b0a520)
+2019-05-01T02:19:58.4475633+07:00 80000010-0003-f900-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/visa.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\visa.png"' (27b0a520)
+2019-05-01T02:19:58.4529410+07:00 80000006-0003-f100-b63f-84710c7967bb [INF] Request finished in 821.9628ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.4610107+07:00 80000008-0003-e100-b63f-84710c7967bb [INF] Request finished in 779.4733ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.4646640+07:00 80000010-0003-f900-b63f-84710c7967bb [INF] Request finished in 768.7968ms 200 image/png (791a596a)
+2019-05-01T02:19:58.4802087+07:00 80000006-0003-f500-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand11.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand11.png"' (27b0a520)
+2019-05-01T02:19:58.4813275+07:00 8000000a-0003-ef00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/banner-arrival.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\banner-arrival.jpg"' (27b0a520)
+2019-05-01T02:19:58.4923199+07:00 8000000a-0003-ef00-b63f-84710c7967bb [INF] Request finished in 812.723ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.5003208+07:00 80000014-0003-e400-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/footer-logo.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\footer-logo.png"' (27b0a520)
+2019-05-01T02:19:58.5049693+07:00 80000006-0003-f500-b63f-84710c7967bb [INF] Request finished in 825.5296ms 200 image/png (791a596a)
+2019-05-01T02:19:58.5171166+07:00 80000014-0003-e400-b63f-84710c7967bb [INF] Request finished in 822.5093ms 200 image/png (791a596a)
+2019-05-01T02:19:58.5212447+07:00 80000028-0003-e900-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/paypal.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\paypal.png"' (27b0a520)
+2019-05-01T02:19:58.5284491+07:00 80000022-0001-f400-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand1.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand1.png"' (27b0a520)
+2019-05-01T02:19:58.5313083+07:00 80000028-0003-e900-b63f-84710c7967bb [INF] Request finished in 757.0721ms 200 image/png (791a596a)
+2019-05-01T02:19:58.5466785+07:00 80000010-0000-ee00-b63f-84710c7967bb [INF] Request finished in 1902.4536ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.5483433+07:00 8000000a-0000-dd00-b63f-84710c7967bb [INF] Request finished in 1885.0952ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.5501579+07:00 80000036-0000-d100-b63f-84710c7967bb [INF] Request finished in 1986.6387ms 200 image/jpeg (791a596a)
+2019-05-01T02:19:58.5598182+07:00 80000022-0001-f400-b63f-84710c7967bb [INF] Request finished in 1110.0686ms 200 image/png (791a596a)
+2019-05-01T02:19:58.5648734+07:00 80000006-0003-e800-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/master-card.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\master-card.png"' (27b0a520)
+2019-05-01T02:19:58.5668151+07:00 80000067-0003-e600-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/brand5.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\brand5.png"' (27b0a520)
+2019-05-01T02:19:58.5774609+07:00 80000067-0003-e600-b63f-84710c7967bb [INF] Request finished in 752.7943ms 200 image/png (791a596a)
+2019-05-01T02:19:58.5791434+07:00 80000006-0003-e800-b63f-84710c7967bb [INF] Request finished in 801.365ms 200 image/png (791a596a)
+2019-05-01T02:19:58.5799910+07:00 80000006-0003-e000-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/discover.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\discover.png"' (27b0a520)
+2019-05-01T02:19:58.6000365+07:00 8000000e-0000-f600-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/font-awesome.min.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\font-awesome.min.css"' (27b0a520)
+2019-05-01T02:19:58.6019184+07:00 80000046-0001-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/simple-line-icons.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\simple-line-icons.css"' (27b0a520)
+2019-05-01T02:19:58.6124074+07:00 8000000e-0000-f600-b63f-84710c7967bb [INF] Request finished in 710.1916ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6141272+07:00 80000046-0001-eb00-b63f-84710c7967bb [INF] Request finished in 724.1526ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6165121+07:00 80000006-0003-e000-b63f-84710c7967bb [INF] Request finished in 768.2598ms 200 image/png (791a596a)
+2019-05-01T02:19:58.6332100+07:00 80000004-0003-f000-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/owl.carousel.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\owl.carousel.css"' (27b0a520)
+2019-05-01T02:19:58.6361876+07:00 80000087-0002-db00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/revolution-slider.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\revolution-slider.css"' (27b0a520)
+2019-05-01T02:19:58.6441211+07:00 80000078-0002-d900-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/blog.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\blog.css"' (27b0a520)
+2019-05-01T02:19:58.6463918+07:00 80000004-0003-f000-b63f-84710c7967bb [INF] Request finished in 731.7531ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6473166+07:00 80000087-0002-db00-b63f-84710c7967bb [INF] Request finished in 730.8575ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6572272+07:00 80000078-0002-d900-b63f-84710c7967bb [INF] Request finished in 728.3434ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6642827+07:00 8000000e-0000-e000-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/quick_view_popup.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\quick_view_popup.css"' (27b0a520)
+2019-05-01T02:19:58.6667217+07:00 80000080-0001-ed00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/shortcodes/pricing-table.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\shortcodes\pricing-table.css"' (27b0a520)
+2019-05-01T02:19:58.6727772+07:00 80000004-0003-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/owl.transitions.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\owl.transitions.css"' (27b0a520)
+2019-05-01T02:19:58.6768010+07:00 80000004-0003-f300-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/flexslider.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\flexslider.css"' (27b0a520)
+2019-05-01T02:19:58.6799144+07:00 80000080-0001-ed00-b63f-84710c7967bb [INF] Request finished in 728.702ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6871451+07:00 80000004-0003-f300-b63f-84710c7967bb [INF] Request finished in 772.4526ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6897478+07:00 80000004-0003-f200-b63f-84710c7967bb [INF] Request finished in 778.1712ms 200 text/css (791a596a)
+2019-05-01T02:19:58.6968547+07:00 80000011-0000-f400-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/animate.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\animate.css"' (27b0a520)
+2019-05-01T02:19:58.7070570+07:00 80000018-0003-fa00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/shortcodes/featured-box.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\shortcodes\featured-box.css"' (27b0a520)
+2019-05-01T02:19:58.7087698+07:00 80000011-0000-f400-b63f-84710c7967bb [INF] Request finished in 869.5506ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7153786+07:00 80000018-0003-fa00-b63f-84710c7967bb [INF] Request finished in 768.3156ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7175481+07:00 8000001d-0002-f800-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/jquery-ui.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\jquery-ui.css"' (27b0a520)
+2019-05-01T02:19:58.7340687+07:00 8000001d-0002-f800-b63f-84710c7967bb [INF] Request finished in 796.3874ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7366520+07:00 8000000c-0000-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/shortcodes/tooltip.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\shortcodes\tooltip.css"' (27b0a520)
+2019-05-01T02:19:58.7387948+07:00 80000008-0000-d900-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/shortcodes/post.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\shortcodes\post.css"' (27b0a520)
+2019-05-01T02:19:58.7550099+07:00 8000000c-0000-eb00-b63f-84710c7967bb [INF] Request finished in 749.0191ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7596018+07:00 80000008-0000-d900-b63f-84710c7967bb [INF] Request finished in 751.157ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7679904+07:00 80000007-0002-f600-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/responsive.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\responsive.css"' (27b0a520)
+2019-05-01T02:19:58.7734673+07:00 8000000e-0000-e000-b63f-84710c7967bb [INF] Request finished in 743.1196ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7952692+07:00 80000045-0002-da00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/shortcode.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\shortcode.css"' (27b0a520)
+2019-05-01T02:19:58.7971818+07:00 80000007-0002-f600-b63f-84710c7967bb [INF] Request finished in 757.3342ms 200 text/css (791a596a)
+2019-05-01T02:19:58.7990021+07:00 8000004f-0001-e200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/pe-icon-7-stroke.min.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\pe-icon-7-stroke.min.css"' (27b0a520)
+2019-05-01T02:19:58.8063116+07:00 80000045-0002-da00-b63f-84710c7967bb [INF] Request finished in 727.8544ms 200 text/css (791a596a)
+2019-05-01T02:19:58.8083334+07:00 8000004f-0001-e200-b63f-84710c7967bb [INF] Request finished in 921.1486ms 200 text/css (791a596a)
+2019-05-01T02:19:58.9613002+07:00 8000000d-0001-ee00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/jquery-ui.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\jquery-ui.js"' (27b0a520)
+2019-05-01T02:19:58.9684181+07:00 8000000d-0001-ee00-b63f-84710c7967bb [INF] Request finished in 1456.0604ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.9694487+07:00 8000007c-0002-ed00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/revolution-slider.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\revolution-slider.js"' (27b0a520)
+2019-05-01T02:19:58.9788506+07:00 8000007c-0002-ed00-b63f-84710c7967bb [INF] Request finished in 1369.3296ms 200 application/javascript (791a596a)
+2019-05-01T02:19:58.9861179+07:00 80000005-0001-f300-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/js/jquery.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\js\jquery.min.js"' (27b0a520)
+2019-05-01T02:19:58.9928231+07:00 80000005-0001-f300-b63f-84710c7967bb [INF] Request finished in 1360.4681ms 200 application/javascript (791a596a)
+2019-05-01T02:19:59.0151058+07:00 80000010-0000-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/style.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\style.css"' (27b0a520)
+2019-05-01T02:19:59.0214614+07:00 80000008-0001-df00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/shortcodes/shortcodes.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\shortcodes\shortcodes.css"' (27b0a520)
+2019-05-01T02:19:59.0237507+07:00 80000016-0000-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/css/bootstrap.min.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\css\bootstrap.min.css"' (27b0a520)
+2019-05-01T02:19:59.0291349+07:00 80000008-0001-df00-b63f-84710c7967bb [INF] Request finished in 1082.7717ms 200 text/css (791a596a)
+2019-05-01T02:19:59.0322549+07:00 80000016-0000-e100-b63f-84710c7967bb [INF] Request finished in 1107.9607ms 200 text/css (791a596a)
+2019-05-01T02:19:59.0350586+07:00 80000010-0000-f200-b63f-84710c7967bb [INF] Request finished in 1010.3154ms 200 text/css (791a596a)
+2019-05-01T02:19:59.3082762+07:00 8000000a-0001-df00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/images/bg_text_des.png   (ca22a1cb)
+2019-05-01T02:19:59.3543530+07:00 8000000a-0001-df00-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/images/bg_text_des.png"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\images\bg_text_des.png"' (27b0a520)
+2019-05-01T02:19:59.3603353+07:00 8000000a-0001-df00-b63f-84710c7967bb [INF] Request finished in 55.3846ms 200 image/png (791a596a)
+2019-05-01T02:19:59.5867089+07:00 80000018-0000-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2?v=2.4.0   (ca22a1cb)
+2019-05-01T02:19:59.5941497+07:00 80000012-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/client-side/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-05-01T02:19:59.6527160+07:00 80000018-0000-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2"' (27b0a520)
+2019-05-01T02:19:59.7086230+07:00 80000012-0000-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/client-side/fonts/font-awesome/fontawesome-webfont.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2"' (27b0a520)
+2019-05-01T02:19:59.7129901+07:00 80000018-0000-e100-b63f-84710c7967bb [INF] Request finished in 98.6048ms 200 font/woff2 (791a596a)
+2019-05-01T02:19:59.7285060+07:00 80000012-0000-f200-b63f-84710c7967bb [INF] Request finished in 128.1745ms 200 font/woff2 (791a596a)
+2019-05-01T02:20:00.7542607+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/   (ca22a1cb)
+2019-05-01T02:20:00.7810566+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2019-05-01T02:20:00.7880549+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-05-01T02:20:00.7964995+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "Shop3.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-05-01T02:20:00.8184327+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executing action method "Shop3.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-05-01T02:20:00.8223785+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-05-01T02:20:00.8333611+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HomeOrder], [c].[Id], [c].[Image], [c].[Name], [c].[ParentId], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[SortOrder], [c].[Status]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-05-01T02:20:00.8457291+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[CategoryId], [c.Products].[Content], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Description], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[Id] AS [Id0], [c.Products].[Image], [c.Products].[Name], [c.Products].[OriginalPrice], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[SeoAlias], [c.Products].[SeoDescription], [c.Products].[SeoKeywords], [c.Products].[SeoPageTitle], [c.Products].[Status], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[ViewCount]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2019-05-01T02:20:00.8542198+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-05-01T02:20:00.8671922+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-05-01T02:20:00.8801361+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], CASE
+    WHEN [x].[CategoryId] IS NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[DateCreated] AS [DateCreated0], [x.ProductCategory].[DateModified] AS [DateModified0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[ParentId], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x].[PromotionPrice], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoDescription] AS [SeoDescription0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[Status] AS [Status0], [x].[Tags], [x].[Unit], [x].[ViewCount], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-05-01T02:20:00.8884758+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[ViewCount]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-05-01T02:20:00.9008029+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Id], [x].[Image], [x].[Name], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[ViewCount]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-05-01T02:20:00.9129227+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-05-01T02:20:00.9191873+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[GroupAlias], [x].[Id], [x].[Image], [x].[Name], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-05-01T02:20:00.9248521+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed action method "Shop3.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 100.9113ms. (50a9e262)
+2019-05-01T02:20:00.9317662+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-05-01T02:20:00.9392764+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-05-01T02:20:00.9508255+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-05-01T02:20:00.9622159+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Id], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-05-01T02:20:00.9676423+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[CategoryId], [x.Products].[Content], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Description], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[Id] AS [Id0], [x.Products].[Image], [x.Products].[Name], [x.Products].[OriginalPrice], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[SeoAlias], [x.Products].[SeoDescription], [x.Products].[SeoKeywords], [x.Products].[SeoPageTitle], [x.Products].[Status], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[ViewCount]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-05-01T02:20:00.9823648+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed ViewResult - view "Index" executed in 52.8833ms. (f66409e9)
+2019-05-01T02:20:00.9865765+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed action "Shop3.Controllers.HomeController.Index (Shop3)" in 186.0256ms (afa2e885)
+2019-05-01T02:20:00.9966918+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-05-01T02:20:01.0010627+07:00 8000001a-0003-fa00-b63f-84710c7967bb [INF] Request finished in 245.7931ms 200 text/html; charset=utf-8 (791a596a)
+2019-05-01T02:20:02.8397546+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/admin   (ca22a1cb)
+2019-05-01T02:20:02.8434162+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2019-05-01T02:20:02.8525353+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (500cc934)
+2019-05-01T02:20:02.8703265+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" (a44c0341)
+2019-05-01T02:20:02.8778465+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-05-01T02:20:02.8816443+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.2818ms. (50a9e262)
+2019-05-01T02:20:02.8918728+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-05-01T02:20:02.9329797+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executed ViewResult - view "Index" executed in 41.5869ms. (f66409e9)
+2019-05-01T02:20:02.9395705+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)" in 63.3038ms (afa2e885)
+2019-05-01T02:20:03.0797656+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Index (Shop3)"' (99874f2b)
+2019-05-01T02:20:03.1081799+07:00 8000001c-0003-fa00-b63f-84710c7967bb [INF] Request finished in 247.7147ms 200 text/html; charset=utf-8 (791a596a)
+2019-05-01T02:20:03.1101036+07:00 8000000a-0000-d900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/animate.css/animate.css   (ca22a1cb)
+2019-05-01T02:20:03.1606444+07:00 80000006-0003-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/jquery-validation/dist/localization/messages_vi.js   (ca22a1cb)
+2019-05-01T02:20:03.1961353+07:00 80000007-0001-f300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/jquery/dist/jquery.js   (ca22a1cb)
+2019-05-01T02:20:03.1986092+07:00 80000006-0003-f300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2019-05-01T02:20:03.2677773+07:00 80000010-0000-e000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/nprogress/nprogress.css   (ca22a1cb)
+2019-05-01T02:20:03.2996394+07:00 8000000f-0001-ee00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/jquery-validation/dist/additional-methods.js   (ca22a1cb)
+2019-05-01T02:20:03.3126992+07:00 8000000a-0000-d900-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/animate.css/animate.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\animate.css\animate.css"' (27b0a520)
+2019-05-01T02:20:03.3497360+07:00 80000051-0001-e200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js   (ca22a1cb)
+2019-05-01T02:20:03.3538520+07:00 8000000a-0000-d900-b63f-84710c7967bb [INF] Request finished in 274.4651ms 200 text/css (791a596a)
+2019-05-01T02:20:03.3693601+07:00 80000010-0000-e000-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2019-05-01T02:20:03.3728986+07:00 8000000f-0001-ee00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/jquery-validation/dist/additional-methods.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation\dist\additional-methods.js"' (27b0a520)
+2019-05-01T02:20:03.3815083+07:00 80000010-0000-e000-b63f-84710c7967bb [INF] Request finished in 324.8332ms 200 text/css (791a596a)
+2019-05-01T02:20:03.3839686+07:00 8000000f-0001-ee00-b63f-84710c7967bb [INF] Request finished in 330.1029ms 200 application/javascript (791a596a)
+2019-05-01T02:20:03.4077060+07:00 80000051-0001-e200-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation-unobtrusive\src\jquery.validate.unobtrusive.js"' (27b0a520)
+2019-05-01T02:20:03.4105508+07:00 80000014-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2019-05-01T02:20:03.4329499+07:00 80000051-0001-e200-b63f-84710c7967bb [INF] Request finished in 364.0254ms 200 application/javascript (791a596a)
+2019-05-01T02:20:03.4425939+07:00 8000000c-0001-df00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/admin-side/css/custom.css   (ca22a1cb)
+2019-05-01T02:20:03.4649836+07:00 8000001a-0000-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2019-05-01T02:20:03.4762457+07:00 80000007-0001-f300-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2019-05-01T02:20:03.4791978+07:00 80000014-0000-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2019-05-01T02:20:03.5034694+07:00 80000007-0001-f300-b63f-84710c7967bb [INF] Request finished in 437.7728ms 200 application/javascript (791a596a)
+2019-05-01T02:20:03.5070802+07:00 80000014-0000-f200-b63f-84710c7967bb [INF] Request finished in 434.2335ms 200 text/css (791a596a)
+2019-05-01T02:20:03.5209255+07:00 8000000e-0000-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/bundled/site-admin.min.js   (ca22a1cb)
+2019-05-01T02:20:03.5632546+07:00 8000001a-0000-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2019-05-01T02:20:03.6204554+07:00 8000000c-0001-df00-b63f-84710c7967bb [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2019-05-01T02:20:03.6746631+07:00 8000001a-0000-e100-b63f-84710c7967bb [INF] Request finished in 469.8098ms 200 text/css (791a596a)
+2019-05-01T02:20:03.6963238+07:00 8000000e-0000-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/bundled/site-admin.min.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\bundled\site-admin.min.js"' (27b0a520)
+2019-05-01T02:20:03.7003509+07:00 8000000c-0001-df00-b63f-84710c7967bb [INF] Request finished in 526.9881ms 200 text/css (791a596a)
+2019-05-01T02:20:03.7077224+07:00 8000000e-0000-eb00-b63f-84710c7967bb [INF] Request finished in 603.7537ms 200 application/javascript (791a596a)
+2019-05-01T02:20:03.7177876+07:00 80000006-0003-f300-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2019-05-01T02:20:03.7289081+07:00 80000006-0003-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/jquery-validation/dist/localization/messages_vi.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-validation\dist\localization\messages_vi.js"' (27b0a520)
+2019-05-01T02:20:03.7310525+07:00 80000006-0003-f300-b63f-84710c7967bb [INF] Request finished in 680.9382ms 200 application/javascript (791a596a)
+2019-05-01T02:20:03.7423444+07:00 80000006-0003-f200-b63f-84710c7967bb [INF] Request finished in 649.1142ms 200 application/javascript (791a596a)
+2019-05-01T02:20:03.8811389+07:00 8000007e-0002-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-05-01T02:20:03.9803652+07:00 8000007e-0002-ed00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2019-05-01T02:20:03.9836825+07:00 8000007e-0002-ed00-b63f-84710c7967bb [INF] Request finished in 109.4446ms 200 font/woff2 (791a596a)
+2019-05-01T02:20:05.0638587+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 POST https://localhost:44385/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 30 (ca22a1cb)
+2019-05-01T02:20:05.0693680+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2019-05-01T02:20:05.0771239+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)"' (500cc934)
+2019-05-01T02:20:05.1115633+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"Authen\", controller = \"Login\"}". Executing action "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" (a44c0341)
+2019-05-01T02:20:05.1724594+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" with arguments (["Shop3.Models.AccountViewModels.LoginViewModel"]) - Validation state: Valid (4e3479ed)
+2019-05-01T02:20:06.6988883+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-05-01T02:20:06.8303946+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("12"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-05-01T02:20:07.0755855+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-05-01T02:20:07.1233135+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("11"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-05-01T02:20:07.1452668+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-05-01T02:20:07.1753989+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-05-01T02:20:07.1819310+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-05-01T02:20:07.1879121+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-05-01T02:20:07.1926149+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-05-01T02:20:07.1975832+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-05-01T02:20:07.2039388+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-05-01T02:20:07.2197390+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2019-05-01T02:20:07.2267721+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] User logged in. (fdce0db4)
+2019-05-01T02:20:07.2322687+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 2056.7184ms. (50a9e262)
+2019-05-01T02:20:07.2439036+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executing ObjectResult, writing value of type '"Shop3.Utilities.Dtos.GenericResult"'. (8a1b66c8)
+2019-05-01T02:20:07.2930926+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)" in 2177.2654ms (afa2e885)
+2019-05-01T02:20:07.2964776+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.LoginController.Authen (Shop3)"' (99874f2b)
+2019-05-01T02:20:07.3001551+07:00 80000010-0000-eb00-b63f-84710c7967bb [INF] Request finished in 2236.7457ms 200 application/json; charset=utf-8 (791a596a)
+2019-05-01T02:20:07.3197728+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/Admin/Home/Index   (ca22a1cb)
+2019-05-01T02:20:07.3390795+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)"' (500cc934)
+2019-05-01T02:20:07.3450020+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" (a44c0341)
+2019-05-01T02:20:07.3792999+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:07.3849248+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" - Validation state: Valid (dad538d7)
+2019-05-01T02:20:07.3937594+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 3.0395ms. (50a9e262)
+2019-05-01T02:20:07.4018148+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-05-01T02:20:07.4171978+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Entity Framework Core "2.2.3-servicing-35854" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=Shop3.Data.EF " (9958f5bb)
+2019-05-01T02:20:07.6950574+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed DbCommand ("210"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AspNetRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin', N'Staff', N'Customer') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-05-01T02:20:07.7151062+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:07.7452629+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed DbCommand ("7"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AspNetRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin', N'Staff', N'Customer') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanCreate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-05-01T02:20:07.7493287+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:07.7665163+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed DbCommand ("7"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AspNetRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin', N'Staff', N'Customer') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-05-01T02:20:07.7699456+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:07.7868170+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed DbCommand ("6"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AspNetRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin', N'Staff', N'Customer') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanDelete] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-05-01T02:20:07.7907794+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:07.8891556+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed DbCommand ("58"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[IconCss], [x].[Id], [x].[Name], [x].[ParentId], [x].[SortOrder], [x].[Status], [x].[URL]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-05-01T02:20:08.2273198+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed ViewResult - view "Index" executed in 719.6488ms. (f66409e9)
+2019-05-01T02:20:08.2615758+07:00 80000012-0000-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2019-05-01T02:20:08.2628714+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)" in 882.5015ms (afa2e885)
+2019-05-01T02:20:08.2763172+07:00 8000001c-0000-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2019-05-01T02:20:08.2913235+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.Index (Shop3)"' (99874f2b)
+2019-05-01T02:20:08.3011738+07:00 80000012-0000-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2019-05-01T02:20:08.3033937+07:00 80000008-0003-f300-b63f-84710c7967bb [INF] Request finished in 978.6613ms 200 text/html; charset=utf-8 (791a596a)
+2019-05-01T02:20:08.3860043+07:00 80000012-0000-eb00-b63f-84710c7967bb [INF] Request finished in 104.5051ms 200 text/css (791a596a)
+2019-05-01T02:20:08.4154287+07:00 8000001c-0000-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2019-05-01T02:20:08.4186657+07:00 8000000a-0003-f300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2019-05-01T02:20:08.4205667+07:00 80000008-0003-e000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/twbs-pagination/jquery.twbsPagination.js   (ca22a1cb)
+2019-05-01T02:20:08.4420146+07:00 80000016-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/admin-side/images/img.jpg   (ca22a1cb)
+2019-05-01T02:20:08.4531002+07:00 8000001c-0000-e100-b63f-84710c7967bb [INF] Request finished in 218.6915ms 200 text/css (791a596a)
+2019-05-01T02:20:08.4656971+07:00 80000012-0003-f900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/ckeditor/ckeditor.js   (ca22a1cb)
+2019-05-01T02:20:08.4680598+07:00 8000000c-0003-ef00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2019-05-01T02:20:08.4704315+07:00 8000002a-0003-e900-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/jquery-sparkline/dist/jquery.sparkline.js   (ca22a1cb)
+2019-05-01T02:20:08.4753702+07:00 80000016-0003-e400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/moment/moment.js   (ca22a1cb)
+2019-05-01T02:20:08.5425644+07:00 8000000a-0003-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/bootbox/src/bootbox.js   (ca22a1cb)
+2019-05-01T02:20:08.5445210+07:00 80000008-0003-e800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/Chart.js/dist/Chart.js   (ca22a1cb)
+2019-05-01T02:20:08.5525395+07:00 8000001e-0003-fa00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2019-05-01T02:20:08.5641718+07:00 80000008-0003-f500-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot/jquery.flot.js   (ca22a1cb)
+2019-05-01T02:20:08.6108050+07:00 80000008-0003-f400-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot/jquery.flot.pie.js   (ca22a1cb)
+2019-05-01T02:20:08.6448735+07:00 80000037-0003-f800-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/admin-side/js/custom.js?v=s5tpxqq3KXonilOxX1_CyjKfJsi09UmoVS6c_rNiUO8   (ca22a1cb)
+2019-05-01T02:20:08.6476727+07:00 80000008-0003-ee00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot/jquery.flot.time.js   (ca22a1cb)
+2019-05-01T02:20:08.6607054+07:00 80000047-0003-fd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot/jquery.flot.stack.js   (ca22a1cb)
+2019-05-01T02:20:08.6630127+07:00 80000008-0003-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot/jquery.flot.resize.js   (ca22a1cb)
+2019-05-01T02:20:08.7825364+07:00 8000000a-0003-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/bootbox/src/bootbox.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootbox\src\bootbox.js"' (27b0a520)
+2019-05-01T02:20:08.7922817+07:00 80000008-0003-ed00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot/jquery.flot.resize.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot\jquery.flot.resize.js"' (27b0a520)
+2019-05-01T02:20:08.7976868+07:00 8000000a-0003-e100-b63f-84710c7967bb [INF] Request finished in 309.6241ms 200 application/javascript (791a596a)
+2019-05-01T02:20:08.8124278+07:00 80000008-0003-ed00-b63f-84710c7967bb [INF] Request finished in 145.7006ms 200 application/javascript (791a596a)
+2019-05-01T02:20:08.8163367+07:00 8000001e-0003-fa00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/fastclick/lib/fastclick.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\fastclick\lib\fastclick.js"' (27b0a520)
+2019-05-01T02:20:08.8992496+07:00 80000008-0003-ee00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot/jquery.flot.time.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot\jquery.flot.time.js"' (27b0a520)
+2019-05-01T02:20:08.9312464+07:00 8000001e-0003-fa00-b63f-84710c7967bb [INF] Request finished in 344.4422ms 200 application/javascript (791a596a)
+2019-05-01T02:20:08.9926306+07:00 80000008-0003-ee00-b63f-84710c7967bb [INF] Request finished in 337.1979ms 200 application/javascript (791a596a)
+2019-05-01T02:20:08.9938360+07:00 80000008-0003-f400-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot/jquery.flot.pie.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot\jquery.flot.pie.js"' (27b0a520)
+2019-05-01T02:20:09.0042877+07:00 80000008-0003-f400-b63f-84710c7967bb [INF] Request finished in 442.5716ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.0119115+07:00 80000016-0003-e400-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/moment/moment.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\moment\moment.js"' (27b0a520)
+2019-05-01T02:20:09.0216432+07:00 80000016-0003-e400-b63f-84710c7967bb [INF] Request finished in 553.7266ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.0243415+07:00 8000002a-0003-e900-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.js"' (27b0a520)
+2019-05-01T02:20:09.0352313+07:00 80000008-0003-f500-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot/jquery.flot.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot\jquery.flot.js"' (27b0a520)
+2019-05-01T02:20:09.0385749+07:00 8000002a-0003-e900-b63f-84710c7967bb [INF] Request finished in 570.7182ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.0472379+07:00 8000000a-0003-f300-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2019-05-01T02:20:09.0606222+07:00 8000001e-0000-e100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2019-05-01T02:20:09.0633340+07:00 8000000a-0003-f300-b63f-84710c7967bb [INF] Request finished in 677.2968ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.0670119+07:00 80000008-0003-f500-b63f-84710c7967bb [INF] Request finished in 485.7052ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.0999826+07:00 8000000c-0003-ef00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.js"' (27b0a520)
+2019-05-01T02:20:09.1063010+07:00 80000037-0003-f800-b63f-84710c7967bb [INF] Sending file. Request path: '"/admin-side/js/custom.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\js\custom.js"' (27b0a520)
+2019-05-01T02:20:09.1091965+07:00 8000001e-0000-e100-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2019-05-01T02:20:09.1178034+07:00 80000037-0003-f800-b63f-84710c7967bb [INF] Request finished in 566.5434ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.1246468+07:00 8000001e-0000-e100-b63f-84710c7967bb [INF] Request finished in 63.9578ms 200 font/woff2 (791a596a)
+2019-05-01T02:20:09.2105731+07:00 80000008-0003-e800-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/Chart.js/dist/Chart.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\Chart.js\dist\Chart.js"' (27b0a520)
+2019-05-01T02:20:09.2141932+07:00 8000000c-0003-ef00-b63f-84710c7967bb [INF] Request finished in 640.9767ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.2295519+07:00 80000008-0003-e800-b63f-84710c7967bb [INF] Request finished in 735.2599ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.2365026+07:00 80000016-0000-f200-b63f-84710c7967bb [INF] Sending file. Request path: '"/admin-side/images/img.jpg"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\admin-side\images\img.jpg"' (27b0a520)
+2019-05-01T02:20:09.2425768+07:00 80000008-0003-e000-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/twbs-pagination/jquery.twbsPagination.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\twbs-pagination\jquery.twbsPagination.js"' (27b0a520)
+2019-05-01T02:20:09.2640440+07:00 80000016-0000-f200-b63f-84710c7967bb [INF] Request finished in 1039.3817ms 200 image/jpeg (791a596a)
+2019-05-01T02:20:09.2669432+07:00 80000008-0003-e000-b63f-84710c7967bb [INF] Request finished in 839.4611ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.2772739+07:00 80000012-0003-f900-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/ckeditor/ckeditor.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\ckeditor\ckeditor.js"' (27b0a520)
+2019-05-01T02:20:09.2926019+07:00 80000012-0003-f900-b63f-84710c7967bb [INF] Request finished in 823.0598ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.2948333+07:00 80000047-0003-fd00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot/jquery.flot.stack.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot\jquery.flot.stack.js"' (27b0a520)
+2019-05-01T02:20:09.3021100+07:00 80000006-0003-f000-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/nprogress/nprogress.js   (ca22a1cb)
+2019-05-01T02:20:09.3089477+07:00 80000047-0003-fd00-b63f-84710c7967bb [INF] Request finished in 646.8754ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.3286614+07:00 80000008-0003-e300-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/app/shared/common.js?v=a_PqDyDAmudQ0sHtNjGTW-5E-u_W-TquJ0uwolHXHyE   (ca22a1cb)
+2019-05-01T02:20:09.3408202+07:00 8000003d-0003-e700-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/app/controllers/home/index.js?v=Z9HBZRyVYmfSi5MU3Nq7OXKnJkPY3lcH3DIq-Z0Aptc   (ca22a1cb)
+2019-05-01T02:20:09.3486270+07:00 80000044-0003-ec00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot.curvedlines/curvedLines.js?v=rdhejGEK_RhuDXdu91zOgTnl0obYjXm-uN4Ae29aTm4   (ca22a1cb)
+2019-05-01T02:20:09.3609261+07:00 80000006-0003-f000-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/nprogress/nprogress.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\nprogress\nprogress.js"' (27b0a520)
+2019-05-01T02:20:09.3638865+07:00 80000008-0003-e300-b63f-84710c7967bb [INF] Sending file. Request path: '"/app/shared/common.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\shared\common.js"' (27b0a520)
+2019-05-01T02:20:09.3726369+07:00 80000006-0003-f000-b63f-84710c7967bb [INF] Request finished in 697.3194ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.3745778+07:00 80000008-0003-e300-b63f-84710c7967bb [INF] Request finished in 699.5147ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.4151440+07:00 80000044-0003-ec00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot.curvedlines/curvedLines.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot.curvedlines\curvedLines.js"' (27b0a520)
+2019-05-01T02:20:09.4265504+07:00 8000003d-0003-e700-b63f-84710c7967bb [INF] Sending file. Request path: '"/app/controllers/home/index.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\app\controllers\home\index.js"' (27b0a520)
+2019-05-01T02:20:09.5124841+07:00 80000044-0003-ec00-b63f-84710c7967bb [INF] Request finished in 750.9609ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.5416131+07:00 8000003d-0003-e700-b63f-84710c7967bb [INF] Request finished in 762.2425ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.5693846+07:00 80000069-0003-e600-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/DateJS/build/date.js?v=qwISptMFDuLp8tilZ-yzLUsjYAhNjEfhayy1AIO0lkM   (ca22a1cb)
+2019-05-01T02:20:09.5755351+07:00 80000008-0003-eb00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot.orderbars/examples/js/flot/flot.js?v=93VU6mgHpF9Jy7PmhR4hilVomF4fLhpkqA3vTeji6ts   (ca22a1cb)
+2019-05-01T02:20:09.5797485+07:00 80000008-0003-f100-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/lib/flot-spline/js/jquery.flot.spline.js?v=tEYfRH3xX5ahhosi6xt8It8l4dBK4x8moD7_0xM2hyI   (ca22a1cb)
+2019-05-01T02:20:09.6414491+07:00 80000069-0003-e600-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/DateJS/build/date.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\DateJS\build\date.js"' (27b0a520)
+2019-05-01T02:20:09.6454352+07:00 80000008-0003-eb00-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot.orderbars/examples/js/flot/flot.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot.orderbars\examples\js\flot\flot.js"' (27b0a520)
+2019-05-01T02:20:09.6573855+07:00 80000069-0003-e600-b63f-84710c7967bb [INF] Request finished in 978.3835ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.6603369+07:00 80000008-0003-eb00-b63f-84710c7967bb [INF] Request finished in 986.8762ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.6892580+07:00 80000008-0003-f100-b63f-84710c7967bb [INF] Sending file. Request path: '"/lib/flot-spline/js/jquery.flot.spline.js"'. Physical path: '"E:\project\shop3\Shop3\wwwroot\lib\flot-spline\js\jquery.flot.spline.js"' (27b0a520)
+2019-05-01T02:20:09.6949692+07:00 80000008-0003-f100-b63f-84710c7967bb [INF] Request finished in 1026.5066ms 200 application/javascript (791a596a)
+2019-05-01T02:20:09.8032910+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/Admin/Home/GetRevenue   (ca22a1cb)
+2019-05-01T02:20:09.9894627+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (500cc934)
+2019-05-01T02:20:10.0125014+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" (a44c0341)
+2019-05-01T02:20:10.0240473+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:10.0406779+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" with arguments (["", ""]) - Validation state: Valid (4e3479ed)
+2019-05-01T02:20:12.3330246+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 2288.9812ms. (50a9e262)
+2019-05-01T02:20:12.3372411+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.Dapper.ViewModels.RevenueReportViewModel, Shop3.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-05-01T02:20:12.3448215+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" in 2327.1651ms (afa2e885)
+2019-05-01T02:20:12.3487607+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (99874f2b)
+2019-05-01T02:20:12.3523377+07:00 80000018-0000-f200-b63f-84710c7967bb [INF] Request finished in 2584.2956ms 200 application/json; charset=utf-8 (791a596a)
+2019-05-01T02:20:17.0757492+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/Admin/Home/GetRevenue?fromDate=05%2F01%2F2019&toDate=05%2F01%2F2019   (ca22a1cb)
+2019-05-01T02:20:17.0804228+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (500cc934)
+2019-05-01T02:20:17.0849573+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" (a44c0341)
+2019-05-01T02:20:17.0916757+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:17.0962119+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" with arguments (["05/01/2019", "05/01/2019"]) - Validation state: Valid (4e3479ed)
+2019-05-01T02:20:18.4931289+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 1387.9405ms. (50a9e262)
+2019-05-01T02:20:18.4975921+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.Dapper.ViewModels.RevenueReportViewModel, Shop3.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-05-01T02:20:18.5035322+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" in 1412.8538ms (afa2e885)
+2019-05-01T02:20:18.5102342+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (99874f2b)
+2019-05-01T02:20:18.5147515+07:00 8000001a-0000-f200-b63f-84710c7967bb [INF] Request finished in 1440.8813ms 200 application/json; charset=utf-8 (791a596a)
+2019-05-01T02:20:24.0106795+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/Admin/Home/GetRevenue?fromDate=04%2F25%2F2019&toDate=05%2F01%2F2019   (ca22a1cb)
+2019-05-01T02:20:24.0157335+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (500cc934)
+2019-05-01T02:20:24.0199476+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" (a44c0341)
+2019-05-01T02:20:24.0241327+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:24.0300970+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" with arguments (["04/25/2019", "05/01/2019"]) - Validation state: Valid (4e3479ed)
+2019-05-01T02:20:26.0114586+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 1977.4071ms. (50a9e262)
+2019-05-01T02:20:26.0154988+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.Dapper.ViewModels.RevenueReportViewModel, Shop3.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-05-01T02:20:26.0580802+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" in 2011.9072ms (afa2e885)
+2019-05-01T02:20:26.0629507+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (99874f2b)
+2019-05-01T02:20:26.0682812+07:00 8000001c-0000-f200-b63f-84710c7967bb [INF] Request finished in 2058.9658ms 200 application/json; charset=utf-8 (791a596a)
+2019-05-01T02:20:32.7095998+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44385/Admin/Home/GetRevenue?fromDate=04%2F02%2F2019&toDate=05%2F01%2F2019   (ca22a1cb)
+2019-05-01T02:20:32.7141921+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Executing endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (500cc934)
+2019-05-01T02:20:32.7188055+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" (a44c0341)
+2019-05-01T02:20:32.7229175+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Authorization was successful. (0d575a54)
+2019-05-01T02:20:32.7295075+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Executing action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" with arguments (["04/02/2019", "05/01/2019"]) - Validation state: Valid (4e3479ed)
+2019-05-01T02:20:34.0772277+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Executed action method "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 1343.7255ms. (50a9e262)
+2019-05-01T02:20:34.0807744+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[Shop3.Application.Dapper.ViewModels.RevenueReportViewModel, Shop3.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-05-01T02:20:34.0870866+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Executed action "Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)" in 1362.3175ms (afa2e885)
+2019-05-01T02:20:34.0919846+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Executed endpoint '"Shop3.Areas.Admin.Controllers.HomeController.GetRevenue (Shop3)"' (99874f2b)
+2019-05-01T02:20:34.0965848+07:00 80000080-0002-ed00-b63f-84710c7967bb [INF] Request finished in 1390.2942ms 200 application/json; charset=utf-8 (791a596a)

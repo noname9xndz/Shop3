@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Interfaces;
 
@@ -9,6 +10,7 @@ using Shop3.Application.Interfaces;
 
 namespace Shop3.WebApi.Controllers
 {
+    [Authorize]
     //  https://localhost:44303/swagger
     public class ProductController : ApiController
     {
