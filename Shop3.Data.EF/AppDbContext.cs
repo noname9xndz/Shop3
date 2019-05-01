@@ -89,7 +89,8 @@ namespace Shop3.Data.EF
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
 
-            base.OnModelCreating(builder);
+            // fix lỗi lengh id không trùng
+            //base.OnModelCreating(builder); // comment lại để OnModelCreating ko chạy creating model mặc định mà ghi đè theo cách của ta
         }
         // ghi đè phương thức SaveChanges để mỗi lần save thằng nào kế thừa IDateTracking sẽ tự động update DateCreated và DateModified 
         public override int SaveChanges()

@@ -149,7 +149,8 @@ namespace Shop3
             services.AddTransient<IEmailSender,EmailSender>(); // send mail to user
             services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
 
-            services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
+            services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
+
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
 
             //services.AddTransient<IFunctionRepository, FunctionRepository>(); register Repository nếu dùng

@@ -10,6 +10,7 @@ using System.Text;
 namespace Shop3.Data.EF
 {
     // chỉ đối tượng nào kế thừa từ domainEntity có thể sử dụng các phương thức thức trong EFRepository 
+    // truy vấn nào chỉ đọc(ko dùng cho thêm sửa xóa) có thể dùng .AsNoTracking() để tăng tốc độ
     public class EFRepository<T, K> : IRepository<T, K>, IDisposable where T : DomainEntity<K>
     {
         private readonly AppDbContext _context;

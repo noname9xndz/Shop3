@@ -17,9 +17,10 @@ namespace Shop3
         public static void Main(string[] args)
         {
             // CreateWebHostBuilder(args).Build().Run();
-
+           
             var host = CreateWebHostBuilder(args).Build();
 
+            // custom lại để chạy seed() trong DbInitializer
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider; // lấy các service trong startup(ConfigureServices)

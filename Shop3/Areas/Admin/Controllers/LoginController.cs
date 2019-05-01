@@ -36,7 +36,7 @@ namespace Shop3.Areas.Admin.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Authen(LoginViewModel model)
         {
             if (ModelState.IsValid)
