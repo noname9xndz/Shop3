@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Shop3.Application.AutoMapper;
@@ -24,6 +27,8 @@ using Shop3.Helpers;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Services;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace Shop3
 {
@@ -187,9 +192,29 @@ namespace Shop3
                     });
             })
              .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-             // config lại object trả về khi respone trả về cho ajax
+             // đa ngôn ngữ bằng CookieRequestCultureProvider nuget : Microsoft.AspNetCore.Mvc.Localization
+             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, opts => { opts.ResourcesPath = "Resources"; })
+             .AddDataAnnotationsLocalization() // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
+              // config lại object trả về khi respone trả về cho ajax
              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-                
+
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; }); // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
+
+            services.Configure<RequestLocalizationOptions>(
+              opts =>
+              {
+                  var supportedCultures = new List<CultureInfo>
+                  {
+                        new CultureInfo("en-US"),
+                        new CultureInfo("vi-VN")
+                  };
+
+                  opts.DefaultRequestCulture = new RequestCulture("en-US"); // mặc định English
+                  // Formatting numbers, dates, etc.
+                  opts.SupportedCultures = supportedCultures;
+                  // UI strings that we have localized.
+                  opts.SupportedUICultures = supportedCultures;
+              });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -220,6 +245,10 @@ namespace Shop3
 
             app.UseAuthentication();
             app.UseSession(); //nuget Microsoft.AspNetCore.Session
+
+            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>(); // nuget : Microsoft.AspNetCore.Mvc.Localization
+            app.UseRequestLocalization(options.Value); //  // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

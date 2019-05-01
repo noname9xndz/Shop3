@@ -18,8 +18,8 @@ var BaseController = function () {
                     size: 1
                 },
                 success: function (response) {
-                   // common.notify(resources["AddCartOK"], 'success');
-                    common.notify('Product was added to cart', 'success');
+                   // common.notify('Product was added to cart', 'success');
+                    common.notify(resources["AddCartOK"], 'success'); // đa ngôn ngữ truy cập dạng key value
                     loadHeaderCart();
                 }
             });
@@ -35,8 +35,8 @@ var BaseController = function () {
                     productId: id
                 },
                 success: function (response) {
-                    common.notify('Product was removed', 'success');
-                   // common.notify(resources["RemoveCartOK"], 'success');
+                    //common.notify('Product was removed', 'success');
+                   common.notify(resources["RemoveCartOK"], 'success');
                     loadHeaderCart();
                 }
             });
