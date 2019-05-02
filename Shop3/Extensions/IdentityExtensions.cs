@@ -1,18 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Shop3.Extensions
 {
     public static class IdentityExtensions
     {
-
+        // get tt tin từ claim
         public static string GetSpecificClaim(this ClaimsPrincipal claimsPrincipal, string claimType)
         {
             var claim = claimsPrincipal.Claims.FirstOrDefault(x => x.Type == claimType);
             return (claim != null) ? claim.Value : string.Empty;
+        }
+
+        // get tt user thông qua claim UserId trong Shop3.Helpers.CustomClaimsPrincipalFactory
+        public static Guid GetUserId(this ClaimsPrincipal claimsPrincipal)
+        {
+            var claim = ((ClaimsIdentity)claimsPrincipal.Identity).Claims.Single(x => x.Type == "UserId"); // ép kiểu về claimsIdentity query đến type = UserId lúc login
+            return Guid.Parse(claim.Value);
         }
     }
 }

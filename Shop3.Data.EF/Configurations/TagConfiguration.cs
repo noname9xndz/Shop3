@@ -15,10 +15,9 @@ namespace Shop3.Data.EF.Configurations
         // config lại thuộc tính của đối tượng Id trong bảng Tag về dạng varchar("50")
         public override void Configure(EntityTypeBuilder<Tag> entity)
         {
-            // 1 trong 2 cách
+            
             entity.Property(c => c.Id).HasMaxLength(50).IsRequired().IsUnicode(false).HasMaxLength(50);
 
-          // hoặc  entity.Property(c => c.Id).HasMaxLength(50).IsRequired().HasColumnType("varchar(50)");
         }
     }
 }

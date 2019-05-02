@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +25,7 @@ using Shop3.Extensions;
 using Shop3.Helpers;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Services;
+using Shop3.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -56,7 +56,9 @@ namespace Shop3
                   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                   o => o.MigrationsAssembly("Shop3.Data.EF"))); // add thêm options ko dùng project hiện tại mà dùng  Shop3.Data.EF
 
-            #endregion 
+            #endregion lấy connection từ Configuration để migration
+
+
 
             #region add identity + config identity,caching app,minifile
 
@@ -70,11 +72,10 @@ namespace Shop3
 
             // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory?view=aspnetcore-2.2
             // thảm khảo thêm  : https://viblo.asia/p/lam-viec-voi-distributed-cache-trong-aspnet-core-m68Z0O69KkG
-            // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
+            // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory
             services.AddMemoryCache(); // phù hợp với các ứng dụng vừa và nhỏ sử dụng 1 server
 
             //services.AddMinResponse(); // sử dụng middleware WebMarkupMin để nén file
-
 
             // Configure cơ chế  mặc định register user của Identity
             services.Configure<IdentityOptions>(options =>
@@ -94,9 +95,11 @@ namespace Shop3
                 options.User.RequireUniqueEmail = true;
             });
 
-            #endregion 
+            #endregion add identity + config identity,caching app,minifile
 
-            #region config cho  auto mapper ,captcha 
+
+
+            #region config cho  auto mapper ,captcha
 
             // https://github.com/PaulMiami/reCAPTCHA/wiki/Getting-started , config key appsetting
             // https://www.google.com/recaptcha/admin register key
@@ -112,8 +115,8 @@ namespace Shop3
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
-            
-            #endregion
+
+            #endregion config cho  auto mapper ,captcha
 
             #region Add application services
 
@@ -125,17 +128,18 @@ namespace Shop3
                 options.Cookie.HttpOnly = true; //1 cookies có được truy cập bởi client script ko
             });
 
-            services.AddImageResizer(); // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
+            services.AddImageResizer(); // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/
             services.AddAutoMapper();  // nuget : AutoMapper.Extensions.Microsoft.DependencyInjection
             services.AddAuthentication() // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/?view=aspnetcore-2.2&tabs=visual-studio
                 .AddFacebook(facebookOpts =>
                 {
-                    // config login bằng fb ,gg 
+                    // config login bằng fb ,gg
                     // tham khảo  : https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/other-logins?view=aspnetcore-2.2
                     facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
                     facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 })
-                .AddGoogle(googleOpts => {
+                .AddGoogle(googleOpts =>
+                {
                     googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
                     googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
@@ -146,7 +150,7 @@ namespace Shop3
             services.AddSingleton(Mapper.Configuration); // nuget : automapper
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
-            services.AddTransient<IEmailSender,EmailSender>(); // send mail to user
+            services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
             services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
 
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
@@ -165,7 +169,7 @@ namespace Shop3
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IBillService, BillService>();
-            services.AddTransient<ICommonService,CommonService>();
+            services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
@@ -174,12 +178,14 @@ namespace Shop3
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
-            #endregion 
+            #endregion Add application services
+
+
 
             services.AddMvc(options =>
             { // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
               //  response caching bản chất là viết lại các response header để trình duyệt hiểu được cache trong bao lâu
-              // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory 
+              // cache output bằng HTTP-based response caching , cache dữ liệu : bằng distributed hoặc memory
                 options.CacheProfiles.Add("Default",
                     new CacheProfile()
                     {
@@ -196,10 +202,19 @@ namespace Shop3
              // đa ngôn ngữ bằng CookieRequestCultureProvider nuget : Microsoft.AspNetCore.Mvc.Localization
              .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, opts => { opts.ResourcesPath = "Resources"; })
              .AddDataAnnotationsLocalization() // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
-              // config lại object trả về khi respone trả về cho ajax
+                                               // config lại object trả về khi respone trả về cho ajax
              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; }); // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                { // config SignalR
+                    builder.AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .WithOrigins("https://localhost:44385") // chỉ chop phép domain của ta truy cập
+                        .AllowCredentials();
+                }));
 
             services.Configure<RequestLocalizationOptions>(
               opts =>
@@ -216,6 +231,8 @@ namespace Shop3
                   // UI strings that we have localized.
                   opts.SupportedUICultures = supportedCultures;
               });
+
+            services.AddSignalR(); // config SignalR
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -238,17 +255,23 @@ namespace Shop3
             // các middlerware sẽ chạy từ trên xuống dưới
             app.UseHttpsRedirection();
 
-            app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/ 
+            app.UseImageResizer();  // extension using ImageResizerMiddleware để crop ảnh tối ưu hóa load trang  : https://www.paddo.org/asp-net-core-image-resizing-middleware/
             app.UseStaticFiles(); // hạn chế các file nằm trong root đều không chạy qua middleware tiếp theo
             //app.UseMinResponse(); // sử dụng middleware WebMarkupMin để nén file
 
-            app.UseCookiePolicy();
+            app.UseCookiePolicy(); // các quyền sử dụng cookies cho người dùng bảo vệ thông tin người dùng
 
             app.UseAuthentication();
             app.UseSession(); //nuget Microsoft.AspNetCore.Session
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>(); // nuget : Microsoft.AspNetCore.Mvc.Localization
             app.UseRequestLocalization(options.Value); //  // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
+
+            app.UseCors("CorsPolicy"); // config SignalR
+            app.UseSignalR(routes =>
+            {// config SignalR nuget : Microsoft.AspNetCore.SignalR
+                routes.MapHub<Shop3Hub>("/Shop3Hub");
+            });
 
             app.UseMvc(routes =>
             {

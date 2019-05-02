@@ -79,6 +79,7 @@ namespace Shop3.Data.EF
 
             #endregion Identity Config
 
+            // gọi riêng các thằng  đã được cofig lại thuộc tính
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new BlogTagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());
@@ -89,8 +90,8 @@ namespace Shop3.Data.EF
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
 
-            // fix lỗi lengh id không trùng
-            //base.OnModelCreating(builder); // comment lại để OnModelCreating ko chạy creating model mặc định mà ghi đè theo cách của ta
+            // fix lỗi length id không trùng => comment lại để OnModelCreating ko chạy creating model mặc định mà ghi đè theo cách của ta
+            base.OnModelCreating(builder); 
         }
         // ghi đè phương thức SaveChanges để mỗi lần save thằng nào kế thừa IDateTracking sẽ tự động update DateCreated và DateModified 
         public override int SaveChanges()

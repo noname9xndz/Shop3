@@ -9,7 +9,6 @@ using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Shop3.Application.Implementation
@@ -34,13 +33,16 @@ namespace Shop3.Application.Implementation
                 DateCreated = DateTime.Now,
                 PhoneNumber = userVm.PhoneNumber
             };
+
+            //var mailUser = await _userManager.FindByEmailAsync(user.Email);
+            //var phoneUser = await _userManager.Users.Where(x => x.PhoneNumber == userVm.PhoneNumber).AnyAsync();
+            //if ( mailUser == null && phoneUser == false)
+            //{
             var result = await _userManager.CreateAsync(user, userVm.Password);
-            var mailUser = await _userManager.FindByEmailAsync(user.Email);
-            var phoneUser = await _userManager.Users.Where(x => x.PhoneNumber == userVm.PhoneNumber).AnyAsync();
-            if (result.Succeeded && userVm.Roles.Count > 0 && mailUser != null && phoneUser == false)
+            if (result.Succeeded && userVm.Roles.Count > 0)
             {
                 var appUser = await _userManager.FindByNameAsync(user.UserName);
-                
+
                 if (appUser != null)
                 {
                     await _userManager.AddToRolesAsync(appUser, userVm.Roles);
@@ -56,8 +58,14 @@ namespace Shop3.Application.Implementation
             {
                 return false;
             }
-            
-                
+
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+
         }
 
         public async Task DeleteAsync(string id)

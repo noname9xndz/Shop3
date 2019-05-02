@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Shop3.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -17,13 +14,14 @@ namespace Shop3.Helpers
          * lần login
          Claims được lưu dưới dang key(text) - value
              */
-        UserManager<AppUser> _userManger;
+        private UserManager<AppUser> _userManger;
 
-        public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager,RoleManager<AppRole> roleManager, IOptions<IdentityOptions> options)
+        public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IOptions<IdentityOptions> options)
                            : base(userManager, roleManager, options)
         {
             _userManger = userManager;
         }
+
         // ghi đè phương thức ClaimsPrincipal gắn thêm thông tin khi user đăng nhập ,nhớ rigter trong startup
         public async override Task<ClaimsPrincipal> CreateAsync(AppUser user)
         {
@@ -34,6 +32,7 @@ namespace Shop3.Helpers
             {
                 // add thông tin cần thêm vào claim
                 new Claim(ClaimTypes.NameIdentifier,user.UserName),
+
                 new Claim("Email",user.Email),
                 new Claim("FullName",user.FullName),
                 new Claim("Avatar",user.Avatar??string.Empty),
