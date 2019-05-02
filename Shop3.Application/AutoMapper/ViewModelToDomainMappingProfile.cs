@@ -54,10 +54,10 @@ namespace Shop3.Application.AutoMapper
              .ConstructUsing(c => new Page(c.Id, c.Name, c.Alias, c.Content, c.Status));
 
 
-            CreateMap<AnnouncementViewModel, Announcement>()
+           CreateMap<AnnouncementViewModel, Announcement>()
                 .ConstructUsing(c => new Announcement(c.Title, c.Content, c.UserId, c.Status));
 
-            CreateMap<AnnouncementUserViewModel, AnnouncementUser>()
+           CreateMap<AnnouncementUserViewModel, AnnouncementUser>()
                 .ConstructUsing(c => new AnnouncementUser(c.AnnouncementId, c.UserId, c.HasRead));
         }
     }

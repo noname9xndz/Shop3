@@ -1,10 +1,14 @@
 ﻿
 var RoleController = function () {
     var self = this;
+    var announcementObj = new AnnouncementController();
+   
 
     this.initialize = function () {
         loadData();
         registerEvents();
+        announcementObj.initialize();
+
     }
 
     function registerEvents() {

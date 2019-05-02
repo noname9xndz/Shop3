@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.SignalR;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
+using Shop3.Extensions;
+using Shop3.SignalR;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -13,10 +16,12 @@ namespace Shop3.Areas.Admin.Controllers
     public class RoleController : BaseController
     {
         private readonly IRoleService _roleService;
+        private readonly IHubContext<Shop3Hub> _hubContext; // SignalR
 
-        public RoleController(IRoleService roleService)
+        public RoleController(IRoleService roleService, IHubContext<Shop3Hub> hubContext)
         {
             _roleService = roleService;
+            _hubContext = hubContext;
         }
         public IActionResult Index()
         {
@@ -54,7 +59,23 @@ namespace Shop3.Areas.Admin.Controllers
             }
             if (!roleVm.Id.HasValue)
             {
-                await _roleService.AddAsync(roleVm);
+                var notificationId = Guid.NewGuid().ToString();
+                var announcement = new AnnouncementViewModel()
+                {
+                    Title = "Role created",
+                    DateCreated = DateTime.Now,
+                    Content = $"Role {roleVm.Name} has been created",
+                    Id = notificationId,
+                    UserId = User.GetUserId()
+                };
+                var announcementUsers = new List<AnnouncementUserViewModel>()
+                {
+                    new AnnouncementUserViewModel(){AnnouncementId = notificationId,HasRead = false,UserId = User.GetUserId()}
+                };
+                await _roleService.AddAsync(announcement, announcementUsers, roleVm);
+
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement); // gửi cho tất cả vừa gửi vào db và client
+                // _hubContext.Clients. ....
             }
             else
             {

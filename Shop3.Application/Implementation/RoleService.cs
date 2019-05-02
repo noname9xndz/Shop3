@@ -22,20 +22,40 @@ namespace Shop3.Application.Implementation
         private RoleManager<AppRole> _roleManager;
         private IRepository<Function, string> _functionRepository;
         private IRepository<Permission, int> _permissionRepository;
+        private IRepository<Announcement, string> _announRepository;
+        private IRepository<AnnouncementUser, int> _announUserRepository;
 
         private IUnitOfWork _unitOfWork;
 
         public RoleService(RoleManager<AppRole> roleManager,IUnitOfWork unitOfWork,
          IRepository<Function, string> functionRepository,
-         IRepository<Permission, int> permissionRepository)
+         IRepository<Permission, int> permissionRepository,
+         IRepository<Announcement, string> announRepository,
+         IRepository<AnnouncementUser, int> announUserRepository)
         {
             _unitOfWork = unitOfWork;
             _roleManager = roleManager;
             _functionRepository = functionRepository;
             _permissionRepository = permissionRepository;
+            _announRepository = announRepository;
+            _announUserRepository = announUserRepository;
         }
 
-        public async Task<bool> AddAsync(AppRoleViewModel roleVm)
+        //public async Task<bool> AddAsync(AppRoleViewModel roleVm)
+        //{
+        //    var role = new AppRole()
+        //    {
+        //        Name = roleVm.Name,
+        //        Description = roleVm.Description
+        //    };
+        //    var result = await _roleManager.CreateAsync(role);
+        //    return result.Succeeded;
+
+
+        //}
+
+        public async Task<bool> AddAsync(AnnouncementViewModel announcementVm,
+            List<AnnouncementUserViewModel> ListannouncementUsers, AppRoleViewModel roleVm)
         {
             var role = new AppRole()
             {
@@ -43,6 +63,16 @@ namespace Shop3.Application.Implementation
                 Description = roleVm.Description
             };
             var result = await _roleManager.CreateAsync(role);
+
+            // tạo thông báo
+            var announcement = Mapper.Map<AnnouncementViewModel, Announcement>(announcementVm);
+            _announRepository.Add(announcement);
+            foreach (var userVm in ListannouncementUsers)
+            {
+                var user = Mapper.Map<AnnouncementUserViewModel, AnnouncementUser>(userVm);
+                _announUserRepository.Add(user);
+            }
+            _unitOfWork.Commit();
             return result.Succeeded;
         }
 

@@ -10,7 +10,8 @@ namespace Shop3.Application.Interfaces
     public interface IRoleService
     {
         // thư viện usermanger chỉ dùng những phương thức dạng bất đồng bộ
-        Task<bool> AddAsync(AppRoleViewModel userVm);
+        //Task<bool> AddAsync(AppRoleViewModel userVm);
+        Task<bool> AddAsync(AnnouncementViewModel announcement, List<AnnouncementUserViewModel> announcementUsers, AppRoleViewModel userVm);
 
         Task DeleteAsync(Guid id);
 

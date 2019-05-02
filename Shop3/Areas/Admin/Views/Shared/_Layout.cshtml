@@ -43,7 +43,7 @@
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
-                            <a href="/admin/home" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                            <a href="/admin/home" class="site_title"><i class="fa fa-paw"></i> <span>Noname Shop</span></a>
                         </div>
                         <div class="clearfix"></div>
                         <!-- menu profile quick info -->
@@ -95,70 +95,19 @@
 
 
                                 </li>
-                                <li role="presentation" class="dropdown">
+
+                                <li role="presentation" id="announcementArea" class="dropdown">
                                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                         <i class="fa fa-envelope-o"></i>
-                                        <span class="badge bg-green">6</span>
+
+                                        <span class="badge bg-green"><label id="totalAnnouncement"></label></span>
+
                                     </a>
-                                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>@User.GetSpecificClaim("FullName")</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>@User.GetSpecificClaim("FullName")</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>@User.GetSpecificClaim("FullName")</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="@User.GetSpecificClaim("Avatar")" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>@User.GetSpecificClaim("FullName")</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="text-center">
-                                                <a>
-                                                    <strong>See All Alerts</strong>
-                                                    <i class="fa fa-angle-right"></i>
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
+
+                                    <ul id="annoncementList" class="dropdown-menu list-unstyled msg_list" role="menu"></ul>
+
                                 </li>
+
                             </ul>
                         </nav>
                     </div>
@@ -184,6 +133,35 @@
                 <!-- /footer content -->
             </div>
         </div>
+
+        @* template thông báo user *@
+
+        <script id="announcement-template" type="x-tmpl-mustache">
+            <li data-id="{{Id}}">
+                <a>
+                    <span class="image"><img src="{{Avatar}}" alt="Profile Image" /></span>
+                    <span>
+                        <span>{{FullName}}</span>
+                        <span class="time">{{DateCreated}}</span>
+                    </span>
+                    <span class="message">
+                        {{Content}}
+                    </span>
+                </a>
+            </li>
+        </script>
+        <script id="announcement-tag-template" type="x-tmpl-mustache">
+            <li>
+                <div class="text-center">
+                    <a>
+                        <strong>See All Alerts</strong>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </li>
+        </script>
+
+        @* template thông báo user *@
 
 
 
@@ -239,6 +217,12 @@
 
         </environment>
         <script src="~/app/shared/signalR/signalR.js" asp-append-version="true"></script>
+        <script src="~/app/shared/Announcement.js" asp-append-version="true"></script>
+
+        <script>
+            var announcementObj = new AnnouncementController();
+            announcementObj.initialize();
+        </script>
 
         @RenderSection("Scripts", required: false)  @*trang con có áp dụng thì áp dùng không thì thôi*@
     </body>

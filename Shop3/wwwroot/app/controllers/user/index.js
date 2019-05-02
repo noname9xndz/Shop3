@@ -1,9 +1,12 @@
 ﻿
 
 var UserController = function () {
+    var announcementObj = new AnnouncementController();
+    
     this.initialize = function () {
         loadData();
         registerEvents();
+        announcementObj.initialize();
     }
 
     function registerEvents() {
