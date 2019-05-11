@@ -21,7 +21,9 @@ namespace Shop3.Infrastructure.Interfaces
 
         void Add(T entity);
 
-        void Update(T entity);
+        // void Update(T entity);
+
+        void Update(K id, T entity, params Expression<Func<T, object>>[] updatedProperties);
 
         void Remove(T entity);
 

@@ -79,7 +79,8 @@ namespace Shop3.Application.Implementation
             {  // lấy ra price mới nhất của product
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
-                _orderDetailRepository.Update(detail);
+                //_orderDetailRepository.Update(detail);
+                _orderDetailRepository.Update(detail.Id,detail);
             }
 
             foreach (var detail in addedDetails)
@@ -91,7 +92,8 @@ namespace Shop3.Application.Implementation
 
             _orderDetailRepository.RemoveMultiple(existedDetails.Except(updatedDetails).ToList()); // xóa bill không tồn tại trừ bill được update
 
-            _orderRepository.Update(order);
+           // _orderRepository.Update(order);
+            _orderRepository.Update(order.Id,order);
         }
 
         public void UpdateStatus(int billId, BillStatus status)

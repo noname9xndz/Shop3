@@ -115,8 +115,11 @@ namespace Shop3.Application.Implementation
             source.SortOrder = target.SortOrder;
             target.SortOrder = tempOrder;
 
-            _functionRepository.Update(source);
-            _functionRepository.Update(target);
+            //_functionRepository.Update(source);
+            //_functionRepository.Update(target);
+
+            _functionRepository.Update(source.Id,source);
+            _functionRepository.Update(target.Id,target);
         }
 
         public void UpdateParentId(string sourceId, string targetId, Dictionary<string, int> items)
@@ -124,14 +127,16 @@ namespace Shop3.Application.Implementation
             //Update parent id for source
             var category = _functionRepository.FindById(sourceId);
             category.ParentId = targetId;
-            _functionRepository.Update(category);
+            //_functionRepository.Update(category);
+            _functionRepository.Update(category.Id,category);
 
             //Get all sibling
             var sibling = _functionRepository.FindAll(x => items.ContainsKey(x.Id));
             foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id];
-                _functionRepository.Update(child);
+               // _functionRepository.Update(child);
+                _functionRepository.Update(child.Id,child);
             }
         }
 

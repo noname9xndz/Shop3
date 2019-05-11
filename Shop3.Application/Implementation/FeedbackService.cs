@@ -80,7 +80,8 @@ namespace Shop3.Application.Implementation
         public void Update(FeedbackViewModel feedbackVm)
         {
             var page = Mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
-            _feedbackRepository.Update(page);
+            //_feedbackRepository.Update(page);
+            _feedbackRepository.Update(page.Id, page);
         }
     }
 }

@@ -80,7 +80,8 @@ namespace Shop3.Application.Implementation
         public void Update(ContactViewModel pageVm)
         {
             var page = Mapper.Map<ContactViewModel, Contact>(pageVm);
-            _contactRepository.Update(page);
+            //_contactRepository.Update(page);
+            _contactRepository.Update(page.Id,page);
         }
     }
 }

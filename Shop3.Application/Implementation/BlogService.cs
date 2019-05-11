@@ -108,7 +108,8 @@ namespace Shop3.Application.Implementation
 
         public void Update(BlogViewModel blog)
         {
-            _blogRepository.Update(Mapper.Map<BlogViewModel, Blog>(blog));
+            //_blogRepository.Update(Mapper.Map<BlogViewModel, Blog>(blog));
+            _blogRepository.Update(blog.Id,Mapper.Map<BlogViewModel, Blog>(blog));
             if (!string.IsNullOrEmpty(blog.Tags))
             {
                 string[] tags = blog.Tags.Split(',');

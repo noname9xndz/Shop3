@@ -115,8 +115,11 @@ namespace Shop3.Application.Implementation
             source.SortOrder = target.SortOrder;
             target.SortOrder = tempOrder;
 
-            _productCategoryRepository.Update(source);
-            _productCategoryRepository.Update(target);
+            //_productCategoryRepository.Update(source);
+            //_productCategoryRepository.Update(target);
+            
+            _productCategoryRepository.Update(source.Id, source);
+            _productCategoryRepository.Update(target.Id,target);
         }
 
         public void Save()
@@ -127,7 +130,8 @@ namespace Shop3.Application.Implementation
         public void Update(ProductCategoryViewModel productCategoryVm)
         {
             var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
-            _productCategoryRepository.Update(productCategory);
+            //_productCategoryRepository.Update(productCategory);
+            _productCategoryRepository.Update(productCategory.Id, productCategory);
         }
 
         // xử lý khi phần tử được thả vào node khác : id nguồn , id đích , list các item sẽ update
@@ -135,14 +139,16 @@ namespace Shop3.Application.Implementation
         {
             var sourceCategory = _productCategoryRepository.FindById(sourceId);
             sourceCategory.ParentId = targetId;
-            _productCategoryRepository.Update(sourceCategory);
+           // _productCategoryRepository.Update(sourceCategory);
+            _productCategoryRepository.Update(sourceCategory.Id,sourceCategory);
 
             //Lấy ra các phần tử ngang hàng(anh em) với những thằng được thả
             var sibling = _productCategoryRepository.FindAll(x => items.ContainsKey(x.Id));
             foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id]; // lấy từ Dictionary với key là id truyền vào
-                _productCategoryRepository.Update(child);
+               // _productCategoryRepository.Update(child);
+                _productCategoryRepository.Update(child.Id,child);
             }
         }
     }

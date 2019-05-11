@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
+using Shop3.Data.Interfaces;
 
 namespace Shop3.Data.EF
 {
@@ -85,9 +88,57 @@ namespace Shop3.Data.EF
             _context.Set<T>().RemoveRange(entities);
         }
 
-        public void Update(T entity)
-        {
-            _context.Set<T>().Update(entity);
+        //public void Update(T entity)
+        //{
+        //    _context.Set<T>().Update(entity);
+        //}
+        public virtual void Update(K id, T entity, params Expression<Func<T, object>>[] updatedProperties)
+        {// fix lỗi binding datetime ,chỉ update cái gì thay đổi
+            var dbEntity = _context.Set<T>().AsNoTracking().Single(p => p.Id.Equals(id));
+            var databaseEntry = _context.Entry(dbEntity);
+            var inputEntry = _context.Entry(entity);
+            if (updatedProperties.Any())
+            {
+                //update explicitly mentioned properties
+                foreach (var property in updatedProperties)
+                {
+                    databaseEntry.Property(property).IsModified = true;
+                    PropertyInfo prop = property.GetPropertyAccess();
+                    databaseEntry.Property(property).IsModified = true;
+                    databaseEntry.Property(property).CurrentValue = prop.GetValue(entity, null);
+                }
+            }
+            else
+            {
+                //no items mentioned, so find out the updated entries
+                IEnumerable<string> dateProperties = typeof(IDateTracking).GetProperties().Select(x => x.Name);
+                IEnumerable<string> deleteProperties = typeof(IHasSoftDelete).GetProperties().Select(x => x.Name);
+                IEnumerable<string> domainProperties = typeof(DomainEntity<K>).GetProperties().Select(x => x.Name);
+                //IEnumerable<string> dateProperties = typeof(IDateTracking).GetPublicProperties().Select(x => x.Name);
+                //IEnumerable<string> deleteProperties = typeof(IHasSoftDelete).GetPublicProperties().Select(x => x.Name);
+                //IEnumerable<string> domainProperties = typeof(DomainEntity<K>).GetPublicProperties().Select(x => x.Name);
+
+                var allProperties = databaseEntry.Metadata.GetProperties()
+                    .Where(x => !dateProperties.Contains(x.Name))
+                    .Where(x => !deleteProperties.Contains(x.Name))
+                    .Where(x => !domainProperties.Contains(x.Name));
+
+                foreach (var property in allProperties)
+                {
+                    var proposedValue = inputEntry.Property(property.Name).CurrentValue;
+                    var originalValue = databaseEntry.Property(property.Name).OriginalValue;
+
+                    if ((proposedValue != null && !proposedValue.Equals(originalValue))
+                        || (property.PropertyInfo.PropertyType.IsGenericType
+                        && property.PropertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                    {
+                        databaseEntry.Property(property.Name).IsModified = true;
+                        databaseEntry.Property(property.Name).CurrentValue = proposedValue;
+                    }
+
+                }
+            }
+            _context.Set<T>().Update(dbEntity);
         }
     }
 }
