@@ -92,7 +92,8 @@ var common = {
         // format datetime
         if (datetime == null || datetime == '')
             return '';
-        var newdate = new Date(parseInt(datetime.substr(25)));
+        //var newdate = new Date(parseInt(datetime.substr(25)));
+        var newdate = new Date(datetime);
         var month = newdate.getMonth() + 1;
         var day = newdate.getDate();
         var year = newdate.getFullYear();

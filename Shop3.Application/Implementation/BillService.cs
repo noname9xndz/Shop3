@@ -100,7 +100,8 @@ namespace Shop3.Application.Implementation
         {
             var order = _orderRepository.FindById(billId);
             order.BillStatus = status;
-            _orderRepository.Update(order);
+            //_orderRepository.Update(order);
+            _orderRepository.Update(order.Id,order);
         }
 
         public List<SizeViewModel> GetSizes()

@@ -169,7 +169,8 @@ namespace Shop3.Application.Implementation
             {
                 product.ProductTags.Add(productTag);
             }
-            _productRepository.Update(product);
+            //_productRepository.Update(product);
+            _productRepository.Update(product.Id,product);
         }
 
         // add nuget : epplus.core

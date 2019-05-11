@@ -86,7 +86,8 @@ namespace Shop3.Application.Implementation
         public void Update(PageViewModel pageVm)
         {
             var page = Mapper.Map<PageViewModel, Page>(pageVm);
-            _pageRepository.Update(page);
+            //_pageRepository.Update(page);
+            _pageRepository.Update(page.Id,page);
         }
     }
 }

@@ -18,8 +18,9 @@ namespace Shop3.Application.Implementation
         // IRepository được viết dưới dạng generic chỉ cần chỉ ra : thực thể và key của nó
         //  mapping trực tiếp từ viewmodel vào model hoặc model qua view model => controller chỉ việc gọi dùng
         // 1 service sinh ra phải register trong startup
+        //private IRepository<Product, int> _productRepository;
         private IRepository<ProductCategory, int> _productCategoryRepository;
-        private IRepository<Product, int> _productRepository;
+        
         private IUnitOfWork _unitOfWork;
 
         public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork)

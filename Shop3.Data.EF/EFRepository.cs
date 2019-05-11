@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Internal;
 using Shop3.Data.Interfaces;
+using Shop3.Utilities.Extensions;
 
 namespace Shop3.Data.EF
 {
@@ -93,7 +94,7 @@ namespace Shop3.Data.EF
         //    _context.Set<T>().Update(entity);
         //}
         public virtual void Update(K id, T entity, params Expression<Func<T, object>>[] updatedProperties)
-        {// fix lỗi binding datetime ,chỉ update cái gì thay đổi
+        {//chỉ update cái gì thay đổi
             var dbEntity = _context.Set<T>().AsNoTracking().Single(p => p.Id.Equals(id));
             var databaseEntry = _context.Entry(dbEntity);
             var inputEntry = _context.Entry(entity);
@@ -111,12 +112,12 @@ namespace Shop3.Data.EF
             else
             {
                 //no items mentioned, so find out the updated entries
-                IEnumerable<string> dateProperties = typeof(IDateTracking).GetProperties().Select(x => x.Name);
-                IEnumerable<string> deleteProperties = typeof(IHasSoftDelete).GetProperties().Select(x => x.Name);
-                IEnumerable<string> domainProperties = typeof(DomainEntity<K>).GetProperties().Select(x => x.Name);
-                //IEnumerable<string> dateProperties = typeof(IDateTracking).GetPublicProperties().Select(x => x.Name);
-                //IEnumerable<string> deleteProperties = typeof(IHasSoftDelete).GetPublicProperties().Select(x => x.Name);
-                //IEnumerable<string> domainProperties = typeof(DomainEntity<K>).GetPublicProperties().Select(x => x.Name);
+                //IEnumerable<string> dateProperties = typeof(IDateTracking).GetProperties().Select(x => x.Name);
+                //IEnumerable<string> deleteProperties = typeof(IHasSoftDelete).GetProperties().Select(x => x.Name);
+                //IEnumerable<string> domainProperties = typeof(DomainEntity<K>).GetProperties().Select(x => x.Name);
+                IEnumerable<string> dateProperties = typeof(IDateTracking).GetPublicProperties().Select(x => x.Name);
+                IEnumerable<string> deleteProperties = typeof(IHasSoftDelete).GetPublicProperties().Select(x => x.Name);
+                IEnumerable<string> domainProperties = typeof(DomainEntity<K>).GetPublicProperties().Select(x => x.Name);
 
                 var allProperties = databaseEntry.Metadata.GetProperties()
                     .Where(x => !dateProperties.Contains(x.Name))
