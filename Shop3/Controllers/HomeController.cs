@@ -17,7 +17,7 @@ namespace Shop3.Controllers
     {
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;
-
+        private readonly IBillService _billService;
         private IBlogService _blogService;
         private ICommonService _commonService;
 
@@ -26,13 +26,15 @@ namespace Shop3.Controllers
         public HomeController(IProductService productService,
         IBlogService blogService, ICommonService commonService,
         IProductCategoryService productCategoryService,
+        IBillService billService,
         IStringLocalizer<HomeController> localizer)
         {
             _blogService = blogService;
             _commonService = commonService;
             _productService = productService;
             _productCategoryService = productCategoryService;
-            _localizer = localizer;
+            _billService = billService;
+             _localizer = localizer;
         }
 
         // responsecache : https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
@@ -50,6 +52,7 @@ namespace Shop3.Controllers
             homeVm.HotProducts = _productService.GetHotProduct(5);
             homeVm.TopSellProducts = _productService.GetLastest(5);
             homeVm.LastestBlogs = _blogService.GetLastest(5);
+            homeVm.NewProducts = _productService.GetNewProduct(3);
             homeVm.HomeSlides = _commonService.GetSlides("top");
             return View(homeVm);
         }
@@ -84,5 +87,32 @@ namespace Shop3.Controllers
 
             return LocalRedirect(returnUrl);
         }
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            var model = _productService.GetById(id);
+
+            return new OkObjectResult(model);
+        }
+        [HttpGet]
+        public IActionResult GetColors()
+        {
+            var colors = _billService.GetColors();
+            return new OkObjectResult(colors);
+        }
+
+        [HttpGet]
+        public IActionResult GetSizes()
+        {
+            var sizes = _billService.GetSizes();
+            return new OkObjectResult(sizes);
+        }
+        [HttpGet]
+        public IActionResult GetQuantities(int productId)
+        {
+            var quantities = _productService.GetQuantities(productId);
+            return new OkObjectResult(quantities);
+        }
+
     }
 }

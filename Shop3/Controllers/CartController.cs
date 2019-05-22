@@ -44,11 +44,16 @@ namespace Shop3.Controllers
         {
             var model = new CheckoutViewModel();
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
+            if (session == null)
+            {
+                return Redirect("/");
+            }
+
             if (session.Any(x => x.Color == null || x.Size == null))
             {
                 return Redirect("/cart.html");
             }
-
+            
             model.Carts = session;
             return View(model);
         }

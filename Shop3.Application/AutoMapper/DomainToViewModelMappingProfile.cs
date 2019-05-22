@@ -15,8 +15,8 @@ namespace Shop3.Application.AutoMapper
         // setup mapping trực tiếp giữa  các entityViewModel và entityModel
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<ProductCategory, ProductCategoryViewModel>();
-            CreateMap<Product, ProductViewModel>();
+            CreateMap<ProductCategory, ProductCategoryViewModel>().MaxDepth(2);
+            CreateMap<Product, ProductViewModel>().MaxDepth(2);
             CreateMap<Announcement, AnnouncementViewModel>().MaxDepth(2);
 
             CreateMap<Function, FunctionViewModel>();

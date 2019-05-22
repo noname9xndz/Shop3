@@ -129,9 +129,9 @@ var common = {
     getStatus: function (status) {
 
         if (status == 1)
-            return '<span class="badge bg-green">Kích hoạt</span>';
+            return '<span class="badge bg-green">Active</span>';
         else
-            return '<span class="badge bg-red">Khoá</span>';
+            return '<span class="badge bg-red">InActive</span>';
 
     },
     formatNumber: function (number, precision) {

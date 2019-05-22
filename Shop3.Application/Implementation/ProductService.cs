@@ -337,5 +337,11 @@ namespace Shop3.Application.Implementation
                 return false;
             return quantity.Quantity > 0;
         }
+
+        public List<ProductViewModel> GetNewProduct(int top)
+        {
+            return _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+                .Take(top).ProjectTo<ProductViewModel>().ToList();
+        }
     }
 }

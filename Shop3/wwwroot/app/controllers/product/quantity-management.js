@@ -91,6 +91,7 @@ var QuantityManagement = function () {
             }
         });
     }
+
     function loadColors() {
         return $.ajax({
             type: "GET",
@@ -100,7 +101,7 @@ var QuantityManagement = function () {
                 cachedObj.colors = response;
             },
             error: function () {
-                common.notify('Có lỗi xảy ra', 'error');
+                common.notify('Cannot loading data', 'error');
             }
         });
     }
@@ -114,7 +115,7 @@ var QuantityManagement = function () {
                 cachedObj.sizes = response;
             },
             error: function () {
-                common.notify('Có lỗi xảy ra', 'error');
+                common.notify('Cannot loading data', 'error');
             }
         });
     }

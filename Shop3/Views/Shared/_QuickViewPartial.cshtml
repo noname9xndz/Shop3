@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "_QuickViewPartial";
+}
+
+
+<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close"  data-dismiss="modal" aria-hidden="true">×</button>
+                @*<h4 class="modal-title">Add edit product</h4>*@
+            </div>
+            <div class="modal-body">
+                <div id="quick_view_popup-outer">
+                    <div id="quick_view_popup-content">
+                        <div style="width:auto;height:auto;overflow: auto;position:relative;">
+                            <div class="product-view-area">
+                               
+                                    <div id="tbl-content"></div>
+                                
+                            </div>
+                            <!--product-view-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+   
+    <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
+
+        <div class="icon-sale-label sale-left">Sale</div>
+        <div class="large-image">{{{Image}}} </div>
+        @*<div class="large-image"> <a href="images/products/product-1.jpg" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20" style="position: relative; display: block;"> <img class="zoom-img" src="images/products/product-1.jpg" style="display: block; visibility: visible;">{{{Image}}} </a> </div>*@
+
+        @*<div class="flexslider flexslider-thumb">
+
+           <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                <ul class="previews-list slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                    <li style="width: 98px; float: left; display: block;"><a href="images/products/product-1.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/products/product-1.jpg' "><img src="images/products/product-1.jpg" alt="Thumbnail 2" draggable="false"></a></li>
+                    <li style="width: 98px; float: left; display: block;"><a href="images/products/product-1.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/products/product-1.jpg' "><img src="images/products/product-1.jpg" alt="Thumbnail 1" draggable="false"></a></li>
+                    <li style="width: 98px; float: left; display: block;"><a href="images/products/product-1.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/products/product-1.jpg' "><img src="images/products/product-1.jpg" alt="Thumbnail 1" draggable="false"></a></li>
+                    <li style="width: 98px; float: left; display: block;"><a href="images/products/product-1.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/products/product-1.jpg' "><img src="images/products/product-1.jpg" alt="Thumbnail 2" draggable="false"></a></li>
+                    <li style="width: 98px; float: left; display: block;"><a href="images/products/product-1.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/products/product-1.jpg' "><img src="images/products/product-1.jpg" alt="Thumbnail 2" draggable="false"></a></li>
+                </ul>
+            </div>
+            <ul class="flex-direction-nav">
+                <li>
+                    <a class="flex-prev flex-disabled" href="javascript:void(0);" tabindex="-1"></a>
+                </li>
+                <li><a class="flex-next" href="javascript:void(0);"></a></li>
+            </ul>
+        </div>*@
+
+        <!-- end: more-images -->
+
+    </div>
+
+    <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7">
+        <div class="product-details-area">
+            <div class="product-name">
+                <input type="hidden" id="hidIdM" value="0" />
+                <h1 id="txtNameM">{{Name}}</h1>
+            </div>
+            <div class="price-box">
+                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{Price}} </span> </p>
+                @*<p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{PromotionPrice}} </span> </p>
+            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{Price}} </span> </p>*@
+            </div>
+            <div class="ratings">
+                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                <p class="availability in-stock pull-right">Availability: <span>{{{Status}}}</span></p>
+            </div>
+            <div class="short-description">
+                <h2>Quick Overview</h2>
+                <p>{{Description}}</p>
+            </div>
+
+            <div class="product-color-size-area">
+                <div class="color-area">
+                    <h2 class="saider-bar-title">Color</h2>
+                    <div class="color">
+                        {{{Colors}}}
+                    </div>
+                </div>
+                <div class="size-area">
+                    <h2 class="saider-bar-title">Size</h2>
+                    <div class="size">
+                        {{{Sizes}}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-variation">
+                <div class="cart-plus-minus">
+                    <label for="qty">Quantity:</label>
+                    <div class="numbers-row">
+                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txtQuantity" name="txtQuantity">
+                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
+                    </div>
+                </div>
+                <button class="button add-to-cart-quickview" data-id="{{Id}}" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
+
+            </div>
+            <div class="product-cart-option">
+                <ul>
+                    <li><a href="#"><i class="fa fa-heart"></i><span>Add to Wishlist</span></a></li>
+                    <li><a href="#"><i class="fa fa-retweet"></i><span>Add to Compare</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</script>
+
+
