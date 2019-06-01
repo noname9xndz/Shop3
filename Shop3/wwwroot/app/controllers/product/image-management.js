@@ -24,6 +24,7 @@ var ImageManagement = function () {
         $('body').on('click', '.btn-delete-image', function (e) {
             e.preventDefault();
             $(this).closest('div').remove(); // lấy div cha gần nhất remove img
+            console.log(images);
         });
 
         $("#fileImage").on('change', function () {
@@ -33,6 +34,7 @@ var ImageManagement = function () {
             for (var i = 0; i < files.length; i++) {
                 data.append(files[i].name, files[i]);
             }
+            //todo don't get path current
             $.ajax({
                 type: "POST",
                 url: "/Admin/Upload/UploadImage",
@@ -53,10 +55,14 @@ var ImageManagement = function () {
         });
 
         $("#btnSaveImages").on('click', function () {
+            //todo dont delete path + img
             var imageList = [];
             $.each($('#image-list').find('img'), function (i, item) {
                 imageList.push($(this).data('path')); // đọc đường dẫn file
             });
+            console.log(images);
+            console.log(imageList);
+
             $.ajax({
                 url: '/admin/Product/SaveImages',
                 data: {

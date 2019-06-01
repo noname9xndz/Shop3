@@ -1,4 +1,5 @@
 ﻿using Shop3.Application.ViewModels.System;
+using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Shop3.Application.Interfaces
         void Add(FunctionViewModel function);
 
         Task<List<FunctionViewModel>> GetAll(string filter);
+
+        //PagedResult<FunctionViewModel> GetAll2(string filter, int pageIndex, int pageSize);
 
         IEnumerable<FunctionViewModel> GetAllWithParentId(string parentId);
 

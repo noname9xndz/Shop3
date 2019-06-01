@@ -134,6 +134,14 @@ var common = {
             return '<span class="badge bg-red">Khoá</span>';
 
     },
+    getStatus2: function (status) {
+
+        if (status == 1)
+            return '<span class="badge bg-green">Seen</span>';
+        else
+            return '<span class="badge bg-red">New</span>';
+
+    },
     formatNumber: function (number, precision) {
 
         if (!isFinite(number)) { // isFinite xác định số vô hạn 

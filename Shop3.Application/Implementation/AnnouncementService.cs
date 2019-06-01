@@ -1,13 +1,12 @@
-﻿using Shop3.Infrastructure.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AutoMapper.QueryableExtensions;
+﻿using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
 using Shop3.Data.Entities;
+using Shop3.Infrastructure.Interfaces;
 using Shop3.Utilities.Dtos;
+using System;
+using System.Linq;
+using Shop3.Data.Enums;
 
 namespace Shop3.Application.Implementation
 {
@@ -25,6 +24,42 @@ namespace Shop3.Application.Implementation
             _announcementUserRepository = announcementUserRepository;
             this._announcementRepository = announcementRepository;
             this._unitOfWork = unitOfWork;
+        }
+
+        //public PagedResult<AnnouncementViewModel> GetAll(Guid userId, int pageIndex, int pageSize)
+        public PagedResult<AnnouncementViewModel> GetAll(Guid userId, int pageIndex, int pageSize)
+        {
+            var query = from first in _announcementRepository.FindAll()
+                        join last in _announcementUserRepository.FindAll()
+                        on first.Id equals last.AnnouncementId into temp
+                        from last in temp.DefaultIfEmpty()
+                        where last.UserId == userId
+                        select new
+                        {
+                            first.Id,
+                            first.Title,
+                            first.DateCreated,
+                            first.UserId,
+                            first.Content,
+                            first.AppUser.FullName,
+                            first.AnnouncementUsers,
+                            first.Status
+                        };
+            
+            int totalRow = query.Count();
+
+            var model = query.OrderByDescending(x => x.DateCreated)
+                .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ProjectTo<AnnouncementViewModel>().ToList();
+
+            var paginationSet = new PagedResult<AnnouncementViewModel>
+            {
+                Results = model,
+                CurrentPage = pageIndex,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+
+            return paginationSet;
         }
 
         public PagedResult<AnnouncementViewModel> GetAllUnReadPaging(Guid userId, int pageIndex, int pageSize)
@@ -54,9 +89,10 @@ namespace Shop3.Application.Implementation
         public bool MarkAsRead(Guid userId, string id) // đã đọc hay chưa
         {
             bool result = false;
-            var announ = _announcementUserRepository.FindSingle(x => x.AnnouncementId == id
+            var announUser = _announcementUserRepository.FindSingle(x => x.AnnouncementId == id
                                                                                && x.UserId == userId);
-            if (announ == null)
+            var announ = _announcementRepository.FindSingle(y => y.Id == id && y.UserId == userId);
+            if (announUser == null)
             {
                 _announcementUserRepository.Add(new AnnouncementUser
                 {
@@ -68,14 +104,104 @@ namespace Shop3.Application.Implementation
             }
             else
             {
-                if (announ.HasRead == false)
+                if (announUser.HasRead == false && announ.Status == Status.InActive)
                 {
-                    announ.HasRead = true;
+                    announUser.HasRead = true;
+                    announ.Status = Status.Active;
+                    _unitOfWork.Commit();
                     result = true;
                 }
 
             }
             return result;
+        }
+
+        public bool MarkAsReadAll(Guid userId)
+        {
+            bool result = false;
+            var announUser = _announcementUserRepository.FindAll(x => x.UserId == userId && x.HasRead == false);
+            var announ = _announcementRepository.FindAll(x => x.UserId == userId && x.Status == Status.InActive);
+            if (announ.Count() > 0 && announUser.Count() > 0)
+            {
+                announUser.ToList().ForEach(x => x.HasRead = true);
+                announ.ToList().ForEach(y => y.Status = Status.Active);
+                SaveChanges();
+                result = true;
+
+            }
+            return result;
+
+        }
+
+        public bool Delete(Guid userId, string id)
+        {
+            bool result = false;
+            var announ = _announcementRepository.FindSingle(y => y.Id == id && y.UserId == userId);
+            var announUser = _announcementUserRepository.FindSingle(x => x.AnnouncementId == id
+                                                                         && x.UserId == userId);
+            if (announ.ToString() !=null && announUser.ToString() !=null)
+            {
+                _announcementRepository.Remove(id);
+                _announcementUserRepository.Remove(announUser);
+                SaveChanges();
+                result = true;
+
+            }
+            return result;
+
+        }
+
+        public void SaveChanges()
+        {
+            _unitOfWork.Commit();
+        }
+
+        public bool DeleteAll(Guid userId,string key)
+        {
+            bool result = false;
+            if (key == "Seen")
+            {
+                var announUser = _announcementUserRepository.FindAll(x => x.UserId == userId && x.HasRead == true).ToList();
+                var announ = _announcementRepository.FindAll(x => x.UserId == userId && x.Status == Status.Active).ToList();
+                if (announ.Count > 0 && announUser.Count > 0)
+                {
+                    _announcementRepository.RemoveMultiple(announ);
+                    _announcementUserRepository.RemoveMultiple(announUser);
+                    result = true;
+                }
+
+            }
+            else if(key == "UnRead")
+            {
+                var announUser = _announcementUserRepository.FindAll(x => x.UserId == userId && x.HasRead == false).ToList();
+                var announ = _announcementRepository.FindAll(x => x.UserId == userId && x.Status == Status.InActive).ToList();
+                if (announ.Count > 0 && announUser.Count > 0)
+                {
+                    _announcementRepository.RemoveMultiple(announ);
+                    _announcementUserRepository.RemoveMultiple(announUser);
+
+                }
+                result = true;
+            }
+            else if(key == " ")
+            {
+                var announUser = _announcementUserRepository.FindAll(x => x.UserId == userId).ToList();
+                var announ = _announcementRepository.FindAll(x => x.UserId == userId).ToList();
+                if (announ.Count > 0 && announUser.Count > 0)
+                {
+                    _announcementRepository.RemoveMultiple(announ);
+                    _announcementUserRepository.RemoveMultiple(announUser);
+
+                }
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            SaveChanges();
+            return result;
+
         }
     }
 }

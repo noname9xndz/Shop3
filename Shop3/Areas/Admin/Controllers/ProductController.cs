@@ -67,7 +67,7 @@ namespace Shop3.Areas.Admin.Controllers
 
         [HttpPost]
         public IActionResult SaveEntity(ProductViewModel productVm)
-        {
+        { // todo bug delete and update client (don't delete path img)
             if (!ModelState.IsValid)
             {
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
@@ -200,7 +200,7 @@ namespace Shop3.Areas.Admin.Controllers
 
         [HttpPost]
         public IActionResult SaveImages(int productId, string[] images)
-        {
+        {  // todo bug delete and update client (don't delete path img)
             _productService.AddImages(productId, images);
             _productService.Save();
             return new OkObjectResult(images);

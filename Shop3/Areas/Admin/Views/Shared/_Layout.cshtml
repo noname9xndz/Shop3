@@ -30,7 +30,9 @@
         <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
         <!-- notify -->
         <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
+        <link href="~/lib/iCheck/skins/flat/green.css" rel="stylesheet" />
         <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
+
         @RenderSection("Styles", required: false)
 
 
@@ -139,7 +141,8 @@
         <script id="announcement-template" type="x-tmpl-mustache">
             <li data-id="{{Id}}">
                 <a>
-                    <span class="image"><img src="{{Avatar}}" alt="Profile Image" /></span>
+                    @*<span class="image"><img src="{{Avatar}}" alt="Profile Image" /></span>*@
+                    <span class="image">{{{Avatar}}}</span>
                     <span>
                         <span>{{FullName}}</span>
                         <span class="time">{{DateCreated}}</span>
@@ -153,7 +156,7 @@
         <script id="announcement-tag-template" type="x-tmpl-mustache">
             <li>
                 <div class="text-center">
-                    <a>
+                    <a id="seeall">
                         <strong>See All Alerts</strong>
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -186,6 +189,7 @@
 
         <!-- jQuery Sparklines -->
         <script src="~/lib/jquery-sparkline/dist/jquery.sparkline.js"></script>
+        <script src="~/lib/iCheck/icheck.min.js"></script>
 
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
@@ -217,11 +221,17 @@
 
         </environment>
         <script src="~/app/shared/signalR/signalR.js" asp-append-version="true"></script>
-        <script src="~/app/shared/Announcement.js" asp-append-version="true"></script>
+    @*<script src="~/app/shared/Announcement.js" asp-append-version="true"></script>
 
-        <script>
+       <script>
             var announcementObj = new AnnouncementController();
             announcementObj.initialize();
+        </script>*@
+
+        <script src="~/app/controllers/announcement/index.js" asp-append-version="true"></script>
+        <script>
+            var announcementJS = new AnnouncementJSController();
+            announcementJS.initialize();
         </script>
 
         @RenderSection("Scripts", required: false)  @*trang con có áp dụng thì áp dùng không thì thôi*@

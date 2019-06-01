@@ -1,10 +1,19 @@
 ﻿
+@using Microsoft.EntityFrameworkCore.Internal
+@using NUglify.Helpers
 @model Shop3.Models.ProductViewModels.CatalogViewModel
 
 @{
     ViewData["Title"] = Model.Data.CurrentPage == 1 ? Model.Category.Name : Model.Category.Name + " - Page " + Model.Data.CurrentPage;
     ViewData["MetaKeyword"] = Model.Data.CurrentPage == 1 ? Model.Category.SeoKeywords : Model.Category.SeoKeywords + " - Page " + Model.Data.CurrentPage;
     ViewData["MetaDescription"] = Model.Data.CurrentPage == 1 ? Model.Category.SeoDescription : Model.Category.SeoDescription + " - Page " + Model.Data.CurrentPage;
+}
+@section Scripts{
+    <script src="~/client-app/controllers/product/catalog.js" asp-append-version="true"></script>
+    <script type='text/javascript'>
+        var catalog = new CatalogController();
+        catalog.initialize();
+    </script>
 }
 
 <!-- Breadcrumbs -->
@@ -62,8 +71,8 @@
                     <div class="toolbar">
                         <div class="view-mode">
                             <ul>
-                                <li class="active"> <a href="shop_grid.html"> <i class="fa fa-th-large"></i> </a> </li>
-                                <li><a href="shop_list.html"> <i class="fa fa-th-list"></i> </a> </li>
+                                <li class="active"> <a href="javascript:void(0);" class="largemenu"> <i class="fa fa-th-large"></i> </a> </li>
+                                <li><a href="javascript:void(0);" class="listmenu"> <i class="fa fa-th-list"></i> </a> </li>
                             </ul>
                         </div>
                         <form action="/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
@@ -77,9 +86,9 @@
                                         @*asp-item( đây là list option) in AspNetCore.Mvc.Rendering*@
 
                                         @* <option selected="selected">Position</option>
-                                    <option>Name</option>
-                                    <option>Price</option>
-                                    <option>Size</option>*@
+                                            <option>Name</option>
+                                            <option>Price</option>
+                                            <option>Size</option>*@
                                     </select>
                                 </div>
 
@@ -93,7 +102,7 @@
                         </form>
                     </div>
                     <div class="product-grid-area">
-                        <ul class="products-grid">
+                        <ul class="products-grid" hidden>
 
                             @foreach (var item in Model.Data.Results)
                             {
@@ -113,7 +122,7 @@
                                                     <div class="pr-button">
                                                         <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart"></i> </a> </div>
                                                         <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-signal"></i> </a> </div>
-                                                        <div class="mt-button quick-view" data-id="@item.Id" > <a href="javascript:void(0);"> <i class="fa fa-search"></i> </a> </div>
+                                                        <div class="mt-button quick-view" data-id="@item.Id"> <a href="javascript:void(0);"> <i class="fa fa-search"></i> </a> </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,6 +155,74 @@
                             }
 
                         </ul>
+
+
+                        <ul class="products-list" id="products-list">
+                            @foreach (var item in Model.Data.Results)
+                            {
+                                var url = "/" + item.SeoAlias + "-p." + item.Id + ".html";
+                                <li class="item ">
+                                    <div class="product-img">
+                                        <div class="icon-sale-label sale-left">Sale</div>
+                                        <a href="@url" title="Ipsums Dolors Untra">
+                                            <figure> <img class="small-image" src="@item.Image?w=254" alt="@item.Name"></figure>
+                                        </a>
+                                    </div>
+                                    <div class="product-shop">
+                                        <h2 class="product-name"><a href="@url" title="@item.Name">@item.Name</a></h2>
+                                        @*<div class="ratings">
+                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                                <p class="rating-links"> <a href="#/">4 Review(s)</a> <span class="separator">|</span> <a href="#review-form">Add Your Review</a> </p>
+                                            </div>*@
+                                        <div class="price-box">
+
+
+
+                                            @if (item.Price <= 0 || item.PromotionPrice <= 0 || item.Price < item.PromotionPrice)
+                                            {
+                                                <div class="price-box"> <span class="regular-price"> <span class="price">Liên Hệ</span> </span> </div>
+                                            }
+                                            else if (item.PromotionPrice.HasValue && item.PromotionPrice < item.Price)
+                                            {
+                                                <p class="special-price"> <span class="price-label"></span> <span class="price"> @item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                <p class="old-price"> <span class="price-label"></span> <span class="price">@item.Price.ToString("N0") </span> </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="special-price"> <span class="price-label"></span> <span class="price"> @item.Price.ToString("N0") </span> </p>
+                                            }
+                                        </div>
+                                        <div class="desc std">
+
+                                            @if (item.Content.IsNullOrWhiteSpace())
+                                            {
+                                                <p>No Description</p>
+
+                                            }
+                                            else
+                                            {
+                                                <p>
+                                                    @Html.Raw(item.Content) <a class="link-learn" title="Learn More" href="@url">Learn More</a>
+                                                </p>
+                                            }
+                                            @*<p>
+                                                    @Html.Raw(item.Content) <a class="link-learn" title="Learn More" href="@url">Learn More</a>
+                                                </p>*@
+
+
+                                        </div>
+                                        <div class="actions">
+                                            <button class="button add-to-cart" data-id="@item.Id" title="Add to Cart" type="button"><i class="fa fa-shopping-basket"></i><span>Add to Cart</span></button>
+                                            <ul>
+                                                <li> <a href="wishlist.html"> <i class="fa fa-heart-o"></i><span> Add to Wishlist</span> </a> </li>
+                                                <li> <a href="compare.html"> <i class="fa fa-link"></i><span> Add to Compare</span> </a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
                     </div>
 
                     @(await Component.InvokeAsync("Pager", Model.Data))

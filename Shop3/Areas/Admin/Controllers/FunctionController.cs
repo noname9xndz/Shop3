@@ -35,9 +35,10 @@ namespace Shop3.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int page, int pageSize)
         {
             // sử dụng đệ quy
+           
             var model = await _functionService.GetAll(string.Empty);
             var rootFunctions = model.Where(c => c.ParentId == null); // lấy ra cha
             var items = new List<FunctionViewModel>();

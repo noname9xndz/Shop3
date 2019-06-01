@@ -1,7 +1,7 @@
 ﻿
 var RoleController = function () {
     var self = this;
-    var announcementObj = new AnnouncementController();
+    var announcementObj = new AnnouncementJSController();
    
 
     this.initialize = function () {

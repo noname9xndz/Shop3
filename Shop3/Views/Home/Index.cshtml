@@ -8,7 +8,7 @@
 }
 
 @section Scripts{
-    <script src="~/client-app/shared/slider.js" asp-append-version="true"></script>
+    <script src="~/client-app/controllers/product/catalog.js"  asp-append-version="true"></script>
     <script type='text/javascript'>
         var sliderObj = new Slider();
         sliderObj.initialize();
@@ -180,7 +180,7 @@
                                                         <div class="pr-button">
                                                             <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
                                                             <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                            <div class="mt-button quick-view" data-id="@item.Id" > <a href="javascript:void(0);"> <i class="fa fa-search"></i> </a> </div>
+                                                            <div class="mt-button quick-view" data-id="@item.Id"> <a href="javascript:void(0);"> <i class="fa fa-search"></i> </a> </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -389,7 +389,7 @@
                     <div class="slider-items-products">
                         <div id="new-products-slider" class="product-flexslider">
                             <div class="slider-items">
-                              <ul class="products-grid">
+                                <ul class="products-grid">
 
                                     @foreach (var item in Model.NewProducts)
                                     {
@@ -409,15 +409,15 @@
                                                         <div class="item-price">
                                                             <div class="price-box">
                                                                 <span class="regular-price">
-                                                                   @if (item.PromotionPrice.HasValue)
-                                                                   {
-                                                                       <span class="price"> @item.PromotionPrice.ToString()</span>
-                                                                   }
-                                                                   else
-                                                                   {
-                                                                       <span class="price"> @item.Price.ToString("N0")</span>
-                                                                   }
-                                                                   
+                                                                    @if (item.PromotionPrice.HasValue)
+                                                                    {
+                                                                        <span class="price"> @item.PromotionPrice.ToString()</span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="price"> @item.Price.ToString("N0")</span>
+                                                                    }
+
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -434,8 +434,8 @@
                                             </div>
                                         </li>
                                     }
-                                 </ul>
-                               
+                                </ul>
+
                             </div>
 
                         </div>

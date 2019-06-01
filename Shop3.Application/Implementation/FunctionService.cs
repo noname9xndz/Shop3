@@ -7,6 +7,7 @@ using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Data.IRepositories;
 using Shop3.Infrastructure.Interfaces;
+using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,6 +90,27 @@ namespace Shop3.Application.Implementation
 
             return query.OrderBy(x => x.ParentId).ProjectTo<FunctionViewModel>().ToListAsync();
         }
+
+        //public PagedResult<FunctionViewModel> GetAll2(string filter,int pageIndex, int pageSize)
+        //{
+        //    var query = _functionRepository.FindAll(x => x.Status == Status.Active);
+
+        //    if (!string.IsNullOrEmpty(filter))
+        //        query = query.Where(x => x.Name.Contains(filter));
+
+        //    int totalRow = query.Count();
+        //    var model = query.OrderBy(x => x.SortOrder).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ProjectTo<FunctionViewModel>().ToList();
+
+        //    var paginationSet = new PagedResult<FunctionViewModel>
+        //    {
+        //        Results = model,
+        //        CurrentPage = pageIndex,
+        //        RowCount = totalRow,
+        //        PageSize = pageSize
+        //    };
+
+        //    return paginationSet;
+        //}
 
         public IEnumerable<FunctionViewModel> GetAllWithParentId(string parentId)
         {
