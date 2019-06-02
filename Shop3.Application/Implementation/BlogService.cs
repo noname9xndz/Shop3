@@ -74,20 +74,20 @@ namespace Shop3.Application.Implementation
                 .ProjectTo<BlogViewModel>().ToList();
         }
 
-        public PagedResult<BlogViewModel> GetAllPaging(string keyword, int pageSize, int page = 1)
+        public PagedResult<BlogViewModel> GetAllPaging(string keyword, int page, int pageSize)
         {
-            var query = _blogRepository.FindAll();
+            var query = _blogRepository.FindAll(); //x => x.Status == Status.Active || x.Status == Status.InActive
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
 
             int totalRow = query.Count();
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip((page - 1) * pageSize)
-                .Take(pageSize);
+                .Take(pageSize).ProjectTo<BlogViewModel>().ToList();
 
             var paginationSet = new PagedResult<BlogViewModel>()
             {
-                Results = data.ProjectTo<BlogViewModel>().ToList(),
+                Results = data,
                 CurrentPage = page,
                 RowCount = totalRow,
                 PageSize = pageSize,

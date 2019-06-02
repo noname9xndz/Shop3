@@ -49,12 +49,20 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Delete(string id)
         {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
             var result = _announcementService.Delete(User.GetUserId(),id);
             return new OkObjectResult(result);
         }
         [HttpPost]
         public IActionResult DeleteAll(string key)
         {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
             var result = _announcementService.DeleteAll(User.GetUserId(), key);
             return new OkObjectResult(result);
         }

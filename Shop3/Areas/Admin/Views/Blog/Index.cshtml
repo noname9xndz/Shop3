@@ -1,66 +1,67 @@
 ﻿
+@section Scripts{
+    <script src="~/app/controllers/blog/index.js" asp-append-version="true"></script>
+    <script>
+        var blog = new BlogController();
+        blog.initialize();
+    </script>
+
+}
+<div class="page-title">
+    <div class="title_left">
+        <h3>Blog </h3>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="clearfix"></div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Blog</h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li>
-                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li>
-                    <a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-            </ul>
+            @{
+                var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+            }
+            @if (result.Succeeded)
+            {
+                <button id="btnCreate" class="btn btn-success">Create</button>
+                @*<a class="btn btn-danger" href="~/templates/BlogImportTemplate.xlsx">Template</a>
+                    <button class="btn btn-primary" id="btn-import" type="button"><i class="fa fa-file-excel-o"></i></button>
+                    <button class="btn btn-default" id="btn-export" type="button"><i class="fa fa-forward"></i></button>*@
+            }
+            <ul class="nav navbar-right panel_toolbox"></ul>
             <div class="clearfix"></div>
         </div>
 
         <div class="x_content">
 
-            <button id="btnCreate" class="btn btn-success">Create</button>
+
 
             <div class="table-responsive">
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                         <tr class="headings">
-                            <th class="column-title">AnnouncementId </th>
-                            <th class="column-title">Title </th>
-                            <th class="column-title">Create Date </th>
-                            <th class="column-title">Decsription </th>
-                            <th class="column-title">Region </th>
+                            <th class="column-title">Name</th>
+                            <th class="column-title">Image </th>
+                            <th class="column-title">Description </th>
+                            <th class="column-title">DateCreated </th>
+                            <th class="column-title">DateModified</th>
                             <th class="column-title">Status </th>
                             <th class="column-title">Action</th>
 
                         </tr>
                     </thead>
-                    <tbody id="annoncementCreateList">
-
-                        <tr class="even pointer">
-                            <td class=" ">Id</td>
-                            <td class=" ">Title</td>
-                            <td class=" ">date created</td>
-                            <td class=" ">Descriptopn</td>
-                            <td class=" "> Public </td>
-                            <td class=" ">Status</td>
-                            <td class=" ">
-                                <button data-id="{{Id}}" id="btnDelete2" class="btn btn-warning">Delete</button>
-                                <button data-id="{{Id}}" id="btnUpdate" class="btn btn-info">Update</button>
-                            </td>
-                        </tr>
-                        <tr class="even pointer">
-                            <td class=" ">Id</td>
-                            <td class=" ">Title</td>
-                            <td class=" ">date created</td>
-                            <td class=" ">Descriptopn</td>
-                            <td class=" "> Private </td>
-                            <td class=" ">Status</td>
-                            <td class=" ">
-                                <button data-id="{{Id}}" id="btnDelete2" class="btn btn-warning">Delete</button>
-                                <button data-id="{{Id}}" id="btnUpdate" class="btn btn-info">Update</button>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody id="BlogTable"></tbody>
 
                 </table>
                 <!--Pagination-->
@@ -89,3 +90,26 @@
     </div>
 </div>
 <div class="clearfix"></div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr class="even pointer">
+
+        <td class=" ">{{Name}}</td>
+        <td class=" ">{{{Image}}}</td>
+        <td class=" ">{{Description}}</td>
+        <td class=" ">{{CreatedDate}}</td>
+        <td class=" ">{{DateModified}}</td>
+        <td class=" ">{{{Status}}}</td>
+        <th scope="row">
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+            {
+                <a class="btn  btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
+            }
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+            {
+                <a class="btn  btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
+
+            }
+        </th>
+    </tr>
+</script>
+@await Html.PartialAsync("_AddEditModal.cshtml")

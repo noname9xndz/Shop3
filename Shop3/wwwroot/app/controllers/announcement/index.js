@@ -12,32 +12,32 @@ var AnnouncementJSController = function () {
     function registerEvents() {
 
         // get thông báo theo id của user
-        $('body').on('click', '.btn-edit', function (e) {
-            e.preventDefault();
-            var that = $(this).data('id');
-            $.ajax({
-                type: "GET",
-                url: "/Admin/Role/GetById",
-                data: { id: that },
-                dataType: "json",
-                beforeSend: function () {
-                    common.startLoading();
-                },
-                success: function (response) {
-                    var data = response;
-                    $('#hidId').val(data.Id);
-                    $('#txtName').val(data.Name);
-                    $('#txtDescription').val(data.Description);
-                    $('#modal-add-edit').modal('show');
-                    common.stopLoading();
+        //$('body').on('click', '.btn-edit', function (e) {
+        //    e.preventDefault();
+        //    var that = $(this).data('id');
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "/Admin/Role/GetById",
+        //        data: { id: that },
+        //        dataType: "json",
+        //        beforeSend: function () {
+        //            common.startLoading();
+        //        },
+        //        success: function (response) {
+        //            var data = response;
+        //            $('#hidId').val(data.Id);
+        //            $('#txtName').val(data.Name);
+        //            $('#txtDescription').val(data.Description);
+        //            $('#modal-add-edit').modal('show');
+        //            common.stopLoading();
 
-                },
-                error: function (status) {
-                    common.notify('Có lỗi xảy ra', 'error');
-                    common.stopLoading();
-                }
-            });
-        });
+        //        },
+        //        error: function (status) {
+        //            common.notify('Có lỗi xảy ra', 'error');
+        //            common.stopLoading();
+        //        }
+        //    });
+        //});
 
         $('#ddlShowPage').on('change', function () {
             common.configs.pageSize = $(this).val();

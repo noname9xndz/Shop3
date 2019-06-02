@@ -17,7 +17,7 @@ namespace Shop3.Application.Interfaces
 
         List<BlogViewModel> GetAll();
 
-        PagedResult<BlogViewModel> GetAllPaging(string keyword, int pageSize, int page);
+        PagedResult<BlogViewModel> GetAllPaging(string keyword, int page ,int pageSize);
 
         List<BlogViewModel> GetLastest(int top);
 

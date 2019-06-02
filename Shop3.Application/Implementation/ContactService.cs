@@ -24,10 +24,11 @@ namespace Shop3.Application.Implementation
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(ContactViewModel pageVm)
+        public void Add(ContactViewModel contactVm)
         {
-            var page = Mapper.Map<ContactViewModel, Contact>(pageVm);
-            _contactRepository.Add(page);
+            contactVm.Id = contactVm.Name + "-" + DateTime.Now;
+            var contact = Mapper.Map<ContactViewModel, Contact>(contactVm);
+            _contactRepository.Add(contact);
         }
 
         public void Delete(string id)

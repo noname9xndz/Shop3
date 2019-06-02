@@ -39,7 +39,7 @@ namespace Shop3.Application.AutoMapper
               c.CustomerMobile, c.CustomerMessage, c.BillStatus,
               c.PaymentMethod, c.Status, c.CustomerId));//todo CustomerEmail { set; get; }
 
-        CreateMap<BillDetailViewModel, BillDetail>()
+           CreateMap<BillDetailViewModel, BillDetail>()
               .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
               c.Quantity, c.Price, c.ColorId, c.SizeId));
 
@@ -52,9 +52,13 @@ namespace Shop3.Application.AutoMapper
 
             CreateMap<PageViewModel, Page>()
              .ConstructUsing(c => new Page(c.Id, c.Name, c.Alias, c.Content, c.Status));
+            
+            CreateMap<BlogViewModel, Blog>()
+                .ConstructUsing(c => new Blog(c.Id, c.Name,c.Image,c.Description, c.Content,
+                    c.HomeFlag,c.HotFlag,c.Tags, c.Status,c.SeoPageTitle,c.SeoAlias,c.SeoKeywords, c.SeoDescription));
 
 
-           CreateMap<AnnouncementViewModel, Announcement>()
+            CreateMap<AnnouncementViewModel, Announcement>()
                 .ConstructUsing(c => new Announcement(c.Title, c.Content, c.UserId, c.Status));
 
            CreateMap<AnnouncementUserViewModel, AnnouncementUser>()

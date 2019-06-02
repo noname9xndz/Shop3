@@ -5,4 +5,7 @@
 @using Shop3.Models.AccountViewModels
 @using Shop3.Models.ManageViewModels
 @using Shop3.Application.ViewModels.System
+@using Microsoft.AspNetCore.Authorization
+@using Shop3.Authorization
+@inject IAuthorizationService AuthorizationService
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

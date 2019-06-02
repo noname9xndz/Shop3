@@ -1,0 +1,85 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Add Edit Contact</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group">
+                            <input type="hidden" id="Id" value="0" />
+                            <label for="txtName" class="col-sm-2 control-label no-padding-right">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtName" class="form-control" id="txtName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPhone" class="col-sm-2 control-label no-padding-right">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtPhone" class="form-control" id="txtPhone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label no-padding-right">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" name="txtEmail" class="form-control" id="txtEmail">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWebsite" class="col-sm-2 control-label no-padding-right">Website</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtWebsite" class="form-control" id="txtWebsite">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAddress" class="col-sm-2 control-label no-padding-right">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtAddress" class="form-control" id="txtAddress">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="txtLat" class="col-sm-2 control-label no-padding-right">Latitude</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="txtLat" class="form-control" id="txtLat">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtLng" class="col-sm-2 control-label no-padding-right">Longitude</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="txtLng" class="form-control" id="txtLng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtOther" class="col-sm-2 control-label no-padding-right">Other</label>
+                            <div class="col-sm-10">
+                                 <textarea id="txtOther" rows="6" class="form-control"></textarea> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <span class="text">Active </span>
+                                    <label>
+
+                                        <input class="js-switch" type="checkbox" checked="checked" id="ckStatus">
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSave" class="btn btn-success">Save changes</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

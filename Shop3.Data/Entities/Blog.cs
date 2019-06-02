@@ -14,7 +14,7 @@ namespace Shop3.Data.Entities
     {
         public Blog()
         {
-
+            BlogTags = new List<BlogTag>();
         }
         public Blog(string name, string thumbnailImage,
            string description, string content, bool? homeFlag, bool? hotFlag,

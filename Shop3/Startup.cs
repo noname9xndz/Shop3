@@ -24,6 +24,7 @@ using Shop3.Data.Entities;
 using Shop3.Extensions;
 using Shop3.Helpers;
 using Shop3.Infrastructure.Interfaces;
+using Shop3.Middleware;
 using Shop3.Services;
 using Shop3.SignalR;
 using System;
@@ -284,6 +285,8 @@ namespace Shop3
                 routes.MapRoute(name: "areaRoute",
                     template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
             });
+
+            app.UseMiddleware(typeof(VisitorCounterMiddleware));
         }
     }
 }

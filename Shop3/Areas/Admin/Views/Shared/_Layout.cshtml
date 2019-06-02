@@ -32,7 +32,8 @@
         <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
         <link href="~/lib/iCheck/skins/flat/green.css" rel="stylesheet" />
         <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
-
+        <!-- Switchery -->
+        <link href="~/lib/switchery/dist/switchery.min.css" rel="stylesheet">
         @RenderSection("Styles", required: false)
 
 
@@ -65,22 +66,7 @@
                         @await Component.InvokeAsync("SideBar")
 
                         <!-- /sidebar menu -->
-                        <!-- /menu footer buttons -->
-                        <div class="sidebar-footer hidden-small">
-                            <a data-toggle="tooltip" data-placement="top" title="Settings">
-                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Lock">
-                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                        <!-- /menu footer buttons -->
+                       
                     </div>
                 </div>
                 <!-- top navigation -->
@@ -128,7 +114,7 @@
                 <!-- footer content -->
                 <footer>
                     <div class="pull-right">
-                        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                        Gentelella - Design by <a href="https://www.facebook.com/nonametw">Noname9xnd</a>
                     </div>
                     <div class="clearfix"></div>
                 </footer>
@@ -195,7 +181,9 @@
         <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"></script>
         <script src="~/lib/jquery-validation/dist/localization/messages_vi.js"></script>
-        <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <!-- Switchery -->
+    <script src="~/lib/switchery/dist/switchery.min.js"></script>
 
 
         <script src="~/lib/moment/moment.js"></script>

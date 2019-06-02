@@ -6,7 +6,7 @@ using System.Text;
 namespace Shop3.Application.AutoMapper
 {
     public class AutoMapperConfig
-    {
+    {//http://docs.automapper.org
         //public static MapperConfiguration RegisterMappings()
         //{
         //    // nếu mapping này ko hoạt động config trực tiếp trên start up ở web
