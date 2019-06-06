@@ -182,56 +182,6 @@ var BaseController = function () {
         return sizes;
     }
 
-    //function getColorOptions(selectedId) {
-    //    var colors = "<select class='form-control ddlColorId'>";
-    //    $.each(cachedObj.colors, function (i, color) {
-    //        if (selectedId === color.Id)
-    //            colors += '<option value="' + color.Id + '" selected="select">' + color.Name + '</option>';
-    //        else
-    //            colors += '<option value="' + color.Id + '">' + color.Name + '</option>';
-    //    });
-    //    colors += "</select>";
-    //    return colors;
-    //}
-
-    //function getSizeOptions(selectedId) {
-    //    var sizes = "<select class='form-control ddlSizeId'>";
-    //    $.each(cachedObj.sizes, function (i, size) {
-    //        if (selectedId === size.Id)
-    //            sizes += '<option value="' + size.Id + '" selected="select">' + size.Name + '</option>';
-    //        else
-    //            sizes += '<option value="' + size.Id + '">' + size.Name + '</option>';
-    //    });
-    //    sizes += "</select>";
-    //    return sizes;
-    //}
-
-    //function loadQuantities(id) {
-    //    $.ajax({
-    //        url: '/Home/GetQuantities',
-    //        data: {
-    //            productId: id
-    //        },
-    //        type: 'get',
-    //        dataType: 'json',
-    //        success: function (response) {
-    //            var render = '';
-    //            var template = $('#template-table-quantity').html();
-    //            $.each(response, function (i, item) {
-    //                render += Mustache.render(template, {
-    //                    Id: item.Id,
-    //                    Colors: getColorOptions(item.ColorId),
-    //                    Sizes: getSizeOptions(item.SizeId),
-    //                    //Quantity: item.Quantity
-    //                });
-    //            });
-    //            $('#table-quantity-content').html(render);
-    //            //resetFile();
-    //        }
-    //    });
-    //}
-
-
     
 
     

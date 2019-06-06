@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Shop3.Data.Enums;
 
 namespace Shop3.Application.Implementation
 {
@@ -69,7 +70,10 @@ namespace Shop3.Application.Implementation
 
         public FeedbackViewModel GetById(int id)
         {
-            return Mapper.Map<Feedback, FeedbackViewModel>(_feedbackRepository.FindById(id));
+            var feedback = _feedbackRepository.FindById(id);
+            feedback.Status = Status.Active;
+            _unitOfWork.Commit();
+            return Mapper.Map<Feedback, FeedbackViewModel>(feedback);
         }
 
         public void SaveChanges()
