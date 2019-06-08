@@ -23,6 +23,7 @@ namespace Shop3.Data.EF
         {
             _context = context;
         }
+
         public void Add(T entity)
         {
             _context.Add(entity);
