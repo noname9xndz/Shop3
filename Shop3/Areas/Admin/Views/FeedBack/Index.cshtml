@@ -1,8 +1,4 @@
-﻿@section Styles{
-
-     <link href="~/admin-side/css/feedback/feedback.css" rel="stylesheet" />
-}
-
+﻿
 @section Scripts{
     <script src="~/app/controllers/feedback/index.js" asp-append-version="true"></script>
     <script>
@@ -12,6 +8,7 @@
     </script>
 
 }
+
 <div class="page-title">
     <div class="title_left">
         <h3>FeedBack <small>send from user</small></h3>
@@ -20,12 +17,12 @@
         }
         @if (result.Succeeded)
         {
-            <button class="btn btn-success" id="btnCreate" type="button">Create</button>
+            <button class="btn btn-success" id="btnCreate" type="button" style="display:none;">Create</button>
         }
     </div>
 
     <div class="title_right">
-        
+
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
             <div class="input-group">
                 <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
@@ -57,7 +54,7 @@
                     <!-- /MAIL LIST -->
                     <!-- CONTENT MAIL -->
                     <div class="col-sm-9 mail_view" hidden>
-                      
+
                         <div id="mailDetail-table"></div>
 
                     </div>
@@ -65,8 +62,8 @@
                 </div>
             </div>
             <!--Pagination-->
-            <div class="pagination">
-            <div class="col-sm-5">
+
+            <div class="col-sm-5 pagination">
                 <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
                     <select id="ddlShowPage">
                         <option value="10" selected="selected">10</option>
@@ -79,17 +76,17 @@
                     </span>
                     Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
                 </div>
-             </div><div class="col-sm-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
-                        <ul id="paginationUL"></ul>
-                    </div>
+            </div><div class="col-sm-7 pagination2">
+                <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                    <ul id="paginationUL"></ul>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 <script id="table-template" type="x-tmpl-mustache">
-   
+
 
     <a href="javascript:void(0)" id="mail" data-id="{{Id}}">
         <div class="mail_list">
@@ -104,7 +101,7 @@
             </div>
             <div class="right">
                 <h3>{{Name}} <small>{{DateCreated}}</small></h3>
-                <p> {{Message}} </p>
+                <p> {{{Message}}} </p>
             </div>
         </div>
     </a>
@@ -119,16 +116,16 @@
                     <button class="btn btn-sm btn-primary" type="button" data-id="{{Id}}">Reply</button>
                     @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
                     {
-                        <button  data-id="{{Id}}" id="btnDeleteFb" class="btn btn-sm btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Trash"><i class="fa fa-trash-o"></i></button>
-                       
+                        <button data-id="{{Id}}" id="btnDeleteFb" class="btn btn-sm btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Trash"><i class="fa fa-trash-o"></i></button>
+
                     }
-                   
+
                 </div>
             </div>
             <div class="col-md-4 text-right">
                 <p class="date"> {{DateCreated}}</p>
             </div>
-            <hr/>
+            <hr />
             <div class="col-md-12">
                 <strong>{{Name}}</strong>
                 <span>( {{Email}} )</span> to
@@ -137,19 +134,18 @@
             </div>
         </div>
 
-        <hr/>
+        <hr />
         <div class="view-mail">
-            <p> {{Message}}   </p>
+            <p> {{{Message}}}   </p>
 
         </div>
         <div class="attachment">
-            <p>
-                <span><i class="fa fa-paperclip"></i> 3 attachments — </span>
-                <a href="#">Download all attachments</a> |
-                <a href="#">View all images</a>
-            </p>
+            {{#Status}}
+            Đã Xem
+            {{/Status}}
 
         </div>
     </div>
 
 </script>
+@await Html.PartialAsync("_AddEditModal.cshtml")

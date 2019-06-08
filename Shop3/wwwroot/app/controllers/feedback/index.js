@@ -6,7 +6,7 @@ var FeedBackController = function() {
     this.initialize = function() {
         loadFeedBack();
         registerEvents();
-        //registerControls();
+        registerControls();
     }
 
     function registerEvents() {
@@ -35,13 +35,44 @@ var FeedBackController = function() {
             var id = $(this).data('id');
             loadFeedBackDetail(id);
         }); 
+
         $('body').on('click', '#btnDeleteFb', function (e) {
             e.preventDefault();
             var id = $(this).data('id');
             deleteFeedBack(id);
         });
 
+        $("#btnCreate,#compose").on('click', function () {
+            resetForm();
+            $('#modal-add-edit').modal('show');
+            
+        });
+        $('#btnSendMail').on('click', function (e) {
+            sendMail(e);
+        });
+
     };
+
+    function registerControls() {
+        CKEDITOR.replace('txtContent', {});
+
+        //Fix: cannot click on element ck in modal
+        $.fn.modal.Constructor.prototype.enforceFocus = function () {
+            $(document)
+                .off('focusin.bs.modal') // guard against infinite focus loop
+                .on('focusin.bs.modal', $.proxy(function (e) {
+                    if (
+                        this.$element[0] !== e.target && !this.$element.has(e.target).length
+                            // CKEditor compatibility fix start.
+                            && !$(e.target).closest('.cke_dialog, .cke').length
+                        // CKEditor compatibility fix end.
+                    ) {
+                        this.$element.trigger('focus');
+                    }
+                }, this));
+        };
+
+    }
 
     function loadFeedBack(isPageChanged) {
 
@@ -60,8 +91,8 @@ var FeedBackController = function() {
             success: function (response) {
                 if (response.status == "error") {
                     common.notify(response.message, 'error');
-                    $(".mail_list_column,.mail_view,.dataTables_info,.pagination").attr("hidden", true);
-                    $("#btnCreate").removeAttr("hidden"); 
+                    $(".mail_list_column,.mail_view,.pagination,.pagination2").attr("hidden", true);
+                    $("#btnCreate").css("display","");
                 }
                 else{
                     //console.log(response);
@@ -131,7 +162,6 @@ var FeedBackController = function() {
         });
     }
 
-    
     function wrapPaging(recordCount, callBack, changePageSize) { // changePageSize : load ra phân trang hay đổi trang
         var totalsize = Math.ceil(recordCount / common.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
@@ -155,7 +185,6 @@ var FeedBackController = function() {
         });
     }
 
-  
     function deleteFeedBack(id) {
         common.confirm('Are you sure to delete?', function () {
             $.ajax({
@@ -178,5 +207,59 @@ var FeedBackController = function() {
             });
         });
     }
+
+    function resetForm() {
+
+        $('#hidId').val(0);
+        $('#txtEmail').val('');
+        $('#txtsubject').val('');
+        CKEDITOR.instances.txtContent.setData('');
+
+    }
+
+    function sendMail(e) {
+
+        if ($('#frmMaintainance').valid()) {
+            e.preventDefault();
+            var id = $('#hidId').val();
+            var name = "Email send by Admin To " + $('#txtEmail').val();
+            var email = $('#txtEmail').val();
+            var subject = $('#txtsubject').val();
+            var content = CKEDITOR.instances.txtContent.getData();
+            var status = true;
+            
+            $.ajax({
+                type: "POST",
+                url: "/Admin/FeedBack/SendMailToUser",
+                data: {
+                    Id: id,
+                    Name: name,
+                    Email: email,
+                    Subject : subject,
+                    Message: content
+                    //Status: status
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    common.startLoading();
+                },
+                success: function (response) {
+                    common.notify('Send mail successful', 'success');
+                    $('#modal-add-edit').modal('hide');
+                    resetForm();
+                    common.stopLoading();
+                    //loadMailAdmin();
+                },
+                error: function () {
+                    common.notify('Has an error', 'error');
+                    common.stopLoading();
+                }
+            });
+            return false;
+        }
+
+    }
+    
+
 
 }
