@@ -22,21 +22,23 @@ namespace Shop3.Application.Implementation
         private readonly IRepository<Tag, string> _tagRepository;
         private readonly IRepository<BlogTag, int> _blogTagRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper; // inject mapper để unit test,giảm sự phụ thuộc vào mapper
 
         public BlogService(IRepository<Blog, int> blogRepository,
             IRepository<BlogTag, int> blogTagRepository,
             IRepository<Tag, string> tagRepository,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork, IMapper mapper)
         {
             _blogRepository = blogRepository;
             _blogTagRepository = blogTagRepository;
             _tagRepository = tagRepository;
             _unitOfWork = unitOfWork;
+             _mapper = mapper;
         }
 
         public BlogViewModel Add(BlogViewModel blogVm)
         {
-            var blog = Mapper.Map<BlogViewModel, Blog>(blogVm);
+            var blog = _mapper.Map<BlogViewModel, Blog>(blogVm);
 
             if (!string.IsNullOrEmpty(blog.Tags))
             {
@@ -70,8 +72,11 @@ namespace Shop3.Application.Implementation
 
         public List<BlogViewModel> GetAll()
         {
-            return _blogRepository.FindAll(c => c.BlogTags)
-                .ProjectTo<BlogViewModel>().ToList();
+//            return _blogRepository.FindAll(c => c.BlogTags)
+//                .ProjectTo<BlogViewModel>().ToList();
+               // sử dụng cơ chế của automapper
+               return _mapper.ProjectTo<BlogViewModel>(_blogRepository.FindAll(c => c.BlogTags)).ToList();
+
         }
 
         public PagedResult<BlogViewModel> GetAllPaging(string keyword, int page, int pageSize)
@@ -81,13 +86,16 @@ namespace Shop3.Application.Implementation
                 query = query.Where(x => x.Name.Contains(keyword));
 
             int totalRow = query.Count();
+//            var data = query.OrderByDescending(x => x.DateCreated)
+//                .Skip((page - 1) * pageSize)
+//                .Take(pageSize).ProjectTo<BlogViewModel>().ToList();
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip((page - 1) * pageSize)
-                .Take(pageSize).ProjectTo<BlogViewModel>().ToList();
-
+                .Take(pageSize);
+            var output = _mapper.ProjectTo <BlogViewModel>(data).ToList();
             var paginationSet = new PagedResult<BlogViewModel>()
             {
-                Results = data,
+                Results = output,
                 CurrentPage = page,
                 RowCount = totalRow,
                 PageSize = pageSize,
@@ -98,7 +106,7 @@ namespace Shop3.Application.Implementation
 
         public BlogViewModel GetById(int id)
         {
-            return Mapper.Map<Blog, BlogViewModel>(_blogRepository.FindById(id));
+            return _mapper.Map<Blog, BlogViewModel>(_blogRepository.FindById(id));
         }
 
         public void Save()
@@ -109,7 +117,7 @@ namespace Shop3.Application.Implementation
         public void Update(BlogViewModel blog)
         {
             //_blogRepository.Update(Mapper.Map<BlogViewModel, Blog>(blog));
-            _blogRepository.Update(blog.Id,Mapper.Map<BlogViewModel, Blog>(blog));
+            _blogRepository.Update(blog.Id, _mapper.Map<BlogViewModel, Blog>(blog));
             if (!string.IsNullOrEmpty(blog.Tags))
             {
                 string[] tags = blog.Tags.Split(',');
@@ -139,17 +147,25 @@ namespace Shop3.Application.Implementation
 
         public List<BlogViewModel> GetLastest(int top)
         {
-            return _blogRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
-                .Take(top).ProjectTo<BlogViewModel>().ToList();
+            //return _blogRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+            //    .Take(top).ProjectTo<BlogViewModel>().ToList();
+            var data =_blogRepository.FindAll(x => x.Status == Status.Active)
+                .OrderByDescending(x => x.DateCreated)
+                .Take(top);
+            return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
 
         public List<BlogViewModel> GetHotProduct(int top)
         {
-            return _blogRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
+            //return _blogRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
+            //    .OrderByDescending(x => x.DateCreated)
+            //    .Take(top)
+            //    .ProjectTo<BlogViewModel>()
+            //    .ToList();
+            var data = _blogRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
                 .OrderByDescending(x => x.DateCreated)
-                .Take(top)
-                .ProjectTo<BlogViewModel>()
-                .ToList();
+                .Take(top);
+            return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
 
         public List<BlogViewModel> GetListPaging(int page, int pageSize, string sort, out int totalRow)
@@ -169,9 +185,13 @@ namespace Shop3.Application.Implementation
 
             totalRow = query.Count();
 
-            return query.Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ProjectTo<BlogViewModel>().ToList();
+//            return query.Skip((page - 1) * pageSize)
+//                .Take(pageSize)
+//                .ProjectTo<BlogViewModel>().ToList();
+           var data = query.Skip((page - 1) * pageSize)
+                .Take(pageSize);
+
+            return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
 
         public List<string> GetListByName(string name)
@@ -198,28 +218,28 @@ namespace Shop3.Application.Implementation
 
             totalRow = query.Count();
 
-            return query.Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ProjectTo<BlogViewModel>()
-                .ToList();
+            
+            var data = query.Skip((page - 1) * pageSize)
+                .Take(pageSize);
+
+            return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
 
         public List<BlogViewModel> GetReatedBlogs(int id, int top)
         {
-            return _blogRepository.FindAll(x => x.Status == Status.Active
-                && x.Id != id)
-            .OrderByDescending(x => x.DateCreated)
-            .Take(top)
-            .ProjectTo<BlogViewModel>()
-            .ToList();
+            var data = _blogRepository.FindAll(x => x.Status == Status.Active
+                                                    && x.Id != id)
+                .OrderByDescending(x => x.DateCreated)
+                .Take(top);
+
+            return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
 
         public List<TagViewModel> GetListTagById(int id)
         {
-            return _blogTagRepository.FindAll(x => x.BlogId == id, c => c.Tag)
-                .Select(y => y.Tag)
-                .ProjectTo<TagViewModel>()
-                .ToList();
+            var data = _blogTagRepository.FindAll(x => x.BlogId == id, c => c.Tag)
+                .Select(y => y.Tag);
+            return _mapper.ProjectTo<TagViewModel>(data).ToList();
         }
 
         public void IncreaseView(int id)
@@ -243,15 +263,13 @@ namespace Shop3.Application.Implementation
             totalRow = query.Count();
 
             query = query.Skip((page - 1) * pageSize).Take(pageSize);
-
-            var model = query
-                .ProjectTo<BlogViewModel>();
-            return model.ToList();
+            
+            return _mapper.ProjectTo<BlogViewModel>(query).ToList();
         }
 
         public TagViewModel GetTag(string tagId)
         {
-            return Mapper.Map<Tag, TagViewModel>(_tagRepository.FindSingle(x => x.Id == tagId));
+            return _mapper.Map<Tag, TagViewModel>(_tagRepository.FindSingle(x => x.Id == tagId));
         }
 
         public List<BlogViewModel> GetList(string keyword)
@@ -259,13 +277,16 @@ namespace Shop3.Application.Implementation
             var query = !string.IsNullOrEmpty(keyword) ?
                 _blogRepository.FindAll(x => x.Name.Contains(keyword)).ProjectTo<BlogViewModel>()
                 : _blogRepository.FindAll().ProjectTo<BlogViewModel>();
-            return query.ToList();
+           
+            return _mapper.ProjectTo<BlogViewModel>(query).ToList();
         }
 
         public List<TagViewModel> GetListTag(string searchText)
         {
-            return _tagRepository.FindAll(x => x.Type == CommonConstants.ProductTag
-            && searchText.Contains(x.Name)).ProjectTo<TagViewModel>().ToList();
+            var data = _tagRepository.FindAll(x => x.Type == CommonConstants.ProductTag
+            && searchText.Contains(x.Name));
+
+            return _mapper.ProjectTo<TagViewModel>(data).ToList();
         }
     }
 }

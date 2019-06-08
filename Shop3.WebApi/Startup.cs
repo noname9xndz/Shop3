@@ -97,11 +97,15 @@ namespace Shop3.WebApi
             });
 
             //nuget : automapper 8.0.0,AutoMapper.Extensions.Microsoft.DependencyInjection 6.0.0
-            Mapper.Initialize(cfg =>
-            {
-                cfg.AddProfile(new DomainToViewModelMappingProfile());
-                cfg.AddProfile(new ViewModelToDomainMappingProfile());
-            });
+            //            Mapper.Initialize(cfg =>
+            //            {
+            //                cfg.AddProfile(new DomainToViewModelMappingProfile());
+            //                cfg.AddProfile(new ViewModelToDomainMappingProfile());
+            //            });
+
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
