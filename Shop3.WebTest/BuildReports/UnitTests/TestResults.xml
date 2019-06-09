@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies timestamp="06/09/2019 18:07:51">
+  <assembly name="E:\project\shop3\Shop3.WebTest\bin\Debug\netcoreapp2.2\Shop3.WebTest.dll" run-date="2019-06-09" run-time="18:07:51" total="5" passed="4" failed="1" skipped="0" time="0.643" errors="0">
+    <errors />
+    <collection total="1" passed="1" failed="0" skipped="0" name="Test collection for Shop3.ApiTest.ProductControllerTest" time="0.197">
+      <test name="Shop3.ApiTest.ProductControllerTest.Index_GetCategory_ValidModel" type="Shop3.ApiTest.ProductControllerTest" method="Index_GetCategory_ValidModel" time="0.1970000" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="3" passed="2" failed="1" skipped="0" name="Test collection for Shop3.WebTest.Controllers.CartControllerTest" time="0.263">
+      <test name="Shop3.WebTest.Controllers.CartControllerTest.Checkout_ValidRequest_OkResult" type="Shop3.WebTest.Controllers.CartControllerTest" method="Checkout_ValidRequest_OkResult" time="0.2360000" result="Pass">
+        <traits />
+      </test>
+      <test name="Shop3.WebTest.Controllers.CartControllerTest.Checkout_PostValid_OkResult" type="Shop3.WebTest.Controllers.CartControllerTest" method="Checkout_PostValid_OkResult" time="0.0240000" result="Fail">
+        <failure>
+          <message>Assert.IsType() Failure
+Expected: Microsoft.AspNetCore.Mvc.ViewResult
+Actual:   System.Threading.Tasks.Task`1[[Microsoft.AspNetCore.Mvc.IActionResult, Microsoft.AspNetCore.Mvc.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]</message>
+          <stack-trace>   at Shop3.WebTest.Controllers.CartControllerTest.Checkout_PostValid_OkResult() in E:\project\shop3\Shop3.WebTest\Controllers\CartController.Test.cs:line 144</stack-trace>
+        </failure>
+        <traits />
+      </test>
+      <test name="Shop3.WebTest.Controllers.CartControllerTest.Checkout_NullSession_RedirectResult" type="Shop3.WebTest.Controllers.CartControllerTest" method="Checkout_NullSession_RedirectResult" time="0.0030000" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="1" passed="1" failed="0" skipped="0" name="Test collection for Shop3.WebTest.Controllers.Components.CategoryMenuViewComponentTest" time="0.183">
+      <test name="Shop3.WebTest.Controllers.Components.CategoryMenuViewComponentTest.Invoke_ValidInput_ResultOk" type="Shop3.WebTest.Controllers.Components.CategoryMenuViewComponentTest" method="Invoke_ValidInput_ResultOk" time="0.1830000" result="Pass">
+        <traits />
+      </test>
+    </collection>
+  </assembly>
+</assemblies>

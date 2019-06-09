@@ -37,7 +37,7 @@ namespace Shop3.WebTest.Controllers.Components
 
             //Assert
             Assert.IsAssignableFrom<IViewComponentResult>(result);
-            //...other assertions
+           
         }
     }
 }

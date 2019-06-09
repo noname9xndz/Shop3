@@ -1,0 +1,12 @@
+﻿
+
+test coverlet : là đo số dòng code được unit test chạy qua trên tổng số dòng code được viết(thường đảm bảo trên 50%)
+visual studio bản Enterprise có sẵn , ở đây sử dụng bằng tay : https://github.com/danielpalme/ReportGenerator
+nuget :
+  + coverlet.msbuild
+  + Microsoft.CodeCoverage
+  + Microsoft.Net.Test.Sdk
+  + ReportGenerator
+  + XunitXml.TestLogger
+add folder : BuildReports > Coverage && UnitTests
+chạy cmd bên trong run_test.bat

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies timestamp="06/09/2019 18:03:31">
+  <assembly name="E:\project\shop3\Shop3.ApiTest\bin\Debug\netcoreapp2.2\Shop3.ApiTest.dll" run-date="2019-06-09" run-time="18:03:31" total="2" passed="2" failed="0" skipped="0" time="0.159" errors="0">
+    <errors />
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for Shop3.WebTest.ProductControllerTest" time="0.159">
+      <test name="Shop3.WebTest.ProductControllerTest.Get_ServiceException_BadRequestResult" type="Shop3.WebTest.ProductControllerTest" method="Get_ServiceException_BadRequestResult" time="0.1500000" result="Pass">
+        <traits />
+      </test>
+      <test name="Shop3.WebTest.ProductControllerTest.Get_ValidRequest_OkResult" type="Shop3.WebTest.ProductControllerTest" method="Get_ValidRequest_OkResult" time="0.0090000" result="Pass">
+        <traits />
+      </test>
+    </collection>
+  </assembly>
+</assemblies>
