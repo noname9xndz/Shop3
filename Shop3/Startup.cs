@@ -111,11 +111,11 @@ namespace Shop3
             });
 
             //nuget : automapper ,AutoMapper.Extensions.Microsoft.DependencyInjection
-            Mapper.Initialize(cfg =>
-            {
-                cfg.AddProfile(new DomainToViewModelMappingProfile());
-                cfg.AddProfile(new ViewModelToDomainMappingProfile());
-            });
+//            Mapper.Initialize(cfg =>
+//            {
+//                cfg.AddProfile(new DomainToViewModelMappingProfile());
+//                cfg.AddProfile(new ViewModelToDomainMappingProfile());
+//            });
 
             #endregion config cho  auto mapper ,captcha
 
@@ -153,6 +153,8 @@ namespace Shop3
 
             services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
             services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
+            services.AddTransient<IFileService, FileService>();
+            services.AddTransient<IExcelService, ExcelService>();
 
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
 

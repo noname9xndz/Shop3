@@ -6,6 +6,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
+using Shop3.Services;
 using Shop3.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,17 @@ namespace Shop3.Areas.Admin.Controllers
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;
         private readonly IHostingEnvironment _hostingEnvironment; // lấy ra môi trường mà appweb đang chạy
-        public ProductController(IProductService productService, IProductCategoryService productCategoryService,
-                 IHostingEnvironment hostingEnvironment)
+        private readonly IFileService _fileService;
+        private readonly IExcelService _excelService;
+        //todo : tối ưu lại việc xử lý file và excel bằng inject
+        public ProductController(IProductService productService, IProductCategoryService productCategoryService
+                 ,IHostingEnvironment hostingEnvironment, IFileService fileService, IExcelService excelService)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
             _hostingEnvironment = hostingEnvironment;
+            _excelService = excelService;
+            _fileService = fileService;
         }
         public IActionResult Index()
         {
@@ -120,13 +126,20 @@ namespace Shop3.Areas.Admin.Controllers
 
                 string folder = _hostingEnvironment.WebRootPath + $@"\uploaded\excels";
 
-                if (!Directory.Exists(folder))
+                //                if (!Directory.Exists(folder))
+                //                {
+                //                    Directory.CreateDirectory(folder);
+                //                }
+
+                if (!_fileService.CheckDirectoryExist(folder))
                 {
-                    Directory.CreateDirectory(folder);
+                    _fileService.CreateDirectory(folder);
                 }
+
                 string filePath = Path.Combine(folder, filename); // lấy đường dẫn tuyệt đối file
 
-                using (FileStream fs = System.IO.File.Create(filePath))
+                //using (FileStream fs = System.IO.File.Create(filePath))
+                using (FileStream fs = _fileService.CreateFile(filePath))
                 {
                     file.CopyTo(fs);
                     fs.Flush();
@@ -150,22 +163,28 @@ namespace Shop3.Areas.Admin.Controllers
             string sFileName = $"Product_{DateTime.Now:yyyyMMddhhmmss}.xlsx";
             string fileUrl = $"{Request.Scheme}://{Request.Host}/export-files/{sFileName}";
             FileInfo file = new FileInfo(Path.Combine(directory, sFileName));
-            if (file.Exists)
+            //            if (file.Exists)
+            //            {
+            //                file.Delete();
+            //                file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
+            //            }
+            if (_fileService.CheckFileExist(file))
             {
-                file.Delete();
+                _fileService.DeleteFile(file);
                 file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
             }
             var products = _productService.GetAll(); //  có thể get bằng search
 
             //c1 :lấy trực tiếp bằng cách lấy dữ liệu trên form
-            using (ExcelPackage package = new ExcelPackage(file))
-            {
-                // add a new worksheet to the empty workbook
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Products");
-                worksheet.Cells["A1"].LoadFromCollection(products, true, TableStyles.Light1);
-                worksheet.Cells.AutoFitColumns();
-                package.Save(); //Save the workbook.
-            }
+            //using (ExcelPackage package = new ExcelPackage(file))
+            //{
+            //    // add a new worksheet to the empty workbook
+            //    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Products");
+            //    worksheet.Cells["A1"].LoadFromCollection(products, true, TableStyles.Light1);
+            //    worksheet.Cells.AutoFitColumns();
+            //    package.Save(); //Save the workbook.
+            //}
+            _excelService.WriteExcel(file, products);
 
             // c2 : vẽ trực tiếp trên các cell
             //using (ExcelPackage pck = new ExcelPackage(new FileInfo(filePath), new FileInfo("đường dẫn file template")))

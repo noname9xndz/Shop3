@@ -18,10 +18,4 @@
     <ProjectReference Include="..\Shop3\Shop3.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Controllers\Components\" />
-    <Folder Include="Mock\" />
-  </ItemGroup>
-
 </Project>
