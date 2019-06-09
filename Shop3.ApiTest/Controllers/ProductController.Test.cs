@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Shop3.Application.Interfaces;
+using Shop3.Application.ViewModels.Products;
 using Shop3.WebApi.Controllers;
 using Xunit;
 
@@ -21,19 +24,40 @@ namespace Shop3.WebTest
          */
     public class ProductControllerTest
     {
+        private readonly Mock<IProductCategoryService> _mockProductCategoryService;
         
-        private Mock<IProductCategoryService> _productCategoryService;
-        private ProductController _productController;
+
         public ProductControllerTest()
         {
-            _productCategoryService = new Mock<IProductCategoryService>();
-            _productController = new ProductController(_productCategoryService.Object);
+            _mockProductCategoryService = new Mock<IProductCategoryService>();
+
+        }
+        [Fact]
+        public void Get_ValidRequest_OkResult()
+        {
+           
+            _mockProductCategoryService.Setup(x => x.GetAll())
+                .Returns(new List<ProductCategoryViewModel>()
+            {
+                 new ProductCategoryViewModel(){Id = 1, Name="test 1"},
+                 new ProductCategoryViewModel(){Id = 2, Name="test 2"},
+            });
+            var controller = new ProductController(_mockProductCategoryService.Object);
+
+            var result = controller.Get();
+
+            Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(200, (result as OkObjectResult).StatusCode);
         }
 
         [Fact]
-        public void Test1()
-        {  
+        public void Get_ServiceException_BadRequestResult()
+        {
+            _mockProductCategoryService.Setup(x => x.GetAll()).Throws<Exception>();
 
+            var controller = new ProductController(_mockProductCategoryService.Object);
+
+            Assert.ThrowsAny<Exception>(() => { controller.Get(); });
         }
     }
 }

@@ -78,7 +78,12 @@ namespace Shop3.AppliactionTest.Implementation
         public void GetAll_ValidQuery_ResultSuccess()
         {
 
-            var mapper = AutoMapperConfig.RegisterMappings().CreateMapper();
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+
+            });
+            var mapper = mockMapper.CreateMapper();
 
             var blogs = new List<Blog>
             {
@@ -102,7 +107,12 @@ namespace Shop3.AppliactionTest.Implementation
         public void GetAllPaging_ValidQuery_ResultSuccess()
         {
 
-            var mapper = AutoMapperConfig.RegisterMappings().CreateMapper();
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+
+            });
+            var mapper = mockMapper.CreateMapper();
 
             var blogs = new List<Blog>
             {
@@ -125,7 +135,12 @@ namespace Shop3.AppliactionTest.Implementation
         [Fact]
         public void GetById_ValidQuery_ResultSuccess()
         {
-            var mapper = AutoMapperConfig.RegisterMappings().CreateMapper();
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+
+            });
+            var mapper = mockMapper.CreateMapper();
 
             _mockBlogRepository.Setup(x => x.FindById(It.IsAny<int>()))
                 .Returns(new Blog { Id = 1, Name = "test 1", Status = Status.Active });
@@ -141,9 +156,14 @@ namespace Shop3.AppliactionTest.Implementation
         [Fact]
         public void GetLastest_ValidQuery_ResultSuccess()
         {
-            
-            var mapper = AutoMapperConfig.RegisterMappings().CreateMapper();
-           
+
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+
+            });
+            var mapper = mockMapper.CreateMapper();
+
 
             var blogs = new List<Blog>
             {
