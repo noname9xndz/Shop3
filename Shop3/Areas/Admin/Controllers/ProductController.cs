@@ -74,6 +74,7 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult SaveEntity(ProductViewModel productVm)
         { // todo bug delete and update client (don't delete path img)
+            // loop savechange
             if (!ModelState.IsValid)
             {
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);

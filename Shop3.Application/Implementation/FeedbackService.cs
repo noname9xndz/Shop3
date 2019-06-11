@@ -17,17 +17,19 @@ namespace Shop3.Application.Implementation
     {
         private IRepository<Feedback, int> _feedbackRepository;
         private IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public FeedbackService(IRepository<Feedback, int> feedbackRepository,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork, IMapper mapper)
         {
             _feedbackRepository = feedbackRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public void Add(FeedbackViewModel feedbackVm)
         {
-            var page = Mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
+            var page = _mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
             _feedbackRepository.Add(page);
         }
 
@@ -43,7 +45,8 @@ namespace Shop3.Application.Implementation
 
         public List<FeedbackViewModel> GetAll()
         {
-            return _feedbackRepository.FindAll().ProjectTo<FeedbackViewModel>().ToList();
+            var data = _feedbackRepository.FindAll();
+            return _mapper.ProjectTo<FeedbackViewModel>(data).ToList();
         }
 
         public PagedResult<FeedbackViewModel> GetAllPaging(string keyword, int page, int pageSize)
@@ -59,7 +62,7 @@ namespace Shop3.Application.Implementation
 
             var paginationSet = new PagedResult<FeedbackViewModel>()
             {
-                Results = data.ProjectTo<FeedbackViewModel>().ToList(),
+                Results = _mapper.ProjectTo<FeedbackViewModel>(data).ToList(),
                 CurrentPage = page,
                 RowCount = totalRow,
                 PageSize = pageSize
@@ -73,7 +76,7 @@ namespace Shop3.Application.Implementation
             var feedback = _feedbackRepository.FindById(id);
             feedback.Status = Status.Active;
             _unitOfWork.Commit();
-            return Mapper.Map<Feedback, FeedbackViewModel>(feedback);
+            return _mapper.Map<Feedback, FeedbackViewModel>(feedback);
         }
 
         public void SaveChanges()
@@ -83,7 +86,7 @@ namespace Shop3.Application.Implementation
 
         public void Update(FeedbackViewModel feedbackVm)
         {
-            var page = Mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
+            var page = _mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
             //_feedbackRepository.Update(page);
             _feedbackRepository.Update(page.Id, page);
         }

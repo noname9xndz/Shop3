@@ -111,11 +111,11 @@ namespace Shop3
             });
 
             //nuget : automapper ,AutoMapper.Extensions.Microsoft.DependencyInjection
-//            Mapper.Initialize(cfg =>
-//            {
-//                cfg.AddProfile(new DomainToViewModelMappingProfile());
-//                cfg.AddProfile(new ViewModelToDomainMappingProfile());
-//            });
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+                cfg.AddProfile(new ViewModelToDomainMappingProfile());
+            });
 
             #endregion config cho  auto mapper ,captcha
 
@@ -148,8 +148,8 @@ namespace Shop3
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
 
-            services.AddSingleton(Mapper.Configuration); // nuget : automapper
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            //services.AddSingleton(Mapper.Configuration); // nuget : automapper
+           // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
             services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user

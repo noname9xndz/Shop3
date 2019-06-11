@@ -16,18 +16,20 @@ namespace Shop3.Application.Implementation
     {
         private IRepository<Contact, string> _contactRepository;
         private IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public ContactService(IRepository<Contact, string> contactRepository,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork, IMapper mapper)
         {
-            this._contactRepository = contactRepository;
-            this._unitOfWork = unitOfWork;
+            _contactRepository = contactRepository;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public void Add(ContactViewModel contactVm)
         {
             contactVm.Id = contactVm.Name + "-" + DateTime.Now;
-            var contact = Mapper.Map<ContactViewModel, Contact>(contactVm);
+            var contact = _mapper.Map<ContactViewModel, Contact>(contactVm);
             _contactRepository.Add(contact);
         }
 
@@ -43,7 +45,7 @@ namespace Shop3.Application.Implementation
 
         public List<ContactViewModel> GetAll()
         {
-            return _contactRepository.FindAll().ProjectTo<ContactViewModel>().ToList();
+           return _mapper.ProjectTo<ContactViewModel>(_contactRepository.FindAll()).ToList();
         }
 
         public PagedResult<ContactViewModel> GetAllPaging(string keyword, int page, int pageSize)
@@ -59,7 +61,7 @@ namespace Shop3.Application.Implementation
 
             var paginationSet = new PagedResult<ContactViewModel>()
             {
-                Results = data.ProjectTo<ContactViewModel>().ToList(),
+                Results = _mapper.ProjectTo<ContactViewModel>(data).ToList(),
                 CurrentPage = page,
                 RowCount = totalRow,
                 PageSize = pageSize
@@ -70,7 +72,7 @@ namespace Shop3.Application.Implementation
 
         public ContactViewModel GetById(string id)
         {
-            return Mapper.Map<Contact, ContactViewModel>(_contactRepository.FindById(id));
+            return _mapper.Map<Contact, ContactViewModel>(_contactRepository.FindById(id));
         }
 
         public void SaveChanges()
@@ -80,7 +82,7 @@ namespace Shop3.Application.Implementation
 
         public void Update(ContactViewModel pageVm)
         {
-            var page = Mapper.Map<ContactViewModel, Contact>(pageVm);
+            var page = _mapper.Map<ContactViewModel, Contact>(pageVm);
             //_contactRepository.Update(page);
             _contactRepository.Update(page.Id,page);
         }

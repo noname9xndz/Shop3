@@ -22,6 +22,7 @@ namespace Shop3.Application.Implementation
         private readonly IRepository<Size, int> _sizeRepository;
         private readonly IRepository<Product, int> _productRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
 
         public BillService(IRepository<Bill, int> orderRepository,
@@ -29,7 +30,8 @@ namespace Shop3.Application.Implementation
             IRepository<Color, int> colorRepository,
             IRepository<Product, int> productRepository,
             IRepository<Size, int> sizeRepository,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
             _orderRepository = orderRepository;
             _orderDetailRepository = orderDetailRepository;
@@ -37,13 +39,14 @@ namespace Shop3.Application.Implementation
             _sizeRepository = sizeRepository;
             _productRepository = productRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public void Create(BillViewModel billVm)
         {
-            billVm.DateCreated = billVm.DateModified = DateTime.Now;
-            var order = Mapper.Map<BillViewModel, Bill>(billVm);
-            var orderDetails = Mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
+           // billVm.DateCreated = billVm.DateModified = DateTime.Now;
+            var order = _mapper.Map<BillViewModel, Bill>(billVm);
+            var orderDetails = _mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
             foreach (var detail in orderDetails)
             {
                 // lấy ra price mới nhất của product
@@ -58,7 +61,7 @@ namespace Shop3.Application.Implementation
         {
             
             //Mapping to order domain
-            var order = Mapper.Map<BillViewModel, Bill>(billVm);
+            var order = _mapper.Map<BillViewModel, Bill>(billVm);
 
             //Get order Detail
             var newDetails = order.BillDetails;
@@ -106,7 +109,8 @@ namespace Shop3.Application.Implementation
 
         public List<SizeViewModel> GetSizes()
         {
-            return _sizeRepository.FindAll().ProjectTo<SizeViewModel>().ToList();
+            var  data =  _sizeRepository.FindAll();
+           return _mapper.ProjectTo<SizeViewModel>(data).ToList();
         }
 
         public void Save()
@@ -133,17 +137,16 @@ namespace Shop3.Application.Implementation
                 query = query.Where(x => x.CustomerName.Contains(keyword) || x.CustomerMobile.Contains(keyword));
             }
             // phân trang và thực thi query
-            var totalRow = query.Count(); 
+            var totalRow = query.Count();
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .ProjectTo<BillViewModel>()
-                .ToList();
+                .Take(pageSize);
+            
             return new PagedResult<BillViewModel>()
             {
                 CurrentPage = pageIndex,
                 PageSize = pageSize,
-                Results = data,
+                Results = _mapper.ProjectTo<BillViewModel>(data).ToList(),
                 RowCount = totalRow
             };
         }
@@ -151,27 +154,28 @@ namespace Shop3.Application.Implementation
         public BillViewModel GetDetail(int billId)
         {
             var bill = _orderRepository.FindSingle(x => x.Id == billId);
-            var billVm = Mapper.Map<Bill, BillViewModel>(bill);
-            var billDetailVm = _orderDetailRepository.FindAll(x => x.BillId == billId).ProjectTo<BillDetailViewModel>().ToList();
+            var billVm = _mapper.Map<Bill, BillViewModel>(bill);
+            var billDetailVm = _mapper.ProjectTo<BillDetailViewModel>(_orderDetailRepository.FindAll(x => x.BillId == billId)).ToList();
             billVm.BillDetails = billDetailVm;
             return billVm;
         }
 
         public List<BillDetailViewModel> GetBillDetails(int billId)
         {
-            return _orderDetailRepository
-                .FindAll(x => x.BillId == billId, c => c.Bill, c => c.Color, c => c.Size, c => c.Product)
-                .ProjectTo<BillDetailViewModel>().ToList();
+            var  data = _orderDetailRepository
+                .FindAll(x => x.BillId == billId, c => c.Bill, c => c.Color, c => c.Size, c => c.Product);
+            return _mapper.ProjectTo<BillDetailViewModel>(data).ToList();
+
         }
 
         public List<ColorViewModel> GetColors()
         {
-            return _colorRepository.FindAll().ProjectTo<ColorViewModel>().ToList();
+            return _mapper.ProjectTo<ColorViewModel>(_colorRepository.FindAll()).ToList();
         }
 
         public BillDetailViewModel CreateDetail(BillDetailViewModel billDetailVm)
         {
-            var billDetail = Mapper.Map<BillDetailViewModel, BillDetail>(billDetailVm);
+            var billDetail = _mapper.Map<BillDetailViewModel, BillDetail>(billDetailVm);
             _orderDetailRepository.Add(billDetail);
             return billDetailVm;
         }
@@ -185,12 +189,12 @@ namespace Shop3.Application.Implementation
 
         public ColorViewModel GetColor(int id)
         {
-            return Mapper.Map<Color, ColorViewModel>(_colorRepository.FindById(id));
+            return _mapper.Map<Color, ColorViewModel>(_colorRepository.FindById(id));
         }
 
         public SizeViewModel GetSize(int id)
         {
-            return Mapper.Map<Size, SizeViewModel>(_sizeRepository.FindById(id));
+            return _mapper.Map<Size, SizeViewModel>(_sizeRepository.FindById(id));
         }
     }
 }

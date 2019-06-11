@@ -78,7 +78,7 @@ namespace Shop3.Application.Implementation
         {
             var function = _functionRepository.FindSingle(x => x.Id == id);
 
-            return Mapper.Map<Function, FunctionViewModel>(function);
+            return _mapper.Map<Function, FunctionViewModel>(function);
         }
 
         public Task<List<FunctionViewModel>> GetAll(string filter)
@@ -88,7 +88,7 @@ namespace Shop3.Application.Implementation
             if (!string.IsNullOrEmpty(filter))
                 query = query.Where(x => x.Name.Contains(filter));
 
-            return query.OrderBy(x => x.ParentId).ProjectTo<FunctionViewModel>().ToListAsync();
+            return _mapper.ProjectTo <FunctionViewModel>(query.OrderBy(x => x.ParentId)).ToListAsync();
         }
 
         //public PagedResult<FunctionViewModel> GetAll2(string filter,int pageIndex, int pageSize)
@@ -114,7 +114,9 @@ namespace Shop3.Application.Implementation
 
         public IEnumerable<FunctionViewModel> GetAllWithParentId(string parentId)
         {
-            return _functionRepository.FindAll(x => x.ParentId == parentId).ProjectTo<FunctionViewModel>();
+            //return _functionRepository.FindAll(x => x.ParentId == parentId).ProjectTo<FunctionViewModel>();
+            var data = _functionRepository.FindAll(x => x.ParentId == parentId);
+            return _mapper.ProjectTo<FunctionViewModel>(data);
         }
 
         public void Save()

@@ -26,12 +26,14 @@ namespace Shop3.Application.Implementation
         private IRepository<AnnouncementUser, int> _announUserRepository;
 
         private IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public RoleService(RoleManager<AppRole> roleManager,IUnitOfWork unitOfWork,
          IRepository<Function, string> functionRepository,
          IRepository<Permission, int> permissionRepository,
          IRepository<Announcement, string> announRepository,
-         IRepository<AnnouncementUser, int> announUserRepository)
+         IRepository<AnnouncementUser, int> announUserRepository,
+         IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _roleManager = roleManager;
@@ -39,6 +41,7 @@ namespace Shop3.Application.Implementation
             _permissionRepository = permissionRepository;
             _announRepository = announRepository;
             _announUserRepository = announUserRepository;
+            _mapper = mapper;
         }
 
         //public async Task<bool> AddAsync(AppRoleViewModel roleVm)
@@ -65,11 +68,12 @@ namespace Shop3.Application.Implementation
             var result = await _roleManager.CreateAsync(role);
 
             // tạo thông báo
-            var announcement = Mapper.Map<AnnouncementViewModel, Announcement>(announcementVm);
+            var announcement = _mapper.Map<AnnouncementViewModel, Announcement>(announcementVm);
             _announRepository.Add(announcement);
             foreach (var userVm in ListannouncementUsers)
             {
-                var user = Mapper.Map<AnnouncementUserViewModel, AnnouncementUser>(userVm);
+               
+                var user = _mapper.Map<AnnouncementUserViewModel, AnnouncementUser>(userVm);
                 _announUserRepository.Add(user);
             }
             _unitOfWork.Commit();
@@ -100,7 +104,8 @@ namespace Shop3.Application.Implementation
 
         public async Task<List<AppRoleViewModel>> GetAllAsync()
         {
-            return await _roleManager.Roles.ProjectTo<AppRoleViewModel>().ToListAsync();
+            
+            return await _mapper.ProjectTo<AppRoleViewModel>(_roleManager.Roles).ToListAsync();
         }
 
         public PagedResult<AppRoleViewModel> GetAllPagingAsync(string keyword, int page, int pageSize)
@@ -129,7 +134,7 @@ namespace Shop3.Application.Implementation
         public async Task<AppRoleViewModel> GetById(Guid id)
         {
             var role = await _roleManager.FindByIdAsync(id.ToString());
-            return Mapper.Map<AppRole, AppRoleViewModel>(role);
+            return _mapper.Map<AppRole, AppRoleViewModel>(role);
         }
 
         public List<PermissionViewModel> GetListFunctionWithRole(Guid roleId)
@@ -158,7 +163,7 @@ namespace Shop3.Application.Implementation
 
         public void SavePermission(List<PermissionViewModel> permissionVms, Guid roleId)
         {
-            var permissions = Mapper.Map<List<PermissionViewModel>, List<Permission>>(permissionVms);
+            var permissions = _mapper.Map<List<PermissionViewModel>, List<Permission>>(permissionVms);
             var oldPermission = _permissionRepository.FindAll().Where(x => x.RoleId == roleId).ToList();
             if (oldPermission.Count > 0)
             {

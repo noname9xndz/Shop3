@@ -28,6 +28,7 @@ namespace Shop3.Application.Implementation
         private IRepository<WholePrice, int> _wholePriceRepository;
 
         private IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public ProductService(IRepository<Product, int> productRepository,
             IRepository<Tag, string> tagRepository,
@@ -35,7 +36,9 @@ namespace Shop3.Application.Implementation
         IRepository<ProductTag, int> productTagRepository,
         IRepository<ProductQuantity, int> productQuantityRepository,
         IRepository<ProductImage, int> productImageRepository,
-        IRepository<WholePrice, int> wholePriceRepository)
+        IRepository<WholePrice, int> wholePriceRepository,
+            IMapper mapper
+            )
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
@@ -44,6 +47,7 @@ namespace Shop3.Application.Implementation
             _productQuantityRepository= productQuantityRepository;
             _productImageRepository = productImageRepository;
             _wholePriceRepository = wholePriceRepository;
+            _mapper = mapper;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -72,7 +76,7 @@ namespace Shop3.Application.Implementation
                     };
                     productTags.Add(productTag);
                 }
-                var product = Mapper.Map<ProductViewModel, Product>(productVm);
+                var product = _mapper.Map<ProductViewModel, Product>(productVm);
                 foreach (var productTag in productTags)
                 {
                     product.ProductTags.Add(productTag);
@@ -95,7 +99,8 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetAll()
         {
-            return _productRepository.FindAll(x => x.ProductCategory).ProjectTo<ProductViewModel>().ToList();
+            //return _productRepository.FindAll(x => x.ProductCategory).ProjectTo<ProductViewModel>().ToList();
+            return _mapper.ProjectTo<ProductViewModel>(_productRepository.FindAll(x => x.ProductCategory)).ToList();
         }
 
         public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
@@ -112,7 +117,8 @@ namespace Shop3.Application.Implementation
             query = query.OrderByDescending(x => x.DateCreated)
                         .Skip((page - 1) * pageSize).Take(pageSize);
 
-            var data = query.ProjectTo<ProductViewModel>().ToList();
+            //var data = query.ProjectTo<ProductViewModel>().ToList();
+            var data = _mapper.ProjectTo<ProductViewModel>(query).ToList();
 
             var paginationSet = new PagedResult<ProductViewModel>()
             {
@@ -126,7 +132,7 @@ namespace Shop3.Application.Implementation
 
         public ProductViewModel GetById(int id)
         {
-            return Mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
+            return _mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
         }
 
         
@@ -164,7 +170,7 @@ namespace Shop3.Application.Implementation
                 }
             }
 
-            var product = Mapper.Map<ProductViewModel, Product>(productVm);
+            var product = _mapper.Map<ProductViewModel, Product>(productVm);
             foreach (var productTag in productTags)
             {
                 product.ProductTags.Add(productTag);
@@ -218,7 +224,7 @@ namespace Shop3.Application.Implementation
 
         public List<ProductQuantityViewModel> GetQuantities(int productId)
         {
-            return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>().ToList();
+            return _mapper.ProjectTo<ProductQuantityViewModel>(_productQuantityRepository.FindAll(x => x.ProductId == productId)).ToList();
         }
 
         public void AddQuantity(int productId, List<ProductQuantityViewModel> quantities)
@@ -239,8 +245,7 @@ namespace Shop3.Application.Implementation
 
         public List<ProductImageViewModel> GetImages(int productId)
         {
-            return _productImageRepository.FindAll(x => x.ProductId == productId)
-                .ProjectTo<ProductImageViewModel>().ToList();
+            return _mapper.ProjectTo<ProductImageViewModel>(_productImageRepository.FindAll(x => x.ProductId == productId)).ToList();
         }
 
         public void AddImages(int productId, string[] images)
@@ -274,43 +279,43 @@ namespace Shop3.Application.Implementation
 
         public List<WholePriceViewModel> GetWholePrices(int productId)
         {
-            return _wholePriceRepository.FindAll(x => x.ProductId == productId).ProjectTo<WholePriceViewModel>().ToList();
+            return _mapper.ProjectTo<WholePriceViewModel>(_wholePriceRepository.FindAll(x => x.ProductId == productId)).ToList();
         }
 
         public List<ProductViewModel> GetLastest(int top)
         {
-            return _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
-                .Take(top).ProjectTo<ProductViewModel>().ToList();
+            var lastest = _productRepository.FindAll(x => x.Status == Status.Active)
+                .OrderByDescending(x => x.DateCreated)
+                .Take(top);
+             return   _mapper.ProjectTo<ProductViewModel>(lastest).ToList();
         }
 
         public List<ProductViewModel> GetHotProduct(int top)
         {
             var query = _productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
                 .OrderByDescending(x => x.DateCreated)
-                .Take(top)
-                .ProjectTo<ProductViewModel>()
-                .ToList();
-            return query;
+                .Take(top);
+                
+            return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
 
         public List<ProductViewModel> GetRelatedProducts(int id, int top)
         {
             var product = _productRepository.FindById(id);
-            return _productRepository.FindAll(x => x.Status == Status.Active
-                && x.Id != id && x.CategoryId == product.CategoryId)
-            .OrderByDescending(x => x.DateCreated)
-            .Take(top)
-            .ProjectTo<ProductViewModel>()
-            .ToList();
+            var query = _productRepository.FindAll(x => x.Status == Status.Active
+                                                        && x.Id != id && x.CategoryId == product.CategoryId)
+                .OrderByDescending(x => x.DateCreated)
+                .Take(top);
+
+            return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
 
         public List<ProductViewModel> GetUpsellProducts(int top)
         {
             var query = _productRepository.FindAll(x => x.PromotionPrice != null)
-               .OrderByDescending(x => x.DateModified)
-               .Take(top)
-               .ProjectTo<ProductViewModel>().ToList();
-            return query;
+                .OrderByDescending(x => x.DateModified)
+                .Take(top);
+            return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
 
         public List<TagViewModel> GetProductTags(int productId)
@@ -340,8 +345,10 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetNewProduct(int top)
         {
-            return _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
-                .Take(top).ProjectTo<ProductViewModel>().ToList();
+           var query = _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+                .Take(top);
+
+            return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
     }
 }

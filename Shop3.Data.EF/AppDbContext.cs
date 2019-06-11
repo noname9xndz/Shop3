@@ -112,7 +112,7 @@ namespace Shop3.Data.EF
                     changedOrAddedItem.DateModified = DateTime.Now;
                 }
             }
-            return base.SaveChanges();
+            return base.SaveChanges(); // todo bug loop
         }
 
        

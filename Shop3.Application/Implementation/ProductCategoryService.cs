@@ -20,18 +20,21 @@ namespace Shop3.Application.Implementation
         // 1 service sinh ra phải register trong startup
         //private IRepository<Product, int> _productRepository;
         private IRepository<ProductCategory, int> _productCategoryRepository;
-        
+        private readonly IMapper _mapper;
         private IUnitOfWork _unitOfWork;
 
-        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork)
+        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository,
+            IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
             _productCategoryRepository = productCategoryRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm)
         {
-            var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
+            var productCategory = _mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
             _productCategoryRepository.Add(productCategory);
             return productCategoryVm;
         }
@@ -62,29 +65,39 @@ namespace Shop3.Application.Implementation
 
         public List<ProductCategoryViewModel> GetAll()
         {
-            return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId)
-                 .ProjectTo<ProductCategoryViewModel>().ToList(); // mapping từ model qua viewmodel
+            var data = _productCategoryRepository.FindAll().OrderBy(x => x.ParentId); 
+            return  _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
         }
 
         public List<ProductCategoryViewModel> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
-                return _productCategoryRepository.FindAll(x => x.Name.Contains(keyword)
-                         || x.Description.Contains(keyword)).OrderBy(x => x.ParentId).ProjectTo<ProductCategoryViewModel>().ToList(); 
+            {
+                var data = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword)|| x.Description.Contains(keyword)).OrderBy(x => x.ParentId);
+                return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
+            }
+
             else
-                return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId)
-                             .ProjectTo<ProductCategoryViewModel>().ToList(); // mapping từ model qua viewmodel
+            {
+                var data = _productCategoryRepository.FindAll().OrderBy(x => x.ParentId);
+                return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
+            }
+              
+
+           
+
         }
 
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
         {
-            return _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId)
-                                .ProjectTo<ProductCategoryViewModel>().ToList();
+            var  data = _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId);
+
+            return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
         }
 
         public ProductCategoryViewModel GetById(int id)
         {
-            return Mapper.Map<ProductCategory, ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
+            return _mapper.Map<ProductCategory, ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
         }
 
         public List<ProductCategoryViewModel> GetHomeCategories(int top)
@@ -92,9 +105,9 @@ namespace Shop3.Application.Implementation
             var query = _productCategoryRepository
                 .FindAll(x => x.HomeFlag == true, c => c.Products)
                 .OrderBy(x => x.HomeOrder)
-                .Take(top).ProjectTo<ProductCategoryViewModel>();
+                .Take(top);
 
-            var categories = query.ToList();
+            //var categories = query.ToList();
             //foreach (var category in categories)
             //{
             //    category.Products = _productRepository
@@ -103,7 +116,7 @@ namespace Shop3.Application.Implementation
             //        .Take(5)
             //        .ProjectTo<ProductViewModel>().ToList();
             //}
-            return categories;
+           return _mapper.ProjectTo<ProductCategoryViewModel>(query).ToList(); ;
         }
 
         // xử lý khi các node được đổi chỗ => sắp xếp thứ tự  của các category : id nguồn ,id đích
@@ -130,7 +143,7 @@ namespace Shop3.Application.Implementation
 
         public void Update(ProductCategoryViewModel productCategoryVm)
         {
-            var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
+            var productCategory = _mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
             //_productCategoryRepository.Update(productCategory);
             _productCategoryRepository.Update(productCategory.Id, productCategory);
         }

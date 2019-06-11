@@ -7,6 +7,7 @@ using Shop3.Utilities.Dtos;
 using System;
 using System.Linq;
 using Shop3.Data.Enums;
+using AutoMapper;
 
 namespace Shop3.Application.Implementation
 {
@@ -14,16 +15,17 @@ namespace Shop3.Application.Implementation
     {
         private IRepository<Announcement, string> _announcementRepository;
         private IRepository<AnnouncementUser, int> _announcementUserRepository;
-
+        private readonly IMapper _mapper;
         private IUnitOfWork _unitOfWork;
 
         public AnnouncementService(IRepository<Announcement, string> announcementRepository,
             IRepository<AnnouncementUser, int> announcementUserRepository,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork, IMapper mapper)
         {
             _announcementUserRepository = announcementUserRepository;
             this._announcementRepository = announcementRepository;
             this._unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         //public PagedResult<AnnouncementViewModel> GetAll(Guid userId, int pageIndex, int pageSize)
@@ -48,8 +50,10 @@ namespace Shop3.Application.Implementation
             
             int totalRow = query.Count();
 
-            var model = query.OrderByDescending(x => x.DateCreated)
-                .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ProjectTo<AnnouncementViewModel>().ToList();
+            var data = query.OrderByDescending(x => x.DateCreated)
+                .Skip(pageSize * (pageIndex - 1)).Take(pageSize);
+            var model = _mapper.ProjectTo<AnnouncementViewModel>(data).ToList();
+
 
             var paginationSet = new PagedResult<AnnouncementViewModel>
             {
@@ -72,8 +76,10 @@ namespace Shop3.Application.Implementation
                         select x;
             int totalRow = query.Count();
 
-            var model = query.OrderByDescending(x => x.DateCreated)
-                .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ProjectTo<AnnouncementViewModel>().ToList();
+            var data = query.OrderByDescending(x => x.DateCreated)
+                .Skip(pageSize * (pageIndex - 1)).Take(pageSize);
+
+            var model = _mapper.ProjectTo<AnnouncementViewModel>(data).ToList();
 
             var paginationSet = new PagedResult<AnnouncementViewModel>
             {
