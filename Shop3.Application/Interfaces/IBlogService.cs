@@ -21,7 +21,7 @@ namespace Shop3.Application.Interfaces
 
         List<BlogViewModel> GetLastest(int top);
 
-        List<BlogViewModel> GetHotProduct(int top);
+        List<BlogViewModel> GetHotBlog(int top);
 
         List<BlogViewModel> GetListPaging(int page, int pageSize, string sort, out int totalRow);
 

@@ -72,10 +72,8 @@ namespace Shop3.Application.Implementation
 
         public List<BlogViewModel> GetAll()
         {
-//            return _blogRepository.FindAll(c => c.BlogTags)
-//                .ProjectTo<BlogViewModel>().ToList();
-               // sử dụng cơ chế của automapper
-               return _mapper.ProjectTo<BlogViewModel>(_blogRepository.FindAll(c => c.BlogTags)).ToList();
+            return _blogRepository.FindAll(c => c.BlogTags)
+                .ProjectTo<BlogViewModel>().ToList();
 
         }
 
@@ -155,7 +153,7 @@ namespace Shop3.Application.Implementation
             return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
 
-        public List<BlogViewModel> GetHotProduct(int top)
+        public List<BlogViewModel> GetHotBlog(int top)
         {
             //return _blogRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
             //    .OrderByDescending(x => x.DateCreated)
@@ -244,11 +242,11 @@ namespace Shop3.Application.Implementation
 
         public void IncreaseView(int id)
         {
-            var product = _blogRepository.FindById(id);
-            if (product.ViewCount.HasValue)
-                product.ViewCount += 1;
+            var blog = _blogRepository.FindById(id);
+            if (blog.ViewCount.HasValue)
+                blog.ViewCount += 1;
             else
-                product.ViewCount = 1;
+                blog.ViewCount = 1;
         }
 
         public List<BlogViewModel> GetListByTag(string tagId, int page, int pageSize, out int totalRow)
@@ -274,8 +272,7 @@ namespace Shop3.Application.Implementation
 
         public List<BlogViewModel> GetList(string keyword)
         {
-            var query = !string.IsNullOrEmpty(keyword) ?
-                _blogRepository.FindAll(x => x.Name.Contains(keyword)).ProjectTo<BlogViewModel>()
+            var query = !string.IsNullOrEmpty(keyword) ? _blogRepository.FindAll(x => x.Name.Contains(keyword)).ProjectTo<BlogViewModel>()
                 : _blogRepository.FindAll().ProjectTo<BlogViewModel>();
            
             return _mapper.ProjectTo<BlogViewModel>(query).ToList();
@@ -283,8 +280,7 @@ namespace Shop3.Application.Implementation
 
         public List<TagViewModel> GetListTag(string searchText)
         {
-            var data = _tagRepository.FindAll(x => x.Type == CommonConstants.ProductTag
-            && searchText.Contains(x.Name));
+            var data = _tagRepository.FindAll(x => x.Type == CommonConstants.BlogTag && searchText.Contains(x.Name));
 
             return _mapper.ProjectTo<TagViewModel>(data).ToList();
         }

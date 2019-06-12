@@ -43,6 +43,8 @@ namespace Shop3.Application.AutoMapper
               .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
               c.Quantity, c.Price, c.ColorId, c.SizeId));
 
+           CreateMap<WishProductViewModel, WishProduct>()
+               .ConstructUsing(c => new WishProduct(c.Id, c.ProductId, c.CustomerId));
 
             CreateMap<ContactViewModel, Contact>()
                 .ConstructUsing(c => new Contact(c.Id, c.Name, c.Phone, c.Email, c.Website, c.Address, c.Other, c.Lng, c.Lat, c.Status));

@@ -137,7 +137,7 @@
                         </div>
                         <div class="product-cart-option">
                             <ul>
-                                <li><a href="#"><i class="fa fa-heart-o"></i><span>Add to Wishlist</span></a></li>
+                                <li><a href="javascript:void(0);" id="add_to_wishlist" data-id="@Model.Product.Id"><i class="fa fa-heart-o"></i><span>Add to Wishlist</span></a></li>
                                 <li><a href="#"><i class="fa fa-link"></i><span>Add to Compare</span></a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i><span>Email to a Friend</span></a></li>
                             </ul>
@@ -391,36 +391,56 @@
                 </div>
                 <div class="block special-product">
                     <div class="sidebar-bar-title">
-                        <h3>Special Products</h3>
+                        <h3>Hot Products</h3>
                     </div>
                     <div class="block-content">
                         <ul>
-                            <li class="item">
-                                <div class="products-block-left"> <a href="single_product.html" title="Sample Product" class="product-image"><img src="images/products/product-1.jpg" alt="Sample Product "></a></div>
-                                <div class="products-block-right">
-                                    <p class="product-name"> <a href="single_product.html">Lorem ipsum dolor sit amet Consectetur</a> </p>
-                                    <span class="price">$19.99</span>
-                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="products-block-left"> <a href="single_product.html" title="Sample Product" class="product-image"><img src="images/products/product-1.jpg" alt="Sample Product "></a></div>
-                                <div class="products-block-right">
-                                    <p class="product-name"> <a href="single_product.html">Consectetur utes anet adipisicing elit</a> </p>
-                                    <span class="price">$89.99</span>
-                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="products-block-left"> <a href="single_product.html" title="Sample Product" class="product-image"><img src="images/products/product-1.jpg" alt="Sample Product "></a></div>
-                                <div class="products-block-right">
-                                    <p class="product-name"> <a href="single_product.html">Consectetur utes anet adipisicing elit</a> </p>
-                                    <span class="price">$99.99</span>
-                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                </div>
-                            </li>
+
+                            @foreach (var item in Model.HotProducts)
+                            {
+                                var url = "/" + item.SeoAlias + "-c." + item.Id + ".html";
+                                <li class="item">
+                                    <div class="products-block-left"> <a href="@url" title="Sample Product" class="product-image"><img src="@item.Image" alt="Sample Product "></a></div>
+                                    <div class="products-block-right">
+                                        <p class="product-name"> <a href="single_product.html">@item.Name</a> </p>
+
+                                        @if (item.Price <= 0 || item.PromotionPrice <= 0)
+                                        {
+                                            <span class="price">@item.Price</span>
+                                            <p class="special-price">
+                                                <span class="price-label">Special Price</span>
+                                                <span class="price"> Liên Hệ </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            if (item.PromotionPrice.HasValue)
+                                            {
+                                                <p class="special-price">
+                                                    <span class="price-label">Special Price</span>
+                                                    <span class="price"> @item.PromotionPrice.Value.ToString("N0") </span>
+                                                </p>
+                                                <p class="old-price">
+                                                    <span class="price-label">Regular Price:</span>
+                                                    <span class="price"> @item.Price.ToString("N0") </span>
+                                                </p>
+
+                                            }
+                                            else
+                                            {
+                                                <p class="special-price">
+                                                    <span class="price-label">Special Price</span>
+                                                    <span class="price"> @item.Price.ToString("N0") </span>
+                                                </p>
+                                            }
+                                        }
+                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                    </div>
+                                </li>
+                            }
+
                         </ul>
-                        <a class="link-all" href="shop_grid.html">All Products</a>
+                        <a class="link-all" href="/products.html">All Products</a>
                     </div>
                 </div>
                 <div class="block popular-tags-area ">

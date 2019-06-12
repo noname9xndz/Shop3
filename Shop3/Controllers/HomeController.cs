@@ -50,10 +50,11 @@ namespace Shop3.Controllers
             var homeVm = new HomeViewModel();
             homeVm.HomeCategories = _productCategoryService.GetHomeCategories(5);
             homeVm.HotProducts = _productService.GetHotProduct(5);
-            homeVm.TopSellProducts = _productService.GetLastest(5);
-            homeVm.LastestBlogs = _blogService.GetLastest(5);
+            homeVm.TopSellProducts = _productService.GetLastest(3);
+            homeVm.LastestBlogs = _blogService.GetLastest(8);
             homeVm.NewProducts = _productService.GetNewProduct(3);
             homeVm.HomeSlides = _commonService.GetSlides("top");
+            homeVm.SpecialOfferProducts = _productService.GetSpecialOfferProduct(3);
             return View(homeVm);
         }
 

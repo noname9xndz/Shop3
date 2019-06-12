@@ -1,0 +1,58 @@
+﻿
+
+@model Shop3.Models.BlogViewModels.SearchResultViewModel;
+
+@{
+    ViewData["Title"] = "";
+    ViewData["MetaKeyword"] = "";
+    ViewData["MetaDescription"] = "";
+}
+<section class="blog_post">
+    <div class="container">
+
+        <!-- Center colunm-->
+        <div class="blog-wrapper">
+            <div class="page-title">
+                <h2>Blog post</h2>
+            </div>
+            <ul class="blog-posts">
+                @foreach (var item in Model.BlogList.Results)
+                {
+                    <li class="post-item col-md-4">
+                        <div class="blog-box">
+                            <a href="/@item.SeoAlias-b.@(item.Id).html"> <img class="primary-img" src="@item.Image?h=350&w=205.88" alt="@item.Name"></a>
+                            <div class="blog-btm-desc">
+                                <div class="blog-top-desc">
+                                    <div class="blog-date"> @item.DateCreated.ToString("dd-MM-yyyy hh:mm") </div>
+                                    <h4><a href="/@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h4>
+                                    <div class="jtv-entry-meta"> <i class="fa fa-user-o"></i> <strong>Admin</strong> <a href="#"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a></div>
+                                </div>
+
+
+                                <p>
+                                    @if (item.Description.Length > 100)
+                                    {
+                                        @item.Description.Substring(0, 100)
+
+                                    }
+                                    else
+                                    {
+                                        @item.Description
+                                    }...
+                            </p>
+                            <a class="read-more" href="/@item.SeoAlias-b.@(item.Id).html"> Read More</a>
+                        </div>
+                    </div>
+                </li>
+            }
+
+
+            </ul>
+
+            @(await Component.InvokeAsync("Pager", Model.BlogList))
+
+        </div>
+        <!-- ./ Center colunm -->
+
+    </div>
+</section>

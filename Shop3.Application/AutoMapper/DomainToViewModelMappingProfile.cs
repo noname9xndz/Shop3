@@ -34,6 +34,7 @@ namespace Shop3.Application.AutoMapper
              * MaxDepth(2) tránh việc lặp vô tận chỉ cho đi sâu vào 2 tầng
              */
             CreateMap<ProductQuantity, ProductQuantityViewModel>().MaxDepth(2);
+            CreateMap<WishProduct, WishProductViewModel>().MaxDepth(2);
             CreateMap<ProductImage, ProductImageViewModel>().MaxDepth(2);
             CreateMap<WholePrice, WholePriceViewModel>().MaxDepth(2);
 

@@ -24,6 +24,8 @@ namespace Shop3.Models.ProductViewModels
 
         public List<ProductViewModel> LastestProducts { get; set; }
 
+        public List<ProductViewModel> HotProducts { set; get; }
+
         public List<TagViewModel> Tags { set; get; }
 
 

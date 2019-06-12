@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using OfficeOpenXml;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
@@ -7,14 +6,14 @@ using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
-using Shop3.Utilities.Dtos;
 using Shop3.Utilities.Constants;
+using Shop3.Utilities.Dtos;
 using Shop3.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 
 namespace Shop3.Application.Implementation
 {
@@ -26,17 +25,23 @@ namespace Shop3.Application.Implementation
         private IRepository<ProductQuantity, int> _productQuantityRepository;
         IRepository<ProductImage, int> _productImageRepository;
         private IRepository<WholePrice, int> _wholePriceRepository;
+        private IRepository<Bill, int> _billRepository;
+        private IRepository<BillDetail, int> _billDetailRepository;
+        private IRepository<WishProduct, int> _wishProductRepository;
 
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
         public ProductService(IRepository<Product, int> productRepository,
             IRepository<Tag, string> tagRepository,
-             IUnitOfWork unitOfWork,
-        IRepository<ProductTag, int> productTagRepository,
-        IRepository<ProductQuantity, int> productQuantityRepository,
-        IRepository<ProductImage, int> productImageRepository,
-        IRepository<WholePrice, int> wholePriceRepository,
+            IUnitOfWork unitOfWork,
+            IRepository<ProductTag, int> productTagRepository,
+            IRepository<ProductQuantity, int> productQuantityRepository,
+            IRepository<ProductImage, int> productImageRepository,
+            IRepository<WholePrice, int> wholePriceRepository,
+            IRepository<Bill, int> billRepository,
+            IRepository<BillDetail, int> billDetailRepository,
+            IRepository<WishProduct, int> wishProductRepository,
             IMapper mapper
             )
         {
@@ -44,9 +49,12 @@ namespace Shop3.Application.Implementation
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
             _unitOfWork = unitOfWork;
-            _productQuantityRepository= productQuantityRepository;
+            _productQuantityRepository = productQuantityRepository;
             _productImageRepository = productImageRepository;
             _wholePriceRepository = wholePriceRepository;
+            _billRepository = billRepository;
+            _billDetailRepository = billDetailRepository;
+            _wishProductRepository = wishProductRepository;
             _mapper = mapper;
         }
 
@@ -135,7 +143,7 @@ namespace Shop3.Application.Implementation
             return _mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
         }
 
-        
+
         public void Save()
         {
             _unitOfWork.Commit();
@@ -176,7 +184,7 @@ namespace Shop3.Application.Implementation
                 product.ProductTags.Add(productTag);
             }
             //_productRepository.Update(product);
-            _productRepository.Update(product.Id,product);
+            _productRepository.Update(product.Id, product);
         }
 
         // add nuget : epplus.core
@@ -284,10 +292,24 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetLastest(int top)
         {
-            var lastest = _productRepository.FindAll(x => x.Status == Status.Active)
-                .OrderByDescending(x => x.DateCreated)
-                .Take(top);
-             return   _mapper.ProjectTo<ProductViewModel>(lastest).ToList();
+            //var query = from x in _productRepository.FindAll()
+            //            join y in _billDetailRepository.FindAll().OrderByDescending(y => y.Quantity) on x.Id equals y.ProductId into xy
+            //            from a2 in xy.DefaultIfEmpty()
+            //            join z in _billRepository.FindAll(z => z.Status == Status.Active) on a2.BillId equals z.Id into xyz
+            //            from a3 in xyz.DefaultIfEmpty()
+            //            select x;
+
+            var query = from x in _productRepository.FindAll()
+                        join y in _billDetailRepository.FindAll() on x.Id equals y.ProductId
+                        join z in _billRepository.FindAll(z => z.Status == Status.Active) on y.BillId equals z.Id
+                        orderby  y.Quantity descending 
+                        select x ;
+
+            return  _mapper.ProjectTo<ProductViewModel>(query.Take(top)).ToList();
+
+          
+
+
         }
 
         public List<ProductViewModel> GetHotProduct(int top)
@@ -295,7 +317,7 @@ namespace Shop3.Application.Implementation
             var query = _productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
                 .OrderByDescending(x => x.DateCreated)
                 .Take(top);
-                
+
             return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
 
@@ -345,10 +367,66 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetNewProduct(int top)
         {
-           var query = _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
-                .Take(top);
+            var query = _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+                 .Take(top);
 
             return _mapper.ProjectTo<ProductViewModel>(query).ToList();
+        }
+
+        public List<ProductViewModel> GetSpecialOfferProduct(int top)
+        {
+            var query = _productRepository.FindAll(x => x.Status == Status.Active)
+
+                .OrderBy(x => x.PromotionPrice).Where(e => e.PromotionPrice != null)
+                .Take(top);
+            return _mapper.ProjectTo<ProductViewModel>(query).ToList();
+        }
+
+        public PagedResult<WishProductViewModel> GetAllWishListPaging(int page, int pageSize)
+        {
+            var query = _wishProductRepository.FindAll();
+            
+            int totalRow = query.Count();
+            var data = query.OrderByDescending(x => x.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize);
+
+            var paginationSet = new PagedResult<WishProductViewModel>()
+            {
+                Results = _mapper.ProjectTo<WishProductViewModel>(data).ToList(),
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+
+            return paginationSet;
+        }
+
+        public void AddWish(WishProductViewModel product)
+        {
+            var data = _mapper.Map<WishProductViewModel, WishProduct>(product);
+            _wishProductRepository.Add(data);
+            _unitOfWork.Commit();
+        }
+
+        public void DeleteWishProduct(int id)
+        {
+            _wishProductRepository.Remove(id);
+        }
+
+        public WishProductViewModel getWishProductById(int id)
+        {
+            return _mapper.Map<WishProduct, WishProductViewModel>(_wishProductRepository.FindById(id));
+        }
+
+        public bool CheckWishProduct(int productId)
+        {
+            if (_wishProductRepository.FindAll(x =>x.ProductId ==productId).ToList().Count > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

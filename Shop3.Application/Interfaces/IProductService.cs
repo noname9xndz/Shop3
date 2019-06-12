@@ -39,6 +39,8 @@ namespace Shop3.Application.Interfaces
 
         List<ProductViewModel> GetHotProduct(int top);
 
+        List<ProductViewModel> GetSpecialOfferProduct(int top);
+
         List<ProductViewModel> GetNewProduct(int top);
 
         List<ProductViewModel> GetRelatedProducts(int id, int top);
@@ -50,5 +52,17 @@ namespace Shop3.Application.Interfaces
         bool CheckAvailability(int productId, int size, int color);
 
         void Save();
+
+        PagedResult<WishProductViewModel> GetAllWishListPaging( int page, int pageSize);
+
+        void AddWish(WishProductViewModel product);
+
+        void DeleteWishProduct(int id);
+
+        WishProductViewModel getWishProductById(int id);
+
+        bool CheckWishProduct(int productId);
+
+
     }
 }

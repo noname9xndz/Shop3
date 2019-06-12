@@ -59,8 +59,6 @@ namespace Shop3
 
             #endregion lấy connection từ Configuration để migration
 
-
-
             #region add identity + config identity,caching app,minifile
 
             //services.AddIdentity<AppUser,AppRole>() // sử dụng AppUser và AppRole tự tao ko dùng mặc định của Identity
@@ -97,8 +95,6 @@ namespace Shop3
             });
 
             #endregion add identity + config identity,caching app,minifile
-
-
 
             #region config cho  auto mapper ,captcha
 
@@ -149,7 +145,7 @@ namespace Shop3
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
 
             //services.AddSingleton(Mapper.Configuration); // nuget : automapper
-           // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
             services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
@@ -184,8 +180,6 @@ namespace Shop3
 
             #endregion Add application services
 
-
-
             services.AddMvc(options =>
             { // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2
               //  response caching bản chất là viết lại các response header để trình duyệt hiểu được cache trong bao lâu
@@ -208,7 +202,7 @@ namespace Shop3
              .AddDataAnnotationsLocalization() // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
                                                // config lại object trả về khi respone trả về cho ajax
              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-
+            
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; }); // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
 
             services.AddCors(options => options.AddPolicy("CorsPolicy",

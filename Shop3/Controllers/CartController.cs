@@ -101,7 +101,7 @@ namespace Shop3.Controllers
 
                         _billService.Save();
 
-                        // sử dụng service ViewRender để tạo ra viewhtml
+                        // sử dụng service ViewRender để tạo ra viewhtml : view to string
                         var content = await _viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
                         //Send mail to admin
                         await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], "New bill from Noname Shop", content);
@@ -123,6 +123,12 @@ namespace Shop3.Controllers
             return View(model);
         }
 
+        [Route("wishlist.html")]
+        public IActionResult wishListProduct()
+        {
+            return View();
+        }
+        
 
         #region AJAX Request
 
@@ -275,6 +281,44 @@ namespace Shop3.Controllers
                 return new OkObjectResult(productId);
             }
             return new EmptyResult();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult addWishList(int productId)
+        {
+            if (User.Identity.IsAuthenticated == true)
+             {
+                 if (_productService.CheckWishProduct(productId) == false)
+                 {
+                     var product = _productService.GetById(productId);
+                     var wishproduct = new WishProductViewModel();
+                     wishproduct.CustomerId = Guid.Parse(User.GetSpecificClaim("UserId"));
+                     wishproduct.ProductId = product.Id;
+                     _productService.AddWish(wishproduct);
+
+                     return new OkObjectResult(productId);
+                 }
+                 return Json(new { status = "error", message = "fail create" });
+
+            }
+          
+            return new BadRequestResult();
+
+            
+        }
+
+        public IActionResult removewishList(int wishProductId)
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated == true)
+                {
+                    _productService.DeleteWishProduct(wishProductId);
+                    return new OkObjectResult(wishProductId);
+                }
+            }
+            return new BadRequestResult();
         }
 
         // get thông tin color ,size khi add binding html chọn lại size color khi user add cart ngoài view

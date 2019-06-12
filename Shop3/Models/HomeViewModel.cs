@@ -15,6 +15,7 @@ namespace Shop3.Models
         public List<ProductViewModel> HotProducts { get; set; }
         public List<ProductViewModel> TopSellProducts { get; set; }
         public List<ProductViewModel> NewProducts { get; set; }
+        public List<ProductViewModel> SpecialOfferProducts { get; set; }
         
 
         public List<ProductCategoryViewModel> HomeCategories { set; get; }

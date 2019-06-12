@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="desc std">
 
-                                            @if (item.Content.IsNullOrWhiteSpace())
+                                            @if (item.Description.IsNullOrWhiteSpace())
                                             {
                                                 <p>No Description</p>
 
@@ -202,7 +202,15 @@
                                             else
                                             {
                                                 <p>
-                                                    @Html.Raw(item.Content) <a class="link-learn" title="Learn More" href="@url">Learn More</a>
+                                                    @if (item.Description.Length > 40)
+                                                    {
+                                                        @item.Description.Substring(0,40)
+
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.Description
+                                                    } ... <a class="link-learn" title="Learn More" href="@url">Learn More</a>
                                                 </p>
                                             }
                                             @*<p>

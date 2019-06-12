@@ -89,7 +89,36 @@ var BaseController = function () {
                 }
             });
         });
-        
+
+        $('body').on('click', '#add_to_wishlist', function (e) {
+            e.preventDefault();
+            var that = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                url: "/Cart/addWishList",
+                data: { productId : that },
+                dataType: "json",
+                beforeSend: function () {
+                    common.startLoading();
+                },
+                success: function (response) {
+                    if (response.status == "error") {
+
+                        common.notify('Product already exists in the wish list', 'error');
+                        common.stopLoading();
+                    } else {
+                        common.notify('add to wishlist successful', 'success');
+                        common.stopLoading();
+                    }
+                    
+
+                },
+                error: function (status) {
+                    common.notify('please login', 'error');
+                    common.stopLoading();
+                }
+            });
+        });
     }
 
     function loadHeaderCart() {

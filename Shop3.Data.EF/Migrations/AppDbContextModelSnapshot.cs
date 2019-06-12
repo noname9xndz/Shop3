@@ -15,7 +15,7 @@ namespace Shop3.Data.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -931,6 +931,25 @@ namespace Shop3.Data.EF.Migrations
                     b.ToTable("WholePrices");
                 });
 
+            modelBuilder.Entity("Shop3.Data.Entities.WishProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid?>("CustomerId");
+
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("WishProducts");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Shop3.Data.Entities.AppRole")
@@ -1111,6 +1130,18 @@ namespace Shop3.Data.EF.Migrations
 
             modelBuilder.Entity("Shop3.Data.Entities.WholePrice", b =>
                 {
+                    b.HasOne("Shop3.Data.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Shop3.Data.Entities.WishProduct", b =>
+                {
+                    b.HasOne("Shop3.Data.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
                     b.HasOne("Shop3.Data.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")

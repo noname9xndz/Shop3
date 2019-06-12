@@ -51,7 +51,7 @@ namespace Shop3.Data.EF
 
         public DbSet<Size> Sizes { set; get; }
         public DbSet<Slide> Slides { set; get; }
-
+        public DbSet<WishProduct> WishProducts { set; get; }
         public DbSet<Tag> Tags { set; get; }
 
         public DbSet<Permission> Permissions { get; set; }
