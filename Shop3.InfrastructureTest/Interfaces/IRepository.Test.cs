@@ -43,7 +43,7 @@ namespace Shop3.InfrastructureTest.Interfaces
         public void Delete_EntityById_DeleteEntitySuccsess2()
         {
 
-            var entity = _mockIRepository.Setup(x => x.Remove(_mockBlog.Object.Id));
+            var entity = _mockIRepository.Setup(x => x.RemoveById(_mockBlog.Object.Id));
 
             Assert.NotNull(entity);
         }

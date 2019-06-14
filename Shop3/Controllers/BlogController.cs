@@ -27,7 +27,6 @@ namespace Shop3.Controllers
                 pageSize = _configuration.GetValue<int>("PageSize");
             model.pageSize = pageSize;
             model.BlogList = _blogService.GetAllPaging(keyword, page, pageSize);
-            //model.BlogList = await PagingList.CreateAsync(_blogService.GetAll(), pageSize, page);
 
             return View(model);
         }

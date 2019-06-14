@@ -147,7 +147,7 @@ namespace Shop3.Application.Implementation
                                                                          && x.UserId == userId);
             if (announ.ToString() !=null && announUser.ToString() !=null)
             {
-                _announcementRepository.Remove(id);
+                _announcementRepository.RemoveById(id);
                 _announcementUserRepository.Remove(announUser);
                 SaveChanges();
                 result = true;

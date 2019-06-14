@@ -27,7 +27,7 @@ namespace Shop3.Infrastructure.Interfaces
 
         void Remove(T entity);
 
-        void Remove(K id);
+        void RemoveById(K id);
 
         void RemoveMultiple(List<T> entities);
     }

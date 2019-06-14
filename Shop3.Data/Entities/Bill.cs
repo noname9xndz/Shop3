@@ -19,7 +19,7 @@ namespace Shop3.Data.Entities
         }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId,string reOrderMesssage)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -30,9 +30,10 @@ namespace Shop3.Data.Entities
             PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
+            ReOrderMesssage = reOrderMesssage;
         }
         public Bill(int id, string customerName, string customerAddress,string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
+           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string reOrderMesssage)
         {
             Id = id;
             CustomerName = customerName;
@@ -44,6 +45,7 @@ namespace Shop3.Data.Entities
             PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
+            ReOrderMesssage = reOrderMesssage;
         }
 
         [Required]
@@ -81,5 +83,8 @@ namespace Shop3.Data.Entities
         public virtual AppUser User { set; get; }
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
+
+        [MaxLength(500)]
+        public string ReOrderMesssage { set; get; }
     }
 }

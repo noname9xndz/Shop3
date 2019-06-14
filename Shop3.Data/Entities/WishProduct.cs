@@ -1,4 +1,5 @@
-﻿using Shop3.Infrastructure.SharedKernel;
+﻿using Shop3.Data.Interfaces;
+using Shop3.Infrastructure.SharedKernel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

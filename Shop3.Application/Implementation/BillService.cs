@@ -118,6 +118,8 @@ namespace Shop3.Application.Implementation
             _unitOfWork.Commit();
         }
 
+        
+
         public PagedResult<BillViewModel> GetAllPaging(string startDate, string endDate, string keyword
             , int pageIndex, int pageSize)
         {
@@ -195,6 +197,38 @@ namespace Shop3.Application.Implementation
         public SizeViewModel GetSize(int id)
         {
             return _mapper.Map<Size, SizeViewModel>(_sizeRepository.FindById(id));
+        }
+
+        public PagedResult<BillDetailViewModel> GetAllPagingByCustomerId(Guid id, int page, int pageSize)
+        {
+        
+             var query = from bd in _orderDetailRepository.FindAll()
+                    join b in _orderRepository.FindAll()
+                    on bd.BillId equals b.Id
+                    where b.CustomerId == id
+                    orderby b.DateCreated descending
+                    select bd;
+       
+            var totalRow = query.Count();
+            var data = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+          return new PagedResult<BillDetailViewModel>()
+           {
+            CurrentPage = page,
+            PageSize = pageSize,
+            Results = _mapper.ProjectTo<BillDetailViewModel>(data).ToList(),
+            RowCount = totalRow
+           };
+         
+        }
+        public BillViewModel GetBillByIdAndUserId(Guid id, int billId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ReOderByUser(Guid id, int biiId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

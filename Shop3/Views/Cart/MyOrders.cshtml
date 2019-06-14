@@ -1,0 +1,44 @@
+﻿
+<section class="main-container col2-right-layout" id="myorders">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="my-account">
+                    <div class="page-title">
+                        <h2>Orders List</h2>
+                    </div>
+                    <div class="orders-list table-responsive">
+                        <!--orders list table-->
+                        <table class="table table-bordered cart_summary table-striped">
+                            <thead>
+                            <tr>
+                                <!--titles for td-->
+                                <th>Order Number</th>
+                                <th>Order Date</th>
+                                <th>Order Status</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <!--order number-->
+                                <td data-title="Order Number"><a href="order_details.html" class="order-number">#12345</a></td>
+                                <!--order date-->
+                                <td data-title="Order Date">2017-02-13</td>
+                                <!--order status-->
+                                <td data-title="Order Status">Confirmed by ShopMart</td>
+                                <!--quanity-->
+                                <td data-title="Total"><span class="order-total">$79.00</span></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <partial name="_MyAccoutAndWishListView.cshtml" />
+        </div>
+    </div>
+</section>

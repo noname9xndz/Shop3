@@ -71,7 +71,7 @@ namespace Shop3.Application.Implementation
 
         public void Delete(string id)
         {
-            _functionRepository.Remove(id);
+            _functionRepository.RemoveById(id);
         }
 
         public FunctionViewModel GetById(string id)

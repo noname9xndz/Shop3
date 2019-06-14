@@ -1,0 +1,65 @@
+﻿
+<section class="main-container col2-right-layout" id="mydashboard">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="my-account">
+                    <div class="page-title">
+                        <h2>My Dashboard</h2>
+                    </div>
+                    <div class="dashboard">
+                        <div class="recent-orders">
+                            <div class="title-buttons"><strong> </strong> <a href="javascript:void(0);"> </a> </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered cart_summary table-striped">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col width="1">
+                                        <col width="1">
+                                        <col width="1">
+                                    </colgroup>
+                                    <thead>
+                                        <tr class="first last">
+                                            <th>BillId</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th><span class="nobr">Order Total</span></th>
+                                            <th>DateCreated</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr class="last even">
+                                            <td>987654</td>
+                                            <td>sp111</td>
+                                            <td>100</td>
+                                            <td>10000</td>
+                                            <td><span class="price">$79.99</span></td>
+                                            <td> 10/10/2018</td>
+                                            <td><em>Pending</em></td>
+                                            <td class="a-center last">
+
+                                                <span class="nobr">
+                                                    <a href="javascript:void(0);">View Order</a>
+                                                    <span class="separator">|</span>
+                                                    <a href="javascript:void(0);">Reorder</a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <partial name="_MyAccoutAndWishListView.cshtml" />
+        </div>
+    </div>
+</section>

@@ -35,7 +35,7 @@ namespace Shop3.Application.Implementation
 
         public void Delete(string id)
         {
-            _contactRepository.Remove(id);
+            _contactRepository.RemoveById(id);
         }
 
         public void Dispose()

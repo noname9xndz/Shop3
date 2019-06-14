@@ -79,7 +79,7 @@ namespace Shop3.Data.EF
             _context.Set<T>().Remove(entity);
         }
 
-        public void Remove(K id)
+        public void RemoveById(K id)
         {
             var entity = FindById(id);
             Remove(entity);

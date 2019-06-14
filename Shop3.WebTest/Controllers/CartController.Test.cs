@@ -138,11 +138,9 @@ namespace Shop3.WebTest.Controllers
             
 
             var result = controller.Checkout(viewModel);
-            // result : Microsoft.AspNetCore.Mvc.ViewResult ????
-            // Assert
-            // var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.IsType<ViewResult>(result);
-           // Assert.Equal(true, viewResult.ViewData["Success"]);
+            
+            var viewResult = Assert.IsType<ViewResult>(result.Result);
+            Assert.Equal(true, viewResult.ViewData["Success"]);
         }
 
         [Fact]

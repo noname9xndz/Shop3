@@ -53,15 +53,17 @@ namespace Shop3.Application.Interfaces
 
         void Save();
 
-        PagedResult<WishProductViewModel> GetAllWishListPaging( int page, int pageSize);
+        PagedResult<ProductViewModel> GetAllWishListPaging(Guid Id, int page, int pageSize);
 
         void AddWish(WishProductViewModel product);
 
-        void DeleteWishProduct(int id);
+        void DeleteWishProduct(int wishProductId, Guid Id);
 
-        WishProductViewModel getWishProductById(int id);
+        WishProductViewModel GetWishProductById(int id, Guid Id);
 
-        bool CheckWishProduct(int productId);
+        bool CheckWishProduct(int productId,Guid Id);
+
+        List<ProductViewModel> GetAllWishProduct(Guid Id);
 
 
     }

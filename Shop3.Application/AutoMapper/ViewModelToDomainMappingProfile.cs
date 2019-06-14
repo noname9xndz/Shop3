@@ -37,7 +37,7 @@ namespace Shop3.Application.AutoMapper
             CreateMap<BillViewModel, Bill>()
               .ConstructUsing(c => new Bill(c.Id, c.CustomerName, c.CustomerAddress,
               c.CustomerMobile, c.CustomerMessage, c.BillStatus,
-              c.PaymentMethod, c.Status, c.CustomerId));//todo CustomerEmail { set; get; }
+              c.PaymentMethod, c.Status, c.CustomerId, c.ReOrderMesssage ));//todo CustomerEmail { set; get; }
 
            CreateMap<BillDetailViewModel, BillDetail>()
               .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,

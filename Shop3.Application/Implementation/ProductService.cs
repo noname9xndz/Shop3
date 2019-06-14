@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
+using Microsoft.AspNetCore.Identity;
 
 namespace Shop3.Application.Implementation
 {
@@ -28,6 +29,7 @@ namespace Shop3.Application.Implementation
         private IRepository<Bill, int> _billRepository;
         private IRepository<BillDetail, int> _billDetailRepository;
         private IRepository<WishProduct, int> _wishProductRepository;
+        private readonly UserManager<AppUser> _userManager;
 
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -42,7 +44,8 @@ namespace Shop3.Application.Implementation
             IRepository<Bill, int> billRepository,
             IRepository<BillDetail, int> billDetailRepository,
             IRepository<WishProduct, int> wishProductRepository,
-            IMapper mapper
+            UserManager<AppUser> userManager,
+        IMapper mapper
             )
         {
             _productRepository = productRepository;
@@ -55,6 +58,7 @@ namespace Shop3.Application.Implementation
             _billRepository = billRepository;
             _billDetailRepository = billDetailRepository;
             _wishProductRepository = wishProductRepository;
+            _userManager = userManager;
             _mapper = mapper;
         }
 
@@ -97,7 +101,7 @@ namespace Shop3.Application.Implementation
 
         public void Delete(int id)
         {
-            _productRepository.Remove(id);
+            _productRepository.RemoveById(id);
         }
 
         public void Dispose()
@@ -382,18 +386,22 @@ namespace Shop3.Application.Implementation
             return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
 
-        public PagedResult<WishProductViewModel> GetAllWishListPaging(int page, int pageSize)
+        public PagedResult<ProductViewModel> GetAllWishListPaging(Guid Id,int page, int pageSize)
         {
-            var query = _wishProductRepository.FindAll();
-            
+            var query = from p in _productRepository.FindAll()
+                join wp in _wishProductRepository.FindAll() on p.Id equals wp.ProductId
+                join u in _userManager.Users.Where(x => x.Id == Id) on wp.CustomerId equals u.Id
+                where wp.CustomerId == u.Id && p.Status == Status.Active
+                select p;
+
             int totalRow = query.Count();
             var data = query.OrderByDescending(x => x.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
 
-            var paginationSet = new PagedResult<WishProductViewModel>()
+            var paginationSet = new PagedResult<ProductViewModel>()
             {
-                Results = _mapper.ProjectTo<WishProductViewModel>(data).ToList(),
+                Results = _mapper.ProjectTo<ProductViewModel>(data).ToList(),
                 CurrentPage = page,
                 RowCount = totalRow,
                 PageSize = pageSize
@@ -409,24 +417,43 @@ namespace Shop3.Application.Implementation
             _unitOfWork.Commit();
         }
 
-        public void DeleteWishProduct(int id)
+        public void DeleteWishProduct(int productId, Guid Id)
         {
-            _wishProductRepository.Remove(id);
+            if (CheckWishProduct(productId, Id) == true )
+            {
+                var res = (from p in _wishProductRepository.FindAll()
+                         where p.ProductId == productId && p.CustomerId == Id
+                         select p.Id).Take(1);
+                int wishId  = Convert.ToInt32(res.FirstOrDefault());
+                _wishProductRepository.RemoveById(wishId);
+                _unitOfWork.Commit();
+            }
         }
 
-        public WishProductViewModel getWishProductById(int id)
+        public WishProductViewModel GetWishProductById(int id, Guid Id)
         {
             return _mapper.Map<WishProduct, WishProductViewModel>(_wishProductRepository.FindById(id));
         }
 
-        public bool CheckWishProduct(int productId)
+        public bool CheckWishProduct(int productId,Guid Id)
         {
-            if (_wishProductRepository.FindAll(x =>x.ProductId ==productId).ToList().Count > 0)
+            if (_wishProductRepository.FindAll(x =>x.ProductId ==productId && x.CustomerId == Id).ToList().Count > 0)
             {
                 return true;
             }
 
             return false;
+        }
+
+        public List<ProductViewModel> GetAllWishProduct(Guid Id)
+        {
+            var data = from p in _productRepository.FindAll()
+                join wp in _wishProductRepository.FindAll(x => x.CustomerId == Id) on p.Id equals wp.ProductId
+                //where wp.CustomerId == Id
+                select p;
+
+            return _mapper.ProjectTo<ProductViewModel>(data).ToList();
+
         }
     }
 }

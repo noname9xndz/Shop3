@@ -67,13 +67,15 @@ namespace Shop3.Application.Implementation
 
         public void Delete(int id)
         {
-            _blogRepository.Remove(id);
+            _blogRepository.RemoveById(id);
         }
 
         public List<BlogViewModel> GetAll()
         {
             return _blogRepository.FindAll(c => c.BlogTags)
                 .ProjectTo<BlogViewModel>().ToList();
+            //return _blogRepository.FindAll()
+            //    .ProjectTo<BlogViewModel>().ToList();
 
         }
 

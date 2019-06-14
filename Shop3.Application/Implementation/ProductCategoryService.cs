@@ -58,7 +58,7 @@ namespace Shop3.Application.Implementation
         public void Delete(int id)
         {
            
-             _productCategoryRepository.Remove(id);
+             _productCategoryRepository.RemoveById(id);
             
             
         }

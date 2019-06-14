@@ -1,20 +1,29 @@
 ﻿
+@section Scripts{
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
+    <script src="~/client-app/controllers/cart/wishList.js" asp-append-version="true"></script>
+    <script>
+        var wishProduct = new wishProductController();
+        wishProduct.initialize();
+    </script>
+
+}
 <!-- Breadcrumbs -->
-  
+
 <div class="breadcrumbs">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
-                    <li><strong>Wishlist</strong></li>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>My Account</strong></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<!-- Breadcrumbs End --> 
-<section class="main-container col2-right-layout">
+<!-- Breadcrumbs End -->
+<section class="main-container col2-right-layout" id="mywishlist">
     <div class="main container">
         <div class="row">
             <div class="col-main col-sm-9 col-xs-12">
@@ -33,55 +42,50 @@
                                     <th class="th-total th-add-to-cart">Add to Cart </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="th-delate"><a href="#">X</a></td>
-                                    <td class="th-product"><a href="#"><img src="images/products/product-1.jpg" alt="cart"></a></td>
-                                    <td class="th-details"><h2><a href="#">Lorem Ipsum is simply</a></h2></td>
-                                    <td class="th-price">$125.00</td>
-                                    <th class="td-add-to-cart"><a href="#"> Add to Cart</a></th>
-                                </tr>
-                            </tbody>
+
+                            <tbody id="table-wishlist"> </tbody>
                         </table>
-                        <a href="checkout.html" class="all-cart">Add all to cart</a>
+
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                <select id="ddlShowPage">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    bản ghi/trang.
+                                </span>
+                                Tổng số : <strong id="lblTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                                <ul id="paginationUL"></ul>
+                            </div>
+                        </div>
+
+                        <a href="javascript:void(0);" class="all-cart">Add all to cart</a>
                     </div>
                 </div>
             </div>
-            <aside class="right sidebar col-sm-3 col-xs-12">
-                <div class="sidebar-account block">
-                    <div class="sidebar-bar-title">
-                        <h3>My Account</h3>
-                    </div>
-                    <div class="block-content">
-                        <ul>
-                            <li class="current"><a href="#">My Wishlist</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a>Account Dashboard</a></li>
-                            <li><a href="#">Account Information</a></li>
-                            <li><a href="#">Address Book</a></li>
-                            <li><a href="#">Billing Agreements</a></li>
-                            <li><a href="#">Recurring Profiles</a></li>
-                            <li><a href="#">My Product Reviews</a></li>
-                            <li class="last"><a href="#">Newsletter Subscriptions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="compare block">
-                    <div class="sidebar-bar-title">
-                        <h3>Compare Products (2)</h3>
-                    </div>
-                    <div class="block-content">
-                        <ol id="compare-items">
-                            <li class="item"> <a href="#" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a> <a href="#" class="product-name">Vestibulum porta tristique porttitor.</a> </li>
-                            <li class="item"> <a href="#" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a> <a href="#" class="product-name">Lorem ipsum dolor sit amet</a> </li>
-                        </ol>
-                        <div class="ajax-checkout">
-                            <button type="submit" title="Submit" class="button button-compare"> <span> Compare</span></button>
-                            <button type="submit" title="Submit" class="button button-clear"> <span> Clear All</span></button>
-                        </div>
-                    </div>
-                </div>
-            </aside>
+
+            <partial name="_MyAccoutAndWishListView.cshtml" />
+
         </div>
     </div>
 </section>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td class="th-delate"><a href="javascript:void(0);" id="removeWishProduct" data-id="{{Id}}">X</a></td>
+        <td class="th-product"><a href="{{Link}}">{{{Image}}}</a></td>
+        <td class="th-details"><h2><a href="{{Link}}">{{Name}}</a></h2></td>
+        <td class="th-price">{{Price}}</td>
+        <th class="td-add-to-cart" id="add-to-cart" data-id="{{Id}}"><a href="javascript:void(0);"> Add to Cart</a></th>
+    </tr>
+
+
+</script>
+
+

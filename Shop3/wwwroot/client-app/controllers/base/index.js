@@ -17,7 +17,7 @@ var BaseController = function () {
     }
     
     function registerEvents() {
-        $('body').on('click','.add-to-cart',function (e) {
+        $('body').on('click','.add-to-cart,#add-to-cart',function (e) {
                 e.preventDefault();
                 var id = $(this).data('id');
                 $.ajax({
@@ -119,6 +119,8 @@ var BaseController = function () {
                 }
             });
         });
+
+        
     }
 
     function loadHeaderCart() {
@@ -210,6 +212,8 @@ var BaseController = function () {
         sizes += "</select>";
         return sizes;
     }
+
+    
 
     
 

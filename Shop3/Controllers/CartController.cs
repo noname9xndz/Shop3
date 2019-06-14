@@ -9,6 +9,7 @@ using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
 using Shop3.Models;
+using Shop3.Models.ProductViewModels;
 using Shop3.Services;
 using Shop3.Utilities.Constants;
 
@@ -124,11 +125,52 @@ namespace Shop3.Controllers
         }
 
         [Route("wishlist.html")]
-        public IActionResult wishListProduct()
+        public IActionResult WishListProduct()
         {
-            return View();
+
+
+            if (User.Identity.IsAuthenticated == true)
+            {
+               
+                return View();
+            }
+            else
+            {
+                return Redirect("/login.html");
+            }
         }
-        
+
+        [Route("mydashboards.html")]
+        public IActionResult Mydashboard()
+        {
+
+
+            if (User.Identity.IsAuthenticated == true)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/login.html");
+            }
+        }
+        [Route("myorders.html")]
+        public IActionResult MyOrders()
+        {
+
+
+            if (User.Identity.IsAuthenticated == true)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/login.html");
+            }
+        }
+
 
         #region AJAX Request
 
@@ -283,23 +325,28 @@ namespace Shop3.Controllers
             return new EmptyResult();
         }
 
+        /// <summary>
+        /// Add wish list product 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult addWishList(int productId)
+        public IActionResult AddWishList(int productId)
         {
             if (User.Identity.IsAuthenticated == true)
-             {
-                 if (_productService.CheckWishProduct(productId) == false)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                 if (_productService.CheckWishProduct(productId,user) == false)
                  {
                      var product = _productService.GetById(productId);
                      var wishproduct = new WishProductViewModel();
-                     wishproduct.CustomerId = Guid.Parse(User.GetSpecificClaim("UserId"));
+                     wishproduct.CustomerId = user ;
                      wishproduct.ProductId = product.Id;
                      _productService.AddWish(wishproduct);
 
                      return new OkObjectResult(productId);
                  }
-                 return Json(new { status = "error", message = "fail create" });
+                 return Json(new { status = "error", message = "please login" });
 
             }
           
@@ -308,18 +355,185 @@ namespace Shop3.Controllers
             
         }
 
-        public IActionResult removewishList(int wishProductId)
+        /// <summary>
+        /// Get all wish list product paging
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult GetAllWishListPaging(int pageSize, int page = 1)
         {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+
+                if (pageSize == 0)
+                    pageSize = _configuration.GetValue<int>("PageSize");
+                var listProduct = _productService.GetAllWishListPaging(user, page, pageSize);
+                if (listProduct.RowCount < 0)
+                {
+                    return Json(new { status = "error", message = "no product in wish list" });
+                }
+                else
+                {
+                    return new OkObjectResult(listProduct);
+                }
+                
+            }
+            else
+            {
+                return Json(new { status = "error", message = "please login" });
+            }
+            
+        }
+
+        /// <summary>
+        /// remove wish product 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult RemovewishList(int productId)
+        {
+
             if (ModelState.IsValid)
             {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
                 if (User.Identity.IsAuthenticated == true)
                 {
-                    _productService.DeleteWishProduct(wishProductId);
-                    return new OkObjectResult(wishProductId);
+                    _productService.DeleteWishProduct(productId,user);
+                    return new OkObjectResult(productId);
                 }
             }
             return new BadRequestResult();
         }
+
+        /// <summary>
+        /// Add all wish list product to cart
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult addAllWishProductToCart()
+        {
+           
+            if (User.Identity.IsAuthenticated == true)
+            {
+                int quantity = 1;
+                int color = 1;
+                int size = 1;
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                //Get product detail
+                var listproduct = _productService.GetAllWishProduct(user);
+
+                //Get session with item list from cart
+                var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
+                if (session != null)
+                {
+                    //Convert string to list object
+                    bool hasChanged = false; // gắn cờ
+                    foreach (var product in listproduct)
+                    {
+                        //Check exist with item product id
+                        if (session.Any(x => x.Product.Id == product.Id)) // chheck xem có sp chưa
+                        {
+                            foreach (var item in session)
+                            {
+                                //Update quantity for product if match product id
+                                if (item.Product.Id == product.Id)
+                                {
+                                    item.Quantity += quantity; // nếu có rồi tăng sl lên 1
+                                    item.Price = product.PromotionPrice ?? product.Price; // nếu PromotionPrice khác null thì lấy km ko thì lấy Price
+                                   
+                                }
+                            }
+                            hasChanged = true;
+                        }
+                        else
+                        {
+                            foreach (var item in session)
+                            {
+                                session.Add(new ShoppingCartViewModel()
+                                {
+                                    Product = product,
+                                    Quantity = quantity,
+                                    Color = _billService.GetColor(color),
+                                    Size = _billService.GetSize(size),
+                                    Price = product.PromotionPrice ?? product.Price
+                                });
+                               
+                            }
+                            hasChanged = true;
+                        }
+
+                        //Update back to cart
+                        if (hasChanged == true)
+                        {
+                            HttpContext.Session.Set(CommonConstants.CartSession, session);
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    var cart = new List<ShoppingCartViewModel>();
+                    foreach (var product in listproduct)
+                    {
+                        //Add new cart
+                       
+                        cart.Add(new ShoppingCartViewModel()
+                        {
+                            Product = product,
+                            Quantity = quantity,
+                            Color = _billService.GetColor(color),
+                            Size = _billService.GetSize(size),
+                            Price = product.PromotionPrice ?? product.Price
+                        });
+                      
+                    }
+                    HttpContext.Session.Set(CommonConstants.CartSession, cart);
+                }
+                return new OkObjectResult(quantity);
+            }
+
+            return new BadRequestResult();
+
+        }
+
+        [HttpPost]
+        public IActionResult GetAllBillDetailPagingByUserId(int page, int pageSize)
+        {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                if (pageSize == 0)
+                    pageSize = _configuration.GetValue<int>("PageSize");
+                var listProduct = _billService.GetAllPagingByCustomerId(user, page, pageSize);
+                if (listProduct.RowCount < 0)
+                {
+                    return Json(new { status = "error", message = "no product in my Dashboard" });
+                }
+                else
+                {
+                    return new OkObjectResult(listProduct);
+                }
+            }
+            return new BadRequestResult();
+        }
+
+        [HttpPost]
+        public IActionResult ReOrder(int billDetailId,string message)
+        {
+            return new OkResult();
+        }
+
+        [HttpPost]
+        public IActionResult getBillById()
+        {
+            return new OkResult();
+        }
+
 
         // get thông tin color ,size khi add binding html chọn lại size color khi user add cart ngoài view
         [HttpGet]

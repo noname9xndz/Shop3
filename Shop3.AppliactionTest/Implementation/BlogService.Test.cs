@@ -78,9 +78,15 @@ namespace Shop3.AppliactionTest.Implementation
         public void GetAll_ValidQuery_ResultSuccess()
         {
 
+            //Mapper.Initialize(cfg =>
+            //{
+            //    cfg.AddProfile(new DomainToViewModelMappingProfile());
+            //    cfg.AddProfile(new ViewModelToDomainMappingProfile());
+            //});
             var mockMapper = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
+               // cfg.AddProfile(new ViewModelToDomainMappingProfile());
 
             });
             var mapper = mockMapper.CreateMapper();

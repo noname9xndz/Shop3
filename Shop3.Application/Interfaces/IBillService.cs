@@ -34,6 +34,12 @@ namespace Shop3.Application.Interfaces
 
         SizeViewModel GetSize(int id);
 
+        PagedResult<BillDetailViewModel> GetAllPagingByCustomerId(Guid id,int page, int pageSize);
+
         void Save();
+
+        BillViewModel GetBillByIdAndUserId(Guid id, int billId);
+
+        bool ReOderByUser(Guid id, int biiId);
     }
 }

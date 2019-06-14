@@ -341,6 +341,9 @@ namespace Shop3.Data.EF.Migrations
 
                     b.Property<int>("PaymentMethod");
 
+                    b.Property<string>("ReOrderMesssage")
+                        .HasMaxLength(500);
+
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
@@ -937,7 +940,7 @@ namespace Shop3.Data.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("CustomerId");
+                    b.Property<Guid>("CustomerId");
 
                     b.Property<int>("ProductId");
 
@@ -1140,7 +1143,8 @@ namespace Shop3.Data.EF.Migrations
                 {
                     b.HasOne("Shop3.Data.Entities.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Shop3.Data.Entities.Product", "Product")
                         .WithMany()

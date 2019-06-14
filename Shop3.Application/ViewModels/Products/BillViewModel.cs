@@ -42,5 +42,8 @@ namespace Shop3.Application.ViewModels.Products
         public Guid? CustomerId { set; get; }
 
         public List<BillDetailViewModel> BillDetails { set; get; }
+
+        [MaxLength(500)]
+        public string ReOrderMesssage { set; get; }
     }
 }
