@@ -10,6 +10,7 @@
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
     <Content Remove="package-lock.json" />
+    <Content Remove="wwwroot\client-app\controllers\cart\billDetail.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -699,7 +700,7 @@
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.5.1" />
     <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -746,6 +747,11 @@
 
   <ItemGroup>
     <Folder Include="Resources\Views\Home\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>

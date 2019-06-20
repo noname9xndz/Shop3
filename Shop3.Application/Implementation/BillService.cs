@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Shop3.Utilities.Constants;
 
 namespace Shop3.Application.Implementation
 {
@@ -106,7 +107,7 @@ namespace Shop3.Application.Implementation
             //_orderRepository.Update(order);
             _orderRepository.Update(order.Id,order);
         }
-
+       
         public List<SizeViewModel> GetSizes()
         {
             var  data =  _sizeRepository.FindAll();
@@ -117,8 +118,6 @@ namespace Shop3.Application.Implementation
         {
             _unitOfWork.Commit();
         }
-
-        
 
         public PagedResult<BillViewModel> GetAllPaging(string startDate, string endDate, string keyword
             , int pageIndex, int pageSize)
@@ -221,14 +220,83 @@ namespace Shop3.Application.Implementation
            };
          
         }
-        public BillViewModel GetBillByIdAndUserId(Guid id, int billId)
+
+        public PagedResult<BillViewModel> GetBillByIdAndUserId(string keyword, Guid id, int page, int pageSize)
         {
-            throw new NotImplementedException();
+            if (keyword == CommonConstants.BillCompeleted)
+            {
+                var query = _orderRepository.FindAll(x => x.CustomerId == id && x.BillStatus == BillStatus.Completed)
+                    .OrderByDescending(x=>x.DateCreated);
+                var totalRow = query.Count();
+                var data = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+                return new PagedResult<BillViewModel>()
+                {
+                    CurrentPage = page,
+                    PageSize = pageSize,
+                    Results = _mapper.ProjectTo<BillViewModel>(data).ToList(),
+                    RowCount = totalRow
+                };
+            }
+            else
+            {
+                var query = _orderRepository.FindAll(x => x.CustomerId == id && x.BillStatus != BillStatus.Completed).OrderByDescending(x => x.DateCreated);
+                var totalRow = query.Count();
+                var data = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+                return new PagedResult<BillViewModel>()
+                {
+                    CurrentPage = page,
+                    PageSize = pageSize,
+                    Results = _mapper.ProjectTo<BillViewModel>(data).ToList(),
+                    RowCount = totalRow
+                };
+            }
+            
         }
 
-        public bool ReOderByUser(Guid id, int biiId)
+        public decimal GetOrderTotal(int billId)
         {
-            throw new NotImplementedException();
+            decimal orderTotal = _orderDetailRepository.FindAll(x => x.BillId == billId).Sum(x => x.Price * x.Quantity);
+            return orderTotal;
         }
+
+        public BillViewModel GetDetailByUser(int billId, Guid id)
+        {
+                var bill = _orderRepository.FindSingle(x => x.Id == billId &&  x.CustomerId == id);
+                var billVm = _mapper.Map<Bill, BillViewModel>(bill);
+                var billDetailVm = _mapper.ProjectTo<BillDetailViewModel>(_orderDetailRepository.FindAll(x => x.BillId == billId)).ToList();
+                billVm.BillDetails = billDetailVm;
+                return billVm;
+           
+        }
+
+       
+
+        public void ReOderByUser(int billId, Guid id, string message)
+        {
+            var bill = _orderRepository.FindSingle(x => x.Id == billId && x.CustomerId == id);
+            bill.ReOrderMesssage = message;
+            bill.BillStatus = BillStatus.WattingConfirm;
+            bill.Status = Status.InActive;
+            var billVm = _mapper.Map<Bill, BillViewModel>(bill);
+            _orderRepository.Update(billVm.Id, _mapper.Map<BillViewModel, Bill>(billVm));;
+        }
+
+        public bool CheckStatusBillWithUser(int billId, Guid id)
+        {
+            bool check = false;
+            if (_orderRepository.FindAll(x => x.CustomerId == id 
+                                              && x.Id == billId
+                                              && x.BillStatus == BillStatus.New 
+                                              ).Count() > 0)
+            {
+                check = true;
+            }
+
+            return check;
+        }
+
+        
     }
 }

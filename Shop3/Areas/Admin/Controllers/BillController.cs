@@ -50,6 +50,7 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllPaging(string startDate, string endDate, string keyword, int page, int pageSize)
         {
+            // todo  load bill details error
             var model = _billService.GetAllPaging(startDate, endDate, keyword, page, pageSize);
             return new OkObjectResult(model);
         }

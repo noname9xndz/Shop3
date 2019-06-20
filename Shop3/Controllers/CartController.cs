@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Shop3.Application.Interfaces;
+using Shop3.Application.ViewModels.Common;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
@@ -12,16 +13,17 @@ using Shop3.Models;
 using Shop3.Models.ProductViewModels;
 using Shop3.Services;
 using Shop3.Utilities.Constants;
+using Shop3.Utilities.Extensions;
 
 namespace Shop3.Controllers
 {
     public class CartController : Controller
     {
-        IProductService _productService;
-        IBillService _billService;
-        readonly IConfiguration _configuration;
-        IEmailSender _emailSender;
-        IViewRenderService _viewRenderService;
+        private readonly IProductService _productService;
+        private readonly IBillService _billService;
+        private readonly IConfiguration _configuration;
+        private readonly IEmailSender _emailSender;
+        private readonly IViewRenderService _viewRenderService;
         public CartController(IProductService productService, IEmailSender emailSender,
             IConfiguration configuration, IBillService billService, IViewRenderService viewRenderService)
         {
@@ -54,7 +56,7 @@ namespace Shop3.Controllers
             {
                 return Redirect("/cart.html");
             }
-            
+
             model.Carts = session;
             return View(model);
         }
@@ -108,7 +110,7 @@ namespace Shop3.Controllers
                         await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], "New bill from Noname Shop", content);
                         //Todo Send mail to user
 
-                        //  HttpContext.Session.Remove(CommonConstants.CartSession); remove sau khi đặt hàng thành công
+                        HttpContext.Session.Remove(CommonConstants.CartSession); //remove sau khi đặt hàng thành công
 
                         ViewData["Success"] = true;
                     }
@@ -131,7 +133,7 @@ namespace Shop3.Controllers
 
             if (User.Identity.IsAuthenticated == true)
             {
-               
+
                 return View();
             }
             else
@@ -155,6 +157,7 @@ namespace Shop3.Controllers
                 return Redirect("/login.html");
             }
         }
+
         [Route("myorders.html")]
         public IActionResult MyOrders()
         {
@@ -184,7 +187,7 @@ namespace Shop3.Controllers
             return new OkObjectResult(session);
         }
 
-       
+
         // Remove all products in cart
         public IActionResult ClearCart()
         {
@@ -240,7 +243,7 @@ namespace Shop3.Controllers
                 }
 
                 //Update back to cart
-                if (hasChanged == true) 
+                if (hasChanged == true)
                 {
                     HttpContext.Session.Set(CommonConstants.CartSession, session);
                 }
@@ -273,7 +276,7 @@ namespace Shop3.Controllers
             if (session != null)
             {
                 bool hasChanged = false; // gắn cờ
-                foreach (var item in session) 
+                foreach (var item in session)
                 {
                     if (item.Product.Id == productId)
                     {
@@ -282,7 +285,7 @@ namespace Shop3.Controllers
                         break;
                     }
                 }
-                if (hasChanged ==true)
+                if (hasChanged == true)
                 {
                     HttpContext.Session.Set(CommonConstants.CartSession, session);
                 }
@@ -336,23 +339,23 @@ namespace Shop3.Controllers
             if (User.Identity.IsAuthenticated == true)
             {
                 var user = Guid.Parse(User.GetSpecificClaim("UserId"));
-                 if (_productService.CheckWishProduct(productId,user) == false)
-                 {
-                     var product = _productService.GetById(productId);
-                     var wishproduct = new WishProductViewModel();
-                     wishproduct.CustomerId = user ;
-                     wishproduct.ProductId = product.Id;
-                     _productService.AddWish(wishproduct);
+                if (_productService.CheckWishProduct(productId, user) == false)
+                {
+                    var product = _productService.GetById(productId);
+                    var wishproduct = new WishProductViewModel();
+                    wishproduct.CustomerId = user;
+                    wishproduct.ProductId = product.Id;
+                    _productService.AddWish(wishproduct);
 
-                     return new OkObjectResult(productId);
-                 }
-                 return Json(new { status = "error", message = "please login" });
+                    return new OkObjectResult(productId);
+                }
+                return Json(new { status = "error", message = "please login" });
 
             }
-          
+
             return new BadRequestResult();
 
-            
+
         }
 
         /// <summary>
@@ -379,13 +382,13 @@ namespace Shop3.Controllers
                 {
                     return new OkObjectResult(listProduct);
                 }
-                
+
             }
             else
             {
                 return Json(new { status = "error", message = "please login" });
             }
-            
+
         }
 
         /// <summary>
@@ -402,7 +405,7 @@ namespace Shop3.Controllers
                 var user = Guid.Parse(User.GetSpecificClaim("UserId"));
                 if (User.Identity.IsAuthenticated == true)
                 {
-                    _productService.DeleteWishProduct(productId,user);
+                    _productService.DeleteWishProduct(productId, user);
                     return new OkObjectResult(productId);
                 }
             }
@@ -415,9 +418,9 @@ namespace Shop3.Controllers
         /// <param name=""></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult addAllWishProductToCart()
+        public IActionResult AddAllWishProductToCart()
         {
-           
+
             if (User.Identity.IsAuthenticated == true)
             {
                 int quantity = 1;
@@ -445,7 +448,7 @@ namespace Shop3.Controllers
                                 {
                                     item.Quantity += quantity; // nếu có rồi tăng sl lên 1
                                     item.Price = product.PromotionPrice ?? product.Price; // nếu PromotionPrice khác null thì lấy km ko thì lấy Price
-                                   
+
                                 }
                             }
                             hasChanged = true;
@@ -462,7 +465,7 @@ namespace Shop3.Controllers
                                     Size = _billService.GetSize(size),
                                     Price = product.PromotionPrice ?? product.Price
                                 });
-                               
+
                             }
                             hasChanged = true;
                         }
@@ -473,7 +476,7 @@ namespace Shop3.Controllers
                             HttpContext.Session.Set(CommonConstants.CartSession, session);
                         }
                     }
-                    
+
                 }
                 else
                 {
@@ -481,7 +484,7 @@ namespace Shop3.Controllers
                     foreach (var product in listproduct)
                     {
                         //Add new cart
-                       
+
                         cart.Add(new ShoppingCartViewModel()
                         {
                             Product = product,
@@ -490,7 +493,7 @@ namespace Shop3.Controllers
                             Size = _billService.GetSize(size),
                             Price = product.PromotionPrice ?? product.Price
                         });
-                      
+
                     }
                     HttpContext.Session.Set(CommonConstants.CartSession, cart);
                 }
@@ -521,15 +524,103 @@ namespace Shop3.Controllers
             }
             return new BadRequestResult();
         }
+        [HttpPost]
+        public IActionResult GetAllBillPagingByUserId(int page, int pageSize)
+        {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                if (pageSize == 0)
+                    pageSize = _configuration.GetValue<int>("PageSize");
+                var listProduct = _billService.GetBillByIdAndUserId(string.Empty, user, page, pageSize);
+                if (listProduct.RowCount < 0)
+                {
+                    return Json(new { status = "error", message = "no product in my Dashboard" });
+                }
+                else
+                {
+                    return new OkObjectResult(listProduct);
+                }
+            }
+            return new BadRequestResult();
+        }
+
+        public IActionResult GetAllBillCompeleteByUserId(int page, int pageSize)
+        {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                if (pageSize == 0)
+                    pageSize = _configuration.GetValue<int>("PageSize");
+                var listProduct = _billService.GetBillByIdAndUserId(CommonConstants.BillCompeleted, user, page, pageSize);
+                if (listProduct.RowCount < 0)
+                {
+                    return Json(new { status = "error", message = "no product in my Dashboard" });
+                }
+                else
+                {
+                    return new OkObjectResult(listProduct);
+                }
+            }
+            return new BadRequestResult();
+        }
+
+        [HttpGet]
+        public IActionResult GetBillById(int id)
+        {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                var model = _billService.GetDetailByUser(id, user);
+                return new OkObjectResult(model);
+
+            }
+            return new BadRequestResult();
+
+        }
 
         [HttpPost]
-        public IActionResult ReOrder(int billDetailId,string message)
+        public IActionResult ReOrder(int id, string reOrderMesssage)
         {
+
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+
+                var check = _billService.CheckStatusBillWithUser(id, user);
+                if (check == true)
+                {
+                    _billService.ReOderByUser(id, user, reOrderMesssage);
+                    _billService.Save();
+                    return new OkObjectResult(id);
+                }
+                return new BadRequestResult();
+
+
+            }
+            return new BadRequestResult();
+        }
+
+        [HttpGet]
+        public IActionResult CheckStatus(int id, string reOrderMesssage)
+        {
+
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var user = Guid.Parse(User.GetSpecificClaim("UserId"));
+                var check = _billService.CheckStatusBillWithUser(id, user);
+                if (check == true)
+                {
+                    return new OkObjectResult(id);
+                }
+               
+
+            }
             return new OkResult();
         }
 
         [HttpPost]
-        public IActionResult getBillById()
+        public IActionResult GetBillById()
         {
             return new OkResult();
         }
@@ -548,6 +639,31 @@ namespace Shop3.Controllers
         {
             var sizes = _billService.GetSizes();
             return new OkObjectResult(sizes);
+        }
+
+        [HttpGet]
+        public IActionResult GetPaymentMethod()
+        {  // get phương thức thanh toán
+            // get name và và danh sách giá trị của enum PaymentMethod
+            List<EnumModel> enums = ((PaymentMethod[])Enum.GetValues(typeof(PaymentMethod)))
+                .Select(c => new EnumModel()
+                {
+                    Value = (int)c,
+                    Name = c.GetDescription() // lấy ra thông tin hiển thi của paymentmethod
+                }).ToList();
+            return new OkObjectResult(enums);
+        }
+
+        [HttpGet]
+        public IActionResult GetBillStatus()
+        {// get trạng thái của bill
+            List<EnumModel> enums = ((BillStatus[])Enum.GetValues(typeof(BillStatus)))
+                .Select(c => new EnumModel()
+                {
+                    Value = (int)c,
+                    Name = c.GetDescription()
+                }).ToList();
+            return new OkObjectResult(enums);
         }
         #endregion
 

@@ -38,8 +38,16 @@ namespace Shop3.Application.Interfaces
 
         void Save();
 
-        BillViewModel GetBillByIdAndUserId(Guid id, int billId);
+        PagedResult<BillViewModel> GetBillByIdAndUserId(string keyword,Guid id,int page ,int pageSize);
 
-        bool ReOderByUser(Guid id, int biiId);
+
+        decimal GetOrderTotal(int billId);
+
+        BillViewModel GetDetailByUser(int billId,Guid id);
+
+        void ReOderByUser(int billId, Guid id,string message);
+
+        bool CheckStatusBillWithUser(int billId,Guid id);
+
     }
 }

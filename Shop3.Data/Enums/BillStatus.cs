@@ -11,7 +11,9 @@ namespace Shop3.Data.Enums
         [Description("In Progress")] InProgress,//1
         [Description("Returned")] Returned,//2
         [Description("Cancelled")] Cancelled,//3
-        [Description("Completed")] Completed//4
+        [Description("Completed")] Completed,//4
+        [Description("WattingConfirm")] WattingConfirm //5
+
 
     }
 }

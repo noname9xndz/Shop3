@@ -162,6 +162,7 @@ namespace Shop3
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
+
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
@@ -202,7 +203,7 @@ namespace Shop3
              .AddDataAnnotationsLocalization() // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
                                                // config lại object trả về khi respone trả về cho ajax
              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-            
+
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; }); // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
 
             services.AddCors(options => options.AddPolicy("CorsPolicy",

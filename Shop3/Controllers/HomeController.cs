@@ -15,11 +15,11 @@ namespace Shop3.Controllers
 {
     public class HomeController : Controller
     {
-        private IProductService _productService;
-        private IProductCategoryService _productCategoryService;
+        private readonly IProductService _productService;
+        private readonly IProductCategoryService _productCategoryService;
         private readonly IBillService _billService;
-        private IBlogService _blogService;
-        private ICommonService _commonService;
+        private readonly IBlogService _blogService;
+        private readonly ICommonService _commonService;
 
         private readonly IStringLocalizer<HomeController> _localizer; // truy cập đa ngôn ngữ trong controller bằng CookieRequestCultureProvider
 

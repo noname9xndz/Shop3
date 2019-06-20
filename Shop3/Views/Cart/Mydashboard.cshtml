@@ -1,4 +1,19 @@
 ﻿
+@{
+    ViewData["Title"] = "NonameShop Cart";
+    ViewData["MetaDescription"] = "NonameShop Cart";
+    ViewData["MetaKeyword"] = "NonameShop Cart";
+}
+
+
+@section Scripts{
+    <script src="~/client-app/controllers/cart/bill.js" asp-append-version="true"></script>
+    <script>
+        var bill = new billController();
+        bill.initialize();
+    </script>
+}
+
 <section class="main-container col2-right-layout" id="mydashboard">
     <div class="main container">
         <div class="row">
@@ -21,38 +36,35 @@
                                         <col width="1">
                                     </colgroup>
                                     <thead>
-                                        <tr class="first last">
-                                            <th>BillId</th>
-                                            <th>Product</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th><span class="nobr">Order Total</span></th>
-                                            <th>DateCreated</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
+                                    <tr class="first last">
+                                        <th>BillId</th>
+                                        <th>Name</th>
+                                        <th><span class="nobr">Order Total</span></th>
+                                        <th>DateCreated</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
-                                    <tbody>
-
-                                        <tr class="last even">
-                                            <td>987654</td>
-                                            <td>sp111</td>
-                                            <td>100</td>
-                                            <td>10000</td>
-                                            <td><span class="price">$79.99</span></td>
-                                            <td> 10/10/2018</td>
-                                            <td><em>Pending</em></td>
-                                            <td class="a-center last">
-
-                                                <span class="nobr">
-                                                    <a href="javascript:void(0);">View Order</a>
-                                                    <span class="separator">|</span>
-                                                    <a href="javascript:void(0);">Reorder</a>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="table-bill"> </tbody>
                                 </table>
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                        <select id="ddlShowPage">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            bản ghi/trang.
+                                        </span>
+                                        Tổng số : <strong id="lblTotalRecords"></strong>
+                                    </div>
+                                </div><div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                                        <ul id="paginationUL"></ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -63,3 +75,24 @@
         </div>
     </div>
 </section>
+<partial name="_ViewOrderPartial.cshtml" />
+<partial name="_ReOrderPartial.cshtml" />
+<script id="table-template" type="x-tmpl-mustache">
+
+    <tr class="last even">
+        <td>{{Id}}</td>
+        <td>{{CustomerName}}</td>
+        <td><span class="price">$79.99</span></td>
+        <td> {{DateCreated}}</td>
+        <td><em>{{BillStatus}}</em></td>
+        <td class="a-center last">
+
+            <span class="nobr">
+                <a href="javascript:void(0);" id="vieworder" data-id="{{Id}}">View Order</a>
+                <span class="separator">|</span>
+                <a href="javascript:void(0);" id="reorder" data-id="{{Id}}">Reorder</a>
+            </span>
+        </td>
+    </tr>
+
+</script>

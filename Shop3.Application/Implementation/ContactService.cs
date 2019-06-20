@@ -14,8 +14,8 @@ namespace Shop3.Application.Implementation
 {
     public class ContactService : IContactService
     {
-        private IRepository<Contact, string> _contactRepository;
-        private IUnitOfWork _unitOfWork;
+        private readonly IRepository<Contact, string> _contactRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
         public ContactService(IRepository<Contact, string> contactRepository,

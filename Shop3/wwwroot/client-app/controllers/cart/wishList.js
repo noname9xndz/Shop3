@@ -4,14 +4,10 @@
 
 var wishProductController = function () {
 
-    //var  billDetail = new billDetailController();
-   // var  bill = new billController();
-
+   
     this.initialize = function () {
         loadWishList();
         registerEvents();
-       // billDetail.initialize();
-        //bill.initialize();
     }
 
     function registerEvents() {

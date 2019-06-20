@@ -13,10 +13,10 @@ namespace Shop3.Application.Implementation
 {
     public class AnnouncementService : IAnnouncementService
     {
-        private IRepository<Announcement, string> _announcementRepository;
-        private IRepository<AnnouncementUser, int> _announcementUserRepository;
+        private readonly IRepository<Announcement, string> _announcementRepository;
+        private readonly IRepository<AnnouncementUser, int> _announcementUserRepository;
         private readonly IMapper _mapper;
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public AnnouncementService(IRepository<Announcement, string> announcementRepository,
             IRepository<AnnouncementUser, int> announcementUserRepository,

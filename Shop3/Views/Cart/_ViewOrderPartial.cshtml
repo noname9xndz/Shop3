@@ -1,0 +1,36 @@
+﻿
+
+
+
+<div id="vieworders" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Order detail</h4>
+            </div>*@
+            <div class="modal-body">
+                <div id="horizontal-form">
+
+                    thoong tin orrder
+
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                <div class="col-sm-offset-2 col-sm-10">
+                    33333333333333333333333333333333333333333333333
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<script type="x-tmpl-mustache" id="template-table-bill-details">
+    <tr data-id="{{Id}}">
+        <td>{{{Products}}}</td> @*2 ngoặc render ra được data , ba ngoặc render ra được cả html*@
+        <td>{{{Colors}}}</td>
+        <td>{{{Sizes}}}</td>
+        <td><input type="number" class="txtQuantity form-control" value="{{Quantity}}" /></td>
+        <td><button class="btn btn-xs btn-danger btn-delete-detail" type="button"><i class="fa fa-trash"></i></button></td>
+    </tr>
+</script>

@@ -18,7 +18,10 @@ namespace Shop3.Utilities.Constants
 
         public const string BlogTag = "Blog";
 
-        
+        public const string BillCompeleted = "BillCompeleted";
+
+
+
         public class AppRole
         {
             public const string AdminRole = "Admin";

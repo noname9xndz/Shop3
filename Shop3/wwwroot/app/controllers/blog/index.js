@@ -17,6 +17,7 @@ var BlogController = function () {
             common.configs.pageIndex = 1;
             loadBlogTable(true);
         });
+
         $("#btnCreate").on('click', function () {
             resetForm();
             $('#modal-add-edit').modal('show');
@@ -209,6 +210,7 @@ var BlogController = function () {
 
    
     function saveBlog(e) {
+
         if ($('#frmMaintainance').valid()) {
             e.preventDefault();
             var id = $('#hidIdM').val();

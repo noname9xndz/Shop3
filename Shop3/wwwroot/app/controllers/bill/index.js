@@ -90,7 +90,7 @@
                     if (data.BillDetails != null && data.BillDetails.length > 0) {
                         var render = '';
                         var templateDetails = $('#template-table-bill-details').html();
-                        // dùng Mustache render ra thông tin sp trong bill
+                        
                         $.each(billDetails, function (i, item) {
                             var products = getProductOptions(item.ProductId);
                             var colors = getColorOptions(item.ColorId);
@@ -158,7 +158,7 @@
                         PaymentMethod: paymentMethod,
                         Status: 1,
                         BillDetails: billDetails
-                        //DateCreated: dateCreated
+                        
                     },
                     dataType: "json",
                     beforeSend: function () {
@@ -256,7 +256,7 @@
                 //bill detail billStatus
                 var billDetails = [];
                 $.each($('#tbl-bill-details tr'), function (i, item) {
-                    billDetails.push({
+                        billDetails.push({
                         Id: $(item).data('id'),
                         ProductId: $(item).find('select.ddlProductId').first().val(),
                         Quantity: $(item).find('input.txtQuantity').first().val(),

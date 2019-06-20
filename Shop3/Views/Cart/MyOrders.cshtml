@@ -1,4 +1,18 @@
 ﻿
+@{
+    ViewData["Title"] = "NonameShop Cart";
+    ViewData["MetaDescription"] = "NonameShop Cart";
+    ViewData["MetaKeyword"] = "NonameShop Cart";
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/cart/billCompelete.js" asp-append-version="true"></script>
+    <script>
+        var bill = new billCompeleteController();
+        bill.initialize();
+    </script>
+}
+
 <section class="main-container col2-right-layout" id="myorders">
     <div class="main container">
         <div class="row">
@@ -9,32 +23,57 @@
                     </div>
                     <div class="orders-list table-responsive">
                         <!--orders list table-->
+                        @* <table class="table table-bordered cart_summary table-striped"> *@
+                        @*     <thead> *@
+                        @*     <tr> *@
+                        @*         <!--titles for td--> *@
+                        @*         <th>Order Number</th> *@
+                        @*         <th>Order Date</th> *@
+                        @*         <th>Order Status</th> *@
+                        @*         <th>Total</th> *@
+                        @*     </tr> *@
+                        @*     </thead> *@
+                        @*     <tbody id="table-billcompelete"> </tbody> *@
+                        @* </table> *@
                         <table class="table table-bordered cart_summary table-striped">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col>
+                                <col width="1">
+                                <col width="1">
+                                <col width="1">
+                            </colgroup>
                             <thead>
-                            <tr>
-                                <!--titles for td-->
-                                <th>Order Number</th>
-                                <th>Order Date</th>
-                                <th>Order Status</th>
-                                <th>Total</th>
-                            </tr>
+                                <tr class="first last">
+                                    <th>BillId</th>
+                                    <th>Name</th>
+                                    <th><span class="nobr">Order Total</span></th>
+                                    <th>DateCreated</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
-                            <tbody>
-
-                            <tr>
-                                <!--order number-->
-                                <td data-title="Order Number"><a href="order_details.html" class="order-number">#12345</a></td>
-                                <!--order date-->
-                                <td data-title="Order Date">2017-02-13</td>
-                                <!--order status-->
-                                <td data-title="Order Status">Confirmed by ShopMart</td>
-                                <!--quanity-->
-                                <td data-title="Total"><span class="order-total">$79.00</span></td>
-                            </tr>
-
-
-                            </tbody>
+                            <tbody id="table-billcompelete"> </tbody>
                         </table>
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                <select id="ddlShowPage">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    bản ghi/trang.
+                                </span>
+                                Tổng số : <strong id="lblTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                                <ul id="paginationUL"></ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,3 +81,22 @@
         </div>
     </div>
 </section>
+<partial name="_ReOrderPartial.cshtml" />
+<script id="table-billcompelete-template" type="x-tmpl-mustache">
+
+    <tr class="last even">
+        <td>{{Id}}</td>
+        <td>{{CustomerName}}</td>
+        <td><span class="price">$79.99</span></td>
+        <td> {{DateCreated}}</td>
+        <td><em>{{BillStatus}}</em></td>
+        <td class="a-center last">
+
+            <span class="nobr">
+                <a href="javascript:void(0);">View Order</a>
+            </span>
+        </td>
+    </tr>
+
+
+</script>
