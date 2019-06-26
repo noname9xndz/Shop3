@@ -321,6 +321,9 @@ namespace Shop3.Data.EF.Migrations
                         .IsRequired()
                         .HasMaxLength(256);
 
+                    b.Property<string>("CustomerEmail")
+                        .HasMaxLength(50);
+
                     b.Property<Guid?>("CustomerId");
 
                     b.Property<string>("CustomerMessage")
@@ -338,6 +341,8 @@ namespace Shop3.Data.EF.Migrations
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateModified");
+
+                    b.Property<decimal>("OrderTotal");
 
                     b.Property<int>("PaymentMethod");
 

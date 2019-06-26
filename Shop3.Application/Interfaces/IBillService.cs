@@ -49,5 +49,6 @@ namespace Shop3.Application.Interfaces
 
         bool CheckStatusBillWithUser(int billId,Guid id);
 
+
     }
 }

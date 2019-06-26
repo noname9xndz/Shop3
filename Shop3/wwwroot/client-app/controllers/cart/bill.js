@@ -4,10 +4,11 @@
 
 var billController = function () {
     var cachedObj = {
-
+       // Ordertotal : [] ,
         paymentMethods: [],
         billStatuses: []
-    }
+    };
+   // var Ordertotal = 0 ;
 
     this.initialize = function () {
         $.when(loadBillStatus(), loadPaymentMethod())
@@ -77,13 +78,16 @@ var billController = function () {
                 url: '/Cart/GetAllBillPagingByUserId',
                 dataType: 'json',
                 success: function (response) {
+                    console.log(response);
                     $.each(response.Results, function (i, item) { 
                         render += Mustache.render(template, {
                             CustomerName: item.CustomerName,
                             Id: item.Id,
                             PaymentMethod: getPaymentMethodName(item.PaymentMethod),
                             DateCreated: common.dateTimeFormatJson(item.DateCreated),
-                            BillStatus: getBillStatusName(item.BillStatus)
+                            BillStatus: getBillStatusName(item.BillStatus),
+                            TotalCount: common.formatNumber(item.OrderTotal , 0)
+                          
                         });
                     });
 
@@ -103,6 +107,8 @@ var billController = function () {
                     common.notify('Cannot loading data', 'error');
                 }
             });
+           // console.log(cachedObj.Ordertotal);
+           // console.log(Ordertotal);
     }
 
     function wrapPaging(recordCount, callBack, changePageSize) { // changePageSize : load ra phân trang hay đổi trang
@@ -240,6 +246,7 @@ var billController = function () {
             }
         });
     }
+
     function checkStatus(id) {
         $.ajax({
             type: "GET",

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
@@ -10,6 +11,7 @@ using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
 using Shop3.Models;
+using Shop3.Models.BillViewModels;
 using Shop3.Models.ProductViewModels;
 using Shop3.Services;
 using Shop3.Utilities.Constants;
@@ -66,12 +68,14 @@ namespace Shop3.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout(CheckoutViewModel model)
         {
+            
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
-
+        
             if (ModelState.IsValid)
             {
                 if (session != null)
                 {
+                    var total = session.Select(x => x.OrderTotal).Sum();
                     var details = new List<BillDetailViewModel>();
                     foreach (var item in session)
                     {
@@ -92,7 +96,9 @@ namespace Shop3.Controllers
                         CustomerAddress = model.CustomerAddress,
                         CustomerName = model.CustomerName,
                         CustomerMessage = model.CustomerMessage,
-                        BillDetails = details
+                        BillDetails = details,
+                        CustomerEmail = model.CustomerEmail,
+                        OrderTotal = session.Select(x => x.OrderTotal).Sum()
                     };
                     if (User.Identity.IsAuthenticated == true)
                     {
@@ -105,10 +111,18 @@ namespace Shop3.Controllers
                         _billService.Save();
 
                         // sử dụng service ViewRender để tạo ra viewhtml : view to string
-                        var content = await _viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
-                        //Send mail to admin
-                        await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], "New bill from Noname Shop", content);
-                        //Todo Send mail to user
+                       // string viewNameSendAdmin = "Cart/_BillMail";
+                       // string subjectSendToAdmin = "New bill from Noname Shop";
+                       // var content = await _viewRenderService.RenderToStringAsync(viewNameSendAdmin, billViewModel);
+                      //  await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], subjectSendToAdmin, content);
+                       
+                        //if (model.CustomerEmail != null )
+                        //{
+                        //   // string viewNameSendToUser = "Cart/_BillMailSendToUser";
+                        //    //string subjectSendToUser = "Thank you for order at NonameShop";
+                        //    //var contentSendToUser = await _viewRenderService.RenderToStringAsync(viewNameSendToUser, billViewModel);
+                        //    //await _emailSender.SendEmailAsync(model.CustomerEmail, subjectSendToUser, content);
+                        //}
 
                         HttpContext.Session.Remove(CommonConstants.CartSession); //remove sau khi đặt hàng thành công
 
@@ -226,6 +240,7 @@ namespace Shop3.Controllers
                             item.Quantity += quantity; // nếu có rồi tăng sl lên 1
                             item.Price = product.PromotionPrice ?? product.Price; // nếu PromotionPrice khác null thì lấy km ko thì lấy Price
                             hasChanged = true;
+                            item.OrderTotal += (quantity * item.Price);
                         }
                     }
                 }
@@ -237,7 +252,8 @@ namespace Shop3.Controllers
                         Quantity = quantity,
                         Color = _billService.GetColor(color),
                         Size = _billService.GetSize(size),
-                        Price = product.PromotionPrice ?? product.Price
+                        Price = product.PromotionPrice ?? product.Price,
+                        OrderTotal = (product.PromotionPrice > 0 ) ? (decimal)(product.PromotionPrice * quantity)  : (decimal)(product.Price * quantity)
                     });
                     hasChanged = true;
                 }
@@ -258,7 +274,8 @@ namespace Shop3.Controllers
                     Quantity = quantity,
                     Color = _billService.GetColor(color),
                     Size = _billService.GetSize(size),
-                    Price = product.PromotionPrice ?? product.Price
+                    Price = product.PromotionPrice ?? product.Price,
+                    OrderTotal = (product.PromotionPrice > 0) ? (decimal)(product.PromotionPrice * quantity) : (decimal)(product.Price * quantity)
                 });
                 HttpContext.Session.Set(CommonConstants.CartSession, cart);
             }
@@ -302,6 +319,7 @@ namespace Shop3.Controllers
         /// <returns></returns>
         public IActionResult UpdateCart(int productId, int quantity, int color, int size)
         {
+            // todo error null color or size 
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
             if (session != null)
             {
@@ -316,6 +334,7 @@ namespace Shop3.Controllers
                         item.Color = _billService.GetColor(color);
                         item.Quantity = quantity;
                         item.Price = product.PromotionPrice ?? product.Price;
+                        item.OrderTotal += (quantity * item.Price);
                         hasChanged = true;
                     }
                 }
@@ -529,9 +548,11 @@ namespace Shop3.Controllers
         {
             if (User.Identity.IsAuthenticated == true)
             {
+                
                 var user = Guid.Parse(User.GetSpecificClaim("UserId"));
                 if (pageSize == 0)
                     pageSize = _configuration.GetValue<int>("PageSize");
+               
                 var listProduct = _billService.GetBillByIdAndUserId(string.Empty, user, page, pageSize);
                 if (listProduct.RowCount < 0)
                 {
@@ -624,7 +645,11 @@ namespace Shop3.Controllers
         {
             return new OkResult();
         }
-
+        [HttpGet]
+        public IActionResult GetOrderBill(int billId)
+        {
+            return new OkObjectResult(_billService.GetOrderTotal(billId));
+        }
 
         // get thông tin color ,size khi add binding html chọn lại size color khi user add cart ngoài view
         [HttpGet]

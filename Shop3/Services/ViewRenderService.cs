@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Shop3.Services
 {
@@ -38,6 +39,7 @@ namespace Shop3.Services
 
             using (var sw = new StringWriter())
             {
+
                 var viewResult = _razorViewEngine.FindView(actionContext, viewName, false);
 
                 if (viewResult.View == null)

@@ -49,8 +49,9 @@ var billCompeleteController = function () {
                         Id: item.Id,
                         PaymentMethod: getPaymentMethodName(item.PaymentMethod),
                         DateCreated: common.dateTimeFormatJson(item.DateCreated),
-                        BillStatus: getBillStatusName(item.BillStatus)
-                    });
+                        BillStatus: getBillStatusName(item.BillStatus),
+                        TotalCount: common.formatNumber(item.OrderTotal, 0)
+                });
                 });
 
                 $('#lblTotalRecords').text(response.RowCount); // tổng số bản ghi
@@ -143,6 +144,26 @@ var billCompeleteController = function () {
                     render += "<option value='" + item.Value + "'>" + item.Name + "</option>";
                 });
                 $('#ddlPaymentMethod').html(render);
+            }
+        });
+    }
+    function loadOrderTotal(billId) {
+        return $.ajax({
+            type: "GET",
+            data: {
+                billId : billId
+            },
+            url: "/Cart/GetRevenueBill",
+            dataType: "json",
+            success: function (response) {
+                //cachedObj.paymentMethods = response;
+                //var render = "";
+                //$.each(response, function (i, item) {
+                //    render += "<option value='" + item.Value + "'>" + item.Name + "</option>";
+                //});
+                //$('#ddlPaymentMethod').html(render);
+                console.log(response);
+                return(response);
             }
         });
     }

@@ -22,8 +22,8 @@ namespace Shop3.Application.ViewModels.Products
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
-        //[MaxLength(50)]
-        //public string CustomerEmail { set; get; }
+        [MaxLength(50)]
+        public string CustomerEmail { set; get; }
 
         [Required]
         [MaxLength(256)]
@@ -42,6 +42,8 @@ namespace Shop3.Application.ViewModels.Products
         public Guid? CustomerId { set; get; }
 
         public List<BillDetailViewModel> BillDetails { set; get; }
+
+        public decimal OrderTotal { set; get; }
 
         [MaxLength(500)]
         public string ReOrderMesssage { set; get; }

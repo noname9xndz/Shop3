@@ -47,8 +47,7 @@ var ContactController = function() {
 
                 var template = $('#table-template').html();
                 var render = "";
-                $.each(response,
-                    function(i, item) {
+                $.each(response,function(i, item) {
                         render += Mustache.render(template,
                             {
                                 Id : item.Id,

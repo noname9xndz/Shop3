@@ -468,8 +468,8 @@
                         });
                     });
 
-                    //$("#lbl-total-records").text(response.RowCount);
-                    $("#lbl-total-records").text('0');
+                    $("#lbl-total-records").text(response.RowCount);
+                  //  $("#lbl-total-records").text('0');
                     if (render != undefined) {
                         $('#tbl-content').html(render);
 

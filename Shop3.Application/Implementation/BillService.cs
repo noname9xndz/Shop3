@@ -45,12 +45,21 @@ namespace Shop3.Application.Implementation
 
         public void Create(BillViewModel billVm)
         {
-           // billVm.DateCreated = billVm.DateModified = DateTime.Now;
-            var order = _mapper.Map<BillViewModel, Bill>(billVm);
-            var orderDetails = _mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
+            //billVm.DateCreated = DateTime.Now;
+            //var order = _mapper.Map<BillViewModel, Bill>(billVm);
+            //var orderDetails = _mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
+            //foreach (var detail in orderDetails)
+            //{
+            //    // lấy ra price mới nhất của product
+            //    var product = _productRepository.FindById(detail.ProductId);
+            //    detail.Price = product.Price;
+            //}
+            //order.BillDetails = orderDetails;
+            //_orderRepository.Add(order);
+            var order = Mapper.Map<BillViewModel, Bill>(billVm);
+            var orderDetails = Mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
             foreach (var detail in orderDetails)
             {
-                // lấy ra price mới nhất của product
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
             }
@@ -226,7 +235,7 @@ namespace Shop3.Application.Implementation
             if (keyword == CommonConstants.BillCompeleted)
             {
                 var query = _orderRepository.FindAll(x => x.CustomerId == id && x.BillStatus == BillStatus.Completed)
-                    .OrderByDescending(x=>x.DateCreated);
+                    .OrderByDescending(x => x.DateCreated);
                 var totalRow = query.Count();
                 var data = query.Skip((page - 1) * pageSize).Take(pageSize);
 
@@ -252,7 +261,7 @@ namespace Shop3.Application.Implementation
                     RowCount = totalRow
                 };
             }
-            
+
         }
 
         public decimal GetOrderTotal(int billId)
@@ -296,7 +305,5 @@ namespace Shop3.Application.Implementation
 
             return check;
         }
-
-        
     }
 }

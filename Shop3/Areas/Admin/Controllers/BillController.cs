@@ -57,6 +57,7 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult SaveEntity(BillViewModel billVm)
         {
+            // todo error sum order in create and update
             if (!ModelState.IsValid)
             {
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);

@@ -22,5 +22,7 @@ namespace Shop3.Application.Interfaces
 
 
         Task UpdateAsync(AppUserViewModel userVm);
+
+        Task RemoveRolesFromUser(string userId, string[] roles);
     }
 }

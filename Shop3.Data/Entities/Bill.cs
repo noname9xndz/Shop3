@@ -19,33 +19,35 @@ namespace Shop3.Data.Entities
         }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId,string reOrderMesssage)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId,  string reOrderMesssage, string customerEmail, decimal orderTotal)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
             CustomerMobile = customerMobile;
             CustomerMessage = customerMessage;
-            //CustomerEmail = customerEmail;
+            CustomerEmail = customerEmail;
             BillStatus = billStatus;
             PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
             ReOrderMesssage = reOrderMesssage;
+            OrderTotal = orderTotal;
         }
         public Bill(int id, string customerName, string customerAddress,string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string reOrderMesssage)
+           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string reOrderMesssage, string customerEmail, decimal orderTotal)
         {
             Id = id;
             CustomerName = customerName;
             CustomerAddress = customerAddress;
             CustomerMobile = customerMobile;
-            //CustomerEmail = customerEmail;
+            CustomerEmail = customerEmail;
             CustomerMessage = customerMessage;
             BillStatus = billStatus;
             PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
             ReOrderMesssage = reOrderMesssage;
+            OrderTotal = orderTotal;
         }
 
         [Required]
@@ -60,8 +62,8 @@ namespace Shop3.Data.Entities
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
-        //[MaxLength(50)]
-        //public string CustomerEmail { set; get; }
+        [MaxLength(50)]
+        public string CustomerEmail { set; get; }
 
         [Required]
         [MaxLength(256)]
@@ -83,6 +85,9 @@ namespace Shop3.Data.Entities
         public virtual AppUser User { set; get; }
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
+
+        
+        public decimal OrderTotal { set; get; }
 
         [MaxLength(500)]
         public string ReOrderMesssage { set; get; }

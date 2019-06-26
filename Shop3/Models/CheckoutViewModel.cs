@@ -24,5 +24,6 @@ namespace Shop3.Models
                     }).ToList();
             }
         }
+        //public decimal OrderTotal { set; get; }
     }
 }

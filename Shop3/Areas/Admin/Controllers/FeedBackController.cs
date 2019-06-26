@@ -72,10 +72,11 @@ namespace Shop3.Areas.Admin.Controllers
             {
                 _feedbackService.Add(FeedbackVM);
                 _feedbackService.SaveChanges();
-                string viewName = "FeedBack/_ContactMailToUser";
+                var viewName = "../Areas/Admin/Views/FeedBack/_ContactMailToUser";
                 var content = await _viewRenderService.RenderToStringAsync(viewName, FeedbackVM);
-                await _emailSender.SendEmailAsync(FeedbackVM.Email,subject, content);
-                
+                await _emailSender.SendEmailAsync(FeedbackVM.Email, subject, content);
+
+
             }
             
             return new OkResult();

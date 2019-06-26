@@ -35,8 +35,10 @@
                     {
                         if ((bool)ViewData["Success"] == true)
                         {
+                            <meta http-equiv="refresh" content="5;url=/">
                             <div class="alert alert-success">
                                 Thank you for your order. We are going to confirm your order soon.
+                                Redirect to the homepage after 5s
                             </div>
 
                         }
@@ -108,6 +110,13 @@
                                         <!--/ [col] -->
                                     </li>
                                     <!--/ .row -->
+                                    <li class="row">
+                                        <div class="col-sm-12">
+                                            <label class="required">Email</label>
+                                            <input class="input form-control" type="text" asp-for="CustomerEmail">
+                                        </div>
+                                        <!--/ [col] -->
+                                    </li>
 
                                 </ul>
                             </div>
