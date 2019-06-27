@@ -63,7 +63,7 @@ namespace Shop3.Data.EF
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // câu hình key cho Identity,ToTable("Tên bảng") : đính nghĩa tên bảng trong sql thay vì dùng [Table("tên bảng")] trong mỗi class
+            // câu hình key cho Identity : đính nghĩa tên bảng trong sql
 
             #region Identity Config
 
@@ -91,7 +91,7 @@ namespace Shop3.Data.EF
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
 
             // fix lỗi length id không trùng => comment lại để OnModelCreating ko chạy creating model mặc định mà ghi đè theo cách của ta
-            base.OnModelCreating(builder); 
+            base.OnModelCreating(builder);
         }
         // ghi đè phương thức SaveChanges để mỗi lần save thằng nào kế thừa IDateTracking sẽ tự động update DateCreated và DateModified 
         public override int SaveChanges()
@@ -101,6 +101,7 @@ namespace Shop3.Data.EF
 
             foreach (EntityEntry item in modified)
             {
+
                 var changedOrAddedItem = item.Entity as IDateTracking;
 
                 if (changedOrAddedItem != null)
@@ -113,9 +114,11 @@ namespace Shop3.Data.EF
                 }
             }
             return base.SaveChanges(); // todo bug loop
+
+
         }
 
-       
+
     }
 
     // https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db?tabs=visual-studio#create-the-database
@@ -124,15 +127,15 @@ namespace Shop3.Data.EF
         public AppDbContext CreateDbContext(string[] args)
         {
             IConfiguration configuration = new ConfigurationBuilder()
-               
+
                 .SetBasePath(Directory.GetCurrentDirectory()) // nuget : Microsoft.Extensions.configuration.FileExtensions
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)  // nuget : Microsoft.Extensions.configuration.Json
                 .AddEnvironmentVariables()   // requires Microsoft.Extensions.Configuration.EnvironmentVariable
-                .Build(); 
-                
+                .Build();
+
 
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            var connectionString = configuration.GetConnectionString("DefaultConnection"); 
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlServer(connectionString);
 
             return new AppDbContext(builder.Options);

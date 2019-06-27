@@ -45,24 +45,17 @@ namespace Shop3.Application.Implementation
 
         public void Create(BillViewModel billVm)
         {
-            //billVm.DateCreated = DateTime.Now;
-            //var order = _mapper.Map<BillViewModel, Bill>(billVm);
-            //var orderDetails = _mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
-            //foreach (var detail in orderDetails)
-            //{
-            //    // lấy ra price mới nhất của product
-            //    var product = _productRepository.FindById(detail.ProductId);
-            //    detail.Price = product.Price;
-            //}
-            //order.BillDetails = orderDetails;
-            //_orderRepository.Add(order);
+            //var x = billVm.OrderTotal; 
             var order = Mapper.Map<BillViewModel, Bill>(billVm);
             var orderDetails = Mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
             foreach (var detail in orderDetails)
             {
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
+                billVm.OrderTotal  = ( billVm.OrderTotal + (detail.Price * detail.Quantity) );
             }
+
+            order.OrderTotal = billVm.OrderTotal;
             order.BillDetails = orderDetails;
             _orderRepository.Add(order);
         }
@@ -80,7 +73,7 @@ namespace Shop3.Application.Implementation
             var addedDetails = newDetails.Where(x => x.Id == 0).ToList();
 
             //get updated details , id khac 0 => sửa
-            var updatedDetails = newDetails.Where(x => x.Id != 0).ToList(); // tolist để clone ra biến updatedDetails, where là chưa lấy ra
+            var updatedDetails = newDetails.Where(x => x.Id != 0).ToList();
 
             //Existed details : get bill tồn tại trong db
             var existedDetails = _orderDetailRepository.FindAll(x => x.BillId == billVm.Id);
@@ -92,7 +85,7 @@ namespace Shop3.Application.Implementation
             {  // lấy ra price mới nhất của product
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
-                //_orderDetailRepository.Update(detail);
+                billVm.OrderTotal = (billVm.OrderTotal + (detail.Price * detail.Quantity));
                 _orderDetailRepository.Update(detail.Id,detail);
             }
 
@@ -101,11 +94,29 @@ namespace Shop3.Application.Implementation
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
                 _orderDetailRepository.Add(detail);
+                billVm.OrderTotal = (billVm.OrderTotal + (detail.Price * detail.Quantity));
+                //_orderDetailRepository.Update(detail.Id,detail);
             }
+            // xóa bill không tồn tại trừ bill được update
+           // _orderDetailRepository.RemoveMultiple(existedDetails.Except(updatedDetails).ToList()); 
 
-            _orderDetailRepository.RemoveMultiple(existedDetails.Except(updatedDetails).ToList()); // xóa bill không tồn tại trừ bill được update
+             order.OrderTotal = billVm.OrderTotal;
+            if (updatedDetails.Count > 0 && addedDetails.Count > 0)
+            {
+                order.BillDetails = updatedDetails;
+                order.BillDetails = addedDetails;
+            }
+            else if (updatedDetails.Count() > 0)
+            {
+                order.BillDetails = updatedDetails;
+            }
+            else
+            {
+                order.BillDetails = updatedDetails;
 
-           // _orderRepository.Update(order);
+            }
+            
+            var orderTotal = billVm.OrderTotal;
             _orderRepository.Update(order.Id,order);
         }
 

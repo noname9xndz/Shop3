@@ -352,7 +352,9 @@
             url: "/Admin/Product/GetAll",
             dataType: "json",
             success: function (response) {
+                
                 cachedObj.products = response;
+                console.log(cachedObj);
             },
             error: function () {
                 common.notify('Has an error in progress', 'error');
@@ -393,11 +395,21 @@
         var products = "<select class='form-control ddlProductId'>";
         $.each(cachedObj.products, function (i, product) {
             if (selectedId === product.Id)
-                products += '<option value="' + product.Id + '" selected="select">' + product.Name + '</option>';
+                products += '<option value="' + product.Id + '" selected="select">' + product.Name + '</option>' ;
             else
                 products += '<option value="' + product.Id + '">' + product.Name + '</option>';
         });
         products += "</select>";
+
+        //var products = "<span>";
+        //$.each(cachedObj.products, function (i, product) {
+        //    if (selectedId === product.Id)
+        //        products += '<p>' + product.Price + '</p>';
+        //});
+        //products += "</span>";
+       
+       
+        
         return products;
     }
 
@@ -426,6 +438,7 @@
     }
 
     function resetFormMaintainance() {
+
         $('#hidId').val(0);
         $('#txtCustomerName').val('');
 
