@@ -5,24 +5,35 @@
     ViewData["MetaKeyword"] = Model.Name;
     ViewData["MetaDescription"] = Model.Name;
 }
-<!-- Main Container -->
-<section class="blog_post">
+<!-- Main Container End -->
+<div class="breadcrumbs">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12">
-                <div class="entry-detail">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>@Model.Name</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-main col-sm-12">
+                <div id="contact" class="page-content page-contact">
                     <div class="page-title">
+                        <h2>@Model.Name</h2>
                     </div>
-                    <div class="entry-meta-data">
-                        <div class="blog-top-desc">
-                            <h1>@Model.Name</h1>
-                        </div>
-                    </div>
+                    <div id="message-box-conact">@*We're available for new projects*@</div>
                     <div class="content-text clearfix">
-                        @Html.Raw(Model.Content)
+                        @Html.Raw(@Model.Content)
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </section>

@@ -1,1 +1,39 @@
-﻿about
+﻿@model Shop3.Application.ViewModels.Common.PageDefaultViewModel
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["MetaKeyword"] = Model.Title;
+    ViewData["MetaDescription"] = Model.Title;
+}
+<!-- Main Container End -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>@Model.Title</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-main col-sm-12">
+                <div id="contact" class="page-content page-contact">
+                    <div class="page-title">
+                        <h2>@Model.Title</h2>
+                    </div>
+                    <div id="message-box-conact">@*We're available for new projects*@</div>
+                    <div class="content-text clearfix">
+                        @Html.Raw(@Model.Content)
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->

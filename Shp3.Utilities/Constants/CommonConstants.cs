@@ -30,5 +30,14 @@ namespace Shop3.Utilities.Constants
         {
             public const string Roles = "Roles";
         }
+        public class PageDefault
+        {
+            public const string DeliveryInformation = "DeliveryInformation";
+            public const string PrivacyPolicy = "PrivacyPolicy";
+            public const string FAQ = "FAQ";
+            public const string TermsCondition = "TermsCondition";
+            public const string ReturnPolicy = "ReturnPolicy";
+            public const string About = "About";
+        }
     }
 }

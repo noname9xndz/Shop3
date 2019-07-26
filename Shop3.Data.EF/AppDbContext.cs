@@ -19,6 +19,10 @@ namespace Shop3.Data.EF
     // add Microsoft.AspNetCore.Identity và Microsoft.AspNetCore.Identity.entityframeworkcore
     //thay vì add DbConText chúng ta sẽ cho kế thừa từ IdentityDbContext<> để tích hợp ASP.NET Identity
 
+    //Enable-Migrations
+    //Add-Migration
+    //Update-Database
+
     public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid> // key để kiểu guid
     {// objectContext đại diện cho 1 database có chức năng quản lý các kết nối, định nghĩa mô hình dữ liệu với metadata và các thao tác với database
         public AppDbContext(DbContextOptions options) : base(options)
@@ -53,9 +57,10 @@ namespace Shop3.Data.EF
         public DbSet<Slide> Slides { set; get; }
         public DbSet<WishProduct> WishProducts { set; get; }
         public DbSet<Tag> Tags { set; get; }
-
+        
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<WholePrice> WholePrices { get; set; }
+        public DbSet<PageDefault> PageDefaults { get; set; }
 
         public DbSet<AdvertistmentPage> AdvertistmentPages { get; set; }
         public DbSet<Advertistment> Advertistments { get; set; }

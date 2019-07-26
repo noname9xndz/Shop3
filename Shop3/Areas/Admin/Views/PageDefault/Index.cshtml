@@ -1,0 +1,58 @@
+﻿
+
+@section Scripts{
+    <script src="~/app/controllers/pageDefault/index.js" asp-append-version="true"></script>
+    <script>
+        var pageDefault = new PageDefaultController();
+        pageDefault.initialize();
+    </script>
+
+}
+
+
+<div class="clearfix"></div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Contact Details</h2>
+            
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Content</th>
+
+                    </tr>
+                </thead>
+
+                <tbody id="defaultpage-table"> </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+
+        <td>{{Id}}</td>
+        <td>{{Title}}</td>
+        <td>{{{Content}}}</td>
+
+        <th scope="row">
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+            {
+                <a class="btn  btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
+            }
+           
+        </th>
+    </tr>
+</script>
+
+<div class="clearfix"></div>
+@await Html.PartialAsync("_AddEditModal.cshtml")

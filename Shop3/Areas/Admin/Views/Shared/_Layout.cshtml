@@ -156,7 +156,6 @@
 
         <!-- jQuery -->
         <script src="~/lib/jquery/dist/jquery.js"></script>
-
         <script src="~/lib/signalr/signalr.js"></script>
 
         <!-- Bootstrap -->
@@ -199,13 +198,13 @@
         <environment names="Development">
             <script src="~/app/shared/common.js" asp-append-version="true"></script>
             <script src="~/admin-side/js/custom.js" asp-append-version="true"></script>
-            @*<script src="~/app/shared/signalR/signalR.js" asp-append-version="true"></script>*@
+            <script src="~/app/shared/signalR/signalR.js" asp-append-version="true"></script>
 
         </environment>
         <environment names="Staging,Production">
             <script src="~/bundled/site-admin.min.js" asp-append-version="true"></script>
 
-            @*<script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>*@
+            <script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>
 
         </environment>
         <script src="~/app/shared/signalR/signalR.js" asp-append-version="true"></script>

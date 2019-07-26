@@ -25,11 +25,12 @@ namespace Shop3.WebTest
     public class ProductControllerTest
     {
         private readonly Mock<IProductCategoryService> _mockProductCategoryService;
-        
+        private readonly Mock<IProductService> _mockProductService;
 
         public ProductControllerTest()
         {
             _mockProductCategoryService = new Mock<IProductCategoryService>();
+            _mockProductService = new Mock<IProductService>();
 
         }
         [Fact]
@@ -42,7 +43,7 @@ namespace Shop3.WebTest
                  new ProductCategoryViewModel(){Id = 1, Name="test 1"},
                  new ProductCategoryViewModel(){Id = 2, Name="test 2"},
             });
-            var controller = new ProductController(_mockProductCategoryService.Object);
+            var controller = new ProductController(_mockProductCategoryService.Object, _mockProductService.Object);
 
             var result = controller.Get();
 
@@ -55,7 +56,7 @@ namespace Shop3.WebTest
         {
             _mockProductCategoryService.Setup(x => x.GetAll()).Throws<Exception>();
 
-            var controller = new ProductController(_mockProductCategoryService.Object);
+            var controller = new ProductController(_mockProductCategoryService.Object, _mockProductService.Object);
 
             Assert.ThrowsAny<Exception>(() => { controller.Get(); });
         }

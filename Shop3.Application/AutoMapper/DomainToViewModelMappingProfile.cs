@@ -47,6 +47,8 @@ namespace Shop3.Application.AutoMapper
             CreateMap<Feedback, FeedbackViewModel>().MaxDepth(2);
             CreateMap<Contact, ContactViewModel>().MaxDepth(2);
             CreateMap<Page, PageViewModel>().MaxDepth(2);
+            CreateMap<PageDefault, PageDefaultViewModel>();
+           // CreateMap<Error, ErrorViewModel>().MaxDepth(2);
 
         }
     }

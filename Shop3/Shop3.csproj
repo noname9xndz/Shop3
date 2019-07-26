@@ -685,6 +685,9 @@
     <None Include="wwwroot\lib\gentelella\vendors\parsleyjs\bower_components\uwidget\uwidget.less" />
     <None Include="wwwroot\lib\iCheck\icheck.js" />
     <None Include="wwwroot\lib\iCheck\icheck.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
     <None Include="wwwroot\lib\switchery\CHANGELOG.md" />
     <None Include="wwwroot\lib\switchery\dist\switchery.js" />
     <None Include="wwwroot\lib\switchery\dist\switchery.min.js" />

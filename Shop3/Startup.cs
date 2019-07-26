@@ -176,10 +176,11 @@ namespace Shop3
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
+            services.AddTransient<IPageDefaultService, PageDefaultService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
-            #endregion Add application services
+            #endregion Add application servicess
 
             services.AddMvc(options =>
             { // https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2

@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shp3.Utilities\Shop3.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>

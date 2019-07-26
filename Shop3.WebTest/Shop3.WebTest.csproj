@@ -22,12 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop3\Shop3.csproj" />
+    <Folder Include="BuildReports\Coverage\" />
+    <Folder Include="BuildReports\UnitTests\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BuildReports\Coverage\" />
-    <Folder Include="BuildReports\UnitTests\" />
+    <ProjectReference Include="..\Shop3\Shop3.csproj" />
   </ItemGroup>
 
 </Project>

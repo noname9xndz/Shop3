@@ -1,25 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Interfaces;
+using Shop3.Application.ViewModels.Products;
+using Shop3.Data.Entities;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Shop3.WebApi.Controllers
 {
-    [Authorize]
+   // [Authorize]
     //  https://localhost:44303/swagger
-    public class ProductController : ApiController
+    public class ProductController : ApiControllerBase
     {
-        IProductCategoryService _productCategoryService;
-        public ProductController(IProductCategoryService productCategoryService)
+        private  readonly IProductCategoryService _productCategoryService;
+        private readonly IProductService _productService;
+        public ProductController(IProductCategoryService productCategoryService,
+            IProductService productService)
         {
             _productCategoryService = productCategoryService;
+            _productService = productService;
         }
-        
+
+       
         [HttpGet]
         public IActionResult Get()
         {

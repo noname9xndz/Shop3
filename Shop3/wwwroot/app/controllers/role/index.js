@@ -341,7 +341,7 @@ var RoleController = function () {
     }
 
     function fillPermission(roleId) {
-        var strUrl = "/Admin/Role/ListAllFunction";
+        var strUrl = "/Role/ListAllFunction";
         return $.ajax({
             type: "POST",
             url: strUrl,

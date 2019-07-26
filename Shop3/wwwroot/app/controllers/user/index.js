@@ -38,9 +38,11 @@ var UserController = function () {
                 loadData();
             }
         });
+
         $("#btn-search").on('click', function () {
             loadData();
         });
+
         $("#ddl-show-page").on('change', function () {
             common.configs.pageSize = $(this).val();
             common.configs.pageIndex = 1;

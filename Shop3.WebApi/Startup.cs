@@ -97,14 +97,14 @@ namespace Shop3.WebApi
             });
 
             //nuget : automapper 8.0.0,AutoMapper.Extensions.Microsoft.DependencyInjection 6.0.0
-            //            Mapper.Initialize(cfg =>
-            //            {
-            //                cfg.AddProfile(new DomainToViewModelMappingProfile());
-            //                cfg.AddProfile(new ViewModelToDomainMappingProfile());
-            //            });
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+                cfg.AddProfile(new ViewModelToDomainMappingProfile());
+            });
 
-            services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+           // services.AddSingleton(Mapper.Configuration);
+           // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
@@ -119,7 +119,18 @@ namespace Shop3.WebApi
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IBillService, BillService>();
+            services.AddTransient<ICommonService, CommonService>();
+            services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
+            services.AddTransient<IPageService, PageService>();
+            services.AddTransient<IAnnouncementService, AnnouncementService>();
+
 
             services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();

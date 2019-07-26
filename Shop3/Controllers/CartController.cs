@@ -110,19 +110,19 @@ namespace Shop3.Controllers
 
                         _billService.Save();
 
-                        // sử dụng service ViewRender để tạo ra viewhtml : view to string
-                       // string viewNameSendAdmin = "Cart/_BillMail";
-                       // string subjectSendToAdmin = "New bill from Noname Shop";
-                       // var content = await _viewRenderService.RenderToStringAsync(viewNameSendAdmin, billViewModel);
-                      //  await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], subjectSendToAdmin, content);
-                       
-                        //if (model.CustomerEmail != null )
-                        //{
-                        //   // string viewNameSendToUser = "Cart/_BillMailSendToUser";
-                        //    //string subjectSendToUser = "Thank you for order at NonameShop";
-                        //    //var contentSendToUser = await _viewRenderService.RenderToStringAsync(viewNameSendToUser, billViewModel);
-                        //    //await _emailSender.SendEmailAsync(model.CustomerEmail, subjectSendToUser, content);
-                        //}
+                         //sử dụng service ViewRender để tạo ra viewhtml : view to string
+                         //string viewNameSendAdmin = "Cart/_BillMail";
+                         //string subjectSendToAdmin = "New bill from Noname Shop";
+                         //var content = await _viewRenderService.RenderToStringAsync(viewNameSendAdmin, billViewModel);
+                         // await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], subjectSendToAdmin, content);
+
+//                        if (model.CustomerEmail != null)
+//                        {
+//                            string viewNameSendToUser = "Cart/_BillMailSendToUser";
+//                            string subjectSendToUser = "Thank you for order at NonameShop";
+//                            var contentSendToUser = await _viewRenderService.RenderToStringAsync(viewNameSendToUser, billViewModel);
+//                            await _emailSender.SendEmailAsync(model.CustomerEmail, subjectSendToUser, contentSendToUser);
+//                        }
 
                         HttpContext.Session.Remove(CommonConstants.CartSession); //remove sau khi đặt hàng thành công
 
@@ -319,7 +319,7 @@ namespace Shop3.Controllers
         /// <returns></returns>
         public IActionResult UpdateCart(int productId, int quantity, int color, int size)
         {
-            // todo error null color or size 
+           
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
             if (session != null)
             {

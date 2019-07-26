@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Shop3.Data.Enums;
 
 namespace Shop3.Application.Implementation
 {
@@ -18,16 +19,19 @@ namespace Shop3.Application.Implementation
         IRepository<SystemConfig, string> _systemConfigRepository;
         IUnitOfWork _unitOfWork;
         IRepository<Slide, int> _slideRepository;
+        private IRepository<PageDefault, string> _pageDefaultRepository;
         private readonly IMapper _mapper;
         public CommonService(IRepository<Footer, string> footerRepository,
             IRepository<SystemConfig, string> systemConfigRepository,
             IUnitOfWork unitOfWork,
-            IRepository<Slide, int> slideRepository, IMapper mapper)
+            IRepository<Slide, int> slideRepository, IMapper mapper,
+            IRepository<PageDefault, string> pageDefaultRepository)
         {
             _footerRepository = footerRepository;
             _unitOfWork = unitOfWork;
             _systemConfigRepository = systemConfigRepository;
             _slideRepository = slideRepository;
+            _pageDefaultRepository = pageDefaultRepository;
             _mapper = mapper;
         }
 
@@ -46,6 +50,12 @@ namespace Shop3.Application.Implementation
         public SystemConfigViewModel GetSystemConfig(string code)
         {
             return _mapper.Map<SystemConfig, SystemConfigViewModel>(_systemConfigRepository.FindSingle(x => x.Id == code));
+        }
+
+        public PageDefaultViewModel GetPageDefault(string pageDefaultId)
+        {
+            var model = _pageDefaultRepository.FindSingle(x=>x.Id == pageDefaultId && x.Status == Status.Active);
+            return _mapper.Map<PageDefault, PageDefaultViewModel>(model);
         }
     }
 }

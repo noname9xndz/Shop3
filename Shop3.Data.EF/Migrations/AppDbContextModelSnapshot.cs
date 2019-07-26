@@ -625,6 +625,25 @@ namespace Shop3.Data.EF.Migrations
                     b.ToTable("Pages");
                 });
 
+            modelBuilder.Entity("Shop3.Data.Entities.PageDefault", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PageDefaults");
+                });
+
             modelBuilder.Entity("Shop3.Data.Entities.Permission", b =>
                 {
                     b.Property<int>("Id")

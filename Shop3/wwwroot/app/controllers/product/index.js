@@ -33,7 +33,7 @@ var productController = function () {
         });
 
         $("#btnCreate").on('click', function () {
-            resetFormMaintainance();
+                resetFormMaintainance();
             initTreeDropDownCategory();
             $('#modal-add-edit').modal('show');
 

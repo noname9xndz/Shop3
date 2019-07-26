@@ -101,6 +101,7 @@ namespace Shop3.Data.EF
                     new Function() {Id = "CONTENT",Name = "Content",ParentId = null,SortOrder = 3,Status = Status.Active,URL = "/",IconCss = "fa-table"  },
                     new Function() {Id = "BLOG",Name = "Blog",ParentId = "CONTENT",SortOrder = 1,Status = Status.Active,URL = "/admin/blog/index",IconCss = "fa-table"  },
                     new Function() {Id = "PAGE",Name = "Page",ParentId = "CONTENT",SortOrder = 2,Status = Status.Active,URL = "/admin/page/index",IconCss = "fa-table"  },
+                    new Function() {Id = "PAGEDEFAULT",Name = "Page Default",ParentId = "CONTENT",SortOrder =3,Status = Status.Active,URL = "/admin/pagedefault/index",IconCss = "fa-table"  },
 
                     new Function() {Id = "UTILITY",Name = "Utilities",ParentId = null,SortOrder = 4,Status = Status.Active,URL = "/",IconCss = "fa-clone"  },
                     new Function() {Id = "FOOTER",Name = "Footer",ParentId = "UTILITY",SortOrder = 1,Status = Status.Active,URL = "/admin/footer/index",IconCss = "fa-clone"  },
@@ -266,9 +267,65 @@ namespace Shop3.Data.EF
                 });
             }
 
+            if (!_context.PageDefaults.Any())
+            {
+                List<PageDefault> pageDefaultList = new List<PageDefault>()
+                {
+                    new PageDefault()
+                    {
+                        Id = "DeliveryInformation",
+                        Title = "Delivery Information",
+                        Content = "Delivery Information test",
+                        Status = Status.Active
+
+                    },
+                    new PageDefault()
+                    {
+                        Id = "PrivacyPolicy",
+                        Title = "Privacy Policy",
+                        Content = "Privacy Policy test",
+                        Status = Status.Active
+
+                    },
+                    new PageDefault()
+                    {
+                        Id = "FAQ",
+                        Title = "FAQs",
+                        Content = "FAQs test",
+                        Status = Status.Active
+
+                    },
+                    new PageDefault()
+                    {
+                        Id = "TermsCondition",
+                        Title = "Terms & Condition",
+                        Content = "Terms & Condition test",
+                        Status = Status.Active
+
+                    },
+                    new PageDefault()
+                    {
+                        Id = "ReturnPolicy",
+                        Title = "Return Policy",
+                        Content = "Return Policy test",
+                        Status = Status.Active
+
+                    },
+                    new PageDefault()
+                    {
+                        Id = "About",
+                        Title = "About",
+                        Content = "About",
+                        Status = Status.Active
+                    }
+                };
+                _context.PageDefaults.AddRange(pageDefaultList);
+            }
+
             if (!_context.SystemConfigs.Any(x => x.Id == "HomeTitle"))
             {
-                _context.SystemConfigs.Add(new SystemConfig()
+                _context.SystemConfigs.Add(
+                    new SystemConfig()
                 {
                     Id = "HomeTitle",
                     Name = "Home's title",

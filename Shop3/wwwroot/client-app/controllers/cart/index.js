@@ -95,7 +95,7 @@ var CartController = function () {
             e.preventDefault();
             var id = parseInt($(this).closest('tr').data('id'));
             var sizeId = $(this).val();
-            var q = parseInt($(this).closest('tr').find('.txtQuantity').first().val());
+            var q = parseInt($(this).closest('tr').find('#txtQuantity').first().val());
             var colorId = parseInt($(this).closest('tr').find('.ddlColorId').first().val());
             if (q > 0) {
                 $.ajax({
