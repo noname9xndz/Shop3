@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Models.ProductViewModels
 {
@@ -35,5 +36,7 @@ namespace Shop3.Models.ProductViewModels
         public List<SelectListItem> Sizes { set; get; }
 
         public bool Available { set; get; } // còn hàng hoặc hết hàng
+
+        public  List<CustomProductTagViewModel> ListCustomProductTag {set; get; }
     }
 }

@@ -28,8 +28,7 @@ namespace Shop3.Application.AutoMapper
 
             CreateMap<AppUserViewModel, AppUser>() // c.Id.GetValueOrDefault(Guid.Empty) cho phép id null
              .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty), c.FullName, c.UserName,
-               c.Email, c.PhoneNumber, c.Avatar, c.Status));  //public string Adress { get; set; } todo
-
+               c.Email, c.PhoneNumber, c.Avatar, c.Status,c.Address,c.Gender));
 
             CreateMap<PermissionViewModel, Permission>()
              .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));

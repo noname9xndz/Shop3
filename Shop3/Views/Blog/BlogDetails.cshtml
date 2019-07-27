@@ -133,17 +133,13 @@
                     </div>
                     <div class="tag">
                         <ul>
-                            <li><a href="#">Boys</a></li>
-                            <li><a href="#">Camera</a></li>
-                            <li><a href="#">good</a></li>
-                            <li><a href="#">Computers</a></li>
-                            <li><a href="#">Phone</a></li>
-                            <li><a href="#">clothes</a></li>
-                            <li><a href="#">girl</a></li>
-                            <li><a href="#">shoes</a></li>
-                            <li><a href="#">women</a></li>
-                            <li><a href="#">accessoties</a></li>
-                            <li><a href="#">View All Tags</a></li>
+                            @foreach (var item in Model.BlogTag)
+                            {
+                                var url =  "/" + item.SeoAlias + "-b." + item.BlogId + ".html";
+                                <li><a href="@url">@item.TagName</a></li>
+                            }
+
+
                         </ul>
                     </div>
                 </div>

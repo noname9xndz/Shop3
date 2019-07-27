@@ -36,7 +36,7 @@
 <div class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
-            <div class="col-main col-sm-9 col-xs-12 col-sm-push-3">
+            <div class="col-main col-sm-12 col-xs-12">
                 <div class="category-description std">
                     <div class="slider-items-products">
                         <div id="category-desc-slider" class="product-flexslider hidden-buttons">
@@ -102,7 +102,7 @@
                         </form>
                     </div>
                     <div class="product-grid-area">
-                        <ul class="products-grid" hidden>
+                        <ul class="products-grid" >
 
                             @foreach (var item in Model.Data.Results)
                             {
@@ -157,7 +157,7 @@
                         </ul>
 
 
-                        <ul class="products-list" id="products-list">
+                        <ul class="products-list" id="products-list" hidden>
                             @foreach (var item in Model.Data.Results)
                             {
                                 var url = "/" + item.SeoAlias + "-p." + item.Id + ".html";

@@ -4,6 +4,7 @@ using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Interfaces
 {
@@ -64,6 +65,8 @@ namespace Shop3.Application.Interfaces
         bool CheckWishProduct(int productId,Guid Id);
 
         List<ProductViewModel> GetAllWishProduct(Guid Id);
+
+        List<CustomProductTagViewModel> GetProductWithTagRanDom(int top);
 
 
     }

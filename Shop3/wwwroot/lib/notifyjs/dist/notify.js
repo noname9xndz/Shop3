@@ -184,7 +184,7 @@
 		arrowShow: true,
 		arrowSize: 5,
 		breakNewLines: true,
-		elementPosition: "bottom",
+        elementPosition: "top right",//
 		globalPosition: "top right",
 		style: "bootstrap",
 		className: "error",

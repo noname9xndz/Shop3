@@ -16,7 +16,8 @@ namespace Shop3.Data.Entities
         {
 
         }
-        public AppUser(Guid id, string fullName, string userName,string email, string phoneNumber, string avatar, Status status)
+        public AppUser(Guid id, string fullName, string userName,string email, string phoneNumber, string avatar, Status status,
+            string address, Gender gender)
         {
             Id = id;
             FullName = fullName;
@@ -25,7 +26,8 @@ namespace Shop3.Data.Entities
             PhoneNumber = phoneNumber;
             Avatar = avatar;
             Status = status;
-            //public string Adress { get; set; } todo
+            Address = address;
+            Gender = gender;
         }
         public string FullName { get; set; }
 
@@ -35,7 +37,9 @@ namespace Shop3.Data.Entities
 
         public string Avatar { get; set; }
 
-        //public string Adress { get; set; } todo
+        public Gender Gender { get; set; }
+
+        public string Address { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

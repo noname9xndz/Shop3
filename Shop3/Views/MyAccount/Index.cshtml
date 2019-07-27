@@ -1,0 +1,122 @@
+﻿
+@section Scripts{
+<environment names="Development">
+    <script src="~/client-app/controllers/myaccount/index.js" asp-append-version="true"></script>
+</environment>
+    <script>
+        var MyAccount = new MyAccountController();
+        MyAccount.initialize();
+    </script>
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>My Account</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-content">
+            <div class="account-login">
+                <div class="col-md-3 col-sm-2"></div>
+                <div class="col-md-6 col-sm-8">
+                    <div class="single-input p-bottom50 clearfix">
+
+                        <form  method="post" id="frmMaintainance">
+                            <div class="row">
+                                
+                                <div class="col-sm-6">
+                                    <label>Full Name:</label>
+                                    <div class="input-text">
+                                        <input  type="hidden" />
+                                        <input type="hidden" id="hidId" value="0" />
+                                        <input type="text"  name="txtFullName" id="txtFullName" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Email:</label>
+                                    <div class="input-text">
+                                        <input type="text" name="txtEmail"  id="txtEmail" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <label>Password:</label>
+                                    <div class="input-text">
+                                        <input type="password"  name="txtPassword" id="txtPassword" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <label>Address:</label>
+                                    <div class="input-text">
+                                        <input type="text"  name="txtAddress" id="txtAddress" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Phone Number:</label>
+                                    <div class="input-text">
+                                        <input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>BirthDay:</label>
+                                    <div class="input-text">
+                                        <input type="date" name="txtBirthDay" id="txtBirthDay" class="form-control ">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <label>Gender : </label>
+                                   
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gender" id="gender" value="0">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gender" id="gender" value="1">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                        </div>
+                                   
+
+                                </div>
+
+
+                                 <div class="col-xs-12"> 
+                                     <label>  </label> 
+                                     <recaptcha /> 
+                                     <span class="text-danger" id="recaptchaErrorMessage"></span> 
+                                 </div> 
+
+                                <div class="col-xs-12">
+                                    <label>  </label>
+                                    <div class="submit-text">
+                                        <button type="submit" class="button" id="changeUser"><i class="fa fa-user"></i>&nbsp; <span>Save</span></button>
+                                        <button class="button" id="changePass"><i class="fa fa-key"></i>&nbsp; <span>Change PassWord</span></button>
+                                        <button class="button" id="returnhome"><i class="fa fa-home"></i>&nbsp; <span>Home</span></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->
+@await Html.PartialAsync("_AddEditModal.cshtml")
+

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Interfaces
 {
@@ -20,9 +21,17 @@ namespace Shop3.Application.Interfaces
 
         Task<AppUserViewModel> GetById(string id);
 
+        Task<bool> ChangePassByUserAsync(AppUserViewModel userVm, string password);
+
+        Task<bool> UpdateByUserAsync(AppUserViewModel userVm, string password);
+
 
         Task UpdateAsync(AppUserViewModel userVm);
 
         Task RemoveRolesFromUser(string userId, string[] roles);
+
+        Task<bool> CheckPasswordUser(Guid? id);
+
+        Task<AppUserViewModel> ChangePassByUserWithPasswordHashIsNull(AppUserViewModel userVm);
     }
 }

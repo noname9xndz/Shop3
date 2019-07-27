@@ -63,6 +63,7 @@ namespace Shop3.Controllers
             model.ProductImages = _productService.GetImages(id);
             model.Tags = _productService.GetProductTags(id);
             model.HotProducts = _productService.GetHotProduct(4);
+            model.ListCustomProductTag = _productService.GetProductWithTagRanDom(7);
 
             // get data đổ vào combox
             model.Colors = _billService.GetColors().Select(x => new SelectListItem()

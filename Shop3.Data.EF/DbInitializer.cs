@@ -59,7 +59,9 @@ namespace Shop3.Data.EF
                     Balance = 0,
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now,
-                    Status = Status.Active
+                    Status = Status.Active,
+                    Gender = Gender.Male,
+                    Address = "43 nguyễn chí thanh hà nội"
                 }, "123654$");
                 var user = await _userManager.FindByNameAsync("admin");
                 await _userManager.AddToRoleAsync(user, "Admin");

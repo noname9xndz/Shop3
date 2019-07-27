@@ -1,6 +1,5 @@
 ﻿
-@using Shop3.Application.ViewModels.Products; @* nếu đã using trong viewimport thì ở đây không cần using nữa*@
-@model List<ProductCategoryViewModel>
+@model CustomMainMenuViewModel
 
 <div class="mtmegamenu">
     <ul class="hidden-xs">
@@ -23,12 +22,12 @@
 
             <ul class="menu-items col-xs-12">
 
-                @foreach (var item in Model.Where(c => c.ParentId == null))
+                @foreach (var item in Model.CategoryViewModels.Where(c => c.ParentId == null))
                 {
                     <li class="menu-item depth-1 menucol-1-3 ">
                         <div class="title title_font"> <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></div>
                         <ul class="submenu">
-                            @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                            @foreach (var subItem in Model.CategoryViewModels.Where(x => x.ParentId == item.Id))
                             {
                                 <li class="menu-item">
                                     <div class="title"> <a href="/@subItem.SeoAlias-c.@(subItem.Id).html">@subItem.Name</a></div>
@@ -53,14 +52,6 @@
 
         <li class="mt-root">
             <div class="mt-root-item">
-                <a href="/page/about.html">
-                    <div class="title title_font"><span class="title-text">About</span></div>
-                </a>
-            </div>
-        </li>
-
-        <li class="mt-root">
-            <div class="mt-root-item">
                 <a href="/contact.html">
                     <div class="title title_font"><span class="title-text">Contact</span></div>
                 </a>
@@ -77,30 +68,22 @@
             <ul class="menu-items col-xs-12">
 
                 <li class="menu-item depth-1 menucol-1-3 ">
-                    <div class="title title_font"> <a href="javascript:void(0);">333</a></div>
-                    <ul class="submenu">
+                    
 
-                        <li class="menu-item">
-                            <div class="title"> <a href="javascript:void(0);">2222222</a></div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="title"> <a href="javascript:void(0);">2222222</a></div>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="menu-item depth-1 menucol-1-3 ">
-                    <div class="title title_font"> <a href="javascript:void(0);">333</a></div>
                     <ul class="submenu">
-                        <li class="menu-item">
-                            <div class="title"> <a href="javascript:void(0);">2222222</a></div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="title"> <a href="javascript:void(0);">2222222</a></div>
-                        </li>
+                        @foreach (var item in Model.PageViewModels)
+                        {
+                            var url = "/page/" + item.Alias + ".html";
+                            <li class="menu-item">
+                                <div class="title"> <a href="@url">@item.Name</a></div>
+                            </li>
+                        }
                         
                     </ul>
                 </li>
+                
+
+                
                
 
             </ul>

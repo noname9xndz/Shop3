@@ -7,6 +7,7 @@ using Shop3.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.AutoMapper
 {
@@ -48,6 +49,8 @@ namespace Shop3.Application.AutoMapper
             CreateMap<Contact, ContactViewModel>().MaxDepth(2);
             CreateMap<Page, PageViewModel>().MaxDepth(2);
             CreateMap<PageDefault, PageDefaultViewModel>();
+            CreateMap<CustomProductTagViewModel, CustomProductTagViewModel>();
+            CreateMap<CustomBlogTagViewModel, CustomBlogTagViewModel>();
            // CreateMap<Error, ErrorViewModel>().MaxDepth(2);
 
         }

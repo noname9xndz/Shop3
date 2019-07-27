@@ -1,9 +1,7 @@
 ﻿using Shop3.Application.ViewModels.Blogs;
 using Shop3.Application.ViewModels.Common;
-using System;
+using Shop3.Application.ViewModels.Custom;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop3.Models.BlogViewModels
 {
@@ -13,5 +11,7 @@ namespace Shop3.Models.BlogViewModels
         public List<BlogViewModel> GetReatedBlogs { get; set; }
         public List<BlogViewModel> HotBlogs { set; get; }
         public List<SlideViewModel> Slides { get; set; }
+
+        public List<CustomBlogTagViewModel> BlogTag{set;get; }
     }
 }

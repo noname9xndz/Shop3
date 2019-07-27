@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using Microsoft.AspNetCore.Identity;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Implementation
 {
@@ -454,6 +455,22 @@ namespace Shop3.Application.Implementation
 
             return _mapper.ProjectTo<ProductViewModel>(data).ToList();
 
+        }
+
+        public List<CustomProductTagViewModel> GetProductWithTagRanDom(int top)
+        {
+            var data = (from t in _tagRepository.FindAll()
+                join pt in _productTagRepository.FindAll() on t.Id equals pt.TagId
+                join p in _productRepository.FindAll() on pt.ProductId equals p.Id 
+                orderby Guid.NewGuid()
+                select new CustomProductTagViewModel()
+                {
+                    ProductId = p.Id,
+                    SeoAlias = p.SeoAlias,
+                    TagName = t.Name
+                }).Take(top);
+            
+            return _mapper.ProjectTo<CustomProductTagViewModel>(data).ToList();
         }
     }
 }

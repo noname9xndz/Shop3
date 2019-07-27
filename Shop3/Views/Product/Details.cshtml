@@ -139,7 +139,6 @@
                             <ul>
                                 <li><a href="javascript:void(0);" id="add_to_wishlist" data-id="@Model.Product.Id"><i class="fa fa-heart-o"></i><span>Add to Wishlist</span></a></li>
                                 <li><a href="#"><i class="fa fa-link"></i><span>Add to Compare</span></a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i><span>Email to a Friend</span></a></li>
                             </ul>
                         </div>
                         @if (Model.Tags.Count > 0)
@@ -148,7 +147,7 @@
                                 <div class="pro-tags-title">Tags:</div>
                                 @foreach (var tag in Model.Tags)
                                 {
-                                    <a href="/tag.@(tag.Id).html">@tag.Name</a>
+                                    <a href="javascript:void(0)">@tag.Name</a>
                                 }
                             </div>
 
@@ -348,47 +347,7 @@
             </div>
 
             <aside class="right sidebar col-sm-3 col-xs-12">
-                <div class="block shop-by-side">
-                    <div class="sidebar-bar-title">
-                        <h3>Shop By</h3>
-                    </div>
-                    <div class="block-content">
-                        <div class="layered-Category">
-                            <div class="layered-content">
-                                <ul class="check-box-list">
-                                    <li>
-                                        <input type="checkbox" id="jtv1" name="jtvc">
-                                        <label for="jtv1"> <span class="button"></span> Camera & Photo<span class="count">(12)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="jtv2" name="jtvc">
-                                        <label for="jtv2"> <span class="button"></span> Computers<span class="count">(18)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="jtv3" name="jtvc">
-                                        <label for="jtv3"> <span class="button"></span> Apple Store<span class="count">(15)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="jtv4" name="jtvc">
-                                        <label for="jtv4"> <span class="button"></span> Car Electronic<span class="count">(03)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="jtv5" name="jtvc">
-                                        <label for="jtv5"> <span class="button"></span> Accessories<span class="count">(04)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="jtv7" name="jtvc">
-                                        <label for="jtv7"> <span class="button"></span> Game & Video<span class="count">(07)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="jtv8" name="jtvc">
-                                        <label for="jtv8"> <span class="button"></span> Best selling<span class="count">(05)</span> </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="block special-product">
                     <div class="sidebar-bar-title">
                         <h3>Hot Products</h3>
@@ -445,21 +404,17 @@
                 </div>
                 <div class="block popular-tags-area ">
                     <div class="sidebar-bar-title">
-                        <h3>Popular Tags</h3>
+                        <h3>Tags</h3>
                     </div>
                     <div class="tag">
                         <ul>
-                            <li><a href="#">Boys</a></li>
-                            <li><a href="#">Camera</a></li>
-                            <li><a href="#">good</a></li>
-                            <li><a href="#">Computers</a></li>
-                            <li><a href="#">Phone</a></li>
-                            <li><a href="#">clothes</a></li>
-                            <li><a href="#">girl</a></li>
-                            <li><a href="#">shoes</a></li>
-                            <li><a href="#">women</a></li>
-                            <li><a href="#">accessoties</a></li>
-                            <li><a href="#">View All Tags</a></li>
+
+                            @foreach (var item in Model.ListCustomProductTag)
+                            {
+                                var url = "/" + item.SeoAlias + "-p." + item.ProductId + ".html";
+                                <li><a href="@url">@item.TagName</a></li>
+                            }
+
                         </ul>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Interfaces
 {
@@ -46,5 +47,7 @@ namespace Shop3.Application.Interfaces
         List<BlogViewModel> GetListByTag(string tagId, int page, int pagesize, out int totalRow);
 
         List<TagViewModel> GetListTag(string searchText);
+
+        List<CustomBlogTagViewModel> GetBlogWithTagRanDom(int top);
     }
 }

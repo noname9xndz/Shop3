@@ -187,7 +187,7 @@ namespace Shop3.Areas.Admin.Controllers
             //}
             _excelService.WriteExcel(file, products);
 
-            // c2 : vẽ trực tiếp trên các cell
+            // c2 : vẽ trực tiếp trên các cell m m
             //using (ExcelPackage pck = new ExcelPackage(new FileInfo(filePath), new FileInfo("đường dẫn file template")))
             //{
             //    //Create the worksheet

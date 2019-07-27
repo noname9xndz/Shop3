@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Shop3.Application.ViewModels.Custom;
 using Shop3.Data.EF;
 
 namespace Shop3.Application.Implementation
@@ -107,7 +108,8 @@ namespace Shop3.Application.Implementation
             {
                 UserName = x.UserName,
                 Avatar = x.Avatar,
-                BirthDay = x.BirthDay.ToString(),
+                //BirthDay = x.BirthDay.ToString(),
+                BirthDay = x.BirthDay,
                 Email = x.Email,
                 FullName = x.FullName,
                 Id = x.Id,
@@ -135,6 +137,56 @@ namespace Shop3.Application.Implementation
             userVm.Roles = roles.ToList();
             return userVm;
         }
+
+        public async Task<bool> ChangePassByUserAsync(AppUserViewModel userVm, string password)
+        {
+            bool flag = false;
+            var user = await _userManager.FindByIdAsync(userVm.Id.ToString());
+            if (userVm.Password != null && password != null)
+            {
+                var changePasswordResult = await _userManager.ChangePasswordAsync(user, password, userVm.Password);
+                if (changePasswordResult.Succeeded)
+                {
+                    await _userManager.UpdateAsync(user);
+                    flag = true;
+                }
+            }
+
+            return flag;
+
+        }
+
+        public async Task<bool> UpdateByUserAsync(AppUserViewModel userVm, string password)
+        {
+            bool flag = false;
+            var passwordValidator = new PasswordValidator<AppUser>();
+            var model = _mapper.Map<AppUserViewModel, AppUser>(userVm);
+
+            var result = await passwordValidator.ValidateAsync(_userManager, model, password);
+
+            if (result.Succeeded)
+            {
+                var user = await _userManager.FindByIdAsync(userVm.Id.ToString());
+                user.FullName = userVm.FullName;
+                user.Email = userVm.Email;
+                user.Address = userVm.Address;
+                user.BirthDay = userVm.BirthDay;
+                user.Gender = userVm.Gender;
+                user.PhoneNumber = userVm.PhoneNumber;
+                if (userVm.Avatar != null)
+                {
+                    user.Avatar = userVm.Avatar;
+                }
+                await _userManager.UpdateAsync(user);
+                flag = true;
+            }
+
+            return flag;
+            
+        }
+
+        
+        
 
         public async Task UpdateAsync(AppUserViewModel userVm)
         {
@@ -172,6 +224,27 @@ namespace Shop3.Application.Implementation
             _context.UserRoles.RemoveRange(userRoles);
             await _context.SaveChangesAsync();
 
+        }
+
+        public async Task<bool> CheckPasswordUser(Guid? id)
+        {
+            bool flag = false;
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user.PasswordHash != null)
+            {
+                flag = true;
+            }
+            return flag;
+
+        }
+
+        public async Task<AppUserViewModel> ChangePassByUserWithPasswordHashIsNull(AppUserViewModel userVm)
+        {
+            
+           // var model = _mapper.Map<AppUserViewModel, AppUser>(userVm);
+            var model = await _userManager.FindByIdAsync(userVm.Id.ToString());
+            var user = await _userManager.AddPasswordAsync(model, userVm.Password);
+            return userVm;
         }
     }
 }

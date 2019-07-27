@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Implementation
 {
@@ -285,6 +286,22 @@ namespace Shop3.Application.Implementation
             var data = _tagRepository.FindAll(x => x.Type == CommonConstants.BlogTag && searchText.Contains(x.Name));
 
             return _mapper.ProjectTo<TagViewModel>(data).ToList();
+        }
+
+        public List<CustomBlogTagViewModel> GetBlogWithTagRanDom(int top)
+        {
+            var data = (from t in _tagRepository.FindAll()
+                join bt in _blogTagRepository.FindAll() on t.Id equals bt.TagId
+                join b in _blogRepository.FindAll() on bt.BlogId equals b.Id
+                orderby Guid.NewGuid()
+                select new CustomBlogTagViewModel()
+                {
+                    BlogId= b.Id,
+                    SeoAlias = b.SeoAlias,
+                    TagName = t.Name
+                }).Take(top);
+
+            return _mapper.ProjectTo<CustomBlogTagViewModel>(data).ToList();
         }
     }
 }

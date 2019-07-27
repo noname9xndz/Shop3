@@ -34,11 +34,12 @@ namespace Shop3.Controllers
         [Route("{alias}-b.{id}.html", Name = "BlogDetail")]
         public IActionResult BlogDetails(int id)
         {
-            var model = new Models.BlogViewModels.BlogDetailViewModel();
+            var model = new BlogDetailViewModel();
             model.Blog = _blogService.GetById(id);
             model.GetReatedBlogs = _blogService.GetReatedBlogs(id, 8);
             model.HotBlogs = _blogService.GetHotBlog(3);
             model.Slides = _commonService.GetSlides("top");
+            model.BlogTag = _blogService.GetBlogWithTagRanDom(7);
 
             return View(model);
         }
