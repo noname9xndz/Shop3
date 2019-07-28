@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Shop3.Application.Implementation
 {
@@ -48,12 +49,17 @@ namespace Shop3.Application.Implementation
         private IRepository<Function, string> _functionRepository;
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private IRepository<Permission, int> _permissionRepository;
+        private RoleManager<AppRole> _roleManager;
 
         public FunctionService(IMapper mapper,IRepository<Function, string> functionRepository,
-                        IUnitOfWork unitOfWork)
+                        IUnitOfWork unitOfWork, IRepository<Permission, int> permissionRepository,
+                        RoleManager<AppRole> roleManager)
         {
             _functionRepository = functionRepository;
             _unitOfWork = unitOfWork;
+            _permissionRepository = permissionRepository;
+            _roleManager = roleManager;
             _mapper = mapper;
         }
 
@@ -144,6 +150,34 @@ namespace Shop3.Application.Implementation
 
             _functionRepository.Update(source.Id,source);
             _functionRepository.Update(target.Id,target);
+        }
+
+        public Task<List<FunctionViewModel>> GetAllFuncByRoles(string funcFilter, string[] roles)
+        {
+            var functions = _functionRepository.FindAll();
+            if (!string.IsNullOrEmpty(funcFilter))
+                functions = functions.Where(x => x.Id.Contains(funcFilter));
+
+
+            var permissions = _permissionRepository.FindAll();
+
+            var query = from f in functions
+                join p in permissions on f.Id equals p.FunctionId
+                join r in _roleManager.Roles on p.RoleId equals r.Id
+                where roles.Contains(r.Name)
+                      && ((p.CanCreate)
+                          || (p.CanUpdate)
+                          || (p.CanDelete)
+                          || (p.CanRead))
+                select f;
+
+            var rs = from f in functions
+                from q in query
+                where f.Id == q.Id || q.ParentId == f.Id
+                select f;
+            rs = rs.Distinct();
+
+            return rs.OrderBy(x => x.ParentId).ProjectTo<FunctionViewModel>().ToListAsync();
         }
 
         public void UpdateParentId(string sourceId, string targetId, Dictionary<string, int> items)

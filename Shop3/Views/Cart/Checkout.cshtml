@@ -4,7 +4,6 @@
 }
 @section Scripts {
     <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
-    @await Html.PartialAsync("_ValidationScriptsPartial")
 }
 
 <!-- Breadcrumbs -->
@@ -56,34 +55,43 @@
                     {
 
                         <form action="/checkout.html" method="post">
+                           
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <br/>
+
                             @Html.AntiForgeryToken()
-                            <h4 class="checkout-sep">1. Checkout Method</h4>
-                            <div class="box-border">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h5>Checkout as a Guest or Register</h5>
-                                        <p>Register with us for future convenience:</p>
-                                        <br>
-                                        <h4>Register and save time!</h4>
-                                        <p>Register with us for future convenience:</p>
-                                        <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
-                                        <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
-                                        <button class="button" onclick="window.location.href='/register.html'"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h5>Login</h5>
-                                        <p>Already registered? Please log in below:</p>
-                                        <button class="button" onclick="window.location.href='/login.html'"><i class="icon-login"></i>&nbsp; <span>Login</span></button>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <h4 class="checkout-sep">Checkout Method</h4>
+                                <div class="box-border">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Checkout as a Guest or Register</h5>
+                                            <p>Register with us for future convenience:</p>
+                                            <br>
+                                            <h4>Register and save time!</h4>
+                                            <p>Register with us for future convenience:</p>
+                                            <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
+                                            <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
+                                            <button class="button" onclick="window.location.href = '/register.html'"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Login</h5>
+                                            <p>Already registered? Please log in below:</p>
+                                            <button class="button" onclick="window.location.href = '/login.html'"><i class="icon-login"></i>&nbsp; <span>Login</span></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h4 class="checkout-sep">2. Shipping Information</h4>
+                            }
+
+                            <h4 class="checkout-sep">1. Shipping Information</h4>
                             <div class="box-border">
                                 <ul>
                                     <li class="row">
                                         <div class="col-sm-6">
                                             <label class="required">Full name</label>
                                             <input class="input form-control" type="text" asp-for="CustomerName">
+                                            @* <span asp-validation-for="CustomerName" class="text-danger"></span> *@
                                         </div>
                                         <!--/ [col] -->
                                         <div class="col-sm-6">
@@ -105,7 +113,7 @@
                                     <li class="row">
                                         <div class="col-sm-12">
                                             <label class="required">Message</label>
-                                            <input class="input form-control" type="text" asp-for="CustomerMessage">
+                                            <input class="input form-control" type="text" asp-for="CustomerMessage" value="Purchase">
                                         </div>
                                         <!--/ [col] -->
                                     </li>
@@ -120,7 +128,7 @@
 
                                 </ul>
                             </div>
-                            <h4 class="checkout-sep">3. Payment Information</h4>
+                            <h4 class="checkout-sep">2. Payment Information</h4>
                             <div class="box-border">
                                 <ul>
                                     @for (int i = 0; i < Model.PaymentMethods.Count; i++)
@@ -130,52 +138,55 @@
                                                 <input type="radio" name="paymentMethod" asp-for="PaymentMethod" value="@Model.PaymentMethods[i].Value">
                                                 @Model.PaymentMethods[i].Name
                                             </label>
+
                                         </li>
                                     }
+                                    
                                 </ul>
-                               
+
+
                             </div>
-                            <h4 class="checkout-sep last">4. Order Review</h4>
+                            <h4 class="checkout-sep last">3. Order Review</h4>
                             <div class="box-border">
                                 <div class="table-responsive">
                                     <table class="table table-bordered cart_summary">
                                         <thead>
-                                            <tr>
-                                                <th class="cart_product">Product</th>
-                                                <th>Description</th>
-                                                <th>Unit price</th>
-                                                <th>Qty</th>
-                                                <th>Total</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="cart_product">Product</th>
+                                            <th>Description</th>
+                                            <th>Unit price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var item in Model.Carts)
-                                            {
-                                                <tr>
-                                                    <td class="cart_product"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><img src="@item.Product.Image" alt="@item.Product.Name"></a></td>
-                                                    <td class="cart_description">
-                                                        <p class="product-name"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html">@item.Product.Name </a></p>
-                                                        <small><a href="# ">Color : @item.Color.Name</a></small><br>
-                                                        <small><a href="#">Size : @item.Size.Name</a></small>
-                                                    </td>
-                                                    <td class="price"><span>@item.Price.ToString("N0") </span></td>
-                                                    <td class="qty">@item.Quantity</td>
-                                                    <td class="price"><span>@((item.Price * item.Quantity).ToString("N0")) </span></td>
-                                                </tr>
+                                        @foreach (var item in Model.Carts)
+                                        {
+                                            <tr>
+                                                <td class="cart_product"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><img src="@item.Product.Image" alt="@item.Product.Name"></a></td>
+                                                <td class="cart_description">
+                                                    <p class="product-name"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html">@item.Product.Name </a></p>
+                                                    <small><a href="# ">Color : @item.Color.Name</a></small><br>
+                                                    <small><a href="#">Size : @item.Size.Name</a></small>
+                                                </td>
+                                                <td class="price"><span>@item.Price.ToString("N0") </span></td>
+                                                <td class="qty">@item.Quantity</td>
+                                                <td class="price"><span>@((item.Price * item.Quantity).ToString("N0")) </span></td>
+                                            </tr>
 
-                                            }
+                                        }
 
                                         </tbody>
                                         <tfoot>
-                                            <tr>
-                                                <td colspan="3"><strong>Total</strong></td>
-                                                <td colspan="2"><strong>@Model.Carts.Sum(x => x.Quantity * x.Price).ToString("N0") </strong></td>
-                                            </tr>
+                                        <tr>
+                                            <td colspan="3"><strong>Total</strong></td>
+                                            <td colspan="2"><strong>@Model.Carts.Sum(x => x.Quantity * x.Price).ToString("N0") </strong></td>
+                                        </tr>
                                         </tfoot>
                                     </table>
                                 </div>
-                                <recaptcha /><span class="text-danger" id="recaptchaErrorMessage"></span>
-                                <button type="button" class="button" onclick="window.location.href='/cart.html'"><span>Back to cart</span></button>
+                                <recaptcha/><span class="text-danger" id="recaptchaErrorMessage"></span>
+                                <button type="button" class="button" onclick="window.location.href = '/cart.html'"><span>Back to cart</span></button>
                                 <button class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
                                 <button type="submit" class="button pull-right"><span>Place Order</span></button>
                             </div>

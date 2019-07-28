@@ -130,7 +130,7 @@
                                                 <div class="info-inner">
                                                     <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
                                                     <div class="item-content">
-                                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                                         <div class="item-price">
                                                             @if (item.Price <= 0)
                                                             {
@@ -170,10 +170,10 @@
                                     </div>
                                     <div class="product-shop">
                                         <h2 class="product-name"><a href="@url" title="@item.Name">@item.Name</a></h2>
-                                        @*<div class="ratings">
-                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                                <p class="rating-links"> <a href="#/">4 Review(s)</a> <span class="separator">|</span> <a href="#review-form">Add Your Review</a> </p>
-                                            </div>*@
+                                        <div class="ratings">
+                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                                @*<p class="rating-links"> <a href="#/">4 Review(s)</a> <span class="separator">|</span> <a href="#review-form">Add Your Review</a> </p>*@
+                                            </div>
                                         <div class="price-box">
 
 
@@ -204,13 +204,13 @@
                                                 <p>
                                                     @if (item.Description.Length > 40)
                                                     {
-                                                        @item.Description.Substring(0,40)
+                                                        @item.Description.Substring(0,40)<p>...</p>
 
                                                     }
                                                     else
                                                     {
                                                         @item.Description
-                                                    } ... <a class="link-learn" title="Learn More" href="@url">Learn More</a>
+                                                    }  <a class="link-learn" title="Learn More" href="@url">Learn More</a>
                                                 </p>
                                             }
                                             @*<p>

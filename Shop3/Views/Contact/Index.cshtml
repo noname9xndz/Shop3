@@ -13,7 +13,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn9gaKzspPwRtaABhpdtgZnmnkoAxy3ek"></script>
     @* thời điểm hiện tại phải add bill google platform mới sử dụng được key
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzsAojQuAHWZRf4oXqpU7bwcpQGYLOfck"></script>*@
-    @await Html.PartialAsync("_ValidationScriptsPartial")
+    
 
     <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
 
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
                     <li><strong>Contact Us</strong></li>
                 </ul>
             </div>
@@ -56,14 +56,9 @@
                         <br />
 
                         <div class="col-xs-12 col-sm-6" id="contact_form_map">
-                            <h3 class="page-subheading">Let's get in touch</h3>
-                            <p>Lorem ipsum dolor sit amet onsectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor dapibus eget. Mauris tincidunt aliquam lectus sed vestibulum. Vestibulum bibendum suscipit mattis.</p>
-                            <br />
-                            <ul>
-                                <li><i class="fa fa-circle"></i> Praesent nec tincidunt turpis.</li>
-                                <li><i class="fa fa-circle"></i> Aliquam et nisi risus.&nbsp;Cras ut varius ante.</li>
-                                <li><i class="fa fa-circle"></i> Ut congue gravida dolor, vitae viverra dolor.</li>
-                            </ul>
+                            <h3 class="page-subheading">Welcome to @Model.Contact.Name</h3>
+                            <p>@Html.Raw(Model.Contact.Other)</p>
+                            
                             <br />
                             <ul class="store_info">
                                 <li><i class="fa fa-home"></i>@Model.Contact.Address</li>
@@ -99,20 +94,23 @@
 
                                 <form action="/contact.html" method="post">
                                     <h3 class="page-subheading">Make an enquiry</h3>
-                                    <div asp-validation-summary="All" class="text-danger"></div> @*hiển thi validate*@
+                                    @* <div asp-validation-summary="All" class="text-danger"></div> $1$hiển thi validate#1# *@
                                     @Html.AntiForgeryToken()  @*chống tấn công CSRF (giả mạo request)*@
                                     <div class="contact-form-box">
                                         <div class="form-selector">
                                             <label>Name</label>
                                             <input type="text" class="form-control input-sm" asp-for="Feedback.Name" />
+                                            <span asp-validation-for="Feedback.Name" class="text-danger"></span>
                                         </div>
                                         <div class="form-selector">
                                             <label>Email</label>
                                             <input type="text" class="form-control input-sm" asp-for="Feedback.Email" />
+                                            <span asp-validation-for="Feedback.Email" class="text-danger"></span>
                                         </div>
                                         <div class="form-selector">
                                             <label>Message</label>
-                                            <textarea class="form-control input-sm" rows="10" asp-for="Feedback.Message"></textarea>
+                                            <textarea class="form-control input-sm" rows="10" cols ="40" asp-for="Feedback.Message"></textarea>
+                                            <span asp-validation-for="Feedback.Message" class="text-danger"></span>
                                         </div>
                                         <div class="form-selector">
                                             <label> </label>
@@ -121,7 +119,6 @@
                                         </div>
                                         <div class="form-selector">
                                             <button type="submit" class="button"><i class="icon-paper-plane icons"></i>&nbsp; <span>Send Message</span></button>
-                                            &nbsp; <a href="#" class="button">Clear</a>
                                         </div>
                                     </div>
                                 </form>

@@ -27,34 +27,35 @@
                 <div class="col-md-6 col-sm-8">
                     <div class="single-input p-bottom50 clearfix">
                         @*sử dụng các tag helper của asp core ví dụ như input,combobox,... *@
-                        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" id="registerForm">
+                            <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="row">
-                                
+
                                 <div class="col-sm-6">
                                     <label>Full Name:</label>
                                     <div class="input-text">
-                                        <input type="text" asp-for="FullName" name="fullName" class="form-control">
+                                        <input type="text" asp-for="FullName" name="fullName" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Email:</label>
                                     <div class="input-text">
-                                        <input type="text" asp-for="Email" name="email" class="form-control">
+                                        <input type="text" asp-for="Email" name="email" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12">
                                     <label>Password:</label>
                                     <div class="input-text">
-                                        <input type="password" asp-for="Password" name="password" class="form-control">
+                                        <input type="password" asp-for="Password" name="password" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12">
                                     <label>Confirm Password:</label>
                                     <div class="input-text">
-                                        <input type="password" asp-for="ConfirmPassword" name="confirmPassword" class="form-control">
+                                        <input type="password" asp-for="ConfirmPassword" name="confirmPassword" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -68,7 +69,7 @@
                                 <div class="col-sm-6">
                                     <label>Phone Number:</label>
                                     <div class="input-text">
-                                        <input type="text" name="phoneNumber" asp-for="PhoneNumber" class="form-control">
+                                        <input type="text" name="phoneNumber" asp-for="PhoneNumber" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -80,22 +81,22 @@
                                 </div>
 
                                 <div class="col-xs-12">
-                                    <label>  </label>
+                                    <label> </label>
                                     <recaptcha />
                                     <span class="text-danger" id="recaptchaErrorMessage"></span>
                                 </div>
 
                                 @*<div class="col-sm-6">
-            <div class="col-md-offset-2 col-md-10">
-                <recaptcha />
-                <span class="text-danger" id="recaptchaErrorMessage"></span>
-            </div>
-        </div>*@
+                <div class="col-md-offset-2 col-md-10">
+                    <recaptcha />
+                    <span class="text-danger" id="recaptchaErrorMessage"></span>
+                </div>
+            </div>*@
 
                                 <div class="col-xs-12">
-                                    <label>  </label>
+                                    <label> </label>
                                     <div class="submit-text">
-                                        <button type="submit" class="button"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
+                                        <button type="submit" class="button" id="btnregister"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
                                     </div>
                                 </div>
 
@@ -112,7 +113,7 @@
 @*<partial name="_Service.cshtml" />*@
 
 @section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
 
     <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+<script src="~/client-app/controllers/account/index.js" asp-append-version="true"></script>
 }

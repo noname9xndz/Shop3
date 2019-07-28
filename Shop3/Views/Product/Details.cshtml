@@ -93,13 +93,15 @@
                                     </p>
                                 }
                             }
+                            
+                            <p class="availability @(product.Status==Shop3.Data.Enums.Status.Active ? "in-stock" : "out-of-stock" ) pull-right">Availability: <span>@product.Status</span></p>
 
                         </div>
-                        <div class="ratings">
-                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>
-                            <p class="availability @(product.Status==Shop3.Data.Enums.Status.Active ? "in-stock" : "out-of-stock" ) pull-right">Availability: <span>@product.Status</span></p>
-                        </div>
+                         <div class="ratings"> 
+                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>  
+                         @*<p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>*@
+                     
+                         </div>
                         <div class="short-description">
                             <h2>Quick Overview</h2>
                             @product.Description
@@ -138,7 +140,7 @@
                         <div class="product-cart-option">
                             <ul>
                                 <li><a href="javascript:void(0);" id="add_to_wishlist" data-id="@Model.Product.Id"><i class="fa fa-heart-o"></i><span>Add to Wishlist</span></a></li>
-                                <li><a href="#"><i class="fa fa-link"></i><span>Add to Compare</span></a></li>
+                                <li><a href="javascript:void(0);"><i class="fa fa-link"></i><span>Add to Compare</span></a></li>
                             </ul>
                         </div>
                         @if (Model.Tags.Count > 0)
@@ -357,11 +359,11 @@
 
                             @foreach (var item in Model.HotProducts)
                             {
-                                var url = "/" + item.SeoAlias + "-c." + item.Id + ".html";
+                                var url = "/" + item.SeoAlias + "-p." + item.Id + ".html";
                                 <li class="item">
                                     <div class="products-block-left"> <a href="@url" title="Sample Product" class="product-image"><img src="@item.Image" alt="Sample Product "></a></div>
                                     <div class="products-block-right">
-                                        <p class="product-name"> <a href="single_product.html">@item.Name</a> </p>
+                                        <p class="product-name"> <a href="@url">@item.Name</a> </p>
 
                                         @if (item.Price <= 0 || item.PromotionPrice <= 0)
                                         {
@@ -393,7 +395,7 @@
                                                 </p>
                                             }
                                         }
-                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                     </div>
                                 </li>
                             }

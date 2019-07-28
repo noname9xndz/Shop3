@@ -104,12 +104,12 @@
                                                     <div class="info-inner">
                                                         <div class="item-title"> <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a> </div>
                                                         <div class="item-content">
-                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
                                                             </div>
                                                             <div class="pro-action">
-                                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Purchase</span> </button>
+                                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Add To Cart</span> </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -190,12 +190,12 @@
                                                     <div class="info-inner">
                                                         <div class="item-title"> <a title="Product title here" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a> </div>
                                                         <div class="item-content">
-                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
                                                             </div>
                                                             <div class="pro-action">
-                                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Thêm Vào Giỏ Hàng</span> </button>
+                                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Add To Cart</span> </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -245,7 +245,7 @@
                                                         <div class="item-title">
                                                             <a title="@item.value.Name" href="/@item.value.SeoAlias-p.@(item.value.Id).html">@item.value.Name </a>
                                                         </div>
-                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                                         <div class="item-price">
                                                             <div class="price-box">
                                                                 <span class="regular-price">
@@ -262,7 +262,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="pro-action">
-                                                            <button type="button" data-id="@item.value.Id" class="add-to-cart"><span> Mua ngay</span> </button>
+                                                            <button type="button" data-id="@item.value.Id" class="add-to-cart"><span> Add To Cart</span> </button>
                                                         </div>
                                                         <div class="pr-button-hover">
                                                             <div class="mt-button add_to_wishlist" > <a href="javascript:void(0);" id="add_to_wishlist" data-id="@item.value.Id"> <i class="fa fa-heart-o"></i> </a> </div>
@@ -330,7 +330,7 @@
                                             <div class="item-title">
                                                 <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a>
                                             </div>
-                                            <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                             <div class="item-price">
                                                 <div class="price-box">
                                                     <span class="regular-price">
@@ -347,7 +347,7 @@
                                                 </div>
                                             </div>
                                             <div class="pro-action">
-                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Mua ngay</span> </button>
+                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Add To Cart</span> </button>
                                             </div>
                                             <div class="pr-button-hover">
                                                 <div class="mt-button add_to_wishlist" > <a href="javascript:void(0);"  id="add_to_wishlist" data-id="@item.Id"> <i class="fa fa-heart-o"></i> </a> </div>
@@ -392,23 +392,24 @@
                                 <a href="/@item.SeoAlias-b.@(item.Id).html"> <img class="primary-img" src="@item.Image?h=267&w=157.05" alt="@item.Name"></a>
                                 <div class="blog-btm-desc">
                                     <div class="blog-top-desc">
-                                        <div class="blog-date"> @item.DateCreated </div>
+                                        <div class="blog-date"> @item.DateCreated.ToString("MM/dd/yyyy hh:mm tt") </div>
                                         <h4><a href="/@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h4>
                                         <div class="jtv-entry-meta">
                                             <i class="fa fa-user-o"></i> <strong>Admin</strong>
-                                            <a href="javascript:void(0);"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a>
+                                            @* <a href="javascript:void(0);"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a> *@
                                         </div>
                                     </div>
-                                    <p>@if (item.Description.Length > 25)
-                                       {
-                                           @item.Description.Substring(0, 25)
-                                                       
-                                       }
-                                       else
-                                       {
-                                           @item.Description 
-                                       } ...</p>
-                                   
+                                    <p>
+                                        @if (item.Description.Length > 25)
+                                        {
+                                            @item.Description.Substring(0, 25)<span>...</span>
+
+                                    }
+                                    else
+                                    {
+                                        @item.Description
+                                    }</p>
+
                                     <a class="read-more" href="/@item.SeoAlias-b.@(item.Id).html"> Read more</a>
                                 </div>
                             </div>

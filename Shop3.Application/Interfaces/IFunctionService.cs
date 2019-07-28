@@ -32,5 +32,6 @@ namespace Shop3.Application.Interfaces
         void UpdateParentId(string sourceId, string targetId, Dictionary<string, int> items);
 
         void ReOrder(string sourceId, string targetId);
+        Task<List<FunctionViewModel>> GetAllFuncByRoles(string funcFilter, string[] roles);
     }
 }

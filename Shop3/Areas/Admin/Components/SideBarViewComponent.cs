@@ -25,7 +25,7 @@ namespace Shop3.Areas.Admin.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         { //ép kiểu User để lấy ra Roles nếu ko gọi được extentions từ User
-            var roles = ((ClaimsPrincipal)User).GetSpecificClaim("Roles");
+            var roles = ((ClaimsPrincipal)User).GetSpecificClaim(CommonConstants.UserClaims.Roles);
             List<FunctionViewModel> functions;
             if (roles.Split(";").Contains(CommonConstants.AppRole.AdminRole))
             {
@@ -33,7 +33,8 @@ namespace Shop3.Areas.Admin.Components
             }
             else
             {
-                functions = await _functionService.GetAll(string.Empty);
+                var rolesArr = roles.Split(";");
+                functions = await _functionService.GetAllFuncByRoles(string.Empty, rolesArr);
             }
             return View(functions);
         }

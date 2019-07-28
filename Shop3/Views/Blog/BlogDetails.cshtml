@@ -23,13 +23,18 @@
                     <div class="entry-meta-data">
 
                         <div class="blog-top-desc">
-                            <div class="blog-date"> @blog.DateCreated </div>
+                            <div class="blog-date"> @blog.DateCreated.ToString("MM/dd/yyyy hh:mm tt") </div>
                             <h1><a href="blog_single_post.html">@blog.Name</a></h1>
                             <div class="jtv-entry-meta">
                                 <i class="fa fa-bookmark"></i>  <strong> @blog.Description</strong> @*<a href="#"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a>*@
                                 @*<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>&nbsp; <span>(5 votes)</span></div>*@
 
                             </div>
+                            <div class="jtv-entry-meta">
+                                <i class="fa fa-user-o"></i> <strong>Admin</strong>
+                                @* <a href="javascript:void(0);"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a> *@
+                            </div>
+                            <hr/>
                         </div>
 
                     </div>
@@ -63,19 +68,21 @@
 
                                                         @if (item.Description.Length > 25)
                                                         {
-                                                            @item.Description.Substring(0, 25)
+                                                            @item.Description.Substring(0, 25)<span>...</span>
 
                                                         }
                                                         else
                                                         {
-                                                            @item.Description
+                                                            @item.Description 
                                                         }
-                                                        ...
+                                                        
 
 
                                                     </a>
                                                 </h3>
+                                                <div class="entry-meta-data"><span class="date"> <i class="fa fa-user-o">&nbsp;</i> Admin </span> </div>
                                                 <div class="entry-meta-data"><span class="date"> <i class="pe-7s-date">&nbsp;</i> @item.DateCreated </span> </div>
+
                                                 <div class="entry-more"> <a href="/@item.SeoAlias-b.@(item.Id).html">Read more</a> </div>
                                             </div>
                                         </article>
