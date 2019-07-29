@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
 using Shop3.Application.ViewModels.Blogs;
 using Shop3.Application.ViewModels.Common;
+using Shop3.Application.ViewModels.Custom;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Application.ViewModels.System;
 using Shop3.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Shop3.Application.ViewModels.Custom;
+using VisitorStatisticViewModel = Shop3.Application.ViewModels.System.VisitorStatisticViewModel;
 
 namespace Shop3.Application.AutoMapper
 {
@@ -51,7 +49,10 @@ namespace Shop3.Application.AutoMapper
             CreateMap<PageDefault, PageDefaultViewModel>();
             CreateMap<CustomProductTagViewModel, CustomProductTagViewModel>();
             CreateMap<CustomBlogTagViewModel, CustomBlogTagViewModel>();
-           // CreateMap<Error, ErrorViewModel>().MaxDepth(2);
+            CreateMap<VisitorStatistic, VisitorStatisticViewModel>();
+            CreateMap<SupportOnline, SupportOnlineViewModel>();
+            CreateMap<Question, QuestionViewModel>();
+            // CreateMap<Error, ErrorViewModel>().MaxDepth(2);
 
         }
     }

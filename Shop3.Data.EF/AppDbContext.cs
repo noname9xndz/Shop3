@@ -9,10 +9,8 @@ using Shop3.Data.EF.Extentions;
 using Shop3.Data.Entities;
 using Shop3.Data.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Shop3.Data.EF
 {
@@ -52,16 +50,16 @@ namespace Shop3.Data.EF
         public DbSet<ProductImage> ProductImages { set; get; }
         public DbSet<ProductQuantity> ProductQuantities { set; get; }
         public DbSet<ProductTag> ProductTags { set; get; }
-
         public DbSet<Size> Sizes { set; get; }
         public DbSet<Slide> Slides { set; get; }
         public DbSet<WishProduct> WishProducts { set; get; }
         public DbSet<Tag> Tags { set; get; }
-        
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<WholePrice> WholePrices { get; set; }
         public DbSet<PageDefault> PageDefaults { get; set; }
-
+        public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
+        public DbSet<SupportOnline> SupportOnlines { get; set; }
+        public DbSet<Question> Questions { get; set; }
         public DbSet<AdvertistmentPage> AdvertistmentPages { get; set; }
         public DbSet<Advertistment> Advertistments { get; set; }
         public DbSet<AdvertistmentPosition> AdvertistmentPositions { get; set; }

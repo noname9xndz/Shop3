@@ -845,6 +845,26 @@ namespace Shop3.Data.EF.Migrations
                     b.ToTable("ProductTags");
                 });
 
+            modelBuilder.Entity("Shop3.Data.Entities.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("DisplayOrder");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(500);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("Shop3.Data.Entities.Size", b =>
                 {
                     b.Property<int>("Id")
@@ -894,11 +914,82 @@ namespace Shop3.Data.EF.Migrations
                     b.ToTable("Slides");
                 });
 
+            modelBuilder.Entity("Shop3.Data.Entities.SupportOnline", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<int>("DisplayOrder");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("FaceBook")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Google")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Instagram")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Linkedin")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Mobile")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Other")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Pinterest")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Skype")
+                        .HasMaxLength(128);
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("TimeOpenWindow")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Twitter");
+
+                    b.Property<string>("Yahoo")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Youtube")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Zalo")
+                        .HasMaxLength(128);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SupportOnlines");
+                });
+
             modelBuilder.Entity("Shop3.Data.Entities.SystemConfig", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(255);
+
+                    b.Property<bool?>("BoolValue");
+
+                    b.Property<DateTime?>("DateTimeValue");
+
+                    b.Property<decimal?>("DecimalValue");
+
+                    b.Property<int?>("IntValue");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -906,15 +997,7 @@ namespace Shop3.Data.EF.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("Value1");
-
-                    b.Property<int?>("Value2");
-
-                    b.Property<bool?>("Value3");
-
-                    b.Property<DateTime?>("Value4");
-
-                    b.Property<decimal?>("Value5");
+                    b.Property<string>("StringValue");
 
                     b.HasKey("Id");
 
@@ -939,6 +1022,28 @@ namespace Shop3.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("Shop3.Data.Entities.VisitorStatistic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<DateTime?>("VisitedDate")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VisitorStatistics");
                 });
 
             modelBuilder.Entity("Shop3.Data.Entities.WholePrice", b =>

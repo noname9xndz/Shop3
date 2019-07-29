@@ -331,7 +331,7 @@ namespace Shop3.Data.EF
                 {
                     Id = "HomeTitle",
                     Name = "Home's title",
-                    Value1 = "Noname Shop home",
+                    StringValue = "Noname Shop home",
                     Status = Status.Active
                 });
             }
@@ -342,7 +342,7 @@ namespace Shop3.Data.EF
                 {
                     Id = "HomeMetaKeyword",
                     Name = "Home Keyword",
-                    Value1 = "shopping, sales",
+                    StringValue = "shopping, sales",
                     Status = Status.Active
                 });
             }
@@ -353,7 +353,7 @@ namespace Shop3.Data.EF
                 {
                     Id = "HomeMetaDescription",
                     Name = "Home Description",
-                    Value1 = "Home NonameShop",
+                    StringValue = "Home NonameShop",
                     Status = Status.Active
                 });
             }

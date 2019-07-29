@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Shop3.Data.Enums;
 using Shop3.Infrastructure.SharedKernel;
 
 namespace Shop3.Data.Entities
 {
+    [Table("PageDefaults")]
     public class PageDefault : DomainEntity<string>
     {
         public PageDefault()

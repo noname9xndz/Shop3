@@ -68,8 +68,19 @@ namespace Shop3.Application.AutoMapper
            CreateMap<PageDefaultViewModel, PageDefault>()
                .ConstructUsing(c => new PageDefault(c.Id, c.Title, c.Content, c.Status));
 
-           //CreateMap<ErrorViewModel, Error>()
-           //    .ConstructUsing(c => new Error(c.Message, c.StackTrace));
+           CreateMap<PageDefaultViewModel, PageDefault>()
+               .ConstructUsing(c => new PageDefault(c.Id, c.Title, c.Content, c.Status));
+
+           CreateMap<SupportOnlineViewModel, SupportOnline>()
+               .ConstructUsing(c => new SupportOnline(c.Id, c.Name,c.Skype,c.FaceBook,c.Yahoo,c.Pinterest,c.Twitter,c.Google,c.Mobile,
+                   c.Email,c.Instagram,c.Youtube,c.Linkedin,c.Zalo,c.TimeOpenWindow,c.Other,
+                   c.Status,c.DateCreated,c.DateModified,c.DisplayOrder));
+
+           CreateMap<QuestionViewModel,Question>()
+               .ConstructUsing(c => new Question(c.Id, c.Title, c.Content, c.DisplayOrder,c.Status));
+
+            //CreateMap<ErrorViewModel, Error>()
+            //    .ConstructUsing(c => new Error(c.Message, c.StackTrace));
         }
     }
 }
