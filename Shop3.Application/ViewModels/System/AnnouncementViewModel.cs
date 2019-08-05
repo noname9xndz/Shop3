@@ -15,6 +15,7 @@ namespace Shop3.Application.ViewModels.System
 
         [StringLength(250)]
         public string Content { set; get; }
+        public string FullName { set; get; }//
 
         public Guid UserId { set; get; }
 

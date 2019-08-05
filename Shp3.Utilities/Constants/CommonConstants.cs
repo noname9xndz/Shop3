@@ -72,5 +72,16 @@ namespace Shop3.Utilities.Constants
             public const string connection = "SqlServerConnection";
         }
 
+        public class SortKey
+        {
+            public const string Lastest = "Lastest";
+            public const string Pricelowtohigh = "Pricelowtohigh";
+            public const string Pricehightolow = "Pricehightolow";
+            public const string NameAZ = "name_az";
+            public const string NameZA = "name_za";
+
+        }
+
+
     }
 }

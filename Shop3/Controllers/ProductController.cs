@@ -46,7 +46,9 @@ namespace Shop3.Controllers
              
             catalog.PageSize = pageSize;
             catalog.SortType = sortBy;
-            catalog.Data = _productService.GetAllPaging(id, string.Empty, page, pageSize.Value);
+            //catalog.Data = _productService.GetAllPaging(id, string.Empty, page, pageSize.Value);
+            //catalog.Data = _productService.GetAllPaging(id, string.Empty, page, pageSize.Value);
+            catalog.Data = _productService.GetAllPagingWithSortKey(id, sortBy, page, pageSize.Value);
             catalog.Category = _productCategoryService.GetById(id);
 
             return View(catalog);

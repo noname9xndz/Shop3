@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Internal;
 using Shop3.Data.Interfaces;
 using Shop3.Utilities.Extensions;
@@ -90,6 +91,16 @@ namespace Shop3.Data.EF
             _context.Set<T>().RemoveRange(entities);
         }
 
+        public async Task<IQueryable<T>> FindSingleAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await Task.Run(() => _context.Set<T>().Where(predicate).AsQueryable());
+        }
+
+        public async  Task<T> GetAllAsync(Expression<Func<T, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         //public void Update(T entity)
         //{
         //    _context.Set<T>().Update(entity);
@@ -141,6 +152,16 @@ namespace Shop3.Data.EF
                 }
             }
             _context.Set<T>().Update(dbEntity);
+        }
+
+        public void RemoveMultipleWithListKey(List<K> keyEntities)
+        {
+            List<T> entities =  new List<T>();
+            foreach (var item in keyEntities)
+            {
+                entities.Add(FindById(item));
+            }
+            _context.Set<T>().RemoveRange(entities);
         }
     }
 }

@@ -36,28 +36,26 @@ namespace Shop3.Application.Implementation
                         on first.Id equals last.AnnouncementId into temp
                         from last in temp.DefaultIfEmpty()
                         where last.UserId == userId
-                        select new
+                        select new AnnouncementViewModel
                         {
-                            first.Id,
-                            first.Title,
-                            first.DateCreated,
-                            first.UserId,
-                            first.Content,
-                            first.AppUser.FullName,
-                            first.AnnouncementUsers,
-                            first.Status
+                           Id = first.Id,
+                           Title = first.Title,
+                           DateCreated = first.DateCreated,
+                           UserId = first.UserId,
+                           Content = first.Content,
+                           FullName = first.AppUser.FullName,
+                           //first.AnnouncementUsers,
+                           Status = first.Status
                         };
             
             int totalRow = query.Count();
 
             var data = query.OrderByDescending(x => x.DateCreated)
-                .Skip(pageSize * (pageIndex - 1)).Take(pageSize);
-            var model = _mapper.ProjectTo<AnnouncementViewModel>(data).ToList();
-
-
+                .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+            
             var paginationSet = new PagedResult<AnnouncementViewModel>
             {
-                Results = model,
+                Results = data,
                 CurrentPage = pageIndex,
                 RowCount = totalRow,
                 PageSize = pageSize

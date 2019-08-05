@@ -3,6 +3,7 @@
     this.initialize = function () {
         initDateRangePicker();
         loadData();
+        loadTopSellProduct();
     }
 
     function loadData(from, to) {
@@ -30,6 +31,7 @@
             }
         });
     }
+
     function initChart(data) {
 
         var arrRevenue = [];
@@ -204,5 +206,25 @@
             $('#reportrange').data('daterangepicker').remove();
         });
 
+    }
+
+    function loadTopSellProduct() {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Home/GetTopSellProduct",
+            dataType: "json",
+            beforeSend: function () {
+                common.startLoading();
+            },
+            success: function (response) {
+                console.log(response);
+                common.stopLoading();
+
+            },
+            error: function (status) {
+                common.notify('Có lỗi xảy ra', 'error');
+                common.stopLoading();
+            }
+        });
     }
 }

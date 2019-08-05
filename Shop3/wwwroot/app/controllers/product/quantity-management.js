@@ -87,7 +87,7 @@ var QuantityManagement = function () {
                     });
                 });
                 $('#table-quantity-content').html(render);
-                resetFile();
+               // resetFile();
             }
         });
     }

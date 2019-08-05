@@ -73,8 +73,7 @@ namespace Shop3.Areas.Admin.Controllers
 
         [HttpPost]
         public IActionResult SaveEntity(ProductViewModel productVm)
-        { // todo bug delete and update client (don't delete path img)
-            // loop savechange
+        { 
             if (!ModelState.IsValid)
             {
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
@@ -219,11 +218,11 @@ namespace Shop3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveImages(int productId, string[] images)
-        {  // todo bug delete and update client (don't delete path img)
-            _productService.AddImages(productId, images);
-            _productService.Save();
-            return new OkObjectResult(images);
+        public IActionResult SaveImages(int productId, string[] imagesAdd,int[] imagesRemove )
+        { 
+           _productService.AddAndRemoveProductImages(productId,imagesAdd,imagesRemove);
+           _productService.Save();
+            return new OkObjectResult(imagesAdd);
         }
 
         [HttpGet]
@@ -231,6 +230,12 @@ namespace Shop3.Areas.Admin.Controllers
         {
             var images = _productService.GetImages(productId);
             return new OkObjectResult(images);
+        }
+        [HttpPost]
+        public IActionResult DeleteImageProduct(int productImageId)
+        {
+            _productService.DeleteProductImage(productImageId);
+            return new OkResult();
         }
 
         [HttpPost]

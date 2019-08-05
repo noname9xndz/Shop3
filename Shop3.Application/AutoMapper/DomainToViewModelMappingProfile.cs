@@ -52,6 +52,7 @@ namespace Shop3.Application.AutoMapper
             CreateMap<VisitorStatistic, VisitorStatisticViewModel>();
             CreateMap<SupportOnline, SupportOnlineViewModel>();
             CreateMap<Question, QuestionViewModel>();
+            CreateMap<CustomSellProductViewModel, CustomSellProductViewModel>().MaxDepth(2);
             // CreateMap<Error, ErrorViewModel>().MaxDepth(2);
 
         }

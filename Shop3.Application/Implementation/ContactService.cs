@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Data.Entities;
@@ -83,7 +82,6 @@ namespace Shop3.Application.Implementation
         public void Update(ContactViewModel pageVm)
         {
             var page = _mapper.Map<ContactViewModel, Contact>(pageVm);
-            //_contactRepository.Update(page);
             _contactRepository.Update(page.Id,page);
         }
     }

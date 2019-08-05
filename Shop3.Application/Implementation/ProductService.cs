@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using OfficeOpenXml;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
+using Shop3.Application.ViewModels.Custom;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
@@ -13,9 +15,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
-using Microsoft.AspNetCore.Identity;
-using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Implementation
 {
@@ -61,6 +60,57 @@ namespace Shop3.Application.Implementation
             _wishProductRepository = wishProductRepository;
             _userManager = userManager;
             _mapper = mapper;
+        }
+
+        public PagedResult<ProductViewModel> GetAllPagingWithSortKey(int? categoryId, string sortkey, int page, int pageSize)
+        {
+            var query = _productRepository.FindAll(x => x.Status == Status.Active || x.Status == Status.InActive);
+
+            if (categoryId.HasValue)
+                query = query.Where(x => x.CategoryId == categoryId.Value);
+
+            int totalRow = query.Count();
+
+            #region Sort Key
+
+            if (sortkey == CommonConstants.SortKey.Lastest || sortkey == null)
+            {
+                query = query.OrderByDescending(x => x.DateCreated);
+            }
+            if (sortkey == CommonConstants.SortKey.NameZA)
+            {
+                query = query.OrderByDescending(x => x.Name);
+            }
+            if (sortkey == CommonConstants.SortKey.NameAZ)
+            {
+                query = query.OrderBy(x => x.Name);
+            }
+            if (sortkey == CommonConstants.SortKey.Pricehightolow)
+            {
+                query = query.OrderByDescending(x => x.Price);
+            }
+            if (sortkey == CommonConstants.SortKey.Pricelowtohigh)
+            {
+                query = query.OrderBy(x => x.Price);
+            }
+
+
+            #endregion
+
+
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+            //var data = query.ProjectTo<ProductViewModel>().ToList();
+            var data = _mapper.ProjectTo<ProductViewModel>(query).ToList();
+
+            var paginationSet = new PagedResult<ProductViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+            return paginationSet;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -188,7 +238,6 @@ namespace Shop3.Application.Implementation
             {
                 product.ProductTags.Add(productTag);
             }
-            //_productRepository.Update(product);
             _productRepository.Update(product.Id, product);
         }
 
@@ -263,16 +312,29 @@ namespace Shop3.Application.Implementation
 
         public void AddImages(int productId, string[] images)
         {
-            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
-            foreach (var image in images)
+            if (images.Length > 0)
             {
-                _productImageRepository.Add(new ProductImage()
+                //_productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+                foreach (var image in images)
                 {
-                    Path = image,
-                    ProductId = productId,
-                    Caption = string.Empty
-                });
+                    _productImageRepository.Add(new ProductImage()
+                    {
+                        Path = image,
+                        ProductId = productId,
+                        Caption = string.Empty
+                    });
+                }
             }
+            //_productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+            //foreach (var image in images)
+            //{
+            //    _productImageRepository.Add(new ProductImage()
+            //    {
+            //        Path = image,
+            //        ProductId = productId,
+            //        Caption = string.Empty
+            //    });
+            //}
         }
 
         public void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices)
@@ -307,12 +369,12 @@ namespace Shop3.Application.Implementation
             var query = from x in _productRepository.FindAll()
                         join y in _billDetailRepository.FindAll() on x.Id equals y.ProductId
                         join z in _billRepository.FindAll(z => z.Status == Status.Active) on y.BillId equals z.Id
-                        orderby  y.Quantity descending 
-                        select x ;
+                        orderby y.Quantity descending
+                        select x;
 
-            return  _mapper.ProjectTo<ProductViewModel>(query.Take(top)).ToList();
+            return _mapper.ProjectTo<ProductViewModel>(query.Take(top)).ToList();
 
-          
+
 
 
         }
@@ -387,13 +449,13 @@ namespace Shop3.Application.Implementation
             return _mapper.ProjectTo<ProductViewModel>(query).ToList();
         }
 
-        public PagedResult<ProductViewModel> GetAllWishListPaging(Guid Id,int page, int pageSize)
+        public PagedResult<ProductViewModel> GetAllWishListPaging(Guid Id, int page, int pageSize)
         {
             var query = from p in _productRepository.FindAll()
-                join wp in _wishProductRepository.FindAll() on p.Id equals wp.ProductId
-                join u in _userManager.Users.Where(x => x.Id == Id) on wp.CustomerId equals u.Id
-                where wp.CustomerId == u.Id && p.Status == Status.Active
-                select p;
+                        join wp in _wishProductRepository.FindAll() on p.Id equals wp.ProductId
+                        join u in _userManager.Users.Where(x => x.Id == Id) on wp.CustomerId equals u.Id
+                        where wp.CustomerId == u.Id && p.Status == Status.Active
+                        select p;
 
             int totalRow = query.Count();
             var data = query.OrderByDescending(x => x.Id)
@@ -420,12 +482,12 @@ namespace Shop3.Application.Implementation
 
         public void DeleteWishProduct(int productId, Guid Id)
         {
-            if (CheckWishProduct(productId, Id) == true )
+            if (CheckWishProduct(productId, Id) == true)
             {
                 var res = (from p in _wishProductRepository.FindAll()
-                         where p.ProductId == productId && p.CustomerId == Id
-                         select p.Id).Take(1);
-                int wishId  = Convert.ToInt32(res.FirstOrDefault());
+                           where p.ProductId == productId && p.CustomerId == Id
+                           select p.Id).Take(1);
+                int wishId = Convert.ToInt32(res.FirstOrDefault());
                 _wishProductRepository.RemoveById(wishId);
                 _unitOfWork.Commit();
             }
@@ -436,9 +498,9 @@ namespace Shop3.Application.Implementation
             return _mapper.Map<WishProduct, WishProductViewModel>(_wishProductRepository.FindById(id));
         }
 
-        public bool CheckWishProduct(int productId,Guid Id)
+        public bool CheckWishProduct(int productId, Guid Id)
         {
-            if (_wishProductRepository.FindAll(x =>x.ProductId ==productId && x.CustomerId == Id).ToList().Count > 0)
+            if (_wishProductRepository.FindAll(x => x.ProductId == productId && x.CustomerId == Id).ToList().Count > 0)
             {
                 return true;
             }
@@ -449,9 +511,8 @@ namespace Shop3.Application.Implementation
         public List<ProductViewModel> GetAllWishProduct(Guid Id)
         {
             var data = from p in _productRepository.FindAll()
-                join wp in _wishProductRepository.FindAll(x => x.CustomerId == Id) on p.Id equals wp.ProductId
-                //where wp.CustomerId == Id
-                select p;
+                       join wp in _wishProductRepository.FindAll(x => x.CustomerId == Id) on p.Id equals wp.ProductId
+                       select p;
 
             return _mapper.ProjectTo<ProductViewModel>(data).ToList();
 
@@ -460,17 +521,82 @@ namespace Shop3.Application.Implementation
         public List<CustomProductTagViewModel> GetProductWithTagRanDom(int top)
         {
             var data = (from t in _tagRepository.FindAll()
-                join pt in _productTagRepository.FindAll() on t.Id equals pt.TagId
-                join p in _productRepository.FindAll() on pt.ProductId equals p.Id 
-                orderby Guid.NewGuid()
-                select new CustomProductTagViewModel()
-                {
-                    ProductId = p.Id,
-                    SeoAlias = p.SeoAlias,
-                    TagName = t.Name
-                }).Take(top);
-            
+                        join pt in _productTagRepository.FindAll() on t.Id equals pt.TagId
+                        join p in _productRepository.FindAll() on pt.ProductId equals p.Id
+                        orderby Guid.NewGuid()
+                        select new CustomProductTagViewModel()
+                        {
+                            ProductId = p.Id,
+                            SeoAlias = p.SeoAlias,
+                            TagName = t.Name
+                        }).Take(top);
+
             return _mapper.ProjectTo<CustomProductTagViewModel>(data).ToList();
+        }
+
+        public void DeleteProductImage(int productImg)
+        {
+           _productImageRepository.RemoveById(productImg);
+           _unitOfWork.Commit();
+        }
+
+
+        public List<CustomSellProductViewModel> GetProductsByStatusBill(int top, BillStatus status)
+        {
+
+
+                var product = _productRepository.FindAll();
+                var billdetails = _billDetailRepository.FindAll();
+                var bill = _billRepository.FindAll(x=>x.BillStatus == status);
+
+                //var a = _billDetailRepository.FindAll().Include(x=>x.Bill).Include(x => x.Product);
+
+                var query = (from p in product
+                             join bd in billdetails on p.Id equals bd.ProductId
+                             join b in bill on bd.BillId equals b.Id
+                             group p by new { p.Id, p.Name, p.Unit, p.Image, p.PromotionPrice, p.Price } into sellProduct
+                             select new CustomSellProductViewModel
+                             {
+                                 Id = sellProduct.Key.Id,
+                                 Image = sellProduct.Key.Image,
+                                 Price = (sellProduct.Key.PromotionPrice > 0 && sellProduct.Key.PromotionPrice < sellProduct.Key.Price) ? sellProduct.Key.PromotionPrice.Value : sellProduct.Key.Price,
+                                 Name = sellProduct.Key.Name,
+                                 Unit = sellProduct.Key.Unit,
+                                 Total = (sellProduct.Count(pt => pt.Id != null))
+                             });
+                var customSellProduct = query.OrderByDescending(x => x.Total).Take(top).ToList();
+                return customSellProduct; ;
+
+          
+
+            
+        }
+
+        public void AddAndRemoveProductImages(int productId, string[] imagesAdd, int[] productImageIdRemove)
+        {
+            if (imagesAdd.Length > 0)
+            {
+                //_productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+
+                var test = imagesAdd;
+                foreach (var image in imagesAdd)
+                {
+                    _productImageRepository.Add(new ProductImage()
+                    {
+                        Path = image,
+                        ProductId = productId,
+                        Caption = string.Empty
+                    });
+                }
+            }
+            if (productImageIdRemove.Length > 0)
+            {
+                List<int> productImageId = productImageIdRemove.OfType<int>().ToList();
+                _productImageRepository.RemoveMultipleWithListKey(productImageId);
+               
+            }
+           // _productImageRepository.RemoveById(productImg);
+           // _unitOfWork.Commit();
         }
     }
 }

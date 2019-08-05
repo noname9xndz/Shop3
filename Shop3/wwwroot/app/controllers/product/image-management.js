@@ -5,7 +5,8 @@ var ImageManagement = function () {
     var self = this;
     var parent = parent;
 
-    var images = [];
+    var imagesAdd = [];
+    var imagesRemove = [];
 
     this.initialize = function () {
         registerEvents();
@@ -23,8 +24,10 @@ var ImageManagement = function () {
 
         $('body').on('click', '.btn-delete-image', function (e) {
             e.preventDefault();
+            var id = $(this).data('id');
+            imagesRemove.push(id);
             $(this).closest('div').remove(); // lấy div cha gần nhất remove img
-            console.log(images);
+            
         });
 
         $("#fileImage").on('change', function () {
@@ -43,7 +46,7 @@ var ImageManagement = function () {
                 data: data,
                 success: function (path) {
                     clearFileInput($("#fileImage"));
-                    images.push(path); // đường dẫn img , data-path đẩy vào tương đối, src tuyệt đối 
+                    imagesAdd.push(path); // đường dẫn img , data-path đẩy vào tương đối, src tuyệt đối 
                     $('#image-list').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
                     common.notify('Đã tải ảnh lên thành công!', 'success');
 
@@ -55,30 +58,38 @@ var ImageManagement = function () {
         });
 
         $("#btnSaveImages").on('click', function () {
-            //todo dont delete path + img
             var imageList = [];
             $.each($('#image-list').find('img'), function (i, item) {
                 imageList.push($(this).data('path')); // đọc đường dẫn file
             });
-            console.log(images);
-            console.log(imageList);
+            // console.log(imagesAdd);
+            //console.log(imageList);
 
             $.ajax({
                 url: '/admin/Product/SaveImages',
                 data: {
                     productId: $('#hidId').val(),
-                    images: images
+                    imagesAdd: imagesAdd,
+                    imagesRemove: imagesRemove
                 },
                 type: 'post',
                 dataType: 'json',
                 success: function (response) {
                     $('#modal-image-manage').modal('hide');
                     $('#image-list').html('');
+                    common.notify('Save successful', 'success');
                     clearFileInput($("#fileImage"));
+                    imagesAdd = [];
+                    imagesRemove = [];
+                },
+                error: function () {
+                    imagesAdd = [];
+                    imagesRemove = [];
                 }
             });
         });
     }
+    
     function loadImages() {
         $.ajax({
             url: '/admin/Product/GetImages',
@@ -90,7 +101,7 @@ var ImageManagement = function () {
             success: function (response) {
                 var render = '';
                 $.each(response, function (i, item) {
-                    render += '<div class="col-md-3"><img width="100" src="' + item.Path + '"><br/><a href="#" class="btn-delete-image">Xóa</a></div>'
+                    render += '<div class="col-md-3"><img width="100" src="' + item.Path + '"><br/><a href="javascript:void(0)" class="btn-delete-image" data-id="' + item.Id + '">Xóa</a></div>'
                 });
                 $('#image-list').html(render);
                 clearFileInput('#fileImage');
@@ -100,10 +111,11 @@ var ImageManagement = function () {
 
     function clearFileInput(ctrl) {
         try {
-           ctrl.value = null;
+            ctrl.value = null;
+            $(ctrl).val('');
         } catch (ex) { }
         if (ctrl.value) {
-           ctrl.parentNode.replaceChild(ctrl.cloneNode(true), ctrl);
+            ctrl.parentNode.replaceChild(ctrl.cloneNode(true), ctrl);
         }
     }
 }

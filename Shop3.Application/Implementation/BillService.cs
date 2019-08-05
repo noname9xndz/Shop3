@@ -157,7 +157,6 @@ namespace Shop3.Application.Implementation
             {
                 query = query.Where(x => x.CustomerName.Contains(keyword) || x.CustomerMobile.Contains(keyword));
             }
-            // phân trang và thực thi query
             var totalRow = query.Count();
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip((pageIndex - 1) * pageSize)

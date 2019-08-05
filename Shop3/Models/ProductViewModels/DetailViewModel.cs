@@ -12,9 +12,7 @@ namespace Shop3.Models.ProductViewModels
     public class DetailViewModel
     {
         public ProductViewModel Product { get; set; }
-
         
-
         public List<ProductViewModel> RelatedProducts { get; set; }
 
         public ProductCategoryViewModel Category { get; set; }
