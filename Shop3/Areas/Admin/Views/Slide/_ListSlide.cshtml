@@ -1,0 +1,42 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">List Slide</h4>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div id="slideM"></div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script id="slide-template" type="x-tmpl-mustache">
+   
+    <div class="form-group">
+        <div class="col-md-55">
+            <div class="thumbnail">
+                <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src="{{{Image}}}" alt="image" />
+                    <div class="mask">
+                        <p>{{Name}}</p>
+                        <div class="tools tools-bottom">
+                            <a href="javascript:void(0)" data-id="{{Id}}" id="editsilde"> <i class="fa fa-pencil"></i></a>
+                            <a href="javascript:void(0)" data-id="{{Id}}" id="removesilde"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">
+                    <p>{{Name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>

@@ -76,7 +76,10 @@ namespace Shop3.Application.AutoMapper
                    c.Email,c.Instagram,c.Youtube,c.Linkedin,c.Zalo,c.TimeOpenWindow,c.Other,
                    c.Status,c.DateCreated,c.DateModified,c.DisplayOrder));
 
-           CreateMap<QuestionViewModel,Question>()
+           CreateMap<SlideViewModel, Slide>()
+               .ConstructUsing(c => new Slide(c.Id,c.Name,c.Description,c.Image,c.Url,c.DisplayOrder,c.Status,c.Content,c.GroupAlias));
+
+            CreateMap<QuestionViewModel,Question>()
                .ConstructUsing(c => new Question(c.Id, c.Title, c.Content, c.DisplayOrder,c.Status));
 
             //CreateMap<ErrorViewModel, Error>()

@@ -22,7 +22,12 @@ var productCategoryController = function () {
         });
 
         // bật modal
-        $('#btnCreate').off('click').on('click', function () {
+        //$('#btnCreate').off('click').on('click', function () {
+        //    initTreeDropDownCategory();
+        //    $('#modal-add-edit').modal('show');
+        //});
+
+        $('body').on('click', '#btn-create', function(e) {
             initTreeDropDownCategory();
             $('#modal-add-edit').modal('show');
         });

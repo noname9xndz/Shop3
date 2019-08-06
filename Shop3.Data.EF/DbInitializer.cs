@@ -13,8 +13,8 @@ namespace Shop3.Data.EF
     public class DbInitializer
     {
         private readonly AppDbContext _context;
-        private UserManager<AppUser> _userManager;
-        private RoleManager<AppRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<AppRole> _roleManager;
 
         public DbInitializer(AppDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
@@ -22,7 +22,6 @@ namespace Shop3.Data.EF
             _userManager = userManager;
             _roleManager = roleManager;
         }
-        // add thêm data khi mới khởi tạo
         public async Task Seed()
         {
             if (!_roleManager.Roles.Any())
@@ -130,7 +129,7 @@ namespace Shop3.Data.EF
                 });
             }
 
-            if (_context.Colors.Count() == 0)
+            if (!_context.Colors.Any())
             {
                 List<Color> listColor = new List<Color>()
                 {
@@ -143,7 +142,7 @@ namespace Shop3.Data.EF
             }
 
 
-            if (_context.AdvertistmentPages.Count() == 0)
+            if (!_context.AdvertistmentPages.Any())
             {
                 List<AdvertistmentPage> pages = new List<AdvertistmentPage>()
                 {
@@ -164,7 +163,7 @@ namespace Shop3.Data.EF
             }
 
 
-            if (_context.Slides.Count() == 0)
+            if (!_context.Slides.Any())
             {
                 List<Slide> slides = new List<Slide>()
                 {
@@ -176,19 +175,13 @@ namespace Shop3.Data.EF
                     new Slide() {Name="Slide 2",Image="/client-side/images/brand2.png",Url="#",DisplayOrder = 2,GroupAlias = "brand",Status = true },
                     new Slide() {Name="Slide 3",Image="/client-side/images/brand3.png",Url="#",DisplayOrder = 3,GroupAlias = "brand",Status = true },
                     new Slide() {Name="Slide 4",Image="/client-side/images/brand4.png",Url="#",DisplayOrder = 4,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 5",Image="/client-side/images/brand5.png",Url="#",DisplayOrder = 5,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 6",Image="/client-side/images/brand6.png",Url="#",DisplayOrder = 6,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 7",Image="/client-side/images/brand7.png",Url="#",DisplayOrder = 7,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 8",Image="/client-side/images/brand8.png",Url="#",DisplayOrder = 8,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 9",Image="/client-side/images/brand9.png",Url="#",DisplayOrder = 9,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 10",Image="/client-side/images/brand10.png",Url="#",DisplayOrder = 10,GroupAlias = "brand",Status = true },
-                    new Slide() {Name="Slide 11",Image="/client-side/images/brand11.png",Url="#",DisplayOrder = 11,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 5",Image="/client-side/images/brand5.png",Url="#",DisplayOrder = 5,GroupAlias = "brand",Status = true }
                 };
                 _context.Slides.AddRange(slides);
             }
 
 
-            if (_context.Sizes.Count() == 0)
+            if (!_context.Sizes.Any())
             {
                 List<Size> listSize = new List<Size>()
                 {
@@ -202,7 +195,7 @@ namespace Shop3.Data.EF
                 _context.Sizes.AddRange(listSize);
             }
 
-            if (_context.ProductCategories.Count() == 0)
+            if (!_context.ProductCategories.Any())
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>()
                 {

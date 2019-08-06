@@ -9,7 +9,6 @@ namespace Shop3.Application.ViewModels.Common
     {
         public int Id { get; set; }
         [StringLength(250)]
-        [Required]
         public string Name { set; get; }
 
         [StringLength(250)]

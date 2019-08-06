@@ -26,13 +26,8 @@
     <div class="title_right">
         <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
            
-            @{
-                var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
-            }
-            @if (result.Succeeded)
-            {
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
-            }
+            
+            <button class="btn btn-success" id="btn-create" type="button">Create</button>
         </div>
     </div>
 

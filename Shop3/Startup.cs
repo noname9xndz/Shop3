@@ -177,6 +177,7 @@ namespace Shop3
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
             services.AddTransient<IPageDefaultService, PageDefaultService>();
+            services.AddTransient<ISlideService, SlideService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

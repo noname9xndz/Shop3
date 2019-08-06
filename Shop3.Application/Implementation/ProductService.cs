@@ -576,9 +576,6 @@ namespace Shop3.Application.Implementation
         {
             if (imagesAdd.Length > 0)
             {
-                //_productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
-
-                var test = imagesAdd;
                 foreach (var image in imagesAdd)
                 {
                     _productImageRepository.Add(new ProductImage()
@@ -595,8 +592,6 @@ namespace Shop3.Application.Implementation
                 _productImageRepository.RemoveMultipleWithListKey(productImageId);
                
             }
-           // _productImageRepository.RemoveById(productImg);
-           // _unitOfWork.Commit();
         }
     }
 }
