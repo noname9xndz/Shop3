@@ -1,0 +1,36 @@
+﻿
+<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Change Password</h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-group" role="form" id="frmMaintainance2">
+                    <div class="form-group" id="oldpass">
+                        <label for="txtPassword" class="col-sm-2">Old Password</label>
+                        <input type="password" name="txtOldPassword" class="form-control" id="txtOldPassword"/>
+                    </div>
+                    <div class="form-group" id="newpass">
+                        <label for="txtPasswordNew" class="col-sm-2">Password New</label>
+                        <input type="password" name="txtPasswordNew" class="form-control" id="txtPasswordNew" required/>
+                    </div>
+                    <div class="form-group" id="confirmpass">
+                        <label for="txtConfirmPassword" class="col-sm-5">Confirm Password</label>
+                        <input type="password" name="txtConfirmPassword" class="form-control" id="txtConfirmPassword" required>
+                    </div>
+                    
+                    <div class="form-group">
+                            <button type="button" id="ChangePass" class="btn btn-success">Save</button>
+                            <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-warning">Close</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

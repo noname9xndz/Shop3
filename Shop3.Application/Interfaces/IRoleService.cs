@@ -29,5 +29,9 @@ namespace Shop3.Application.Interfaces
         void SavePermission(List<PermissionViewModel> permissions, Guid roleId);
 
         Task<bool> CheckPermission(string functionId, string action, string[] roles);
+
+        Task<bool> CheckRoleByUser(string userId);
+        
+        Task<bool> CheckAccount(string emailorusername);
     }
 }

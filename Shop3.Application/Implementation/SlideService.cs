@@ -90,12 +90,6 @@ namespace Shop3.Application.Implementation
             return model;
         }
 
-
-        public List<SlideViewModel> AddAndRemoveSlide(int[] slideIdRemove, List<SlideViewModel> slideAdd)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public SlideViewModel GetSlideById(int id)
         {
             return _mapper.Map<Slide, SlideViewModel>(_slideRepository.FindById(id));

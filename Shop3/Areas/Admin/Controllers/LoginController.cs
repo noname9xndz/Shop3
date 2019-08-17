@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Shop3.Application.Interfaces;
 using Shop3.Data.Entities;
+using Shop3.Extensions;
 using Shop3.Models.AccountViewModels;
+using Shop3.Utilities.Constants;
 using Shop3.Utilities.Dtos;
 
 namespace Shop3.Areas.Admin.Controllers
@@ -18,20 +21,45 @@ namespace Shop3.Areas.Admin.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IRoleService _roleService;
+        private readonly IUserService _userService;
         private readonly ILogger _logger;
 
 
         public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager
-            , ILogger<LoginController> logger)
+            , ILogger<LoginController> logger, IRoleService roleService, IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _roleService = roleService;
+             _userService = userService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                string id = User.GetSpecificClaim(CommonConstants.UserClaims.UserId);
+                string email = User.GetSpecificClaim(CommonConstants.UserClaims.Email);
+
+                var check = await _roleService.CheckRoleByUser(id);
+                var checkPermistion = await _roleService.CheckAccount(email);
+                if (check == true && checkPermistion == true)
+                {
+                    return RedirectToAction("Index", "Home");
+
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Forbidden));
+                }
+                
+            }
             return View();
+           
+
+           
         }
 
         [HttpPost]
@@ -39,33 +67,43 @@ namespace Shop3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Authen(LoginViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var checkPermistion = await _roleService.CheckAccount(model.Email);
+                var checkUser = await _userService.FindUserByEmailOrUserName(model.Email);
 
-                if (result.Succeeded)
+                if (checkUser == false)
                 {
-                    
-                    _logger.LogInformation("User logged in.");
-                    return new OkObjectResult(new GenericResult(true)); // trả về 200 + 1 object
+                    return new ObjectResult(new GenericResult(false, "User does not exist"));
                 }
-
-                if (result.IsLockedOut)
+                if (checkPermistion == false)
                 {
                     _logger.LogWarning("User account locked out.");
-                    return new ObjectResult(new GenericResult(false, "Tài khoản đã bị khoá"));
+                    return new ObjectResult(new GenericResult(false, "User account locked out"));
                 }
-                else
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                
+                if (result.Succeeded)
                 {
-                    return new ObjectResult(new GenericResult(false, "Đăng nhập sai"));
+                   _logger.LogInformation("User logged in.");
+                  return new OkObjectResult(new GenericResult(true));
+                    
                 }
+                
             }
-
-            // If we got this far, something failed, redisplay form
             return new ObjectResult(new GenericResult(false, model));
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Forbidden()
+        {
+            return View();
+        }
+
+
+
 
     }
 }

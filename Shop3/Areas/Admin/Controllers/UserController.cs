@@ -68,52 +68,29 @@ namespace Shop3.Areas.Admin.Controllers
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return new BadRequestObjectResult(allErrors);
             }
-            //else
-            //{
-            //    if (userVm.Id == null)
-            //    {
-            //        if (await _userService.AddAsync(userVm)== true)
-            //        {
-            //            var announcement = new AnnouncementViewModel() // create thông báo
-            //            {
-            //                Content = $"User {userVm.UserName} has been created",
-            //                DateCreated = DateTime.Now,
-            //                Status = Status.Active,
-            //                Title = "User created",
-            //                UserId = User.GetUserId(),
-            //                Id = Guid.NewGuid().ToString(),
-
-            //            };
-            //            await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement);
-            //            return new OkObjectResult(userVm);
-            //        }
-            //        else
-            //        {
-            //            return Json(new { status = "error", message = "fail create" });
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        await _userService.UpdateAsync(userVm);
-            //        return new OkObjectResult(userVm);
-            //    }
-
-            //}
             if (userVm.Id == null)
             {
-                var announcement = new AnnouncementViewModel() // create thông báo
+                
+                var check = await _userService.AddAsync(userVm);
+                if (check == true)
                 {
-                    Content = $"User {userVm.UserName} has been created",
-                    DateCreated = DateTime.Now,
-                    Status = Status.Active,
-                    Title = "User created",
-                    UserId = User.GetUserId(),
-                    Id = Guid.NewGuid().ToString(),
+                    var announcement = new AnnouncementViewModel() // create thông báo
+                    {
+                        Content = $"User {userVm.UserName} has been created",
+                        DateCreated = DateTime.Now,
+                        Status = Status.Active,
+                        Title = "User created",
+                        UserId = User.GetUserId(),
+                        Id = Guid.NewGuid().ToString(),
 
-                };
-                await _userService.AddAsync(userVm);
-                await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement);
+                    };
+                    await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement);
+                }
+                else
+                {
+                    return Json(new { status = "error", message = "fail create" });
+                }
+
             }
             else
             {

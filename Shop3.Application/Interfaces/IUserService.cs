@@ -33,5 +33,7 @@ namespace Shop3.Application.Interfaces
         Task<bool> CheckPasswordUser(Guid? id);
 
         Task<AppUserViewModel> ChangePassByUserWithPasswordHashIsNull(AppUserViewModel userVm);
+
+        Task<bool> FindUserByEmailOrUserName(string userOrName);
     }
 }

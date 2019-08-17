@@ -116,6 +116,8 @@ namespace Shop3.Data.EF
                     new Function() {Id = "REVENUES",Name = "Revenue report",ParentId = "REPORT",SortOrder = 1,Status = Status.Active,URL = "/admin/report/revenues",IconCss = "fa-bar-chart-o"  },
                     new Function() {Id = "ACCESS",Name = "Visitor Report",ParentId = "REPORT",SortOrder = 2,Status = Status.Active,URL = "/admin/report/visitor",IconCss = "fa-bar-chart-o"  },
                     new Function() {Id = "READER",Name = "Reader Report",ParentId = "REPORT",SortOrder = 3,Status = Status.Active,URL = "/admin/report/reader",IconCss = "fa-bar-chart-o"  },
+
+                    new Function() {Id = "MYACCOUNT",Name = "My Account",ParentId =null,SortOrder = 1,Status = Status.Active,URL = "/admin/myacc/index",IconCss = "fa-address-card"  }
                 });
             }
 

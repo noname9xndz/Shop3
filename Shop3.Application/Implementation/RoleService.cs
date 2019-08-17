@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shop3.Data.Enums;
+using Shop3.Utilities.Helpers;
 
 namespace Shop3.Application.Implementation
 {
@@ -20,6 +22,8 @@ namespace Shop3.Application.Implementation
     public class RoleService : IRoleService
     {
         private RoleManager<AppRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
+       // private IRepository<AppUser, Guid> _userRepository;
         private IRepository<Function, string> _functionRepository;
         private IRepository<Permission, int> _permissionRepository;
         private IRepository<Announcement, string> _announRepository;
@@ -33,6 +37,7 @@ namespace Shop3.Application.Implementation
          IRepository<Permission, int> permissionRepository,
          IRepository<Announcement, string> announRepository,
          IRepository<AnnouncementUser, int> announUserRepository,
+         UserManager<AppUser> userManager,
          IMapper mapper)
         {
             _unitOfWork = unitOfWork;
@@ -41,6 +46,7 @@ namespace Shop3.Application.Implementation
             _permissionRepository = permissionRepository;
             _announRepository = announRepository;
             _announUserRepository = announUserRepository;
+            _userManager = userManager;
             _mapper = mapper;
         }
 
@@ -182,6 +188,46 @@ namespace Shop3.Application.Implementation
             role.Description = roleVm.Description;
             role.Name = roleVm.Name;
             await _roleManager.UpdateAsync(role);
+        }
+
+        public async Task<bool> CheckRoleByUser(string userId)
+        {
+            var flag = false;
+            var user = await _userManager.FindByIdAsync(userId);
+            var role = await _userManager.GetRolesAsync(user);
+            if (role.Count > 0)
+            {
+                flag = true;
+            }
+
+            return flag;
+        }
+
+        
+
+        public async Task<bool> CheckAccount(string emailorusername)
+        {
+            var checkmail =  TextHelper.EmailIsValid(emailorusername);
+            var flag = false;
+            if (checkmail)
+            {
+                var user = await _userManager.FindByEmailAsync(emailorusername);
+                if (user != null && user.Status == Status.Active)
+                {
+                    flag = true;
+                }
+                
+            }
+            else
+            {
+                var user = await _userManager.FindByNameAsync(emailorusername);
+                if (user != null && user.Status == Status.Active)
+                {
+                    flag = true;
+                }
+            }
+            
+            return flag;
         }
     }
 }

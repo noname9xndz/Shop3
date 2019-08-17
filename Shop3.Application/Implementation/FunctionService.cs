@@ -144,17 +144,14 @@ namespace Shop3.Application.Implementation
 
             source.SortOrder = target.SortOrder;
             target.SortOrder = tempOrder;
-
-            //_functionRepository.Update(source);
-            //_functionRepository.Update(target);
-
+            
             _functionRepository.Update(source.Id,source);
             _functionRepository.Update(target.Id,target);
         }
 
         public Task<List<FunctionViewModel>> GetAllFuncByRoles(string funcFilter, string[] roles)
         {
-            var functions = _functionRepository.FindAll();
+            var functions = _functionRepository.FindAll(x=>x.Status == Status.Active);
             if (!string.IsNullOrEmpty(funcFilter))
                 functions = functions.Where(x => x.Id.Contains(funcFilter));
 
@@ -185,7 +182,6 @@ namespace Shop3.Application.Implementation
             //Update parent id for source
             var category = _functionRepository.FindById(sourceId);
             category.ParentId = targetId;
-            //_functionRepository.Update(category);
             _functionRepository.Update(category.Id,category);
 
             //Get all sibling
@@ -193,7 +189,6 @@ namespace Shop3.Application.Implementation
             foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id];
-               // _functionRepository.Update(child);
                 _functionRepository.Update(child.Id,child);
             }
         }

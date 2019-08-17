@@ -32,6 +32,7 @@ namespace Shop3.Utilities.Constants
             public const string Roles = "Roles";
             public const string UserId = "UserId";
             public const string Email = "Email";
+            public const string UserName = "UserName";
         }
         public class MailSetting
         {

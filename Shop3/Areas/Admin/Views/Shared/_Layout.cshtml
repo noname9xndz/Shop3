@@ -3,14 +3,14 @@
 @using Shop3.Extensions;
 @using Microsoft.AspNetCore.Authorization
 @using Shop3.Authorization
-@inject IAuthorizationService AuthorizationService
+@*@inject IAuthorizationService AuthorizationService
 @{
     var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
     var result2 = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
     var result3 = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
 }
 @if (result.Succeeded || result2.Succeeded || result3.Succeeded)
-{
+{*@
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -179,7 +179,7 @@
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"></script>
-        <script src="~/lib/jquery-validation/dist/localization/messages_vi.js"></script>
+        @*<script src="~/lib/jquery-validation/dist/localization/messages_vi.js"></script>*@
     <script src="~/lib/ckeditor/ckeditor.js"></script>
     <!-- Switchery -->
     <script src="~/lib/switchery/dist/switchery.min.js"></script>
@@ -224,4 +224,4 @@
         @RenderSection("Scripts", required: false)  @*trang con có áp dụng thì áp dùng không thì thôi*@
     </body>
 </html>
-}
+@*}*@

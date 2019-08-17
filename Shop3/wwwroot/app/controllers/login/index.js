@@ -61,7 +61,7 @@ var loginController = function () {
                     ;
                 }
                 else {
-                    common.notify('Đăng nhập không thành công', 'error');
+                    common.notify(res.Message, 'error');
                 }
             }
         })

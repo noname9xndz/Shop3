@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Shop3.Application.ViewModels.Custom;
 using Shop3.Data.EF;
+using Shop3.Utilities.Helpers;
 
 namespace Shop3.Application.Implementation
 {
@@ -43,41 +44,29 @@ namespace Shop3.Application.Implementation
                 Email = userVm.Email,
                 FullName = userVm.FullName,
                 DateCreated = DateTime.Now,
-                PhoneNumber = userVm.PhoneNumber
+                PhoneNumber = userVm.PhoneNumber,
+                Status = userVm.Status
             };
-
-            //var mailUser = await _userManager.FindByEmailAsync(user.Email);
-            //var phoneUser = await _userManager.Users.Where(x => x.PhoneNumber == userVm.PhoneNumber).AnyAsync();
-            //if ( mailUser == null && phoneUser == false)
-            //{
+            
             var result = await _userManager.CreateAsync(user, userVm.Password);
-            if (result.Succeeded && userVm.Roles.Count > 0)
+           // if (result.Succeeded && userVm.Roles.Count > 0)
+            if (result.Succeeded)
             {
                 var appUser = await _userManager.FindByNameAsync(user.UserName);
 
-                if (appUser != null)
+                if (appUser != null && userVm.Roles.Count > 0)
                 {
                     await _userManager.AddToRolesAsync(appUser, userVm.Roles);
-                    return true;
+                    
                 }
-                else
-                {
-                    return false;
-                }
+                return true;
 
             }
             else
             {
                 return false;
             }
-
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-
-
+            
         }
 
         public async Task DeleteAsync(string id)
@@ -245,6 +234,30 @@ namespace Shop3.Application.Implementation
             var model = await _userManager.FindByIdAsync(userVm.Id.ToString());
             var user = await _userManager.AddPasswordAsync(model, userVm.Password);
             return userVm;
+        }
+
+        public async Task<bool> FindUserByEmailOrUserName(string userOrName)
+        {
+            var checkmail = TextHelper.EmailIsValid(userOrName);
+            var flag = false;
+            if (checkmail)
+            {
+                var user = await _userManager.FindByEmailAsync(userOrName);
+                if (user != null)
+                {
+                    flag = true;
+                }
+            }
+            else
+            {
+                var user = await _userManager.FindByNameAsync(userOrName);
+                if (user != null)
+                {
+                    flag = true;
+                }
+            }
+
+            return flag;
         }
     }
 }

@@ -11,6 +11,8 @@ using Shop3.Services;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Shop3.Application.Interfaces;
+using Shop3.Utilities.Dtos;
 
 namespace Shop3.Controllers
 {
@@ -20,19 +22,25 @@ namespace Shop3.Controllers
         //https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-2.2
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IRoleService _roleService;
+        private readonly IUserService _userService;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
-            IEmailSender emailSender,
+            IRoleService roleService,
+        IEmailSender emailSender,
+            IUserService userService,
             ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _roleService = roleService;
+            _userService = userService;
         }
 
         [TempData]
@@ -60,11 +68,29 @@ namespace Shop3.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                
+                var checkPermistion = await _roleService.CheckAccount( model.Email);
+                var checkUser = await _userService.FindUserByEmailOrUserName(model.Email);
+
+                if (checkUser == false)
+                {
+                    ModelState.AddModelError(string.Empty, "User does not exist");
+                    return View(model);
+                }
+
+                if (checkPermistion == false)
+                {
+                    _logger.LogWarning("User account locked out.");
+                    return RedirectToAction(nameof(Lockout));
+                }
+                
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {// khi login thành công => tạo ra 1 cookie trên client được mã hóa
+                {   // khi login thành công => tạo ra 1 cookie trên client được mã hóa
+                    
+
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -228,8 +254,8 @@ namespace Shop3.Controllers
             }
             else
             {
-                // EN : MM/dd/yyy VI : dd/MM/yyyy
-                //create 1 user
+                
+                //create  user
                 var user = new AppUser
                 {
                     UserName = model.Email,
@@ -237,8 +263,7 @@ namespace Shop3.Controllers
                     FullName = model.FullName,
                     PhoneNumber = model.PhoneNumber,
                     BirthDay = model.BirthDay,
-                    //BirthDay= DateTime.Parse(model.BirthDay),
-                    //public string Adress { get; set; } todo
+                    Address = model.Address,
                     Status = Status.Active,
                     Avatar = string.Empty
 
