@@ -108,20 +108,21 @@ namespace Shop3
             });
 
             //nuget : automapper ,AutoMapper.Extensions.Microsoft.DependencyInjection
-            Mapper.Initialize(cfg =>
-            {
-                cfg.AddProfile(new DomainToViewModelMappingProfile());
-                cfg.AddProfile(new ViewModelToDomainMappingProfile());
-            });
-
-
-            //var mappingConfig = new MapperConfiguration(mc =>
+            //Mapper.Initialize(cfg =>
             //{
-            //    mc.AddProfile(new MappingProfile());
+            //    cfg.AddProfile(new DomainToViewModelMappingProfile());
+            //    cfg.AddProfile(new ViewModelToDomainMappingProfile());
             //});
 
-            //IMapper mapper = mappingConfig.CreateMapper();
-            //services.AddSingleton(mapper);
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new DomainToViewModelMappingProfile());
+                mc.AddProfile(new ViewModelToDomainMappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             #endregion config cho  auto mapper ,captcha
 
@@ -157,10 +158,10 @@ namespace Shop3
             //services.AddSingleton(Mapper.Configuration); // nuget : automapper
             // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
-            services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
-            services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
-            services.AddTransient<IFileService, FileService>();
-            services.AddTransient<IExcelService, ExcelService>();
+            //services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
+            //services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
+            //services.AddTransient<IFileService, FileService>();
+            //services.AddTransient<IExcelService, ExcelService>();
 
             //services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
 

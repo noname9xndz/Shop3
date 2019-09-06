@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Shop3.Application.Shared;
 
 namespace Shop3.Controllers
 {

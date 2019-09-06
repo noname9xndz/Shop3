@@ -1,5 +1,6 @@
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Shop3.Application.Shared;
 
 namespace Shop3.Services
 {

@@ -4,9 +4,9 @@ using System.IO;
 
 namespace Shop3.Services
 {
-    public interface IExcelService
-    {
-        void WriteExcel(FileInfo file, List<ProductViewModel> products);
-    }
+    //public interface IExcelService
+    //{
+    //    void WriteExcel(FileInfo file, List<ProductViewModel> products);
+    //}
 }
 

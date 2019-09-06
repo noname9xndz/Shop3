@@ -14,53 +14,53 @@ namespace Shop3.Services
 {
     // tạo ra 1 chuỗi html từ ViewName và model tương tự như Mustache truyền vào 1 template html và data => tạo ra view
     // sử dụng cơ chế render của asp.net mvc để binding dữ liệu
-    public class ViewRenderService : IViewRenderService
-    {
-        private readonly IRazorViewEngine _razorViewEngine;
-        private readonly IServiceProvider _serviceProvider;
-        private readonly ITempDataProvider _tempDataProvider;
+    //public class ViewRenderService : IViewRenderService
+    //{
+    //    private readonly IRazorViewEngine _razorViewEngine;
+    //    private readonly IServiceProvider _serviceProvider;
+    //    private readonly ITempDataProvider _tempDataProvider;
 
-        public ViewRenderService(IRazorViewEngine razorViewEngine,
-            ITempDataProvider tempDataProvider,
-            IServiceProvider serviceProvider)
-        {
-            _razorViewEngine = razorViewEngine;
-            _tempDataProvider = tempDataProvider;
-            _serviceProvider = serviceProvider;
-        }
+    //    public ViewRenderService(IRazorViewEngine razorViewEngine,
+    //        ITempDataProvider tempDataProvider,
+    //        IServiceProvider serviceProvider)
+    //    {
+    //        _razorViewEngine = razorViewEngine;
+    //        _tempDataProvider = tempDataProvider;
+    //        _serviceProvider = serviceProvider;
+    //    }
 
-        public async Task<string> RenderToStringAsync(string viewName, object model)
-        {
-            var httpContext = new DefaultHttpContext { RequestServices = _serviceProvider };
-            var actionContext = new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
+    //    public async Task<string> RenderToStringAsync(string viewName, object model)
+    //    {
+    //        var httpContext = new DefaultHttpContext { RequestServices = _serviceProvider };
+    //        var actionContext = new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
 
-            using (var sw = new StringWriter())
-            {
+    //        using (var sw = new StringWriter())
+    //        {
 
-                var viewResult = _razorViewEngine.FindView(actionContext, viewName, false);
+    //            var viewResult = _razorViewEngine.FindView(actionContext, viewName, false);
 
-                if (viewResult.View == null)
-                    throw new ArgumentNullException($"{viewName} does not match any available view");
+    //            if (viewResult.View == null)
+    //                throw new ArgumentNullException($"{viewName} does not match any available view");
 
-                var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(),
-                    new ModelStateDictionary())
-                {
-                    Model = model
-                };
+    //            var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(),
+    //                new ModelStateDictionary())
+    //            {
+    //                Model = model
+    //            };
 
-                var viewContext = new ViewContext(
-                    actionContext,
-                    viewResult.View,
-                    viewDictionary,
-                    new TempDataDictionary(actionContext.HttpContext, _tempDataProvider),
-                    sw,
-                    new HtmlHelperOptions()
-                );
+    //            var viewContext = new ViewContext(
+    //                actionContext,
+    //                viewResult.View,
+    //                viewDictionary,
+    //                new TempDataDictionary(actionContext.HttpContext, _tempDataProvider),
+    //                sw,
+    //                new HtmlHelperOptions()
+    //            );
 
-                await viewResult.View.RenderAsync(viewContext);
-                return sw.ToString();
-            }
-        }
-    }
+    //            await viewResult.View.RenderAsync(viewContext);
+    //            return sw.ToString();
+    //        }
+    //    }
+    //}
 }
 

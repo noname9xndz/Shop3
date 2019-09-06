@@ -753,6 +753,7 @@
 
   <ItemGroup>
     <Folder Include="Resources\Views\Home\" />
+    <Folder Include="wwwroot\uploaded\images\20190907\" />
   </ItemGroup>
 
 

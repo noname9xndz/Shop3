@@ -4,6 +4,7 @@ using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Services;
 using System.Threading.Tasks;
+using Shop3.Application.Shared;
 
 namespace Shop3.Areas.Admin.Controllers
 {

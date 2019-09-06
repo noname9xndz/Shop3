@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
+using Shop3.Application.Shared;
 
 namespace Shop3.Areas.Admin.Controllers
 {

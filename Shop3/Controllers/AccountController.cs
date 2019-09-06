@@ -12,6 +12,7 @@ using Shop3.Services;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Shop3.Application.Shared;
 
 namespace Shop3.Controllers
 {

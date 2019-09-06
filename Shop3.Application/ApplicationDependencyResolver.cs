@@ -2,6 +2,7 @@
 using System.ComponentModel.Composition;
 using Shop3.Application.Implementation;
 using Shop3.Application.Interfaces;
+using Shop3.Application.Shared;
 
 namespace Shop3.Application
 {
@@ -24,6 +25,12 @@ namespace Shop3.Application
             dependencyRegister.AddTransient<IAnnouncementService, AnnouncementService>();
             dependencyRegister.AddTransient<IPageDefaultService, PageDefaultService>();
             dependencyRegister.AddTransient<ISlideService, SlideService>();
+
+            dependencyRegister.AddTransient<IEmailSender, EmailSender>(); 
+            dependencyRegister.AddTransient<IViewRenderService, ViewRenderService>();
+            dependencyRegister.AddTransient<IFileService, FileService>();
+            dependencyRegister.AddTransient<IExcelService, ExcelService>();
+
         }
     }
 }
