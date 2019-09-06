@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Shop3.Data.EF\Shop3.Data.EF.csproj" />
     <ProjectReference Include="..\Shop3.Data\Shop3.Data.csproj" />
+    <ProjectReference Include="..\Shop3.DependencyResolver\Shop3.DependencyResolver.csproj" />
     <ProjectReference Include="..\Shp3.Utilities\Shop3.Utilities.csproj" />
   </ItemGroup>
 
