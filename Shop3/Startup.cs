@@ -21,6 +21,7 @@ using Shop3.Application.Interfaces;
 using Shop3.Authorization;
 using Shop3.Data.EF;
 using Shop3.Data.Entities;
+using Shop3.DependencyResolver;
 using Shop3.Extensions;
 using Shop3.Helpers;
 using Shop3.Infrastructure.Interfaces;
@@ -113,6 +114,15 @@ namespace Shop3
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
 
+
+            //var mappingConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new MappingProfile());
+            //});
+
+            //IMapper mapper = mappingConfig.CreateMapper();
+            //services.AddSingleton(mapper);
+
             #endregion config cho  auto mapper ,captcha
 
             #region Add application services
@@ -157,6 +167,9 @@ namespace Shop3
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
 
             //services.AddTransient<IFunctionRepository, FunctionRepository>(); register Repository nếu dùng
+
+            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceOne:Dll"]);
+            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceTwo:Dll"]);
 
             //Register Serrvices
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
