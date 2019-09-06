@@ -1,7 +1,4 @@
 ﻿using Shop3.Utilities.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Shop3.UtilitiesTest.Helpers
@@ -15,7 +12,7 @@ namespace Shop3.UtilitiesTest.Helpers
         public void ToUnsignString_UpperCaseInput_LowerCaseOutput(string input)
         {
             var result = TextHelper.ToUnsignString(input);
-            Assert.Equal("noname-9x-3-2-1",result);
+            Assert.Equal("noname-9x-3-2-1", result);
         }
 
         [Fact]

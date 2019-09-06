@@ -1,8 +1,7 @@
 ﻿using Shop3.DependencyResolver;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Text;
+using Shop3.Application.Implementation;
+using Shop3.Application.Interfaces;
 
 namespace Shop3.Application
 {
@@ -11,22 +10,20 @@ namespace Shop3.Application
     {
         public void SetUp(IDependencyRegister dependencyRegister)
         {
-            //dependencyRegister.AddScoped<IDummyService1, DummyService1>();
-            //services.AddTransient<IProductCategoryService, ProductCategoryService>();
-            //services.AddTransient<IFunctionService, FunctionService>();
-            //services.AddTransient<IProductService, ProductService>();
-            //services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IRoleService, RoleService>();
-            //services.AddTransient<IBillService, BillService>();
-            //services.AddTransient<ICommonService, CommonService>();
-            //services.AddTransient<IBlogService, BlogService>();
-            //services.AddTransient<IContactService, ContactService>();
-            //services.AddTransient<IFeedbackService, FeedbackService>();
-            //services.AddTransient<IPageService, PageService>();
-            //services.AddTransient<IReportService, ReportService>();
-            //services.AddTransient<IAnnouncementService, AnnouncementService>();
-            //services.AddTransient<IPageDefaultService, PageDefaultService>();
-            //services.AddTransient<ISlideService, SlideService>();
+            dependencyRegister.AddTransient<IProductCategoryService, ProductCategoryService>();
+            dependencyRegister.AddTransient<IFunctionService, FunctionService>();
+            dependencyRegister.AddTransient<IProductService, ProductService>();
+            dependencyRegister.AddTransient<IUserService, UserService>();
+            dependencyRegister.AddTransient<IRoleService, RoleService>();
+            dependencyRegister.AddTransient<IBillService, BillService>();
+            dependencyRegister.AddTransient<ICommonService, CommonService>();
+            dependencyRegister.AddTransient<IBlogService, BlogService>();
+            dependencyRegister.AddTransient<IContactService, ContactService>();
+            dependencyRegister.AddTransient<IFeedbackService, FeedbackService>();
+            dependencyRegister.AddTransient<IPageService, PageService>();
+            dependencyRegister.AddTransient<IAnnouncementService, AnnouncementService>();
+            dependencyRegister.AddTransient<IPageDefaultService, PageDefaultService>();
+            dependencyRegister.AddTransient<ISlideService, SlideService>();
         }
     }
 }

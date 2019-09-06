@@ -1,9 +1,7 @@
 ﻿using Shop3.Infrastructure.SharedKernel;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Data.Entities
 {
@@ -30,7 +28,7 @@ namespace Shop3.Data.Entities
         [Required]
         public Guid RoleId { get; set; }
 
-       // [StringLength(128)] 
+        // [StringLength(128)] 
         [Required]
         public string FunctionId { get; set; }
         [ForeignKey("FunctionId")]
@@ -47,6 +45,6 @@ namespace Shop3.Data.Entities
         [ForeignKey("RoleId")]
         public virtual AppRole AppRole { get; set; }
 
-        
+
     }
 }

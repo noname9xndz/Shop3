@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
+using Shop3.Utilities.Constants;
 using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using Shop3.Utilities.Constants;
 
 namespace Shop3.Application.Implementation
 {
@@ -52,7 +50,7 @@ namespace Shop3.Application.Implementation
             {
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
-                billVm.OrderTotal  = ( billVm.OrderTotal + (detail.Price * detail.Quantity) );
+                billVm.OrderTotal = (billVm.OrderTotal + (detail.Price * detail.Quantity));
             }
 
             order.OrderTotal = billVm.OrderTotal;
@@ -62,7 +60,7 @@ namespace Shop3.Application.Implementation
 
         public void Update(BillViewModel billVm)
         {
-            
+
             //Mapping to order domain
             var order = _mapper.Map<BillViewModel, Bill>(billVm);
 
@@ -86,7 +84,7 @@ namespace Shop3.Application.Implementation
                 var product = _productRepository.FindById(detail.ProductId);
                 detail.Price = product.Price;
                 billVm.OrderTotal = (billVm.OrderTotal + (detail.Price * detail.Quantity));
-                _orderDetailRepository.Update(detail.Id,detail);
+                _orderDetailRepository.Update(detail.Id, detail);
             }
 
             foreach (var detail in addedDetails)
@@ -98,9 +96,9 @@ namespace Shop3.Application.Implementation
                 //_orderDetailRepository.Update(detail.Id,detail);
             }
             // xóa bill không tồn tại trừ bill được update
-           // _orderDetailRepository.RemoveMultiple(existedDetails.Except(updatedDetails).ToList()); 
+            // _orderDetailRepository.RemoveMultiple(existedDetails.Except(updatedDetails).ToList()); 
 
-             order.OrderTotal = billVm.OrderTotal;
+            order.OrderTotal = billVm.OrderTotal;
             if (updatedDetails.Count > 0 && addedDetails.Count > 0)
             {
                 order.BillDetails = updatedDetails;
@@ -115,9 +113,9 @@ namespace Shop3.Application.Implementation
                 order.BillDetails = updatedDetails;
 
             }
-            
+
             var orderTotal = billVm.OrderTotal;
-            _orderRepository.Update(order.Id,order);
+            _orderRepository.Update(order.Id, order);
         }
 
         public void UpdateStatus(int billId, BillStatus status)
@@ -125,13 +123,13 @@ namespace Shop3.Application.Implementation
             var order = _orderRepository.FindById(billId);
             order.BillStatus = status;
             //_orderRepository.Update(order);
-            _orderRepository.Update(order.Id,order);
+            _orderRepository.Update(order.Id, order);
         }
-       
+
         public List<SizeViewModel> GetSizes()
         {
-            var  data =  _sizeRepository.FindAll();
-           return _mapper.ProjectTo<SizeViewModel>(data).ToList();
+            var data = _sizeRepository.FindAll();
+            return _mapper.ProjectTo<SizeViewModel>(data).ToList();
         }
 
         public void Save()
@@ -161,7 +159,7 @@ namespace Shop3.Application.Implementation
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize);
-            
+
             return new PagedResult<BillViewModel>()
             {
                 CurrentPage = pageIndex,
@@ -182,7 +180,7 @@ namespace Shop3.Application.Implementation
 
         public List<BillDetailViewModel> GetBillDetails(int billId)
         {
-            var  data = _orderDetailRepository
+            var data = _orderDetailRepository
                 .FindAll(x => x.BillId == billId, c => c.Bill, c => c.Color, c => c.Size, c => c.Product);
             return _mapper.ProjectTo<BillDetailViewModel>(data).ToList();
 
@@ -219,25 +217,25 @@ namespace Shop3.Application.Implementation
 
         public PagedResult<BillDetailViewModel> GetAllPagingByCustomerId(Guid id, int page, int pageSize)
         {
-        
-             var query = from bd in _orderDetailRepository.FindAll()
-                    join b in _orderRepository.FindAll()
-                    on bd.BillId equals b.Id
-                    where b.CustomerId == id
-                    orderby b.DateCreated descending
-                    select bd;
-       
+
+            var query = from bd in _orderDetailRepository.FindAll()
+                        join b in _orderRepository.FindAll()
+                        on bd.BillId equals b.Id
+                        where b.CustomerId == id
+                        orderby b.DateCreated descending
+                        select bd;
+
             var totalRow = query.Count();
             var data = query.Skip((page - 1) * pageSize).Take(pageSize);
 
-          return new PagedResult<BillDetailViewModel>()
-           {
-            CurrentPage = page,
-            PageSize = pageSize,
-            Results = _mapper.ProjectTo<BillDetailViewModel>(data).ToList(),
-            RowCount = totalRow
-           };
-         
+            return new PagedResult<BillDetailViewModel>()
+            {
+                CurrentPage = page,
+                PageSize = pageSize,
+                Results = _mapper.ProjectTo<BillDetailViewModel>(data).ToList(),
+                RowCount = totalRow
+            };
+
         }
 
         public PagedResult<BillViewModel> GetBillByIdAndUserId(string keyword, Guid id, int page, int pageSize)
@@ -282,15 +280,15 @@ namespace Shop3.Application.Implementation
 
         public BillViewModel GetDetailByUser(int billId, Guid id)
         {
-                var bill = _orderRepository.FindSingle(x => x.Id == billId &&  x.CustomerId == id);
-                var billVm = _mapper.Map<Bill, BillViewModel>(bill);
-                var billDetailVm = _mapper.ProjectTo<BillDetailViewModel>(_orderDetailRepository.FindAll(x => x.BillId == billId)).ToList();
-                billVm.BillDetails = billDetailVm;
-                return billVm;
-           
+            var bill = _orderRepository.FindSingle(x => x.Id == billId && x.CustomerId == id);
+            var billVm = _mapper.Map<Bill, BillViewModel>(bill);
+            var billDetailVm = _mapper.ProjectTo<BillDetailViewModel>(_orderDetailRepository.FindAll(x => x.BillId == billId)).ToList();
+            billVm.BillDetails = billDetailVm;
+            return billVm;
+
         }
 
-       
+
 
         public void ReOderByUser(int billId, Guid id, string message)
         {
@@ -299,15 +297,15 @@ namespace Shop3.Application.Implementation
             bill.BillStatus = BillStatus.WattingConfirm;
             bill.Status = Status.InActive;
             var billVm = _mapper.Map<Bill, BillViewModel>(bill);
-            _orderRepository.Update(billVm.Id, _mapper.Map<BillViewModel, Bill>(billVm));;
+            _orderRepository.Update(billVm.Id, _mapper.Map<BillViewModel, Bill>(billVm)); ;
         }
 
         public bool CheckStatusBillWithUser(int billId, Guid id)
         {
             bool check = false;
-            if (_orderRepository.FindAll(x => x.CustomerId == id 
+            if (_orderRepository.FindAll(x => x.CustomerId == id
                                               && x.Id == billId
-                                              && x.BillStatus == BillStatus.New 
+                                              && x.BillStatus == BillStatus.New
                                               ).Count() > 0)
             {
                 check = true;

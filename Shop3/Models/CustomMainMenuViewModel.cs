@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Shop3.Application.ViewModels.Blogs;
+﻿using Shop3.Application.ViewModels.Blogs;
 using Shop3.Application.ViewModels.Products;
+using System.Collections.Generic;
 
 namespace Shop3.Models
 {

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Shop3.Utilities.Dtos;
+﻿using Shop3.Utilities.Dtos;
+using System;
 using Xunit;
 
 namespace Shop3.UtilitiesTest.Dtos

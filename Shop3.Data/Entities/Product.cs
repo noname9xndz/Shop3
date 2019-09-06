@@ -6,12 +6,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Data.Entities
 {
     [Table("Products")] // tên bản khi render ra
-    public class Product : DomainEntity<int>, IHasSeoMetaData, ISwitchable, IDateTracking 
+    public class Product : DomainEntity<int>, IHasSeoMetaData, ISwitchable, IDateTracking
     {
         // khởi tạo contructor tránh trường hợp null
         public Product()
@@ -82,7 +81,7 @@ namespace Shop3.Data.Entities
         [Required]
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")] // liên kế khóa ngoại 
-        public virtual ProductCategory ProductCategory { set; get; } 
+        public virtual ProductCategory ProductCategory { set; get; }
         // vitural là 1 thuộc tính ảo giúp lazyloading khi load bảng con có thể trỏ đến bảng có quan hệ với bảng chính  (cha)
 
         [StringLength(255)]
@@ -115,12 +114,12 @@ namespace Shop3.Data.Entities
 
         [StringLength(255)]
         public string Unit { get; set; }
-        
+
 
 
         public string SeoPageTitle { set; get; }
 
-       
+
         [StringLength(255)] // chỉ ra kiểu dữ liệu thuộc tính mặc định là nvarchar(Max)
         public string SeoAlias { set; get; }
 

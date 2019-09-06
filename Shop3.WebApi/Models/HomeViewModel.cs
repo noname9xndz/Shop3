@@ -1,10 +1,7 @@
 ﻿using Shop3.Application.ViewModels.Blogs;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Application.ViewModels.Products;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop3.Models
 {
@@ -16,7 +13,7 @@ namespace Shop3.Models
         public List<ProductViewModel> TopSellProducts { get; set; }
         public List<ProductViewModel> NewProducts { get; set; }
         public List<ProductViewModel> SpecialOfferProducts { get; set; }
-        
+
 
         public List<ProductCategoryViewModel> HomeCategories { set; get; }
 

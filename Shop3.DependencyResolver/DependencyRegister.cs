@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Shop3.DependencyResolver
 {
@@ -28,6 +26,11 @@ namespace Shop3.DependencyResolver
         {
             serviceCollection.AddScoped<TImplementation>()
                 .AddScoped<TService, TImplementation>(s => s.GetService<TImplementation>());
+        }
+
+        public void AddTransientWithType(Type serviceType, Type implementationType)
+        {
+            serviceCollection.AddTransient(serviceType, implementationType);
         }
 
         void IDependencyRegister.AddSingleton<TService>()

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Shop3.Utilities.Constants;
+using System;
 using System.Linq;
 using System.Security.Claims;
-using Shop3.Utilities.Constants;
 
 namespace Shop3.Extensions
 {

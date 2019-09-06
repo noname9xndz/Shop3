@@ -13,7 +13,7 @@ namespace Shop3.Areas.Admin.Components
 {
     // https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-2.2
 
-   // [ViewComponent(Name ="SideBar")]
+    // [ViewComponent(Name ="SideBar")]
     public class SideBarViewComponent : ViewComponent
     {
         private IFunctionService _functionService;
@@ -35,6 +35,7 @@ namespace Shop3.Areas.Admin.Components
             {
                 var rolesArr = roles.Split(";");
                 functions = await _functionService.GetAllFuncByRoles(string.Empty, rolesArr);
+                // functions = await _functionService.GetAll(string.Empty);
             }
             return View(functions);
         }

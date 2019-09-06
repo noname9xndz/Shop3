@@ -1,19 +1,16 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
-using Shop3.Data.IRepositories;
 using Shop3.Infrastructure.Interfaces;
-using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace Shop3.Application.Implementation
 {
@@ -52,7 +49,7 @@ namespace Shop3.Application.Implementation
         private IRepository<Permission, int> _permissionRepository;
         private RoleManager<AppRole> _roleManager;
 
-        public FunctionService(IMapper mapper,IRepository<Function, string> functionRepository,
+        public FunctionService(IMapper mapper, IRepository<Function, string> functionRepository,
                         IUnitOfWork unitOfWork, IRepository<Permission, int> permissionRepository,
                         RoleManager<AppRole> roleManager)
         {
@@ -71,7 +68,7 @@ namespace Shop3.Application.Implementation
         public void Add(FunctionViewModel functionVm)
         {
             var function = _mapper.Map<Function>(functionVm);
-            
+
             _functionRepository.Add(function);
         }
 
@@ -94,7 +91,7 @@ namespace Shop3.Application.Implementation
             if (!string.IsNullOrEmpty(filter))
                 query = query.Where(x => x.Name.Contains(filter));
 
-            return _mapper.ProjectTo <FunctionViewModel>(query.OrderBy(x => x.ParentId)).ToListAsync();
+            return _mapper.ProjectTo<FunctionViewModel>(query.OrderBy(x => x.ParentId)).ToListAsync();
         }
 
         //public PagedResult<FunctionViewModel> GetAll2(string filter,int pageIndex, int pageSize)
@@ -144,14 +141,14 @@ namespace Shop3.Application.Implementation
 
             source.SortOrder = target.SortOrder;
             target.SortOrder = tempOrder;
-            
-            _functionRepository.Update(source.Id,source);
-            _functionRepository.Update(target.Id,target);
+
+            _functionRepository.Update(source.Id, source);
+            _functionRepository.Update(target.Id, target);
         }
 
         public Task<List<FunctionViewModel>> GetAllFuncByRoles(string funcFilter, string[] roles)
         {
-            var functions = _functionRepository.FindAll(x=>x.Status == Status.Active);
+            var functions = _functionRepository.FindAll(x => x.Status == Status.Active);
             if (!string.IsNullOrEmpty(funcFilter))
                 functions = functions.Where(x => x.Id.Contains(funcFilter));
 
@@ -159,19 +156,19 @@ namespace Shop3.Application.Implementation
             var permissions = _permissionRepository.FindAll();
 
             var query = from f in functions
-                join p in permissions on f.Id equals p.FunctionId
-                join r in _roleManager.Roles on p.RoleId equals r.Id
-                where roles.Contains(r.Name)
-                      && ((p.CanCreate)
-                          || (p.CanUpdate)
-                          || (p.CanDelete)
-                          || (p.CanRead))
-                select f;
+                        join p in permissions on f.Id equals p.FunctionId
+                        join r in _roleManager.Roles on p.RoleId equals r.Id
+                        where roles.Contains(r.Name)
+                              && ((p.CanCreate)
+                                  || (p.CanUpdate)
+                                  || (p.CanDelete)
+                                  || (p.CanRead))
+                        select f;
 
             var rs = from f in functions
-                from q in query
-                where f.Id == q.Id || q.ParentId == f.Id
-                select f;
+                     from q in query
+                     where f.Id == q.Id || q.ParentId == f.Id
+                     select f;
             rs = rs.Distinct();
 
             return rs.OrderBy(x => x.ParentId).ProjectTo<FunctionViewModel>().ToListAsync();
@@ -182,14 +179,14 @@ namespace Shop3.Application.Implementation
             //Update parent id for source
             var category = _functionRepository.FindById(sourceId);
             category.ParentId = targetId;
-            _functionRepository.Update(category.Id,category);
+            _functionRepository.Update(category.Id, category);
 
             //Get all sibling
             var sibling = _functionRepository.FindAll(x => items.ContainsKey(x.Id));
             foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id];
-                _functionRepository.Update(child.Id,child);
+                _functionRepository.Update(child.Id, child);
             }
         }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.SignalR;
@@ -12,6 +8,10 @@ using Shop3.Authorization;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
 using Shop3.SignalR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -22,7 +22,7 @@ namespace Shop3.Areas.Admin.Controllers
         private readonly IAuthorizationService _authorizationService;
         private readonly IHubContext<Shop3Hub> _hubContext; // SignalR
 
-        public UserController(IUserService userService,IAuthorizationService authorizationService, IHubContext<Shop3Hub> hubContext)
+        public UserController(IUserService userService, IAuthorizationService authorizationService, IHubContext<Shop3Hub> hubContext)
         {
             _userService = userService;
             _authorizationService = authorizationService;
@@ -70,7 +70,7 @@ namespace Shop3.Areas.Admin.Controllers
             }
             if (userVm.Id == null)
             {
-                
+
                 var check = await _userService.AddAsync(userVm);
                 if (check == true)
                 {

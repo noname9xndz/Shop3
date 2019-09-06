@@ -93,18 +93,26 @@
             <td>{{{DateCreated}}}</td>
             <td>{{{Status}}}</td>
             <td>
-                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
-                {
-                    <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
-                }
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+            {
+                <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+            }
+        </td>
+        <td>
+            @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+            {
+                <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
+
+            }
+        </td>
+            @*<td>   <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+               
             </td>
             <td>
-                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
-                {
                     <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
 
-                }
-            </td>
+                
+            </td>*@
         </tr>
     </script>
 </div>

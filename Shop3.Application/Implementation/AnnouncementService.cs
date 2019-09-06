@@ -1,13 +1,12 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
 using Shop3.Data.Entities;
+using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Utilities.Dtos;
 using System;
 using System.Linq;
-using Shop3.Data.Enums;
-using AutoMapper;
 
 namespace Shop3.Application.Implementation
 {
@@ -38,21 +37,21 @@ namespace Shop3.Application.Implementation
                         where last.UserId == userId
                         select new AnnouncementViewModel
                         {
-                           Id = first.Id,
-                           Title = first.Title,
-                           DateCreated = first.DateCreated,
-                           UserId = first.UserId,
-                           Content = first.Content,
-                           FullName = first.AppUser.FullName,
-                           //first.AnnouncementUsers,
-                           Status = first.Status
+                            Id = first.Id,
+                            Title = first.Title,
+                            DateCreated = first.DateCreated,
+                            UserId = first.UserId,
+                            Content = first.Content,
+                            FullName = first.AppUser.FullName,
+                            //first.AnnouncementUsers,
+                            Status = first.Status
                         };
-            
+
             int totalRow = query.Count();
 
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
-            
+
             var paginationSet = new PagedResult<AnnouncementViewModel>
             {
                 Results = data,
@@ -143,7 +142,7 @@ namespace Shop3.Application.Implementation
             var announ = _announcementRepository.FindSingle(y => y.Id == id && y.UserId == userId);
             var announUser = _announcementUserRepository.FindSingle(x => x.AnnouncementId == id
                                                                          && x.UserId == userId);
-            if (announ.ToString() !=null && announUser.ToString() !=null)
+            if (announ.ToString() != null && announUser.ToString() != null)
             {
                 _announcementRepository.RemoveById(id);
                 _announcementUserRepository.Remove(announUser);
@@ -160,7 +159,7 @@ namespace Shop3.Application.Implementation
             _unitOfWork.Commit();
         }
 
-        public bool DeleteAll(Guid userId,string key)
+        public bool DeleteAll(Guid userId, string key)
         {
             bool result = false;
             if (key == "Seen")
@@ -175,7 +174,7 @@ namespace Shop3.Application.Implementation
                 }
 
             }
-            else if(key == "UnRead")
+            else if (key == "UnRead")
             {
                 var announUser = _announcementUserRepository.FindAll(x => x.UserId == userId && x.HasRead == false).ToList();
                 var announ = _announcementRepository.FindAll(x => x.UserId == userId && x.Status == Status.InActive).ToList();
@@ -187,7 +186,7 @@ namespace Shop3.Application.Implementation
                 }
                 result = true;
             }
-            else if(key == " ")
+            else if (key == " ")
             {
                 var announUser = _announcementUserRepository.FindAll(x => x.UserId == userId).ToList();
                 var announ = _announcementRepository.FindAll(x => x.UserId == userId).ToList();

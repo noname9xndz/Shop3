@@ -1,8 +1,5 @@
 ﻿using Shop3.Application.ViewModels.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using Shop3.Data.Entities;
 
 namespace Shop3.Application.Interfaces
 {
@@ -13,5 +10,5 @@ namespace Shop3.Application.Interfaces
         SystemConfigViewModel GetSystemConfig(string code);
         PageDefaultViewModel GetPageDefault(string pageDefaultId);
     }
-        
+
 }

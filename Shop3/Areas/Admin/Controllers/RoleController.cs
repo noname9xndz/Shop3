@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.SignalR;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
 using Shop3.Extensions;
 using Shop3.SignalR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -112,7 +112,7 @@ namespace Shop3.Areas.Admin.Controllers
             return new OkResult();
         }
 
-        
+
 
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Shop3.Data.Enums
 {
@@ -15,6 +12,6 @@ namespace Shop3.Data.Enums
         [Description("PayPal")] PayPal,//5
         [Description("Atm")] Atm//6
 
-       
+
     }
 }

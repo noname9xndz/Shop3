@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using Xunit;
 
 namespace Shop3.AppliactionTest.Implementation
@@ -86,7 +85,7 @@ namespace Shop3.AppliactionTest.Implementation
             var mockMapper = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
-               // cfg.AddProfile(new ViewModelToDomainMappingProfile());
+                // cfg.AddProfile(new ViewModelToDomainMappingProfile());
 
             });
             var mapper = mockMapper.CreateMapper();
@@ -192,4 +191,4 @@ namespace Shop3.AppliactionTest.Implementation
 
     }
 }
-    
+

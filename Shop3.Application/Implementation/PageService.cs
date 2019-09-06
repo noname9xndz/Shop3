@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Blogs;
 using Shop3.Data.Entities;
@@ -9,7 +8,6 @@ using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Shop3.Application.Implementation
 {
@@ -90,7 +88,7 @@ namespace Shop3.Application.Implementation
         {
             var page = _mapper.Map<PageViewModel, Page>(pageVm);
             //_pageRepository.Update(page);
-            _pageRepository.Update(page.Id,page);
+            _pageRepository.Update(page.Id, page);
         }
     }
 }

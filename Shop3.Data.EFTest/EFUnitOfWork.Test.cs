@@ -1,15 +1,13 @@
 ﻿using Shop3.Data.EF;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace Shop3.Data.EFTest
 {
-    
+
     public class EFUnitOfWorkTest
     {
         private readonly AppDbContext _context;

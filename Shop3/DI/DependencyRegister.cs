@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Shop3.Application.AutoMapper;
-using Shop3.Application.Dapper.Implementation;
-using Shop3.Application.Dapper.SqlCommands;
 using Shop3.Application.Implementation;
 using Shop3.Application.Interfaces;
 using Shop3.Authorization;
@@ -19,6 +12,7 @@ using Shop3.Data.EF;
 using Shop3.Data.Entities;
 using Shop3.Extensions;
 using Shop3.Infrastructure.Interfaces;
+using System;
 
 namespace Shop3.DI
 {
@@ -103,7 +97,7 @@ namespace Shop3.DI
             // todo: configure custom dependencies here
             container.RegisterType<ProductCategoryService>().As<IProductCategoryService>().InstancePerLifetimeScope();
             container.RegisterType<BaseResourceAuthorizationHandler>().As<IAuthorizationHandler>().InstancePerLifetimeScope();
-            
+
         }
     }
 }

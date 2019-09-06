@@ -5,7 +5,6 @@ using Shop3.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Shop3.Data.EF
@@ -52,9 +51,9 @@ namespace Shop3.Data.EF
             {
                 await _userManager.CreateAsync(new AppUser()
                 {
-                    UserName = "admin",
+                    UserName = "admin2",
                     FullName = "Administrator",
-                    Email = "admin@gmail.com",
+                    Email = "admin2@gmail.com",
                     Balance = 0,
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now,
@@ -253,13 +252,13 @@ namespace Shop3.Data.EF
                     HomeFlag = true,
                     HotFlag = true,
                     DateCreated = DateTime.Now,
-                    DateModified=DateTime.Now,
-                    Status=Status.Active,
-                    SeoPageTitle= "test seo",
-                    SeoAlias= "test-seo",
-                    SeoKeywords= "test seo",
-                    SeoDescription= "test seo",
-                   
+                    DateModified = DateTime.Now,
+                    Status = Status.Active,
+                    SeoPageTitle = "test seo",
+                    SeoAlias = "test-seo",
+                    SeoKeywords = "test seo",
+                    SeoDescription = "test seo",
+
 
                 });
             }
@@ -323,12 +322,12 @@ namespace Shop3.Data.EF
             {
                 _context.SystemConfigs.Add(
                     new SystemConfig()
-                {
-                    Id = "HomeTitle",
-                    Name = "Home's title",
-                    StringValue = "Noname Shop home",
-                    Status = Status.Active
-                });
+                    {
+                        Id = "HomeTitle",
+                        Name = "Home's title",
+                        StringValue = "Noname Shop home",
+                        Status = Status.Active
+                    });
             }
 
             if (!_context.SystemConfigs.Any(x => x.Id == "HomeMetaKeyword"))

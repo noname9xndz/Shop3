@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using Shop3.Data.Enums;
+﻿using Shop3.Data.Enums;
 using Shop3.Data.Interfaces;
 using Shop3.Infrastructure.SharedKernel;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shop3.Data.Entities
 {
     [Table("SupportOnlines")]
-    public class SupportOnline : DomainEntity<int>,IDateTracking
+    public class SupportOnline : DomainEntity<int>, IDateTracking
     {
         public SupportOnline()
         {
@@ -18,7 +16,7 @@ namespace Shop3.Data.Entities
         }
 
         public SupportOnline(string name, string skype, string faceBook, string yahoo, string pinterest, string twitter, string google
-            , string mobile, string email, string instagram, string youtube, string linkedin, string zalo, string timeOpenWindow, 
+            , string mobile, string email, string instagram, string youtube, string linkedin, string zalo, string timeOpenWindow,
             string other, Status status, DateTime dateCreated, DateTime dateModified, int displayOrder)
         {
             Name = name;
@@ -41,9 +39,9 @@ namespace Shop3.Data.Entities
             DateModified = dateModified;
             DisplayOrder = displayOrder;
         }
-        public SupportOnline(int id,string name, string skype, string faceBook, string yahoo, string pinterest, string twitter, string google
-            , string mobile, string email, string instagram,string youtube,string linkedin,string zalo,
-            string timeOpenWindow, string other, Status status, DateTime dateCreated, DateTime dateModified,int displayOrder)
+        public SupportOnline(int id, string name, string skype, string faceBook, string yahoo, string pinterest, string twitter, string google
+            , string mobile, string email, string instagram, string youtube, string linkedin, string zalo,
+            string timeOpenWindow, string other, Status status, DateTime dateCreated, DateTime dateModified, int displayOrder)
         {
             Id = id;
             Name = name;

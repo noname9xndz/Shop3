@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using Shop3.Application.Interfaces;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Models.AccountViewModels;
@@ -11,8 +12,6 @@ using Shop3.Services;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Shop3.Application.Interfaces;
-using Shop3.Utilities.Dtos;
 
 namespace Shop3.Controllers
 {
@@ -68,8 +67,8 @@ namespace Shop3.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                
-                var checkPermistion = await _roleService.CheckAccount( model.Email);
+
+                var checkPermistion = await _roleService.CheckAccount(model.Email);
                 var checkUser = await _userService.FindUserByEmailOrUserName(model.Email);
 
                 if (checkUser == false)
@@ -83,13 +82,13 @@ namespace Shop3.Controllers
                     _logger.LogWarning("User account locked out.");
                     return RedirectToAction(nameof(Lockout));
                 }
-                
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {   // khi login thành công => tạo ra 1 cookie trên client được mã hóa
-                    
+
 
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
@@ -254,7 +253,7 @@ namespace Shop3.Controllers
             }
             else
             {
-                
+
                 //create  user
                 var user = new AppUser
                 {

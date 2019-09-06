@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Shop3.Application.ViewModels.Products
 {
@@ -10,19 +9,19 @@ namespace Shop3.Application.ViewModels.Products
     {
         public int Id { get; set; }
 
-        
+
         [MaxLength(256)]
         [Required(ErrorMessage = "Name is required")]
         [Display(Name = "Name")]
         public string CustomerName { set; get; }
 
-        
+
         [MaxLength(256)]
         [Required(ErrorMessage = "Address is required")]
         [Display(Name = "Address")]
         public string CustomerAddress { set; get; }
 
-        
+
         [MaxLength(50)]
         [Display(Name = "Phone number")]
         [Required(ErrorMessage = "Phone Number Required!")]

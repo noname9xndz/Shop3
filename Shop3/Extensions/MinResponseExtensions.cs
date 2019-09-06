@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.IO.Compression;
-using System.Linq;
-using System.Threading.Tasks;
 using WebMarkupMin.AspNet.Common.Compressors;
 using WebMarkupMin.AspNetCore2;
 using WebMarkupMin.NUglify;

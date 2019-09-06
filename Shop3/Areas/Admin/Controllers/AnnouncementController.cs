@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using Shop3.Application.Interfaces;
 using Shop3.Extensions;
-using Shop3.SignalR;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -53,7 +51,7 @@ namespace Shop3.Areas.Admin.Controllers
             {
                 return new BadRequestObjectResult(ModelState);
             }
-            var result = _announcementService.Delete(User.GetUserId(),id);
+            var result = _announcementService.Delete(User.GetUserId(), id);
             return new OkObjectResult(result);
         }
         [HttpPost]

@@ -1,6 +1,5 @@
 ﻿
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Moq;
@@ -16,7 +15,6 @@ using Shop3.WebTest.Mock;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 using Xunit;
 using IEmailSender = Shop3.Services.IEmailSender;
 
@@ -38,10 +36,10 @@ namespace Shop3.WebTest.Controllers
             _configuration = new Mock<IConfiguration>();
             _emailSender = new Mock<IEmailSender>();
             _viewRenderService = new Mock<IViewRenderService>();
-           
+
         }
 
-        
+
         [Fact]
         public void Checkout_NullSession_RedirectResult()
         {
@@ -67,9 +65,9 @@ namespace Shop3.WebTest.Controllers
             mockSession[CommonConstants.CartSession] = JsonConvert.SerializeObject(data);
             mockHttpContext.Setup(s => s.Session).Returns(mockSession);
 
-            
+
             var controller = new CartController(_mockProductService.Object, _emailSender.Object, _configuration.Object,
-                _mockBillService.Object,_viewRenderService.Object);
+                _mockBillService.Object, _viewRenderService.Object);
 
             controller.ControllerContext.HttpContext = mockHttpContext.Object;
             var result = controller.Checkout();
@@ -135,10 +133,10 @@ namespace Shop3.WebTest.Controllers
             viewModel.CustomerName = "test";
             viewModel.CustomerAddress = "test";
             viewModel.CustomerMobile = "23123";
-            
+
 
             var result = controller.Checkout(viewModel);
-            
+
             var viewResult = Assert.IsType<ViewResult>(result.Result);
             Assert.Equal(true, viewResult.ViewData["Success"]);
         }

@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop3.Utilities.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Shop3.Controllers.Components
@@ -12,8 +9,8 @@ namespace Shop3.Controllers.Components
         // https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-2.2
         public async Task<IViewComponentResult> InvokeAsync(PagedResultBase result)
         {
-                return await Task.FromResult((IViewComponentResult)View("Default", result));
-           
+            return await Task.FromResult((IViewComponentResult)View("Default", result));
+
         }
     }
 }

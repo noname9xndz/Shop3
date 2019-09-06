@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Utilities.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -94,19 +92,19 @@ namespace Shop3.Areas.Admin.Controllers
             }
             else
             {
-                if (_productCategoryService.CheckParent(id)==true)
+                if (_productCategoryService.CheckParent(id) == true)
                 {
-                   // return new BadRequestResult();
+                    // return new BadRequestResult();
                     return Json(new { status = "error", message = "no delete" });
                 }
                 else
                 {
-                   
+
                     _productCategoryService.Delete(id);
                     _productCategoryService.Save();
                     return new OkObjectResult(id);
                 }
-                  
+
             }
         }
 
@@ -123,7 +121,7 @@ namespace Shop3.Areas.Admin.Controllers
             {
                 productVm.SeoAlias = TextHelper.ToUnsignString(productVm.Name); // chuyển tên => seoalias không dấu
                 if (productVm.Id == 0) // có 1 product
-                { 
+                {
                     _productCategoryService.Add(productVm);
                 }
                 else

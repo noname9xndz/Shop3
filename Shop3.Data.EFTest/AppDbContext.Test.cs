@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Shop3.Data.EF;
-using Xunit;
+﻿using Xunit;
 
 namespace Shop3.Data.EFTest
 {

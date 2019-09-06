@@ -1,12 +1,10 @@
 ﻿using Shop3.Data.EF;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Shop3.Infrastructure.Interfaces;
-using Xunit;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
+using Shop3.Infrastructure.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace Shop3.Data.EFTest
 {
@@ -111,7 +109,7 @@ namespace Shop3.Data.EFTest
             Function function1 = EFRepository.FindById("USER");
 
             function1.Name = "Test2";
-            EFRepository.Update(function1.Id,function1);
+            EFRepository.Update(function1.Id, function1);
             _unitOfWork.Commit();
 
             Function function = EFRepository.FindById("USER");

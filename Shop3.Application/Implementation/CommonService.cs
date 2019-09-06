@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Data.Entities;
+using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Utilities.Constants;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Shop3.Data.Enums;
 
 namespace Shop3.Application.Implementation
 {
@@ -44,7 +41,7 @@ namespace Shop3.Application.Implementation
         public List<SlideViewModel> GetSlides(string groupAlias)
         {
             var data = _slideRepository.FindAll(x => x.Status && x.GroupAlias == groupAlias);
-           return _mapper.ProjectTo<SlideViewModel>(data).ToList();
+            return _mapper.ProjectTo<SlideViewModel>(data).ToList();
         }
 
         public SystemConfigViewModel GetSystemConfig(string code)
@@ -54,7 +51,7 @@ namespace Shop3.Application.Implementation
 
         public PageDefaultViewModel GetPageDefault(string pageDefaultId)
         {
-            var model = _pageDefaultRepository.FindSingle(x=>x.Id == pageDefaultId && x.Status == Status.Active);
+            var model = _pageDefaultRepository.FindSingle(x => x.Id == pageDefaultId && x.Status == Status.Active);
             return _mapper.Map<PageDefault, PageDefaultViewModel>(model);
         }
     }

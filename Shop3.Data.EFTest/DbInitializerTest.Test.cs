@@ -6,8 +6,6 @@ using Moq;
 using Shop3.Data.EF;
 using Shop3.Data.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 

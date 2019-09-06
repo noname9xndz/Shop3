@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
+using Shop3.Application.ViewModels.Custom;
 using Shop3.Data.Entities;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Utilities.Dtos;
 using System.Collections.Generic;
 using System.Linq;
-using OfficeOpenXml.FormulaParsing.Utilities;
-using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Implementation
 {
@@ -49,19 +48,19 @@ namespace Shop3.Application.Implementation
 
 
         }
-       
+
 
         public PagedResult<CustomSlideViewModel> GetAllSlidesPagingByGroupAlias(string keyword, int page, int pageSize)
         {
             var slides = _slideRepository.FindAll();
 
             var query = from s in slides
-                group s by s.GroupAlias into slide
-                select new CustomSlideViewModel
-                {
-                    GroupAlias = slide.Key,
-                    TotalSlide = (slide.Count() )
-                };
+                        group s by s.GroupAlias into slide
+                        select new CustomSlideViewModel
+                        {
+                            GroupAlias = slide.Key,
+                            TotalSlide = (slide.Count())
+                        };
 
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.GroupAlias.Contains(keyword));
@@ -85,7 +84,7 @@ namespace Shop3.Application.Implementation
 
         public List<SlideViewModel> GetAllSlidesByGroupAlias(string alias)
         {
-            var slides = _slideRepository.FindAll(x=>x.GroupAlias == alias);
+            var slides = _slideRepository.FindAll(x => x.GroupAlias == alias);
             var model = _mapper.ProjectTo<SlideViewModel>(slides).ToList();
             return model;
         }

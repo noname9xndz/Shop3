@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Shop3.Utilities.Extensions
 {
@@ -20,7 +19,7 @@ namespace Shop3.Utilities.Extensions
                 while (queue.Count > 0)
                 {
                     var subType = queue.Dequeue();
-                    foreach (var subInterface in subType.GetInterfaces())   
+                    foreach (var subInterface in subType.GetInterfaces())
                     {
                         if (considered.Contains(subInterface)) continue;
                         considered.Add(subInterface);

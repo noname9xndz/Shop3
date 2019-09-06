@@ -2,9 +2,7 @@
 using Shop3.Data.Enums;
 using Shop3.Data.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Data.Entities
 {
@@ -16,7 +14,7 @@ namespace Shop3.Data.Entities
         {
 
         }
-        public AppUser(Guid id, string fullName, string userName,string email, string phoneNumber, string avatar, Status status,
+        public AppUser(Guid id, string fullName, string userName, string email, string phoneNumber, string avatar, Status status,
             string address, Gender gender)
         {
             Id = id;

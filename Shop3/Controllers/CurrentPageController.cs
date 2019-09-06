@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Interfaces;
 using Shop3.Utilities.Constants;
 
@@ -55,6 +51,6 @@ namespace Shop3.Controllers
             var model = _commonService.GetPageDefault(CommonConstants.PageDefault.DeliveryInformation);
             return View(model);
         }
-        
+
     }
 }

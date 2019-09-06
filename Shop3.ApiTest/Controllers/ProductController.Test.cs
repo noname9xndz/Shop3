@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shop3.WebApi.Controllers;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Shop3.WebTest
@@ -36,7 +36,7 @@ namespace Shop3.WebTest
         [Fact]
         public void Get_ValidRequest_OkResult()
         {
-           
+
             _mockProductCategoryService.Setup(x => x.GetAll())
                 .Returns(new List<ProductCategoryViewModel>()
             {

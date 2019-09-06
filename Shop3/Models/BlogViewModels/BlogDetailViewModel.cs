@@ -12,6 +12,6 @@ namespace Shop3.Models.BlogViewModels
         public List<BlogViewModel> HotBlogs { set; get; }
         public List<SlideViewModel> Slides { get; set; }
 
-        public List<CustomBlogTagViewModel> BlogTag{set;get; }
+        public List<CustomBlogTagViewModel> BlogTag { set; get; }
     }
 }

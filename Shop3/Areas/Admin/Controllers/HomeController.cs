@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Dapper.SqlCommands;
 using Shop3.Application.Interfaces;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -17,7 +14,7 @@ namespace Shop3.Areas.Admin.Controllers
         private readonly IReportService _reportService;
         private readonly IProductService _productService;
 
-        public HomeController(IReportService reportService,IProductService productService)
+        public HomeController(IReportService reportService, IProductService productService)
         {
             _reportService = reportService;
             _productService = productService;
@@ -37,9 +34,9 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetTopSellProduct()
         {
-            var model = _productService.GetProductsByStatusBill(5,BillStatus.Completed);
+            var model = _productService.GetProductsByStatusBill(5, BillStatus.Completed);
             return new OkObjectResult(model);
-            
+
         }
     }
 }

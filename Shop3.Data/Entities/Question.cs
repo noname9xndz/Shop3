@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Shop3.Data.Enums;
+﻿using Shop3.Data.Enums;
 using Shop3.Infrastructure.SharedKernel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shop3.Data.Entities
 {
@@ -12,7 +12,7 @@ namespace Shop3.Data.Entities
         {
 
         }
-        public Question( string title, string content, int displayOrder, Status status)
+        public Question(string title, string content, int displayOrder, Status status)
         {
             Title = title;
             Content = content;
@@ -20,7 +20,7 @@ namespace Shop3.Data.Entities
             Status = status;
         }
 
-        public Question(int id,string title,string content,int displayOrder,Status status)
+        public Question(int id, string title, string content, int displayOrder, Status status)
         {
             Id = id;
             Title = title;

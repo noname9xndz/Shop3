@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Shop3.Application.Implementation
 {
@@ -51,29 +48,29 @@ namespace Shop3.Application.Implementation
             {
                 return false;
             }
-              
+
 
         }
 
         public void Delete(int id)
         {
-           
-             _productCategoryRepository.RemoveById(id);
-            
-            
+
+            _productCategoryRepository.RemoveById(id);
+
+
         }
 
         public List<ProductCategoryViewModel> GetAll()
         {
-            var data = _productCategoryRepository.FindAll().OrderBy(x => x.ParentId); 
-            return  _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
+            var data = _productCategoryRepository.FindAll().OrderBy(x => x.ParentId);
+            return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
         }
 
         public List<ProductCategoryViewModel> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
             {
-                var data = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword)|| x.Description.Contains(keyword)).OrderBy(x => x.ParentId);
+                var data = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword)).OrderBy(x => x.ParentId);
                 return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
             }
 
@@ -82,15 +79,15 @@ namespace Shop3.Application.Implementation
                 var data = _productCategoryRepository.FindAll().OrderBy(x => x.ParentId);
                 return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
             }
-              
 
-           
+
+
 
         }
 
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
         {
-            var  data = _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId);
+            var data = _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId);
 
             return _mapper.ProjectTo<ProductCategoryViewModel>(data).ToList();
         }
@@ -116,7 +113,7 @@ namespace Shop3.Application.Implementation
             //        .Take(5)
             //        .ProjectTo<ProductViewModel>().ToList();
             //}
-           return _mapper.ProjectTo<ProductCategoryViewModel>(query).ToList(); ;
+            return _mapper.ProjectTo<ProductCategoryViewModel>(query).ToList(); ;
         }
 
         // xử lý khi các node được đổi chỗ => sắp xếp thứ tự  của các category : id nguồn ,id đích
@@ -131,9 +128,9 @@ namespace Shop3.Application.Implementation
 
             //_productCategoryRepository.Update(source);
             //_productCategoryRepository.Update(target);
-            
+
             _productCategoryRepository.Update(source.Id, source);
-            _productCategoryRepository.Update(target.Id,target);
+            _productCategoryRepository.Update(target.Id, target);
         }
 
         public void Save()
@@ -153,16 +150,16 @@ namespace Shop3.Application.Implementation
         {
             var sourceCategory = _productCategoryRepository.FindById(sourceId);
             sourceCategory.ParentId = targetId;
-           // _productCategoryRepository.Update(sourceCategory);
-            _productCategoryRepository.Update(sourceCategory.Id,sourceCategory);
+            // _productCategoryRepository.Update(sourceCategory);
+            _productCategoryRepository.Update(sourceCategory.Id, sourceCategory);
 
             //Lấy ra các phần tử ngang hàng(anh em) với những thằng được thả
             var sibling = _productCategoryRepository.FindAll(x => items.ContainsKey(x.Id));
             foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id]; // lấy từ Dictionary với key là id truyền vào
-               // _productCategoryRepository.Update(child);
-                _productCategoryRepository.Update(child.Id,child);
+                                                   // _productCategoryRepository.Update(child);
+                _productCategoryRepository.Update(child.Id, child);
             }
         }
     }

@@ -4,13 +4,12 @@ using Shop3.Infrastructure.SharedKernel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Data.Entities
 {
     [Table("ProductCategories")] // tên bản khi render ra
     // kế thừa các thuộc tính dùng chung khai báo trong Shop3.Data.Interfaces  và Shop3.Infrastructure.SharedKernel để dùng lại
-    public class ProductCategory : DomainEntity<int>, IHasSeoMetaData, ISwitchable, ISortable, IDateTracking 
+    public class ProductCategory : DomainEntity<int>, IHasSeoMetaData, ISwitchable, ISortable, IDateTracking
     {
 
         public ProductCategory()

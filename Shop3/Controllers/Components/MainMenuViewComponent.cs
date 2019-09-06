@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Shop3.Models;
+using System.Threading.Tasks;
 
 namespace Shop3.Controllers.Components
 {

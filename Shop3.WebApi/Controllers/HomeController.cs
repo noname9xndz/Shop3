@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Interfaces;
 using Shop3.Models;
+using System.Collections.Generic;
 
 namespace Shop3.WebApi.Controllers
 {
@@ -19,11 +13,11 @@ namespace Shop3.WebApi.Controllers
         private readonly IBlogService _blogService;
         private readonly ICommonService _commonService;
 
-       // private readonly IStringLocalizer<HomeController> _localizer;
-        public HomeController( IProductService productService,
+        // private readonly IStringLocalizer<HomeController> _localizer;
+        public HomeController(IProductService productService,
             IBlogService blogService, ICommonService commonService,
             IProductCategoryService productCategoryService,
-            IBillService billService) 
+            IBillService billService)
         {
             _blogService = blogService;
             _commonService = commonService;

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Shop3.Data.Enums;
+using Shop3.Infrastructure.SharedKernel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using Shop3.Data.Enums;
-using Shop3.Infrastructure.SharedKernel;
 
 namespace Shop3.Data.Entities
 {
@@ -16,7 +13,7 @@ namespace Shop3.Data.Entities
 
         }
 
-        public PageDefault(string id, string title,string content,Status status)
+        public PageDefault(string id, string title, string content, Status status)
         {
             Id = id;
             Title = title;

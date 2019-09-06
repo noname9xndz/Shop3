@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Data.Entities
 {
@@ -19,7 +18,7 @@ namespace Shop3.Data.Entities
         }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId,  string reOrderMesssage, string customerEmail, decimal orderTotal)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string reOrderMesssage, string customerEmail, decimal orderTotal)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -33,7 +32,7 @@ namespace Shop3.Data.Entities
             ReOrderMesssage = reOrderMesssage;
             OrderTotal = orderTotal;
         }
-        public Bill(int id, string customerName, string customerAddress,string customerMobile, string customerMessage,
+        public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string reOrderMesssage, string customerEmail, decimal orderTotal)
         {
             Id = id;
@@ -86,7 +85,7 @@ namespace Shop3.Data.Entities
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
 
-        
+
         public decimal OrderTotal { set; get; }
 
         [MaxLength(500)]

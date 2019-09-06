@@ -4,9 +4,7 @@ using Moq;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Controllers.Components;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -37,7 +35,7 @@ namespace Shop3.WebTest.Controllers.Components
 
             //Assert
             Assert.IsAssignableFrom<IViewComponentResult>(result);
-           
+
         }
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -24,8 +22,8 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllSlidePagingByAlias(string keyword, int page, int pageSize)
         {
-           var model =  _slideService.GetAllSlidesPagingByGroupAlias(keyword, page, pageSize);
-           return new OkObjectResult(model);
+            var model = _slideService.GetAllSlidesPagingByGroupAlias(keyword, page, pageSize);
+            return new OkObjectResult(model);
         }
         [HttpGet]
         public IActionResult GetAllSlideByAlias(string groupAlias)

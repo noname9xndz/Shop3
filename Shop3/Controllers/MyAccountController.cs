@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
@@ -9,14 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PaulMiami.AspNetCore.Mvc.Recaptcha;
 
 namespace Shop3.Controllers
 {
     public class MyAccountController : Controller
     {
         private readonly IUserService _userService;
-        
+
 
         public MyAccountController(IUserService userService)
         {
@@ -29,7 +27,7 @@ namespace Shop3.Controllers
             return View();
         }
 
-      
+
         [HttpGet]
         public async Task<IActionResult> GetAccount()
         {
@@ -53,11 +51,11 @@ namespace Shop3.Controllers
             }
             else
             {
-                
+
                 if (User.Identity.IsAuthenticated == true && userVm.Id == Guid.Parse(User.GetSpecificClaim(CommonConstants.UserClaims.UserId)))
                 {
-                    
-                    
+
+
                     if (!await _userService.CheckPasswordUser(userVm.Id) && oldPassword == null)
                     {
                         await _userService.ChangePassByUserWithPasswordHashIsNull(userVm);
@@ -79,7 +77,7 @@ namespace Shop3.Controllers
                     }
                 }
 
-                
+
             }
             return new BadRequestResult();
 

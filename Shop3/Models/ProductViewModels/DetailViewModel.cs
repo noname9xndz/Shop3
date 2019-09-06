@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Shop3.Application.ViewModels.Common;
-using Shop3.Application.ViewModels.Products;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Shop3.Application.ViewModels.Custom;
+using Shop3.Application.ViewModels.Products;
+using System.Collections.Generic;
 
 namespace Shop3.Models.ProductViewModels
 {
     public class DetailViewModel
     {
         public ProductViewModel Product { get; set; }
-        
+
         public List<ProductViewModel> RelatedProducts { get; set; }
 
         public ProductCategoryViewModel Category { get; set; }
@@ -35,6 +32,6 @@ namespace Shop3.Models.ProductViewModels
 
         public bool Available { set; get; } // còn hàng hoặc hết hàng
 
-        public  List<CustomProductTagViewModel> ListCustomProductTag {set; get; }
+        public List<CustomProductTagViewModel> ListCustomProductTag { set; get; }
     }
 }

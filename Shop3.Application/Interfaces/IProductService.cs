@@ -1,12 +1,10 @@
 ﻿using Shop3.Application.ViewModels.Common;
+using Shop3.Application.ViewModels.Custom;
 using Shop3.Application.ViewModels.Products;
+using Shop3.Data.Enums;
 using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Shop3.Application.ViewModels.Custom;
-using Shop3.Data.Enums;
 
 namespace Shop3.Application.Interfaces
 {
@@ -53,7 +51,7 @@ namespace Shop3.Application.Interfaces
 
         List<ProductViewModel> GetUpsellProducts(int top);
         //List<CustomSellProductViewModel> GetTopsellProducts(int top);
-        List<CustomSellProductViewModel> GetProductsByStatusBill(int top,BillStatus status);
+        List<CustomSellProductViewModel> GetProductsByStatusBill(int top, BillStatus status);
 
 
         List<TagViewModel> GetProductTags(int productId);
@@ -70,13 +68,13 @@ namespace Shop3.Application.Interfaces
 
         WishProductViewModel GetWishProductById(int id, Guid Id);
 
-        bool CheckWishProduct(int productId,Guid id);
+        bool CheckWishProduct(int productId, Guid id);
 
         List<ProductViewModel> GetAllWishProduct(Guid id);
 
         List<CustomProductTagViewModel> GetProductWithTagRanDom(int top);
 
-       void DeleteProductImage(int productImg);
+        void DeleteProductImage(int productImg);
 
 
     }

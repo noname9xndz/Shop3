@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop3.Utilities.Constants
+﻿namespace Shop3.Utilities.Constants
 {
     // chứa những biến , keyword dùng chung
     public class CommonConstants
@@ -11,7 +7,7 @@ namespace Shop3.Utilities.Constants
 
 
         public const string DefaultContactId = "default";
-        
+
         public const string CartSession = "CartSession";
 
         public const string ProductTag = "Product";
@@ -48,7 +44,7 @@ namespace Shop3.Utilities.Constants
 
         public class ViewSendMail
         {
-           // public const string TaskView = "Task/_EmailAdd";
+            // public const string TaskView = "Task/_EmailAdd";
             //public const string ProjectView = "Project/_SendMailToAdmin";
         }
         public class Permission

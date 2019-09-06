@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Shop3.Utilities.Dtos
 {
     public static class QueryLinqResult
     {
-       public static IEnumerable<TResult> LeftOuterJoin<TLeft, TRight, TKey, TResult>(
-       this IEnumerable<TLeft> leftItems,
-       IEnumerable<TRight> rightItems,
-       Func<TLeft, TKey> leftKeySelector,
-       Func<TRight, TKey> rightKeySelector,
-       Func<TLeft, TRight, TResult> resultSelector)
+        public static IEnumerable<TResult> LeftOuterJoin<TLeft, TRight, TKey, TResult>(
+        this IEnumerable<TLeft> leftItems,
+        IEnumerable<TRight> rightItems,
+        Func<TLeft, TKey> leftKeySelector,
+        Func<TRight, TKey> rightKeySelector,
+        Func<TLeft, TRight, TResult> resultSelector)
         {
 
             return from left in leftItems

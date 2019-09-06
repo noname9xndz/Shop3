@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Data.Enums;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -25,8 +23,8 @@ namespace Shop3.Areas.Admin.Controllers
 
         public IActionResult GetAllPageDefault()
         {
-           var model =  _pageDefaultService.GetAllPageDefault();
-           return new  OkObjectResult(model);
+            var model = _pageDefaultService.GetAllPageDefault();
+            return new OkObjectResult(model);
         }
 
         public IActionResult GetPageDefaultById(string id)
@@ -49,7 +47,7 @@ namespace Shop3.Areas.Admin.Controllers
                 _pageDefaultService.SaveChange();
                 return new OkObjectResult(pageDefault);
             }
-            
+
         }
     }
 }

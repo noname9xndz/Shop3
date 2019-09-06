@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Text;
 
 namespace Shop3.Utilities.Extensions
 {
@@ -14,7 +12,7 @@ namespace Shop3.Utilities.Extensions
         {
             string description = null;
 
-            if (e is Enum)
+            if (e is System.Enum)
             {
                 Type type = e.GetType();
                 Array values = System.Enum.GetValues(type);

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Shop3.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -19,7 +16,7 @@ namespace Shop3.WebApi.Helpers
              */
         UserManager<AppUser> _userManger;
 
-        public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager,RoleManager<AppRole> roleManager, IOptions<IdentityOptions> options)
+        public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IOptions<IdentityOptions> options)
                            : base(userManager, roleManager, options)
         {
             _userManger = userManager;

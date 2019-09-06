@@ -2,9 +2,7 @@
 using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Interfaces
 {

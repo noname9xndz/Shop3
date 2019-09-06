@@ -1,9 +1,6 @@
-﻿using Shop3.Data.Interfaces;
-using Shop3.Infrastructure.SharedKernel;
+﻿using Shop3.Infrastructure.SharedKernel;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Data.Entities
 {
@@ -14,11 +11,11 @@ namespace Shop3.Data.Entities
         {
 
         }
-        public WishProduct(int id,int productId,Guid customerId)
+        public WishProduct(int id, int productId, Guid customerId)
         {
             Id = id;
             ProductId = productId;
-            CustomerId = customerId ;
+            CustomerId = customerId;
         }
         public int ProductId { set; get; }
         [ForeignKey("ProductId")]

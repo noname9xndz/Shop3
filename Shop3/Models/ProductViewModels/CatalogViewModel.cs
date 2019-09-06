@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Utilities.Dtos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop3.Models.ProductViewModels
 {
@@ -25,7 +22,7 @@ namespace Shop3.Models.ProductViewModels
         //    new SelectListItem(){Value = "price",Text = "Price"},
         //    new SelectListItem(){Value = "name",Text = "Name"},
         //};
-        
+
         public List<SelectListItem> SortTypes { get; } = new List<SelectListItem>
         {
             new SelectListItem(){Value = "Lastest",Text = "Lastest"},

@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Data.Entities;
+using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Shop3.Data.Enums;
 
 namespace Shop3.Application.Implementation
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,6 +8,7 @@ using Shop3.Extensions;
 using Shop3.Models.AccountViewModels;
 using Shop3.Utilities.Constants;
 using Shop3.Utilities.Dtos;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -33,7 +30,7 @@ namespace Shop3.Areas.Admin.Controllers
             _signInManager = signInManager;
             _logger = logger;
             _roleService = roleService;
-             _userService = userService;
+            _userService = userService;
         }
 
         public async Task<IActionResult> Index()
@@ -54,20 +51,20 @@ namespace Shop3.Areas.Admin.Controllers
                 {
                     return RedirectToAction(nameof(Forbidden));
                 }
-                
+
             }
             return View();
-           
 
-           
+
+
         }
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken] 
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Authen(LoginViewModel model)
         {
-            
+
             if (ModelState.IsValid)
             {
                 var checkPermistion = await _roleService.CheckAccount(model.Email);
@@ -83,14 +80,20 @@ namespace Shop3.Areas.Admin.Controllers
                     return new ObjectResult(new GenericResult(false, "User account locked out"));
                 }
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                
+
                 if (result.Succeeded)
                 {
-                   _logger.LogInformation("User logged in.");
-                  return new OkObjectResult(new GenericResult(true));
-                    
+                    _logger.LogInformation("User logged in.");
+                    return new OkObjectResult(new GenericResult(true));
+
                 }
-                
+                else
+                {
+
+                    _logger.LogWarning("User login in fail.");
+                    return new ObjectResult(new GenericResult(false, "User Name or password Invalid"));
+                }
+
             }
             return new ObjectResult(new GenericResult(false, model));
         }

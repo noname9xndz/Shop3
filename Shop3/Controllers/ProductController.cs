@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Shop3.Application.Interfaces;
 using Shop3.Models.ProductViewModels;
+using System.Linq;
 
 namespace Shop3.Controllers
 {
@@ -43,7 +40,7 @@ namespace Shop3.Controllers
             ViewData["BodyClass"] = "shop_grid_full_width_page";
             if (pageSize == null)
                 pageSize = _configuration.GetValue<int>("PageSize");
-             
+
             catalog.PageSize = pageSize;
             catalog.SortType = sortBy;
             //catalog.Data = _productService.GetAllPaging(id, string.Empty, page, pageSize.Value);
@@ -72,7 +69,7 @@ namespace Shop3.Controllers
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
-                
+
             }).ToList();
 
             model.Sizes = _billService.GetSizes().Select(x => new SelectListItem()

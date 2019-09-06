@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop3.Data.Interfaces
+﻿namespace Shop3.Data.Interfaces
 {
     public interface IHasSeoMetaData
     {// interface chứa các thuộc tính dành cho seo

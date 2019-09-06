@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop3.Application.ViewModels.Common
+﻿namespace Shop3.Application.ViewModels.Common
 {
     public class FooterViewModel
     {

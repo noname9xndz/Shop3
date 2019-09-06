@@ -1,11 +1,8 @@
 ﻿using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using Shop3.Application.ViewModels.Products;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop3.Services
 {

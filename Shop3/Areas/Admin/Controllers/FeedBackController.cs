@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
 using Shop3.Services;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -33,7 +30,7 @@ namespace Shop3.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(string keyword,int page,int pageSize)
+        public IActionResult GetAll(string keyword, int page, int pageSize)
         {
             var model = _feedbackService.GetAllPaging(keyword, page, pageSize);
             if (model.Results.Count == 0)
@@ -62,9 +59,9 @@ namespace Shop3.Areas.Admin.Controllers
 
             return new OkObjectResult(id);
         }
-        
+
         [HttpPost]
-        public async Task<IActionResult> SendMailToUser(FeedbackViewModel FeedbackVM,string subject)
+        public async Task<IActionResult> SendMailToUser(FeedbackViewModel FeedbackVM, string subject)
         {// todo error upload img with ckeditor
          // todo get mail send by admin
          // todo error return view to string 
@@ -78,7 +75,7 @@ namespace Shop3.Areas.Admin.Controllers
 
 
             }
-            
+
             return new OkResult();
         }
     }

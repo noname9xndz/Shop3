@@ -1,16 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Shop3.Data.Interfaces;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Infrastructure.SharedKernel;
+using Shop3.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Internal;
-using Shop3.Data.Interfaces;
-using Shop3.Utilities.Extensions;
 
 namespace Shop3.Data.EF
 {
@@ -96,7 +95,7 @@ namespace Shop3.Data.EF
             return await Task.Run(() => _context.Set<T>().Where(predicate).AsQueryable());
         }
 
-        public async  Task<T> GetAllAsync(Expression<Func<T, bool>> predicate)
+        public async Task<T> GetAllAsync(Expression<Func<T, bool>> predicate)
         {
             throw new NotImplementedException();
         }
@@ -156,7 +155,7 @@ namespace Shop3.Data.EF
 
         public void RemoveMultipleWithListKey(List<K> keyEntities)
         {
-            List<T> entities =  new List<T>();
+            List<T> entities = new List<T>();
             foreach (var item in keyEntities)
             {
                 entities.Add(FindById(item));

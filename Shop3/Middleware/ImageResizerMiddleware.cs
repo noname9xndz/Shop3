@@ -4,7 +4,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using SkiaSharp;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -69,7 +68,7 @@ namespace Shop3.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-             var path = context.Request.Path;
+            var path = context.Request.Path;
 
             // hand to next middleware if we are not dealing with an image
             if (context.Request.Query.Count == 0 || !IsImagePath(path))
@@ -233,7 +232,7 @@ namespace Shop3.Middleware
                             bitmap.SetPixel(original.Height - 1 - y, original.Width - 1 - x, original.GetPixel(x, y));
 
                     break;
-                    
+
                 case SKCodecOrigin.LeftTop:
 
                     for (var x = 0; x < original.Width; x++)

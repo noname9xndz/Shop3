@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop3.Data.Enums
+﻿namespace Shop3.Data.Enums
 {
     public enum Status
     {

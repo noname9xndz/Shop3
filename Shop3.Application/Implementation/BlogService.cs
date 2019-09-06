@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Blogs;
 using Shop3.Application.ViewModels.Common;
+using Shop3.Application.ViewModels.Custom;
 using Shop3.Data.Entities;
 using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
@@ -12,8 +13,6 @@ using Shop3.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Shop3.Application.ViewModels.Custom;
 
 namespace Shop3.Application.Implementation
 {
@@ -34,7 +33,7 @@ namespace Shop3.Application.Implementation
             _blogTagRepository = blogTagRepository;
             _tagRepository = tagRepository;
             _unitOfWork = unitOfWork;
-             _mapper = mapper;
+            _mapper = mapper;
         }
 
         public BlogViewModel Add(BlogViewModel blogVm)
@@ -87,13 +86,13 @@ namespace Shop3.Application.Implementation
                 query = query.Where(x => x.Name.Contains(keyword));
 
             int totalRow = query.Count();
-//            var data = query.OrderByDescending(x => x.DateCreated)
-//                .Skip((page - 1) * pageSize)
-//                .Take(pageSize).ProjectTo<BlogViewModel>().ToList();
+            //            var data = query.OrderByDescending(x => x.DateCreated)
+            //                .Skip((page - 1) * pageSize)
+            //                .Take(pageSize).ProjectTo<BlogViewModel>().ToList();
             var data = query.OrderByDescending(x => x.DateCreated)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
-            var output = _mapper.ProjectTo <BlogViewModel>(data).ToList();
+            var output = _mapper.ProjectTo<BlogViewModel>(data).ToList();
             var paginationSet = new PagedResult<BlogViewModel>()
             {
                 Results = output,
@@ -150,7 +149,7 @@ namespace Shop3.Application.Implementation
         {
             //return _blogRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
             //    .Take(top).ProjectTo<BlogViewModel>().ToList();
-            var data =_blogRepository.FindAll(x => x.Status == Status.Active)
+            var data = _blogRepository.FindAll(x => x.Status == Status.Active)
                 .OrderByDescending(x => x.DateCreated)
                 .Take(top);
             return _mapper.ProjectTo<BlogViewModel>(data).ToList();
@@ -186,11 +185,11 @@ namespace Shop3.Application.Implementation
 
             totalRow = query.Count();
 
-//            return query.Skip((page - 1) * pageSize)
-//                .Take(pageSize)
-//                .ProjectTo<BlogViewModel>().ToList();
-           var data = query.Skip((page - 1) * pageSize)
-                .Take(pageSize);
+            //            return query.Skip((page - 1) * pageSize)
+            //                .Take(pageSize)
+            //                .ProjectTo<BlogViewModel>().ToList();
+            var data = query.Skip((page - 1) * pageSize)
+                 .Take(pageSize);
 
             return _mapper.ProjectTo<BlogViewModel>(data).ToList();
         }
@@ -219,7 +218,7 @@ namespace Shop3.Application.Implementation
 
             totalRow = query.Count();
 
-            
+
             var data = query.Skip((page - 1) * pageSize)
                 .Take(pageSize);
 
@@ -264,7 +263,7 @@ namespace Shop3.Application.Implementation
             totalRow = query.Count();
 
             query = query.Skip((page - 1) * pageSize).Take(pageSize);
-            
+
             return _mapper.ProjectTo<BlogViewModel>(query).ToList();
         }
 
@@ -277,7 +276,7 @@ namespace Shop3.Application.Implementation
         {
             var query = !string.IsNullOrEmpty(keyword) ? _blogRepository.FindAll(x => x.Name.Contains(keyword)).ProjectTo<BlogViewModel>()
                 : _blogRepository.FindAll().ProjectTo<BlogViewModel>();
-           
+
             return _mapper.ProjectTo<BlogViewModel>(query).ToList();
         }
 
@@ -291,15 +290,15 @@ namespace Shop3.Application.Implementation
         public List<CustomBlogTagViewModel> GetBlogWithTagRanDom(int top)
         {
             var data = (from t in _tagRepository.FindAll()
-                join bt in _blogTagRepository.FindAll() on t.Id equals bt.TagId
-                join b in _blogRepository.FindAll() on bt.BlogId equals b.Id
-                orderby Guid.NewGuid()
-                select new CustomBlogTagViewModel()
-                {
-                    BlogId= b.Id,
-                    SeoAlias = b.SeoAlias,
-                    TagName = t.Name
-                }).Take(top);
+                        join bt in _blogTagRepository.FindAll() on t.Id equals bt.TagId
+                        join b in _blogRepository.FindAll() on bt.BlogId equals b.Id
+                        orderby Guid.NewGuid()
+                        select new CustomBlogTagViewModel()
+                        {
+                            BlogId = b.Id,
+                            SeoAlias = b.SeoAlias,
+                            TagName = t.Name
+                        }).Take(top);
 
             return _mapper.ProjectTo<CustomBlogTagViewModel>(data).ToList();
         }

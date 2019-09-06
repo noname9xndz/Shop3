@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -38,7 +37,7 @@ namespace Shop3.Areas.Admin.Controllers
         public async Task<IActionResult> GetAll(int page, int pageSize)
         {
             // sử dụng đệ quy
-           
+
             var model = await _functionService.GetAll(string.Empty);
             var rootFunctions = model.Where(c => c.ParentId == null); // lấy ra cha
             var items = new List<FunctionViewModel>();
@@ -153,7 +152,7 @@ namespace Shop3.Areas.Admin.Controllers
             foreach (var cat in subFunctions)
             {
                 //add this category
-                items.Add(cat); 
+                items.Add(cat);
                 //recursive call in case your have a hierarchy more than 1 level deep
                 GetByParentId(functionsEntities, cat, items);
             }

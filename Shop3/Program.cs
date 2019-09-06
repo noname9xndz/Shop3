@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Shop3.Data.EF;
+using System;
 
 namespace Shop3
 {
@@ -17,7 +12,7 @@ namespace Shop3
         public static void Main(string[] args)
         {
             // CreateWebHostBuilder(args).Build().Run();
-           
+
             var host = CreateWebHostBuilder(args).Build();
 
             // custom lại để chạy seed() trong DbInitializer
@@ -27,7 +22,7 @@ namespace Shop3
 
                 try
                 { // dùng service locator để lấy ra nhưng thằng đã được register trong startup(ConfigureServices)
-                    var dbInitializer = services.GetService<DbInitializer>(); 
+                    var dbInitializer = services.GetService<DbInitializer>();
                     dbInitializer.Seed().Wait(); // chạy phương thức seed chứa các dữ liệu mẫu reder ra cùng vs database
                 }
                 catch (Exception ex)

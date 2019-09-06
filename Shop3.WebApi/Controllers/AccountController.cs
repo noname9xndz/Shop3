@@ -12,7 +12,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Shop3.Application.Interfaces;
 
 
 namespace Shop3.WebApi.Controllers

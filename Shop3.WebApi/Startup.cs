@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Shop3.Application.AutoMapper;
@@ -25,6 +17,8 @@ using Shop3.Data.Entities;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.WebApi.Helpers;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Text;
 using Contact = Swashbuckle.AspNetCore.Swagger.Contact;
 
 namespace Shop3.WebApi
@@ -103,8 +97,8 @@ namespace Shop3.WebApi
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
 
-           // services.AddSingleton(Mapper.Configuration);
-           // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            // services.AddSingleton(Mapper.Configuration);
+            // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
@@ -114,6 +108,11 @@ namespace Shop3.WebApi
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
             services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
+
+
+            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceOne:Dll"]);
+            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceTwo:Dll"]);
+			
 
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));

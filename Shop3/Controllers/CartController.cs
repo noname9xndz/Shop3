@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
@@ -11,11 +6,13 @@ using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
 using Shop3.Models;
-using Shop3.Models.BillViewModels;
-using Shop3.Models.ProductViewModels;
 using Shop3.Services;
 using Shop3.Utilities.Constants;
 using Shop3.Utilities.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shop3.Controllers
 {
@@ -68,9 +65,9 @@ namespace Shop3.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout(CheckoutViewModel model)
         {
-            
+
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
-        
+
             if (ModelState.IsValid)
             {
                 if (session != null)
@@ -110,19 +107,19 @@ namespace Shop3.Controllers
 
                         _billService.Save();
 
-                         //sử dụng service ViewRender để tạo ra viewhtml : view to string
-                         //string viewNameSendAdmin = "Cart/_BillMail";
-                         //string subjectSendToAdmin = "New bill from Noname Shop";
-                         //var content = await _viewRenderService.RenderToStringAsync(viewNameSendAdmin, billViewModel);
-                         // await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], subjectSendToAdmin, content);
+                        //sử dụng service ViewRender để tạo ra viewhtml : view to string
+                        //string viewNameSendAdmin = "Cart/_BillMail";
+                        //string subjectSendToAdmin = "New bill from Noname Shop";
+                        //var content = await _viewRenderService.RenderToStringAsync(viewNameSendAdmin, billViewModel);
+                        // await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], subjectSendToAdmin, content);
 
-//                        if (model.CustomerEmail != null)
-//                        {
-//                            string viewNameSendToUser = "Cart/_BillMailSendToUser";
-//                            string subjectSendToUser = "Thank you for order at NonameShop";
-//                            var contentSendToUser = await _viewRenderService.RenderToStringAsync(viewNameSendToUser, billViewModel);
-//                            await _emailSender.SendEmailAsync(model.CustomerEmail, subjectSendToUser, contentSendToUser);
-//                        }
+                        //                        if (model.CustomerEmail != null)
+                        //                        {
+                        //                            string viewNameSendToUser = "Cart/_BillMailSendToUser";
+                        //                            string subjectSendToUser = "Thank you for order at NonameShop";
+                        //                            var contentSendToUser = await _viewRenderService.RenderToStringAsync(viewNameSendToUser, billViewModel);
+                        //                            await _emailSender.SendEmailAsync(model.CustomerEmail, subjectSendToUser, contentSendToUser);
+                        //                        }
 
                         HttpContext.Session.Remove(CommonConstants.CartSession); //remove sau khi đặt hàng thành công
 
@@ -253,7 +250,7 @@ namespace Shop3.Controllers
                         Color = _billService.GetColor(color),
                         Size = _billService.GetSize(size),
                         Price = product.PromotionPrice ?? product.Price,
-                        OrderTotal = (product.PromotionPrice > 0 ) ? (decimal)(product.PromotionPrice * quantity)  : (decimal)(product.Price * quantity)
+                        OrderTotal = (product.PromotionPrice > 0) ? (decimal)(product.PromotionPrice * quantity) : (decimal)(product.Price * quantity)
                     });
                     hasChanged = true;
                 }
@@ -319,7 +316,7 @@ namespace Shop3.Controllers
         /// <returns></returns>
         public IActionResult UpdateCart(int productId, int quantity, int color, int size)
         {
-           
+
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
             if (session != null)
             {
@@ -548,11 +545,11 @@ namespace Shop3.Controllers
         {
             if (User.Identity.IsAuthenticated == true)
             {
-                
+
                 var user = Guid.Parse(User.GetSpecificClaim("UserId"));
                 if (pageSize == 0)
                     pageSize = _configuration.GetValue<int>("PageSize");
-               
+
                 var listProduct = _billService.GetBillByIdAndUserId(string.Empty, user, page, pageSize);
                 if (listProduct.RowCount < 0)
                 {
@@ -634,7 +631,7 @@ namespace Shop3.Controllers
                 {
                     return new OkObjectResult(id);
                 }
-               
+
 
             }
             return new OkResult();

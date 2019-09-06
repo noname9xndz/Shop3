@@ -1,9 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -13,7 +8,7 @@ namespace Shop3.Services
     // This class is used by the application to send email for account confirmation and password reset.
     // For more details see https://go.microsoft.com/fwlink/?LinkID=532713
 
-   
+
     public class EmailSender : IEmailSender
     {
         private readonly IConfiguration _configuration;

@@ -3,7 +3,6 @@ using Shop3.Data.Enums;
 using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Shop3.Application.Interfaces
 {
@@ -34,20 +33,20 @@ namespace Shop3.Application.Interfaces
 
         SizeViewModel GetSize(int id);
 
-        PagedResult<BillDetailViewModel> GetAllPagingByCustomerId(Guid id,int page, int pageSize);
+        PagedResult<BillDetailViewModel> GetAllPagingByCustomerId(Guid id, int page, int pageSize);
 
         void Save();
 
-        PagedResult<BillViewModel> GetBillByIdAndUserId(string keyword,Guid id,int page ,int pageSize);
+        PagedResult<BillViewModel> GetBillByIdAndUserId(string keyword, Guid id, int page, int pageSize);
 
 
         decimal GetOrderTotal(int billId);
 
-        BillViewModel GetDetailByUser(int billId,Guid id);
+        BillViewModel GetDetailByUser(int billId, Guid id);
 
-        void ReOderByUser(int billId, Guid id,string message);
+        void ReOderByUser(int billId, Guid id, string message);
 
-        bool CheckStatusBillWithUser(int billId,Guid id);
+        bool CheckStatusBillWithUser(int billId, Guid id);
 
 
     }

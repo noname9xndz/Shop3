@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -44,7 +42,7 @@ namespace Shop3.Areas.Admin.Controllers
             _contactService.SaveChanges();
 
             return new OkObjectResult(id);
-            
+
         }
         [HttpPost]
         public IActionResult SaveEntity(ContactViewModel contactViewModel)
@@ -54,9 +52,9 @@ namespace Shop3.Areas.Admin.Controllers
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return new BadRequestObjectResult(allErrors);
             }
-            if (contactViewModel.Id  == "0")
+            if (contactViewModel.Id == "0")
             {
-               
+
                 _contactService.Add(contactViewModel);
             }
             else

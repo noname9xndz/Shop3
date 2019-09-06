@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Shop3.Data.EF;
+using System;
 
 namespace Shop3.Data.EFTest
 {
@@ -19,6 +17,6 @@ namespace Shop3.Data.EFTest
 
             return context;
         }
-        
+
     }
 }

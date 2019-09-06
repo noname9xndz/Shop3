@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using OfficeOpenXml;
-using OfficeOpenXml.Table;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.Products;
 using Shop3.Services;
@@ -27,7 +25,7 @@ namespace Shop3.Areas.Admin.Controllers
         private readonly IExcelService _excelService;
         //todo : tối ưu lại việc xử lý file và excel bằng inject
         public ProductController(IProductService productService, IProductCategoryService productCategoryService
-                 ,IHostingEnvironment hostingEnvironment, IFileService fileService, IExcelService excelService)
+                 , IHostingEnvironment hostingEnvironment, IFileService fileService, IExcelService excelService)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
@@ -73,7 +71,7 @@ namespace Shop3.Areas.Admin.Controllers
 
         [HttpPost]
         public IActionResult SaveEntity(ProductViewModel productVm)
-        { 
+        {
             if (!ModelState.IsValid)
             {
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
@@ -218,10 +216,10 @@ namespace Shop3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveImages(int productId, string[] imagesAdd,int[] imagesRemove )
-        { 
-           _productService.AddAndRemoveProductImages(productId,imagesAdd,imagesRemove);
-           _productService.Save();
+        public IActionResult SaveImages(int productId, string[] imagesAdd, int[] imagesRemove)
+        {
+            _productService.AddAndRemoveProductImages(productId, imagesAdd, imagesRemove);
+            _productService.Save();
             return new OkObjectResult(imagesAdd);
         }
 

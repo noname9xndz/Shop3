@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Shop3.Application.ViewModels.System;
+﻿using Shop3.Application.ViewModels.System;
 using Shop3.Utilities.Dtos;
+using System;
 
 namespace Shop3.Application.Interfaces
 {
@@ -18,7 +16,7 @@ namespace Shop3.Application.Interfaces
 
         bool Delete(Guid userId, string id);
 
-        bool DeleteAll(Guid userId,string key);
+        bool DeleteAll(Guid userId, string key);
 
         void SaveChanges();
 

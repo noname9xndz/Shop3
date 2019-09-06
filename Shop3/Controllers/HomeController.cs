@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Shop3.Application.Interfaces;
-using Shop3.Extensions;
 using Shop3.Models;
+using System;
+using System.Diagnostics;
 
 namespace Shop3.Controllers
 {
@@ -34,7 +30,7 @@ namespace Shop3.Controllers
             _productService = productService;
             _productCategoryService = productCategoryService;
             _billService = billService;
-             _localizer = localizer;
+            _localizer = localizer;
         }
 
         // responsecache : https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-2.2

@@ -7,7 +7,6 @@ using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Shop3.Application.Implementation
 {
@@ -44,7 +43,7 @@ namespace Shop3.Application.Implementation
 
         public List<ContactViewModel> GetAll()
         {
-           return _mapper.ProjectTo<ContactViewModel>(_contactRepository.FindAll()).ToList();
+            return _mapper.ProjectTo<ContactViewModel>(_contactRepository.FindAll()).ToList();
         }
 
         public PagedResult<ContactViewModel> GetAllPaging(string keyword, int page, int pageSize)
@@ -82,7 +81,7 @@ namespace Shop3.Application.Implementation
         public void Update(ContactViewModel pageVm)
         {
             var page = _mapper.Map<ContactViewModel, Contact>(pageVm);
-            _contactRepository.Update(page.Id,page);
+            _contactRepository.Update(page.Id, page);
         }
     }
 }

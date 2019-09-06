@@ -1,19 +1,16 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
+using Shop3.Data.EF;
 using Shop3.Data.Entities;
 using Shop3.Utilities.Dtos;
+using Shop3.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Shop3.Application.ViewModels.Custom;
-using Shop3.Data.EF;
-using Shop3.Utilities.Helpers;
 
 namespace Shop3.Application.Implementation
 {
@@ -47,9 +44,9 @@ namespace Shop3.Application.Implementation
                 PhoneNumber = userVm.PhoneNumber,
                 Status = userVm.Status
             };
-            
+
             var result = await _userManager.CreateAsync(user, userVm.Password);
-           // if (result.Succeeded && userVm.Roles.Count > 0)
+            // if (result.Succeeded && userVm.Roles.Count > 0)
             if (result.Succeeded)
             {
                 var appUser = await _userManager.FindByNameAsync(user.UserName);
@@ -57,7 +54,7 @@ namespace Shop3.Application.Implementation
                 if (appUser != null && userVm.Roles.Count > 0)
                 {
                     await _userManager.AddToRolesAsync(appUser, userVm.Roles);
-                    
+
                 }
                 return true;
 
@@ -66,7 +63,7 @@ namespace Shop3.Application.Implementation
             {
                 return false;
             }
-            
+
         }
 
         public async Task DeleteAsync(string id)
@@ -77,8 +74,8 @@ namespace Shop3.Application.Implementation
 
         public async Task<List<AppUserViewModel>> GetAllAsync()
         {
-           //return await _userManager.Users.ProjectTo<AppUserViewModel>().ToListAsync();
-           return await _mapper.ProjectTo<AppUserViewModel>(_userManager.Users).ToListAsync();
+            //return await _userManager.Users.ProjectTo<AppUserViewModel>().ToListAsync();
+            return await _mapper.ProjectTo<AppUserViewModel>(_userManager.Users).ToListAsync();
         }
 
         public PagedResult<AppUserViewModel> GetAllPagingAsync(string keyword, int page, int pageSize)
@@ -171,11 +168,11 @@ namespace Shop3.Application.Implementation
             }
 
             return flag;
-            
+
         }
 
-        
-        
+
+
 
         public async Task UpdateAsync(AppUserViewModel userVm)
         {
@@ -189,7 +186,7 @@ namespace Shop3.Application.Implementation
             if (result.Succeeded)
             {
                 string[] needRemoveRoles = currentRoles.Except(userVm.Roles).ToArray();
-               // await _userManager.RemoveFromRolesAsync(user, needRemoveRoles);
+                // await _userManager.RemoveFromRolesAsync(user, needRemoveRoles);
                 await RemoveRolesFromUser(user.Id.ToString(), needRemoveRoles);
 
                 //Update user detail
@@ -229,8 +226,8 @@ namespace Shop3.Application.Implementation
 
         public async Task<AppUserViewModel> ChangePassByUserWithPasswordHashIsNull(AppUserViewModel userVm)
         {
-            
-           // var model = _mapper.Map<AppUserViewModel, AppUser>(userVm);
+
+            // var model = _mapper.Map<AppUserViewModel, AppUser>(userVm);
             var model = await _userManager.FindByIdAsync(userVm.Id.ToString());
             var user = await _userManager.AddPasswordAsync(model, userVm.Password);
             return userVm;

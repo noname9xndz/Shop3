@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Shop3.Utilities.Helpers
 {
-    public static  class TextHelper
+    public static class TextHelper
     {
         // chuyển có dấu thành không dấu ,dấu đặc biệt thành -
         public static string ToUnsignString(string input)
@@ -34,7 +33,7 @@ namespace Shop3.Utilities.Helpers
             }
             return str2;
         }
- // chuyển số thành chữ
+        // chuyển số thành chữ
         public static string ToString(decimal number)
         {
             string s = number.ToString("#");
@@ -44,7 +43,7 @@ namespace Shop3.Utilities.Helpers
             string str = " ";
             bool booAm = false;
             decimal decS = 0;
-            
+
             try
             {
                 decS = Convert.ToDecimal(s.ToString());
@@ -108,10 +107,10 @@ namespace Shop3.Utilities.Helpers
                 }
             }
             if (booAm) str = "Âm " + str;
-            return Regex.Replace(str + "đồng chẵn",@"\s+"," ").Trim();// cắt các khoảng trắng còn sót của output
+            return Regex.Replace(str + "đồng chẵn", @"\s+", " ").Trim();// cắt các khoảng trắng còn sót của output
         }
 
-       public static Regex ValidEmailRegex = CreateValidEmailRegex();
+        public static Regex ValidEmailRegex = CreateValidEmailRegex();
 
         /// <summary>
         /// Taken from http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx

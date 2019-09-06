@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Shop3.Controllers;
+using System;
 
 namespace Microsoft.AspNetCore.Mvc
 {

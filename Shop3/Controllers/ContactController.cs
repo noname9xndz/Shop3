@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Shop3.Application.Interfaces;
 using Shop3.Models;
 using Shop3.Services;
 using Shop3.Utilities.Constants;
+using System.Threading.Tasks;
 
 namespace Shop3.Controllers
 {

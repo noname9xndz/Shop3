@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OfficeOpenXml;
@@ -13,6 +8,10 @@ using Shop3.Application.ViewModels.Products;
 using Shop3.Data.Enums;
 using Shop3.Utilities.Extensions;
 using Shop3.Utilities.Helpers;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -57,8 +56,8 @@ namespace Shop3.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult SaveEntity(BillViewModel billVm)
         {
-           
-            
+
+
             // todo error sum order in create and update
             if (!ModelState.IsValid)
             {
@@ -116,7 +115,7 @@ namespace Shop3.Areas.Admin.Controllers
         }
         [HttpPost]
         public IActionResult ExportExcel(int billId)
-        { 
+        {
             string sWebRootFolder = _hostingEnvironment.WebRootPath;
             string sFileName = $"Bill_{billId}.xlsx";
             // Template File
@@ -132,7 +131,7 @@ namespace Shop3.Areas.Admin.Controllers
             // xuất file excel bằng template
             using (FileStream templateDocumentStream = System.IO.File.OpenRead(templateDocument))
             {
-               
+
                 using (ExcelPackage package = new ExcelPackage(templateDocumentStream))
                 {
                     // add a new worksheet to the empty workbook

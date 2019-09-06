@@ -2,7 +2,6 @@
 using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Shop3.Application.Interfaces
@@ -31,7 +30,7 @@ namespace Shop3.Application.Interfaces
         Task<bool> CheckPermission(string functionId, string action, string[] roles);
 
         Task<bool> CheckRoleByUser(string userId);
-        
+
         Task<bool> CheckAccount(string emailorusername);
     }
 }

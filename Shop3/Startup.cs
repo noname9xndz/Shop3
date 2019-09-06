@@ -21,7 +21,6 @@ using Shop3.Application.Interfaces;
 using Shop3.Authorization;
 using Shop3.Data.EF;
 using Shop3.Data.Entities;
-using Shop3.DependencyResolver;
 using Shop3.Extensions;
 using Shop3.Helpers;
 using Shop3.Infrastructure.Interfaces;
@@ -31,6 +30,7 @@ using Shop3.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Shop3.DependencyResolver;
 
 namespace Shop3
 {
@@ -151,8 +151,8 @@ namespace Shop3
                     googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
 
-            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
-            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
+            //services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
+           // services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
 
             //services.AddSingleton(Mapper.Configuration); // nuget : automapper
             // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
@@ -162,35 +162,38 @@ namespace Shop3
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IExcelService, ExcelService>();
 
-            services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
+            //services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
 
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
 
             //services.AddTransient<IFunctionRepository, FunctionRepository>(); register Repository nếu dùng
 
-            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceOne:Dll"]);
-            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceTwo:Dll"]);
 
             //Register Serrvices
-            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
-            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
+            services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3DataEF:Dll"]);
+            services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3Application:Dll"]);
+            services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3ApplicationDapper:Dll"]);
+
+            //Register Serrvices
+            //  services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            //  services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
 
-            services.AddTransient<IProductCategoryService, ProductCategoryService>();
-            services.AddTransient<IFunctionService, FunctionService>();
-            services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IRoleService, RoleService>();
-            services.AddTransient<IBillService, BillService>();
-            services.AddTransient<ICommonService, CommonService>();
-            services.AddTransient<IBlogService, BlogService>();
-            services.AddTransient<IContactService, ContactService>();
-            services.AddTransient<IFeedbackService, FeedbackService>();
-            services.AddTransient<IPageService, PageService>();
-            services.AddTransient<IReportService, ReportService>();
-            services.AddTransient<IAnnouncementService, AnnouncementService>();
-            services.AddTransient<IPageDefaultService, PageDefaultService>();
-            services.AddTransient<ISlideService, SlideService>();
+            //services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            //services.AddTransient<IFunctionService, FunctionService>();
+            //services.AddTransient<IProductService, ProductService>();
+            //services.AddTransient<IUserService, UserService>();
+            //services.AddTransient<IRoleService, RoleService>();
+            //services.AddTransient<IBillService, BillService>();
+            //services.AddTransient<ICommonService, CommonService>();
+            //services.AddTransient<IBlogService, BlogService>();
+            //services.AddTransient<IContactService, ContactService>();
+            //services.AddTransient<IFeedbackService, FeedbackService>();
+            //services.AddTransient<IPageService, PageService>();
+            //services.AddTransient<IReportService, ReportService>();
+            //services.AddTransient<IAnnouncementService, AnnouncementService>();
+            //services.AddTransient<IPageDefaultService, PageDefaultService>();
+            //services.AddTransient<ISlideService, SlideService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

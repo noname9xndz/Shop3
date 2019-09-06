@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop3.Application.ViewModels.Products
+﻿namespace Shop3.Application.ViewModels.Products
 {
     // giá bán sỉ sp với số lượng x -> số lượng y áp dụng với giá nào
     public class WholePriceViewModel

@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace Shop3.Areas.Admin.Controllers
 {
     public class UploadController : BaseController
     {
-        private readonly IHostingEnvironment _hostingEnvironment; 
+        private readonly IHostingEnvironment _hostingEnvironment;
         public UploadController(IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -51,7 +50,7 @@ namespace Shop3.Areas.Admin.Controllers
                 await HttpContext.Response.WriteAsync("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", '" + Path.Combine(imageFolder, filename).Replace(@"\", @"/") + "');</script>");
             }
         }
-        
+
         // upload img cho server
         [HttpPost]
         public IActionResult UploadImage()

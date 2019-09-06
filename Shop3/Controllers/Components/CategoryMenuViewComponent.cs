@@ -3,8 +3,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Shop3.Application.Interfaces;
 using Shop3.Infrastructure.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Shop3.Controllers.Components
@@ -28,7 +26,8 @@ namespace Shop3.Controllers.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             // có thể dùng get set
-            var categories =  _memoryCache.GetOrCreate(CacheKeys.ProductCategories, entry => {
+            var categories = _memoryCache.GetOrCreate(CacheKeys.ProductCategories, entry =>
+            {
                 entry.SlidingExpiration = TimeSpan.FromHours(2);
                 return _productCategoryService.GetAll();
             });

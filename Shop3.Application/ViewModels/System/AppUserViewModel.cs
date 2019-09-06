@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Shop3.Application.ViewModels.System
 {
@@ -24,7 +22,7 @@ namespace Shop3.Application.ViewModels.System
         public string Password { set; get; }
         public string UserName { set; get; }
         public string Address { get; set; }
-        
+
         [StringLength(15, MinimumLength = 9)]
         public string PhoneNumber { set; get; }
         public string Avatar { get; set; }

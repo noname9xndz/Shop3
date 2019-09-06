@@ -536,8 +536,8 @@ namespace Shop3.Application.Implementation
 
         public void DeleteProductImage(int productImg)
         {
-           _productImageRepository.RemoveById(productImg);
-           _unitOfWork.Commit();
+            _productImageRepository.RemoveById(productImg);
+            _unitOfWork.Commit();
         }
 
 
@@ -545,31 +545,31 @@ namespace Shop3.Application.Implementation
         {
 
 
-                var product = _productRepository.FindAll();
-                var billdetails = _billDetailRepository.FindAll();
-                var bill = _billRepository.FindAll(x=>x.BillStatus == status);
+            var product = _productRepository.FindAll();
+            var billdetails = _billDetailRepository.FindAll();
+            var bill = _billRepository.FindAll(x => x.BillStatus == status);
 
-                //var a = _billDetailRepository.FindAll().Include(x=>x.Bill).Include(x => x.Product);
+            //var a = _billDetailRepository.FindAll().Include(x=>x.Bill).Include(x => x.Product);
 
-                var query = (from p in product
-                             join bd in billdetails on p.Id equals bd.ProductId
-                             join b in bill on bd.BillId equals b.Id
-                             group p by new { p.Id, p.Name, p.Unit, p.Image, p.PromotionPrice, p.Price } into sellProduct
-                             select new CustomSellProductViewModel
-                             {
-                                 Id = sellProduct.Key.Id,
-                                 Image = sellProduct.Key.Image,
-                                 Price = (sellProduct.Key.PromotionPrice > 0 && sellProduct.Key.PromotionPrice < sellProduct.Key.Price) ? sellProduct.Key.PromotionPrice.Value : sellProduct.Key.Price,
-                                 Name = sellProduct.Key.Name,
-                                 Unit = sellProduct.Key.Unit,
-                                 Total = (sellProduct.Count(pt => pt.Id != null))
-                             });
-                var customSellProduct = query.OrderByDescending(x => x.Total).Take(top).ToList();
-                return customSellProduct; ;
+            var query = (from p in product
+                         join bd in billdetails on p.Id equals bd.ProductId
+                         join b in bill on bd.BillId equals b.Id
+                         group p by new { p.Id, p.Name, p.Unit, p.Image, p.PromotionPrice, p.Price } into sellProduct
+                         select new CustomSellProductViewModel
+                         {
+                             Id = sellProduct.Key.Id,
+                             Image = sellProduct.Key.Image,
+                             Price = (sellProduct.Key.PromotionPrice > 0 && sellProduct.Key.PromotionPrice < sellProduct.Key.Price) ? sellProduct.Key.PromotionPrice.Value : sellProduct.Key.Price,
+                             Name = sellProduct.Key.Name,
+                             Unit = sellProduct.Key.Unit,
+                             Total = (sellProduct.Count(pt => pt.Id != null))
+                         });
+            var customSellProduct = query.OrderByDescending(x => x.Total).Take(top).ToList();
+            return customSellProduct; ;
 
-          
 
-            
+
+
         }
 
         public void AddAndRemoveProductImages(int productId, string[] imagesAdd, int[] productImageIdRemove)
@@ -590,7 +590,7 @@ namespace Shop3.Application.Implementation
             {
                 List<int> productImageId = productImageIdRemove.OfType<int>().ToList();
                 _productImageRepository.RemoveMultipleWithListKey(productImageId);
-               
+
             }
         }
     }

@@ -89,7 +89,7 @@
             <td>{{Name}}</td>
             <td>{{Description}}</td>
             <td>
-
+                
                 @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
                 {
                     <a href="#" data-id="{{Id}}" class="btn  btn-xs btn-primary btn-grant"><i class="fa fa-eye-slash"></i></a>

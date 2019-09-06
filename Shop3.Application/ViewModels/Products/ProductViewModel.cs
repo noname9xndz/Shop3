@@ -1,9 +1,7 @@
 ﻿using Shop3.Data.Enums;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Shop3.Application.ViewModels.Products
 {

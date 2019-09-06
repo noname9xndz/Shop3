@@ -5,16 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using Shop3.Application.Interfaces;
 using Shop3.Application.ViewModels.System;
 using Shop3.Data.Entities;
-using Shop3.Data.IRepositories;
+using Shop3.Data.Enums;
 using Shop3.Infrastructure.Interfaces;
 using Shop3.Utilities.Dtos;
+using Shop3.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Shop3.Data.Enums;
-using Shop3.Utilities.Helpers;
 
 namespace Shop3.Application.Implementation
 {
@@ -23,7 +21,7 @@ namespace Shop3.Application.Implementation
     {
         private RoleManager<AppRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
-       // private IRepository<AppUser, Guid> _userRepository;
+        // private IRepository<AppUser, Guid> _userRepository;
         private IRepository<Function, string> _functionRepository;
         private IRepository<Permission, int> _permissionRepository;
         private IRepository<Announcement, string> _announRepository;
@@ -32,7 +30,7 @@ namespace Shop3.Application.Implementation
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public RoleService(RoleManager<AppRole> roleManager,IUnitOfWork unitOfWork,
+        public RoleService(RoleManager<AppRole> roleManager, IUnitOfWork unitOfWork,
          IRepository<Function, string> functionRepository,
          IRepository<Permission, int> permissionRepository,
          IRepository<Announcement, string> announRepository,
@@ -78,7 +76,7 @@ namespace Shop3.Application.Implementation
             _announRepository.Add(announcement);
             foreach (var userVm in ListannouncementUsers)
             {
-               
+
                 var user = _mapper.Map<AnnouncementUserViewModel, AnnouncementUser>(userVm);
                 _announUserRepository.Add(user);
             }
@@ -110,7 +108,7 @@ namespace Shop3.Application.Implementation
 
         public async Task<List<AppRoleViewModel>> GetAllAsync()
         {
-            
+
             return await _mapper.ProjectTo<AppRoleViewModel>(_roleManager.Roles).ToListAsync();
         }
 
@@ -149,9 +147,9 @@ namespace Shop3.Application.Implementation
             var functions = _functionRepository.FindAll();
             var permissions = _permissionRepository.FindAll();
             // nếu function rỗng => prmission null  ngược lại có thì sẽ join => lấy ra quyền
-            var query = from  f in functions
-                        join  p in permissions on f.Id equals p.FunctionId into fp
-                        from  p in fp.DefaultIfEmpty()
+            var query = from f in functions
+                        join p in permissions on f.Id equals p.FunctionId into fp
+                        from p in fp.DefaultIfEmpty()
                         where p != null && p.RoleId == roleId
                         select new PermissionViewModel()
                         {
@@ -203,11 +201,11 @@ namespace Shop3.Application.Implementation
             return flag;
         }
 
-        
+
 
         public async Task<bool> CheckAccount(string emailorusername)
         {
-            var checkmail =  TextHelper.EmailIsValid(emailorusername);
+            var checkmail = TextHelper.EmailIsValid(emailorusername);
             var flag = false;
             if (checkmail)
             {
@@ -216,7 +214,7 @@ namespace Shop3.Application.Implementation
                 {
                     flag = true;
                 }
-                
+
             }
             else
             {
@@ -226,7 +224,7 @@ namespace Shop3.Application.Implementation
                     flag = true;
                 }
             }
-            
+
             return flag;
         }
     }

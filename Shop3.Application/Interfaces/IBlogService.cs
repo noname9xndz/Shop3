@@ -1,10 +1,8 @@
 ﻿using Shop3.Application.ViewModels.Blogs;
 using Shop3.Application.ViewModels.Common;
-using Shop3.Utilities.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Shop3.Application.ViewModels.Custom;
+using Shop3.Utilities.Dtos;
+using System.Collections.Generic;
 
 namespace Shop3.Application.Interfaces
 {
@@ -18,7 +16,7 @@ namespace Shop3.Application.Interfaces
 
         List<BlogViewModel> GetAll();
 
-        PagedResult<BlogViewModel> GetAllPaging(string keyword, int page ,int pageSize);
+        PagedResult<BlogViewModel> GetAllPaging(string keyword, int page, int pageSize);
 
         List<BlogViewModel> GetLastest(int top);
 

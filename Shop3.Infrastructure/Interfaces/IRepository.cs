@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Shop3.Infrastructure.Interfaces
@@ -11,7 +10,7 @@ namespace Shop3.Infrastructure.Interfaces
     {
         // params truyền vào 1 danh sách các tham số
         // Expression truyền vào 1 biểu thức trong biểu thức truyền vào 1 function : kiểu là T và out ra 1 object
-        T FindById(K id, params Expression<Func<T, object>>[] includeProperties); 
+        T FindById(K id, params Expression<Func<T, object>>[] includeProperties);
 
         // bool true thì mới lấy về false thì khỏi :v
         T FindSingle(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);

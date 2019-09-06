@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Shop3.Utilities.Dtos
 {
@@ -11,5 +9,5 @@ namespace Shop3.Utilities.Dtos
             Results = new List<T>();
         }
         public IList<T> Results { get; set; }
-    }  
+    }
 }

@@ -1,8 +1,6 @@
 ﻿using Shop3.Application.ViewModels.System;
-using Shop3.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Shop3.Application.Interfaces

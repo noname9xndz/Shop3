@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Shop3.DependencyResolver
 {
@@ -31,5 +30,7 @@ namespace Shop3.DependencyResolver
         void AddScopedForMultiImplementation<TService, TImplementation>()
             where TService : class
             where TImplementation : class, TService;
+
+         void AddTransientWithType(Type serviceType,Type implementationType);
     }
 }
