@@ -8,7 +8,7 @@ namespace Shop3.Utilities.Extensions
 {
     public static class EnumExtensions
     {
-        // giúp parse ra giá trị của các  description trong descriptionAttributes 
+        // giúp parse ra giá trị của các  description trong descriptionAttributes  2
         // ví dụ trong billstatus  Description("New bill")] New sẽ lấy ra new bill
         public static string GetDescription<T>(this T e) where T : IConvertible
         {
