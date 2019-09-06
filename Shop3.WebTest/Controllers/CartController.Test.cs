@@ -15,8 +15,8 @@ using Shop3.WebTest.Mock;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using Shop3.Application.Shared;
 using Xunit;
-using IEmailSender = Shop3.Services.IEmailSender;
 
 namespace Shop3.WebTest.Controllers
 {

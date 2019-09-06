@@ -26,22 +26,7 @@ namespace Shop3.WebApi.Controllers
             _billService = billService;
         }
 
-        //[Route("getall")]
-        //[HttpGet]
-        //public HttpResponseMessage Get(HttpRequestMessage request, int? categoryId, string keyword, int page, int pageSize = 20)
-        //{
-        //    return CreateHttpResponse(request,
-        //        () =>
-        //        {
-        //            var model = _productService.GetAllPaging(categoryId, keyword, page, pageSize);
-        //            HttpRequestMessage reques2t = new HttpRequestMessage(
-        //                HttpMethod.Get, Uri.UriSchemeFtp
-        //            );
-        //            var response = request.CreateResponse(HttpStatusCode.OK);
-        //            return response;
-
-        //        });
-        //}
+        
 
         [Route("Index")]
         [HttpGet]

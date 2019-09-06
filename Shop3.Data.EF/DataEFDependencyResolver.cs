@@ -14,6 +14,7 @@ namespace Shop3.Data.EF
             
 
             dependencyRegister.AddTransient<DbInitializer>();
+            dependencyRegister.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
             dependencyRegister.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
             dependencyRegister.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
             dependencyRegister.AddTransientWithType(typeof(IUnitOfWork), typeof(EFUnitOfWork));

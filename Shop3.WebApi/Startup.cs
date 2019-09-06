@@ -19,6 +19,7 @@ using Shop3.WebApi.Helpers;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Text;
+using Shop3.DependencyResolver;
 using Contact = Swashbuckle.AspNetCore.Swagger.Contact;
 
 namespace Shop3.WebApi
@@ -90,50 +91,33 @@ namespace Shop3.WebApi
                 };
             });
 
-            //nuget : automapper 8.0.0,AutoMapper.Extensions.Microsoft.DependencyInjection 6.0.0
-            Mapper.Initialize(cfg =>
-            {
-                cfg.AddProfile(new DomainToViewModelMappingProfile());
-                cfg.AddProfile(new ViewModelToDomainMappingProfile());
-            });
+           
+            //var mappingConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new DomainToViewModelMappingProfile());
+            //    mc.AddProfile(new ViewModelToDomainMappingProfile());
+            //});
 
-            // services.AddSingleton(Mapper.Configuration);
-            // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            //IMapper mapper = mappingConfig.CreateMapper();
+            //services.AddSingleton(mapper);
 
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            services.AddScoped<IMapper>(
+                sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService)
+                );
 
-            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
-            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
-            services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo
+            
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
 
 
-            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceOne:Dll"]);
-            //services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:ServiceTwo:Dll"]);
-			
 
-            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
-            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
-
-            services.AddTransient<IProductCategoryService, ProductCategoryService>();
-            services.AddTransient<IFunctionService, FunctionService>();
-            services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IRoleService, RoleService>();
-            services.AddTransient<IBillService, BillService>();
-            services.AddTransient<ICommonService, CommonService>();
-            services.AddTransient<IBlogService, BlogService>();
-            services.AddTransient<IContactService, ContactService>();
-            services.AddTransient<IFeedbackService, FeedbackService>();
-            services.AddTransient<IPageService, PageService>();
-            services.AddTransient<IAnnouncementService, AnnouncementService>();
+            services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3DataEF:Dll"]);
+            services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3Application:Dll"]);
+            services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3ApplicationDapper:Dll"]);
 
 
-            services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
-            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
-            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
+           // services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
              // config lại object trả về khi respone trả về cho ajax
