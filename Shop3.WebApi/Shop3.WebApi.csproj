@@ -25,4 +25,9 @@
     <ProjectReference Include="..\Shp3.Utilities\Shop3.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DI\" />
+    <Folder Include="Filters\" />
+  </ItemGroup>
+
 </Project>

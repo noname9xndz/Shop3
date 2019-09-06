@@ -78,6 +78,7 @@ namespace Shop3.WebApi.Controllers
                 }; // list claims
 
                 _logger.LogError(_config["Tokens"]);
+
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

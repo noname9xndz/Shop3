@@ -14,7 +14,8 @@ namespace Shop3.Utilities.Extensions
         {
             string description = null;
 
-            if (e is Enum)
+            //if (e is Enum)
+            if (e is System.Enum)
             {
                 Type type = e.GetType();
                 Array values = System.Enum.GetValues(type);
