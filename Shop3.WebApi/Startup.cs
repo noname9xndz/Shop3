@@ -91,21 +91,21 @@ namespace Shop3.WebApi
                 };
             });
 
-           
-            //var mappingConfig = new MapperConfiguration(mc =>
-            //{
-            //    mc.AddProfile(new DomainToViewModelMappingProfile());
-            //    mc.AddProfile(new ViewModelToDomainMappingProfile());
-            //});
 
-            //IMapper mapper = mappingConfig.CreateMapper();
-            //services.AddSingleton(mapper);
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new DomainToViewModelMappingProfile());
+                mc.AddProfile(new ViewModelToDomainMappingProfile());
+            });
 
-            services.AddAutoMapper();
-            services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(
-                sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService)
-                );
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            //services.AddAutoMapper();
+            //services.AddSingleton(Mapper.Configuration);
+            //services.AddScoped<IMapper>(
+            //    sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService)
+            //    );
 
             
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal

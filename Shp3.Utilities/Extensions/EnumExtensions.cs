@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
+using System.Reflection;
 
 namespace Shop3.Utilities.Extensions
 {
@@ -36,6 +38,20 @@ namespace Shop3.Utilities.Extensions
             }
 
             return description;
+        }
+
+        public static string GetEnumDescription(System.Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+
+            if (attributes != null && attributes.Any())
+            {
+                return attributes.First().Description;
+            }
+
+            return value.ToString();
         }
     }
 }

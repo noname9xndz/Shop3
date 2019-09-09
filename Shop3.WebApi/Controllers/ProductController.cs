@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop3.Application.Interfaces;
+using Shop3.Utilities.Extensions;
 
 
 namespace Shop3.WebApi.Controllers
@@ -21,7 +22,8 @@ namespace Shop3.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return new OkObjectResult(_productCategoryService.GetAll());
+            var listProduct = _productCategoryService.GetAll();
+            return this.OkResult(listProduct);
         }
 
 
