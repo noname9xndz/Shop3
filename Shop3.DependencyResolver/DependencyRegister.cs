@@ -5,57 +5,57 @@ namespace Shop3.DependencyResolver
 {
     public class DependencyRegister : IDependencyRegister
     {
-        private readonly IServiceCollection serviceCollection;
+        private readonly IServiceCollection _serviceCollection;
 
         public DependencyRegister(IServiceCollection serviceCollection)
         {
-            this.serviceCollection = serviceCollection;
+            _serviceCollection = serviceCollection;
         }
 
         void IDependencyRegister.AddScoped<TService>()
         {
-            serviceCollection.AddScoped<TService>();
+            _serviceCollection.AddScoped<TService>();
         }
 
         void IDependencyRegister.AddScoped<TService, TImplementation>()
         {
-            serviceCollection.AddScoped<TService, TImplementation>();
+            _serviceCollection.AddScoped<TService, TImplementation>();
         }
 
         void IDependencyRegister.AddScopedForMultiImplementation<TService, TImplementation>()
         {
-            serviceCollection.AddScoped<TImplementation>()
+            _serviceCollection.AddScoped<TImplementation>()
                 .AddScoped<TService, TImplementation>(s => s.GetService<TImplementation>());
         }
 
         public void AddTransientWithType(Type serviceType, Type implementationType)
         {
-            serviceCollection.AddTransient(serviceType, implementationType);
+            _serviceCollection.AddTransient(serviceType, implementationType);
         }
 
         void IDependencyRegister.AddSingleton<TService>()
         {
-            serviceCollection.AddSingleton<TService>();
+            _serviceCollection.AddSingleton<TService>();
         }
 
         void IDependencyRegister.AddSingleton<TService, TImplementation>()
         {
-            serviceCollection.AddSingleton<TService, TImplementation>();
+            _serviceCollection.AddSingleton<TService, TImplementation>();
         }
 
         void IDependencyRegister.AddTransient<TService>()
         {
-            serviceCollection.AddTransient<TService>();
+            _serviceCollection.AddTransient<TService>();
         }
 
         void IDependencyRegister.AddTransient<TService, TImplementation>()
         {
-            serviceCollection.AddTransient<TService, TImplementation>();
+            _serviceCollection.AddTransient<TService, TImplementation>();
         }
 
         void IDependencyRegister.AddTransientForMultiImplementation<TService, TImplementation>()
         {
-            serviceCollection.AddTransient<TImplementation>()
+            _serviceCollection.AddTransient<TImplementation>()
                 .AddTransient<TService, TImplementation>(s => s.GetService<TImplementation>());
         }
     }

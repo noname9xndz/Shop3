@@ -76,6 +76,7 @@ namespace Shop3.Application.Interfaces
 
         void DeleteProductImage(int productImg);
 
+        bool IsDeleteProduct(int productId);
 
     }
 }

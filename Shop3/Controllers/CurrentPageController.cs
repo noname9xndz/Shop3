@@ -14,43 +14,22 @@ namespace Shop3.Controllers
         //to do if status = false return view == 404 
 
         [Route("about.html")]
-        public IActionResult About()
-        {
-
-            var model = _commonService.GetPageDefault(CommonConstants.PageDefault.About);
-            return View(model);
-        }
+        public IActionResult About() => View(_commonService.GetPageDefault(CommonConstants.PageDefault.About));
 
         [Route("faq.html")]
-        public IActionResult FAQ()
-        {
-            var model = _commonService.GetPageDefault(CommonConstants.PageDefault.FAQ);
-            return View(model);
-        }
+        public IActionResult FAQ() => View(_commonService.GetPageDefault(CommonConstants.PageDefault.FAQ));
+
         [Route("termscondition.html")]
-        public IActionResult TermsCondition()
-        {
-            var model = _commonService.GetPageDefault(CommonConstants.PageDefault.TermsCondition);
-            return View(model);
-        }
+        public IActionResult TermsCondition() => View(_commonService.GetPageDefault(CommonConstants.PageDefault.TermsCondition));
+       
         [Route("returnpolicy.html")]
-        public IActionResult ReturnPolicy()
-        {
-            var model = _commonService.GetPageDefault(CommonConstants.PageDefault.ReturnPolicy);
-            return View(model);
-        }
+        public IActionResult ReturnPolicy() => View(_commonService.GetPageDefault(CommonConstants.PageDefault.ReturnPolicy));
+        
         [Route("privacypolicy.html")]
-        public IActionResult PrivacyPolicy()
-        {
-            var model = _commonService.GetPageDefault(CommonConstants.PageDefault.PrivacyPolicy);
-            return View(model);
-        }
+        public IActionResult PrivacyPolicy() => View(_commonService.GetPageDefault(CommonConstants.PageDefault.PrivacyPolicy));
+
         [Route("deliveryinformation.html")]
-        public IActionResult DeliveryInformation()
-        {
-            var model = _commonService.GetPageDefault(CommonConstants.PageDefault.DeliveryInformation);
-            return View(model);
-        }
+        public IActionResult DeliveryInformation() => View(_commonService.GetPageDefault(CommonConstants.PageDefault.DeliveryInformation));
 
     }
 }

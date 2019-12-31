@@ -4,6 +4,7 @@ using Shop3.Application.Interfaces;
 using Shop3.Data.Enums;
 using Shop3.Extensions;
 using System.Threading.Tasks;
+using Shop3.Utilities.Constants;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -22,7 +23,7 @@ namespace Shop3.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var email = User.GetSpecificClaim("Email"); // lấy ra thông tin email để hiển thị lên view
+            var email = User.GetSpecificClaim(CommonConstants.UserClaims.Email); // lấy ra thông tin email để hiển thị lên view
             return View();
         }
         // vẽ biểu đồ

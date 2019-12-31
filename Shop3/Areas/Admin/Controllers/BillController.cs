@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Shop3.Application.Shared;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -21,10 +22,15 @@ namespace Shop3.Areas.Admin.Controllers
     {
         private readonly IBillService _billService;
         private readonly IHostingEnvironment _hostingEnvironment; // lấy ra môi trường mà appweb đang chạy
-        public BillController(IBillService billService, IHostingEnvironment hostingEnvironment)
+        private readonly IFileService _fileService;
+        private readonly IExcelService _excelService;
+        public BillController(IBillService billService, IHostingEnvironment hostingEnvironment,
+            IFileService fileService, IExcelService excelService)
         {
             _billService = billService;
             _hostingEnvironment = hostingEnvironment;
+            _excelService = excelService;
+            _fileService = fileService;
         }
 
         public IActionResult Index()

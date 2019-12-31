@@ -1,28 +1,7 @@
 ﻿
 
 
-var BlogController = function () {
-
-    this.initialize = function () {
-        // loadBlog();
-        loadBlogTable();
-        registerEvents();
-        registerControls();
-    }
-
-    function registerEvents() {
-        // load phân trang
-        $('#ddlShowPage').on('change', function () {
-            common.configs.pageSize = $(this).val();
-            common.configs.pageIndex = 1;
-            loadBlogTable(true);
-        });
-
-        $("#btnCreate").on('click', function () {
-            resetForm();
-            $('#modal-add-edit').modal('show');
-
-        });
+ 
 
 
         $('#btnSelectImg').on('click', function () {

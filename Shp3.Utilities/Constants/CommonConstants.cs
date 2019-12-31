@@ -45,7 +45,7 @@
         public class ViewSendMail
         {
             // public const string TaskView = "Task/_EmailAdd";
-            //public const string ProjectView = "Project/_SendMailToAdmin";
+            public const string FeedBackSendMail = "../Areas/Admin/Views/FeedBack/_ContactMailToUser";
         }
         public class Permission
         {
@@ -78,6 +78,8 @@
             public const string NameZA = "name_za";
 
         }
+
+       
 
 
     }

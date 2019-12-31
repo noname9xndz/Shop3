@@ -15,7 +15,7 @@ namespace Shop3.Data.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -699,6 +699,8 @@ namespace Shop3.Data.EF.Migrations
 
                     b.Property<string>("Image")
                         .HasMaxLength(255);
+
+                    b.Property<int>("IsDelete");
 
                     b.Property<string>("Name")
                         .IsRequired()

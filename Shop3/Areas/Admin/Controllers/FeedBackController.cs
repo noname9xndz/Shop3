@@ -5,6 +5,7 @@ using Shop3.Application.ViewModels.Common;
 using Shop3.Services;
 using System.Threading.Tasks;
 using Shop3.Application.Shared;
+using Shop3.Utilities.Constants;
 
 namespace Shop3.Areas.Admin.Controllers
 {
@@ -65,13 +66,11 @@ namespace Shop3.Areas.Admin.Controllers
         public async Task<IActionResult> SendMailToUser(FeedbackViewModel FeedbackVM, string subject)
         {// todo error upload img with ckeditor
          // todo get mail send by admin
-         // todo error return view to string 
             if (ModelState.IsValid)
             {
                 _feedbackService.Add(FeedbackVM);
                 _feedbackService.SaveChanges();
-                var viewName = "../Areas/Admin/Views/FeedBack/_ContactMailToUser";
-                var content = await _viewRenderService.RenderToStringAsync(viewName, FeedbackVM);
+                 var content = await _viewRenderService.RenderToStringAsync(CommonConstants.ViewSendMail.FeedBackSendMail, FeedbackVM);
                 await _emailSender.SendEmailAsync(FeedbackVM.Email, subject, content);
 
 

@@ -62,5 +62,7 @@ namespace Shop3.Application.ViewModels.Products
         public DateTime DateModified { set; get; }
 
         public Status Status { set; get; }
+
+        public IsDelete IsDelete { set; get; }
     }
 }

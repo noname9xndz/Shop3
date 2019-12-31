@@ -64,7 +64,8 @@ namespace Shop3.Application.Implementation
 
         public PagedResult<ProductViewModel> GetAllPagingWithSortKey(int? categoryId, string sortkey, int page, int pageSize)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active || x.Status == Status.InActive);
+            var query = _productRepository.FindAll(x => x.Status == Status.Active || x.Status == Status.InActive
+                                                        && x.IsDelete == IsDelete.False);
 
             if (categoryId.HasValue)
                 query = query.Where(x => x.CategoryId == categoryId.Value);
@@ -152,7 +153,9 @@ namespace Shop3.Application.Implementation
 
         public void Delete(int id)
         {
-            _productRepository.RemoveById(id);
+            //var product = _productRepository.FindById(id);
+           // product.Status
+            //_productRepository.RemoveById(id);
         }
 
         public void Dispose()
@@ -163,12 +166,15 @@ namespace Shop3.Application.Implementation
         public List<ProductViewModel> GetAll()
         {
             //return _productRepository.FindAll(x => x.ProductCategory).ProjectTo<ProductViewModel>().ToList();
-            return _mapper.ProjectTo<ProductViewModel>(_productRepository.FindAll(x => x.ProductCategory)).ToList();
+            var listProduct = _productRepository.FindAll(x => x.ProductCategory);
+           // var listProduct = _productRepository.FindAll(x => x.ProductCategory && x.IsDelete == IsDelete.False);
+            return _mapper.ProjectTo<ProductViewModel>(listProduct).ToList();
         }
 
         public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active || x.Status == Status.InActive);
+            var query = _productRepository.FindAll(x => x.Status == Status.Active || x.Status == Status.InActive
+                                                        && x.IsDelete == IsDelete.False);
 
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
@@ -261,7 +267,7 @@ namespace Shop3.Application.Implementation
                     //TryParse tránh trường hợp throw exception thay vào đó là đưa về giá trị mặc đinh là 0
                     decimal.TryParse(workSheet.Cells[i, 3].Value.ToString(), out var originalPrice); // c# 7 có thể out luôn không cần khai báo
                     product.OriginalPrice = originalPrice;
-
+                    //todo error template
                     decimal.TryParse(workSheet.Cells[i, 4].Value.ToString(), out var price);
                     product.Price = price;
                     decimal.TryParse(workSheet.Cells[i, 5].Value.ToString(), out var promotionPrice);
@@ -366,7 +372,7 @@ namespace Shop3.Application.Implementation
             //            from a3 in xyz.DefaultIfEmpty()
             //            select x;
 
-            var query = from x in _productRepository.FindAll()
+            var query = from x in _productRepository.FindAll(x=>x.IsDelete == IsDelete.False)
                         join y in _billDetailRepository.FindAll() on x.Id equals y.ProductId
                         join z in _billRepository.FindAll(z => z.Status == Status.Active) on y.BillId equals z.Id
                         orderby y.Quantity descending
@@ -381,7 +387,8 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetHotProduct(int top)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
+            var query = _productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true
+                                                        && x.IsDelete == IsDelete.False)
                 .OrderByDescending(x => x.DateCreated)
                 .Take(top);
 
@@ -392,6 +399,7 @@ namespace Shop3.Application.Implementation
         {
             var product = _productRepository.FindById(id);
             var query = _productRepository.FindAll(x => x.Status == Status.Active
+                                                        && x.IsDelete == IsDelete.False
                                                         && x.Id != id && x.CategoryId == product.CategoryId)
                 .OrderByDescending(x => x.DateCreated)
                 .Take(top);
@@ -401,7 +409,7 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetUpsellProducts(int top)
         {
-            var query = _productRepository.FindAll(x => x.PromotionPrice != null)
+            var query = _productRepository.FindAll(x => x.PromotionPrice != null && x.IsDelete == IsDelete.False)
                 .OrderByDescending(x => x.DateModified)
                 .Take(top);
             return _mapper.ProjectTo<ProductViewModel>(query).ToList();
@@ -434,7 +442,8 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetNewProduct(int top)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+            var query = _productRepository.FindAll(x => x.Status == Status.Active && x.IsDelete == IsDelete.False)
+                .OrderByDescending(x => x.DateCreated)
                  .Take(top);
 
             return _mapper.ProjectTo<ProductViewModel>(query).ToList();
@@ -442,7 +451,8 @@ namespace Shop3.Application.Implementation
 
         public List<ProductViewModel> GetSpecialOfferProduct(int top)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active)
+            var query = _productRepository.FindAll(x => x.Status == Status.Active 
+                                                        && x.IsDelete == IsDelete.False)
 
                 .OrderBy(x => x.PromotionPrice).Where(e => e.PromotionPrice != null)
                 .Take(top);
@@ -538,6 +548,18 @@ namespace Shop3.Application.Implementation
         {
             _productImageRepository.RemoveById(productImg);
             _unitOfWork.Commit();
+        }
+
+        public bool IsDeleteProduct(int productId)
+        {
+            var flag = false;
+            var product = _productRepository.FindById(productId);
+            if (product.IsDelete == IsDelete.True)
+            {
+                flag = true;
+            }
+
+            return flag;
         }
 
 

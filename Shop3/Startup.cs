@@ -108,13 +108,6 @@ namespace Shop3
             });
 
             //nuget : automapper ,AutoMapper.Extensions.Microsoft.DependencyInjection
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.AddProfile(new DomainToViewModelMappingProfile());
-            //    cfg.AddProfile(new ViewModelToDomainMappingProfile());
-            //});
-
-
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new DomainToViewModelMappingProfile());
@@ -123,6 +116,11 @@ namespace Shop3
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            services.AddTransient<DbInitializer>();
+            services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
+            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             #endregion config cho  auto mapper ,captcha
 
@@ -155,19 +153,11 @@ namespace Shop3
             //services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>(); //khai báo khởi tạo thông tin user, và role
            // services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>(); //AddScoped giới hạn 1 request gửi lên
 
-            //services.AddSingleton(Mapper.Configuration); // nuget : automapper
-            // services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-
-            //services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
-            //services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
-            //services.AddTransient<IFileService, FileService>();
-            //services.AddTransient<IExcelService, ExcelService>();
-
             //services.AddTransient<DbInitializer>(); // gọi DbInitializer lúc khởi tạo chạy seed()
 
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>(); // register cơ chế ghi đè ClaimsPrincipal
 
-            //services.AddTransient<IFunctionRepository, FunctionRepository>(); register Repository nếu dùng
+         
 
 
             //Register Serrvices
@@ -175,26 +165,20 @@ namespace Shop3
             services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3Application:Dll"]);
             services.LoadDependencies(Configuration["DI:Path"], Configuration["DI:Shop3ApplicationDapper:Dll"]);
 
-            //Register Serrvices
+            //Register Repositories
+            //services.AddTransient<IFunctionRepository, FunctionRepository>(); 
+
+            //Register Services
             //  services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             //  services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
-
             //services.AddTransient<IProductCategoryService, ProductCategoryService>();
-            //services.AddTransient<IFunctionService, FunctionService>();
-            //services.AddTransient<IProductService, ProductService>();
-            //services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IRoleService, RoleService>();
-            //services.AddTransient<IBillService, BillService>();
-            //services.AddTransient<ICommonService, CommonService>();
-            //services.AddTransient<IBlogService, BlogService>();
-            //services.AddTransient<IContactService, ContactService>();
-            //services.AddTransient<IFeedbackService, FeedbackService>();
-            //services.AddTransient<IPageService, PageService>();
-            //services.AddTransient<IReportService, ReportService>();
-            //services.AddTransient<IAnnouncementService, AnnouncementService>();
-            //services.AddTransient<IPageDefaultService, PageDefaultService>();
-            //services.AddTransient<ISlideService, SlideService>();
+
+            // Register Service Helper
+            //services.AddTransient<IEmailSender, EmailSender>(); // send mail to user
+            //services.AddTransient<IViewRenderService, ViewRenderService>(); // send bill mail  to user
+            //services.AddTransient<IFileService, FileService>();
+            //services.AddTransient<IExcelService, ExcelService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

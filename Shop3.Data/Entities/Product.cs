@@ -23,7 +23,7 @@ namespace Shop3.Data.Entities
             string description, string content, bool? homeFlag, bool? hotFlag,
             string tags, string unit, Status status, string seoPageTitle,
             string seoAlias, string seoMetaKeyword,
-            string seoMetaDescription)
+            string seoMetaDescription,IsDelete isDelete)
         {
             Name = name;
             CategoryId = categoryId;
@@ -42,6 +42,7 @@ namespace Shop3.Data.Entities
             SeoAlias = seoAlias;
             SeoKeywords = seoMetaKeyword;
             SeoDescription = seoMetaDescription;
+            IsDelete = isDelete;
             ProductTags = new List<ProductTag>();
 
         }
@@ -51,7 +52,7 @@ namespace Shop3.Data.Entities
              string description, string content, bool? homeFlag, bool? hotFlag,
              string tags, string unit, Status status, string seoPageTitle,
              string seoAlias, string seoMetaKeyword,
-             string seoMetaDescription)
+             string seoMetaDescription, IsDelete isDelete)
         {
             Id = id;
             Name = name;
@@ -71,6 +72,7 @@ namespace Shop3.Data.Entities
             SeoAlias = seoAlias;
             SeoKeywords = seoMetaKeyword;
             SeoDescription = seoMetaDescription;
+            IsDelete = IsDelete;
             ProductTags = new List<ProductTag>();
 
         }
@@ -114,11 +116,7 @@ namespace Shop3.Data.Entities
 
         [StringLength(255)]
         public string Unit { get; set; }
-
-
-
         public string SeoPageTitle { set; get; }
-
 
         [StringLength(255)] // chỉ ra kiểu dữ liệu thuộc tính mặc định là nvarchar(Max)
         public string SeoAlias { set; get; }
@@ -132,5 +130,8 @@ namespace Shop3.Data.Entities
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
         public Status Status { set; get; }
+        public IsDelete IsDelete { set; get; }
+
+
     }
 }
